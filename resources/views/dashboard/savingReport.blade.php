@@ -1,16 +1,11 @@
-<?php
-ini_set('display_errors','Off');
-ini_set('error_reporting', E_ALL );
-define('WP_DEBUG', false);
-define('WP_DEBUG_DISPLAY', false);
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Saving Report</title>
 	<base href="/expenseMVC/">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<?php include_once('link/link.php');?>
+  {{-- add link.add over here  --}}
 	 <script type="text/javascript" src="lib/js/main.js"></script>
 	 <style type="text/css">
 	 	    body{
@@ -44,7 +39,7 @@ define('WP_DEBUG_DISPLAY', false);
 	     	   
        
        	  
-          <form class="form-inline" method="POST" action="Dashboard/savingreport">
+          <form class="form-inline" method="" action="">
             <div class="form-group">
                 
                    <input type="month" class="form-control" name="date" id="" required="" />
@@ -74,17 +69,17 @@ define('WP_DEBUG_DISPLAY', false);
                <tbody>
                  <tr>
                       <th scope="col">Total Income:</th>
-                      <?php $itot=$itotal->fetch_assoc() ?>
-                        <td scope="col"><?php echo number_format($itot['total']); ?></td>                          
+                      
+                        <td scope="col"></td>                          
                     </tr>
                   <tr>
                       <th scope="col">Total Expense:</th>
-                      <?php $etot=$etotal->fetch_assoc() ?>
-                        <td scope="col"><?php echo number_format($etot['total']); ?></td>                          
+                      
+                        <td scope="col"></td>                          
                     </tr>
                     <tr>
                       <th scope="col">Total Saving:</th>
-                        <td scope="col"><?php echo number_format($itot['total']-$etot['total']); ?></td>                          
+                        <td scope="col"></td>                          
                     </tr>    
                </tbody>
              </table>
