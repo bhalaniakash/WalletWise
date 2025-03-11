@@ -22,6 +22,9 @@ Route::get('/dashboard/expense',function(){
 Route::get('/dashboard/incomeReport',function(){
     return view('dashboard.incomeReport');
 });
+Route::get('/dashboard/expenseReport',function(){
+    return view('dashboard.expenseReport');
+});
 Route::get('/dashboard/savingReport',function(){
     return view('dashboard.savingReport');
 });
