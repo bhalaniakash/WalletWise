@@ -29,18 +29,10 @@
       margin-right: 1rem;
     }
 
-    .btn-primary {
-      background-color: #BB86FC; /* Accent color */
-      border-color: #BB86FC; /* Accent color */
-    }
-
-    .btn-primary:hover {
-      background-color: #121212; /* Primary color */
-      border-color: #121212; /* Primary color */
-    }
+  
 
     .table thead {
-      background-color: #121212; /* Primary color */
+      background-color: #121212; /* dark color */
     }
     th, td {
       color: #000;
@@ -77,7 +69,7 @@
                       </div>
                       <div class="col">
                         <div class="form-group">
-                          <input type="submit" value="Enter" class="btn btn-primary" id="table">
+                          <input type="submit" value="Enter" class="btn btn-dark" id="table">
                         </div>
                       </div>
                     </div>
@@ -117,11 +109,11 @@
               </tr>
             </tbody>
           </table>
-          <button class="btn btn-primary" id="print">Print</button>
+          <button class="btn btn-dark" id="print">Print</button>
           <br>
         </div>
         <br>
-      </section>
+      </section>  
     </div>
   </div>
   <script type="text/javascript">

@@ -81,7 +81,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <button type="submit" name="insert" class="btn btn-primary">Insert</button>
+                        <button type="submit" name="insert" class="btn btn-dark">Insert</button>
                     </div>
                 </div>
             </div>

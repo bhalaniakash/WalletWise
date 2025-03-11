@@ -26,17 +26,17 @@
       margin-right: 1rem;
     }
     .card {
-      border-color: #BB86FC; 
+      border-color: #000; 
     }
 
     .table tbody tr th, .table tbody tr td {
-      color: #BB86FC; 
+      color: #000; 
     }
-    .btn-primary {
-      background-color: #BB86FC;
-      border-color: #BB86FC;
+    .btn-dark {
+      background-color: #000;
+      border-color: #000;
     }
-    .btn-primary:hover {
+    .btn-dark:hover {
       /* background-color: #03DAC6; 
       border-color: #03DAC6;  */
     }
@@ -63,7 +63,7 @@
                     <input type="month" class="form-control" name="date" id="" required="" />
                     &nbsp;
                     &nbsp;
-                    <button type="submit" name="insert" class="btn btn-primary">Enter</button>
+                    <button type="submit" name="insert" class="btn btn-dark">Enter</button>
                   </div>
                 </form>
               </div>
@@ -97,7 +97,7 @@
             </tr>
           </tbody>
         </table>
-        <button class="btn btn-primary" id="print">print</button>
+        <button class="btn btn-dark" id="print">print</button>
         <br>
       </div>
     </section>

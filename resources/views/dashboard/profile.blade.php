@@ -41,15 +41,7 @@
         .card h5, .card p, .card label {
             color: #343a40; /* Dark text color */
         }
-        .btn-primary {
-            background-color: #007bff; /* Bootstrap primary color */
-            border-color: #007bff; /* Bootstrap primary color */
-            color: #fff; /* White text */
-        }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-            border-color: #0056b3; /* Darker shade on hover */
-        }
+     
         .form-group {
             margin-bottom: 1rem;
         }
@@ -134,7 +126,7 @@
                         </div>
                         <div id="Error"></div>
                         <div class="form-group">       
-                            <input type="submit" value="Submit" name="Submit" class="btn btn-primary">
+                            <input type="submit" value="Submit" name="Submit" class="btn btn-dark">
                         </div>
                     </form>
                 </div>

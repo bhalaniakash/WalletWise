@@ -93,9 +93,9 @@
                     <div class="col">
                         <div class="form-group">
 
-                            <button type="submit" name="update" class="btn btn-primary">Update</button>
+                            <button type="submit" name="update" class="btn btn-dark">Update</button>
 
-                            <button type="submit" name="insert" class="btn btn-primary">Insert</button>
+                            <button type="submit" name="insert" class="btn btn-dark">Insert</button>
 
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                             <td>3</td>
                             <td>4</td>
                             <td>5</td>
-                            <td><a class="btn btn-primary" href="Income/income?incomeId=1" name="update">Update</a>
+                            <td><a class="btn btn-dark" href="Income/income?incomeId=1" name="update">Update</a>
                                 <a class="btn btn-danger" href="Income/deleteIncome?incomeId=1" onClick="return confirm('Do you want to Delete? Y/N')"> Delete </a>
                             </td>
                         </tr>

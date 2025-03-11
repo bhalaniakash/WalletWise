@@ -63,7 +63,7 @@
                         </div>
                         <div class="col">
                           <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Enter</button>
+                            <button type="submit" class="btn btn-dark">Enter</button>
                           </div>
                         </div>
                       </div>
@@ -103,7 +103,7 @@
                 </tr>
               </tbody>
             </table>
-            <button class="btn btn-primary" id="print">Print</button>
+            <button class="btn btn-dark" id="print">Print</button>
             <br>
           </div>
           <br>
