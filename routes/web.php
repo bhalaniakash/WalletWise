@@ -31,3 +31,4 @@ Route::get('/dashboard/savingReport',function(){
 Route::get('/dashboard/profile',function(){
     return view('dashboard.profile');
 });
+Route::view("login",'user.login');

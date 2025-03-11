@@ -10,7 +10,7 @@
 	 <?php include_once('link/link.php');?>
 	 <style type="text/css">
 	 	body {
-                 background-image: url(img/login.jpg);
+                 background-image: url(/img/login.jpg);
                  background-repeat:no-repeat;
                  background-attachment:scroll;
                  background-size:1550px;
