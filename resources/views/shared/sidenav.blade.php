@@ -85,46 +85,59 @@
  </style>
    
 </head>
-
 <body>
+    <!-- Vertical Sidebar -->
+    <div class="vertical-nav" id="sidebar">
+        <ul class="nav flex-column bg-dark mb-0">
+            <li class="nav-item">
+                <a href="{{ url('dashboard') }}" class="nav-link">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard/category') }}" class="nav-link">
+                    <i class="fas fa-layer-group"></i> Create Category
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard/income') }}" class="nav-link">
+                    <i class="fas fa-money-bill-wave"></i> Add Income
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard/expense') }}" class="nav-link">
+                    <i class="fas fa-receipt"></i> Add Expense
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard/incomeReport') }}" class="nav-link">
+                    <i class="fas fa-chart-line"></i> Income Report
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard/expenseReport') }}" class="nav-link">
+                    <i class="fas fa-chart-pie"></i> Expense Report
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard/savingReport') }}" class="nav-link">
+                    <i class="fas fa-piggy-bank"></i> Saving Report
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard/profile') }}" class="nav-link">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('dashboard') }}" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </li>
+        </ul>
+    </div>
 
-    <!--veticalbar-->
-   <div class="vertical-nav " id="sidebar">
-
-  <ul class="nav flex-column bg-dark mb-0">
-    <li class="nav-item">
-      <a href="{{ url('dashboard') }}" class="nav-link "> Dashboard</a>
-    </li>
-    <li class="nav-item">
-    <a href="{{ url('dashboard/category') }}" class="nav-link ">Create category</a>
-    </li>
-    <li class="nav-item">
-    <a href="{{ url('dashboard/income') }}" class="nav-link ">Add income</a>
-    </li>
-    <li class="nav-item">
-      
-    <a href="{{ url('dashboard/expense') }}" class="nav-link">Add expense</a>
-    </li>
-     <li class="nav-item">
-     <a href="{{ url('dashboard/incomeReport') }}" class="nav-link "> Income report</a>
-    </li>
-     <li class="nav-item">
-     <a href="{{ url('dashboard/expenseReport') }}"  class="nav-link">Expense report</a>
-    </li>
-     <li class="nav-item">
-     <a href="{{ url('dashboard/savingReport') }}" class="nav-link">Saving report</a>
-    </li>
-     <li class="nav-item">
-     <a href="{{ url('dashboard/profile') }}" class="nav-link">Profile </a>
-    </li>
-     <li class="nav-item">
-      
-     <a href="{{ url('dashboard') }}" class="nav-link">Logout</a>
-    </li>
-  </ul>
-
- 
-</div>
-<script type="text/javascript" src="lib/js/main.js"></script>
+    <script type="text/javascript" src="lib/js/main.js"></script>
 </body>
+
 </html>
