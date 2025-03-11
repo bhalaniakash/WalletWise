@@ -69,37 +69,42 @@ ul li a {
 }
 
 ul li a:hover {
-    color: #BB86FC !important; 
-    font-size: 22px;
+  font-size: 17px;
+  padding-left: 10px;
+  transition: 0.5s;
+  color: black; 
+  background-color: white; 
+  border-radius: 5px;
 }
 
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -17rem;
-    }
-
-    #sidebar.active {
-        margin-left: 0;
-    }
+  #sidebar {
+    margin-left: -17rem;
+  }
+  
+  #sidebar.active {
+    margin-left: 0;
+  }
 }
 
 li {
     list-style: none;
-}
-
-.nav-link {
+  }
+  
+  .nav-link {
     display: flex;
     align-items: center;
     padding: 10px 15px;
     font-size: 18px;
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
-    color: #E0E0E0; /* Text - Light Gray */
-}
-
-.nav-link:hover {
-    background-color: #BB86FC; 
-    color: #121212 !important; /* Primary - Pure Black */
+    color: #E0E0E0; 
+  }
+  
+  .nav-link:hover {
+    background-color: white; 
+    color: black ; /* Primary - Pure Black */
+    box-shadow: 0 3px 5px rgb(162, 150, 150);
 }
 
 .nav-link i {
@@ -108,15 +113,16 @@ li {
 }
 
 .nav-item.active .nav-link {
-    background-color: #BB86FC; /* Secondary - Cyan */
-    color: #121212 !important; /* Primary - Pure Black */
+    background-color: white; /* Secondary - Cyan */
+    color: black !important; /* Primary - Pure Black */
 }
 
 .nav-item.active .nav-link i {
-    color: #121212 !important; /* Ensuring icons remain visible */
+    color: #121212 !important; 
 }
 
   </style>
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -201,6 +207,8 @@ li {
     }
   </style>
 
+=======
+>>>>>>> 2c939551cac42158ae2778b3dfdbe9cf8bc1735c
 </head>
 
 <body>

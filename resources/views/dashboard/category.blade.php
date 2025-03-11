@@ -73,7 +73,7 @@
                 <input type="text" name="incomename" id="inlineFormInput" class="form-control">
                 &nbsp;
                 &nbsp;
-                <button type="submit" name="insert" class="btn btn-primary">Add</button>
+                <button type="submit" name="insert" class="btn btn-dark">Add</button>
               </form>
             </div>
           </div>
@@ -119,7 +119,7 @@
                 <input type="text" name="expensename" id="inlineFormInput" placeholder="" class="form-control">
                 &nbsp;
                 &nbsp;
-                <button type="submit" name="insert1" class="btn btn-primary">Add</button>
+                <button type="submit" name="insert1" class="btn btn-dark">Add</button>
               </form>
             </div>
           </div>
@@ -167,7 +167,7 @@
                 <input type="text" name="incomename" class="form-control" placeholder="1">
               </div>
               <div class="form-group">
-                <input type="submit" value="update" class="btn btn-primary">
+                <input type="submit" value="update" class="btn btn-dark">
               </div>
             </form>
           </div>
