@@ -11,13 +11,14 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
+      background-color:white;
     }
 
     .page-content {
       margin-left: 17rem;
       margin-right: 1rem;
       transition: all 0.4s;
-
+      background-color: white;
     }
 
     .content.active {
@@ -37,7 +38,12 @@
     }
 
     .table tr {
-      height: 5px;
+      color: #000;
+      background-color: white;
+    }
+    th,td{
+      color: #000;
+      background-color: white;
     }
   </style>
 </head>
@@ -172,10 +178,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
 
 </body>

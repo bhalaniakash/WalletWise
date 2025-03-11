@@ -11,17 +11,24 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
+      background-color: white;
+      color: black;
     }
 
     .page-content {
       margin-left: 17rem;
       margin-right: 1rem;
       transition: all 0.4s;
+    
     }
-
+  
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
+    }
+    th, td {
+      color: #000;
+      background-color: white;
     }
   </style>
 </head>

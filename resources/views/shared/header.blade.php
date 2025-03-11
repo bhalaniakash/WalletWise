@@ -3,7 +3,7 @@
 
 <head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">  
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -19,11 +19,17 @@
     <link href="{{ asset('link/link.php') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <style type="text/css">
+        body {
+            color: #000;
+            background-color: white;
+        }
+
         .sb-topnav {
             width: calc(100% - 16rem);
             margin-left: 16rem;
             margin-top: -25px;
             transition: all 0.4s;
+            background-color: #121212; 
         }
 
         #content.active {
@@ -33,17 +39,17 @@
 
         button i {
             font-size: 30px;
+            color: #BB86FC; 
         }
 
         .navbar-brand {
             font-size: 30px;
-            color: aliceblue;
+            color: #BB86FC; 
             text-decoration: none;
         }
 
         button i:hover {
-            color: cyan !important;
-
+            color: #BB86FC ;
         }
 
         @media (max-width: 768px) {
@@ -69,14 +75,13 @@
             button i {
                 font-size: 20px;
             }
-
         }
     </style>
 </head>
 
 <body>
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0" id="content" style="background-color: #616b6b; display: flex;">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0" id="content" style="display: flex;">
         <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center;">
             <img src="/img/logo-removebg-preview.png" width="100" height="100" style="color: white; margin: -10px;"/>
             <h4>WalletWise</h4>

@@ -11,17 +11,40 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
+      background-color: white; /* Background color */
+      color: black; /* Text color */
+     
     }
 
     .page-content {
       margin-left: 17rem;
       margin-right: 1rem;
       transition: all 0.4s;
+      color: #000;
+      background-color: white;
     }
-
+   
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
+    }
+
+    .btn-primary {
+      background-color: #BB86FC; /* Accent color */
+      border-color: #BB86FC; /* Accent color */
+    }
+
+    .btn-primary:hover {
+      background-color: #121212; /* Primary color */
+      border-color: #121212; /* Primary color */
+    }
+
+    .table thead {
+      background-color: #121212; /* Primary color */
+    }
+    th, td {
+      color: #000;
+      background-color: white;
     }
   </style>
 </head>
@@ -70,7 +93,7 @@
         <div class="container-fluid shadow">
           <br>
           <table class="table table-striped table-bordered" id="Report">
-            <thead style="background-color: #616b6b;">
+            <thead style="background-color: #1E1E2E;">
               <tr>
                 <th colspan="6">
                   <center>

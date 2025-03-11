@@ -11,6 +11,7 @@
 	
 
 	<style type="text/css">
+	
 		body {
 			min-height: 100vh;
 			overflow-x: hidden;
@@ -65,6 +66,7 @@
 		}
 	</script>
 	</script>
+	
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
 		google.charts.load('current', {
