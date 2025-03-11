@@ -19,9 +19,11 @@
     <link href="{{ asset('link/link.php') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <style type="text/css">
+        
         .sb-topnav {
             width: calc(100% - 16rem);
             margin-left: 16rem;
+            margin-top: -25px;
             transition: all 0.4s;
         }
 
@@ -75,7 +77,7 @@
 
 <body>
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 " id="content" style="background-color: #343a40">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0 " id="content" style="background-color: #343a40">
         <button class="btn btn-link btn-sm order-lg-0 ml-lg-3 btn-outline-dark" id="sidebarToggle" href="#">
             <i class="fas fa-bars text-light"></i>
         </button>
