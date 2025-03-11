@@ -15,7 +15,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<<<<<<< HEAD
   <title>Collapsible sidebar using Bootstrap 4</title>
 
   <base href="/expenseMVC/">
@@ -118,7 +117,6 @@ li {
 }
 
   </style>
-=======
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -203,7 +201,6 @@ li {
     }
   </style>
 
->>>>>>> 244361b3dc98d385d692c53fb2438a11f5ddeee7
 </head>
 
 <body>
@@ -258,7 +255,6 @@ li {
     </ul>
   </div>
 
-<<<<<<< HEAD
   <!--vertical bar-->
   <div class="vertical-nav" id="sidebar">
     <ul class="nav flex-column bg-dark mb-0">
@@ -291,8 +287,6 @@ li {
       </li>
     </ul>
   </div>
-=======
->>>>>>> 244361b3dc98d385d692c53fb2438a11f5ddeee7
   <script type="text/javascript" src="lib/js/main.js"></script>
 </body>
 

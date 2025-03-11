@@ -6,8 +6,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base href="/expenseMVC/">
 	<link rel="stylesheet" href="lib/css/style.css"/>
-	 
-	 <?php include_once('link/link.php');?>
 	 <style type="text/css">
 	 	body {
                  background-image: url(/img/login.jpg);
@@ -32,9 +30,6 @@
 	 </style>
 </head>
 <body>
-	<?php
-	session_start();
-	?>
 	<h1 class="bg-dark text-white">
 		<a href="User/display" style="text-decoration: none; color: #ffff;">Income and Expenses traker system</a>
 	</h1>
