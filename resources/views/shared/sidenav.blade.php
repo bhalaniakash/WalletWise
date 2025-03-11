@@ -112,7 +112,7 @@
      <a href="{{ url('dashboard/expenseReport') }}"  class="nav-link">Expense report</a>
     </li>
      <li class="nav-item">
-     <a href="{{ url('dashboard/Report') }}" class="nav-link">Saving report</a>
+     <a href="{{ url('dashboard/savingReport') }}" class="nav-link">Saving report</a>
     </li>
      <li class="nav-item">
      <a href="{{ url('dashboard/profile') }}" class="nav-link">Profile </a>
