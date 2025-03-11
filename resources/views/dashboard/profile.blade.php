@@ -21,7 +21,7 @@
             margin-right: 1rem;
             transition: all 0.4s;
             padding: 2rem;
-            color: #000;
+              color: #000;
             background-color: white;
         }
         .content.active {
@@ -102,20 +102,19 @@
 @include('shared.header')
     <div class="page-content" id="content">
         <br>
-        <div class="container-fluid shadow">
-            <section class="container-fluid">
-                <div class="card text-center pt-2 mt-2">
-                    <img src="/img/logo-removebg-preview.png" width="100" height="100" style="color: white; margin: -10px;"/>
+        <div class="container-fluid shadow" style="margin=10px;">
+          
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;  gap: 10px; margin=10px;">
+                    <div class="card pl-2 pr-2">
+                        <img src="/img/logo-removebg-preview.png" width="150" height="150" style="color: white; margin: 10px;"/>
+                    </div>
+                    <div class="card pl-2 pr-2" style=" width: 100%; height:150px " >
+                        <p>Name: </p>
+                        <p>Email: </p>
+                        <p>Gender: </p>
+                    </div>
                 </div>
-            </section>
-            <br>
-            <section class="container-fluid">
-                <div class="card pl-2">
-                    <p>Name: </p>
-                    <p>Email: </p>
-                    <p>Gender: </p>
-                </div>
-            </section>
+           
             <br>
             <section class="container-fluid">
                 <div class="card pl-2 pr-2">
