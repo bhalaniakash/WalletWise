@@ -21,7 +21,7 @@
   <title>Collapsible sidebar using Bootstrap 4</title>
 
   <base href="/expenseMVC/">
-  <?php include_once('link/link.php'); ?>
+
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
     .vertical-nav {
