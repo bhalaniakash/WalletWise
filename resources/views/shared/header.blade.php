@@ -19,7 +19,6 @@
     <link href="{{ asset('link/link.php') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <style type="text/css">
-        
         .sb-topnav {
             width: calc(100% - 16rem);
             margin-left: 16rem;
@@ -77,20 +76,16 @@
 
 <body>
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0 " id="content" style="background-color: #616b6b">
-        <!-- <button class="btn btn-link btn-sm order-lg-0 ml-lg-3 btn-outline-dark" id="sidebarToggle" href="#">
-        </button> -->
-        &nbsp;
-        &nbsp;
+    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0" id="content" style="background-color: #616b6b; display: flex;">
         <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center;">
-            <img src="/img/logo-removebg-preview.png" width="100" height="100" style="color: white; margin: -10px;" alt="" />
+            <img src="/img/logo-removebg-preview.png" width="100" height="100" style="color: white; margin: -10px;"/>
             <h4>WalletWise</h4>
-    </div>
-
-
-
+        </div>
+        <!-- <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center; margin-left:900px;">
+            <h6>Login</h6>&nbsp;
+            <h6>Registration</h6>
+        </div> -->
     </nav>
-
     <script type="text/javascript" src="../../lib/js/main.js"></script>
 </body>
 

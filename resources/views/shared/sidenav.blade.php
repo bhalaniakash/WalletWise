@@ -90,7 +90,6 @@
 
     <!--veticalbar-->
    <div class="vertical-nav " id="sidebar">
-  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0"><u>Main menu</u></p>
 
   <ul class="nav flex-column bg-dark mb-0">
     <li class="nav-item">
