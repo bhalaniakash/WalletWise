@@ -36,6 +36,7 @@
             transition: all 0.4s;
             color: #fff;
              text-decoration: none;
+             background-color: #616b6b;
            } 
            .text-gray {
                    color: #fff;
@@ -57,7 +58,7 @@
                 transition: 0.3s;
             }
             .nav-item{
-                background-color: #424949;
+                background-color: #616b6b;
             }
 
     #sidebar.active {

@@ -52,7 +52,7 @@ footer{
 
 }
 .socials a:hover i{
-    color: aqua;
+    color: rgb(153, 152, 152);
 }
 .footer-bottom{
     background: #000;
@@ -69,6 +69,4 @@ footer{
     text-transform: uppercase;
     opacity: .4;
     font-weight: 200;
-}
-
 }

@@ -77,15 +77,15 @@
 
 <body>
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0 " id="content" style="background-color: #343a40">
-        <button class="btn btn-link btn-sm order-lg-0 ml-lg-3 btn-outline-dark" id="sidebarToggle" href="#">
-            <i class="fas fa-bars text-light"></i>
-        </button>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0 " id="content" style="background-color: #616b6b">
+        <!-- <button class="btn btn-link btn-sm order-lg-0 ml-lg-3 btn-outline-dark" id="sidebarToggle" href="#">
+        </button> -->
         &nbsp;
         &nbsp;
-        <a class="navbar-brand" href="Dashboard/index">
-            <img src="img/logo.png" width="40" height="40" style="color: white;" alt="" />Income and Expenses Tracker System
-        </a>
+        <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center;">
+            <img src="/img/logo-removebg-preview.png" width="100" height="100" style="color: white; margin: -10px;" alt="" />
+            <h4>WalletWise</h4>
+    </div>
 
 
 

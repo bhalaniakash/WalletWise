@@ -66,8 +66,7 @@
                 <div class="container-fluid shadow">
                     <br>
                     <table class="table table-striped table-bordered" id="Report">
-                        <thead class="thead-dark">
-                            <tr>
+                    <thead  style="background-color: #616b6b;">         <tr>
                                 <th colspan="6"><center><h5>Income details</h5></center></th>
                             </tr>
                             <tr>

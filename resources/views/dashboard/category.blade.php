@@ -73,8 +73,8 @@
           </div>
           <br>
           <div class="card shadow">
-            <table class="table table-stripped table-bordered">
-              <thead class="thead-dark">
+          <table class="table table-striped table-bordered">
+          <thead  style="background-color: #616b6b;">
                 <tr>
                   <th colspan="3">
                     <center>
@@ -119,8 +119,8 @@
           </div>
           <br>
           <div class="card shadow">
-            <table class="table table-stripped table-bordered">
-              <thead class="thead-dark">
+            <table class="table table-striped table-bordered">
+              <thead  style="background-color: #616b6b;">
                 <tr>
                   <th colspan="3">
                     <center>

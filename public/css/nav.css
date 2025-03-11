@@ -2,14 +2,14 @@
     display: flex;
     width: 100%;
     align-items: stretch;
-    background-color: #454545;
+    background-color: #fff;
 }
 
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #454545 !important;
-    color: #454545;
+    background: #fff !important;
+    color: #fff;
     transition: all 0.3s;
 }
 
@@ -19,7 +19,7 @@
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #454545 !important;
+    background: #fff !important;
 }
 
 #sidebar ul.components {
