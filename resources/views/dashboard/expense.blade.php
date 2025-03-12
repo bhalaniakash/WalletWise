@@ -18,6 +18,7 @@
             transition: all 0.4s;
             background-color: white;
             color:black;
+            margin-top: 5% !important;
         }
         .content.active {
             margin-left: 1rem;

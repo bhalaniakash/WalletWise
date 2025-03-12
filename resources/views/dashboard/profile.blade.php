@@ -23,6 +23,7 @@
             padding: 2rem;
               color: #000;
             background-color: white;
+            margin-top: 5% !important;
         }
         .content.active {
             margin-left: 1rem;
@@ -90,8 +91,8 @@
     </style>
 </head>
 <body>
-@include('shared.sidenav')
-@include('shared.header')
+@include('shared.sidenav');
+@include('shared.header');
     <div class="page-content" id="content">
         <br>
         <div class="container-fluid shadow" style="margin=10px;">

@@ -28,8 +28,8 @@
             margin-top: -25px;
             transition: all 0.4s;
             background-color: #121212;
-            position: relative;
-            z-index: -1;
+            position: fixed;
+            
         }
 
         #content.active {

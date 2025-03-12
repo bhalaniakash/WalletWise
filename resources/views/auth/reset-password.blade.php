@@ -1,5 +1,31 @@
+
+
+<head>
+<style>
+   body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #000;
+    background-color: white;
+}
+
+#content {
+    margin-left: 17rem;
+    margin-right: 1rem;
+    transition: all 0.4s;
+    background-color: white;
+    color: #000;
+    margin-top: 5% ;
+}
+
+</style>
+</head>
+<body>
 <x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
+    @include('shared.sidenav');
+@include('shared.header');
+
+    <form method="POST" action="{{ route('password.store') }}" class="page-content" id="content">
         @csrf
 
         <!-- Password Reset Token -->
@@ -36,4 +62,7 @@
             </x-primary-button>
         </div>
     </form>
+
 </x-guest-layout>
+</body>
+</html>
