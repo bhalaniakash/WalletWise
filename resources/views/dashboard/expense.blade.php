@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <title>Add Expense</title>
     <base href="/expenseMVC/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   
-    {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
-   
+    <script type="text/javascript" src="lib/js/main.js"></script>
+    {{-- @include("link.link"); --}}
     <style type="text/css">
         body {
             min-height: 100vh;
