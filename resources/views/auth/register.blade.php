@@ -10,7 +10,7 @@
         <form method="POST" action="{{ route('register') }}" class=" rounded-lg p-8 w-11/12 max-w-md" style="width: 90%; margin-bottom: 10px;">
             @csrf
 
-            <h2 class="text-2xl font-semibold text-center mb-6">Register</h2>
+            <h2 class="text-2xl font-semibold text-center mb-6">Register Yourself</h2>
 
             <!-- Name -->
             <div>

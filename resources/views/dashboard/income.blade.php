@@ -34,7 +34,8 @@
     </style>
 </head>
 
-<body> @include('shared.sidenav');
+<body>
+     @include('shared.sidenav');
     @include('shared.header');
     <div class="page-content" id="content">
         <div class="container-fluid shadow">
