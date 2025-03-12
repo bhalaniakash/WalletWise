@@ -39,19 +39,29 @@
 
         button i {
             font-size: 30px;
-            color: #BB86FC; 
+            color: white; 
         }
 
         .navbar-brand {
             font-size: 30px;
-            color: #BB86FC; 
+            color: white; 
             text-decoration: none;
+            gap: 20px;
         }
 
         button i:hover {
-            color: #BB86FC ;
+            color: white ;
         }
 
+        .logo{
+            border-radius: 5pc;
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            justify-content: center;
+            align-items: center;
+        }
         @media (max-width: 768px) {
             .navbar-brand {
                 font-size: 20px;
@@ -83,7 +93,9 @@
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0" id="content" style="display: flex;">
         <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center;">
-            <img src="/img/logo-removebg-preview.png" width="100" height="100" style="color: white; margin: -10px;"/>
+            <div class="logo">
+                <img src="/img/logo-removebg-preview.png" width="80" height="80" style="color: white; margin: -10px;"/>
+            </div>
             <h4>WalletWise</h4>
         </div>
         <!-- <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center; margin-left:900px;">
