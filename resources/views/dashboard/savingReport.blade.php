@@ -13,6 +13,7 @@
       color: #000;
       background-color: white;
     }
+    
     .page-content {
       margin-left: 17rem;
       margin-right: 1rem;
@@ -21,6 +22,7 @@
       color: #000;
 
     }
+
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
@@ -47,8 +49,8 @@
   </style>
 </head>
 <body>
-@include('shared.sidenav')
-@include('shared.header')
+@include('shared.sidenav');
+@include('shared.header');
 <div class="page-content" id="content">
   <div id="page-wrapper">
     <br>

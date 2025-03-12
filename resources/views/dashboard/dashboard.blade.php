@@ -15,7 +15,7 @@
 		body {
 			min-height: 100vh;
 			overflow-x: hidden;
-
+			margin-top: 0;
 		}
 
 		.page-content {

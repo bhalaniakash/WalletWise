@@ -13,6 +13,7 @@
       overflow-x: hidden;
       background-color: white;
       color: black;
+      
     }
 
     .page-content {

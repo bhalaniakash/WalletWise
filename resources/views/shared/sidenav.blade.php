@@ -29,6 +29,7 @@
     }
 
     .vertical-nav {
+      margin-top: 65px;
       min-width: 16rem;
       width: 16rem;
       height: 100vh;
@@ -42,6 +43,7 @@
       color: #E0E0E0;
       /* Text - Light Gray */
       text-decoration: none;
+      
     }
 
     .text-gray {
