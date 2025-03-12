@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <title>Add Expense</title>
     <base href="/expenseMVC/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
