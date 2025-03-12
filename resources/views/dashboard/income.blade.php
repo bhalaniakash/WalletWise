@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <title>Add Income</title>
 
     <base href="/expenseMVC/">
@@ -11,7 +12,7 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-          
+
         }
 
         .page-content {
@@ -26,14 +27,17 @@
             margin-left: 1rem;
             margin-right: 1rem;
         }
-        th, td {
+
+        th,
+        td {
             color: #000;
             background-color: white;
         }
     </style>
 </head>
 
-<body> @include('shared.sidenav');
+<body>
+    @include('shared.sidenav');
     @include('shared.header');
     <div class="page-content" id="content">
         <div class="container-fluid shadow">
@@ -126,18 +130,11 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td><a class="btn btn-dark" href="Income/income?incomeId=1" name="update">Update</a>
-                                <a class="btn btn-danger" href="Income/deleteIncome?incomeId=1" onClick="return confirm('Do you want to Delete? Y/N')"> Delete </a>
+                            <td colspan="6">
+                                <center>No Data Available</center>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
 

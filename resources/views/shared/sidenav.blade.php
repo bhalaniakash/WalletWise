@@ -5,11 +5,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+  {{-- <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
   <script src="lib/bootstrap/js/jquery.slim.min.js"></script>
   <script src="lib/bootstrap/js/poper.min.js"></script>
   <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script> --}}
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +43,7 @@
       color: #E0E0E0;
       /* Text - Light Gray */
       text-decoration: none;
+
     }
 
     .text-gray {
@@ -211,19 +212,19 @@
         <a href="{{ url('dashboard/savingReport') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Saving report</a>
       </li>
       <li class="nav-item">
-        <i class="fas fa-user" style="margin: 20px 0px 20px 20px;"></i>
-        <x-slot name="content">
-          <x-dropdown-link :href="route('profile.edit')">
-            {{ __('Profile') }}
-          </x-dropdown-link>
+        <x-dropdown-link :href="route('profile.edit')" class="nav-link"> 
+          <i class="fas fa-user"></i> 
+          {{ __('Profile') }} 
+          
+         </x-dropdown-link>
       </li>
+          
+       
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <i class="fas fa-sign-out-alt" style="margin: 20px 0px 20px 20px;"></i>
-          <x-dropdown-link :href="route('logout')"
-            onclick="event.preventDefault();
-        this.closest('form').submit();">
+          <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+          <i class="fas fa-sign-out-alt" ></i>
             {{ __('Log Out') }}
           </x-dropdown-link>
         </form>
@@ -231,6 +232,38 @@
     </ul>
   </div>
   <script type="text/javascript" src="lib/js/main.js"></script>
-</body>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var currentUrl = window.location.href;
+    var sidebarLinks = document.querySelectorAll(".nav-link");
 
+    sidebarLinks.forEach(function (link) {
+      if (link.href === currentUrl) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+</body>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get current URL path
+    let currentPath = window.location.pathname;
+
+    // Select all sidebar links
+    let navLinks = document.querySelectorAll(".nav-item a");
+
+    navLinks.forEach(link => {
+        let linkPath = new URL(link.href).pathname; // Get the path from href
+
+        // Exact match check
+        if (currentPath === linkPath) {
+            link.parentElement.classList.add("active");
+        }
+    });
+});
+
+</script>
+
+</script>
 </html>

@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
 	<title>Dashboard</title>
 	<base href="/expenseMVC/">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,7 +16,7 @@
 		body {
 			min-height: 100vh;
 			overflow-x: hidden;
-
+			margin-top: 0;
 		}
 
 		.page-content {
@@ -43,53 +44,53 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
-		google.charts.load('current', {
-			'packages': ['corechart']
-		});
-		google.charts.setOnLoadCallback(drawChart);
+	// 	google.charts.load('current', {
+	// 		'packages': ['corechart']
+	// 	});
+	// 	google.charts.setOnLoadCallback(drawChart);
 
-		function drawChart() {
+	// 	function drawChart() {
 
-			var data = google.visualization.arrayToDataTable([
-				['Category', 'Amount'],
+	// 		var data = google.visualization.arrayToDataTable([
+	// 			['Category', 'Amount'],
 
 
-			]);
+	// 		]);
 
-			var options = {
-				title: 'My Daily Activities'
-			};
+	// 		var options = {
+	// 			title: 'My Daily Activities'
+	// 		};
 
-			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+	// 		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-			chart.draw(data, options);
-		}
+	// 		chart.draw(data, options);
+	// 	}
 	</script>
 	</script>
 	
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
-		google.charts.load('current', {
-			'packages': ['corechart']
-		});
-		google.charts.setOnLoadCallback(drawChart);
+	// 	google.charts.load('current', {
+	// 		'packages': ['corechart']
+	// 	});
+	// 	google.charts.setOnLoadCallback(drawChart);
 
-		function drawChart() {
+	// 	function drawChart() {
 
-			var data = google.visualization.arrayToDataTable([
-				['Task', 'Hours per Day'],
+	// 		var data = google.visualization.arrayToDataTable([
+	// 			['Task', 'Hours per Day'],
 
 
-			]);
+	// 		]);
 
-			var options = {
-				title: 'My Daily Activities'
-			};
+	// 		var options = {
+	// 			title: 'My Daily Activities'
+	// 		};
 
-			var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+	// 		var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
 
-			chart.draw(data, options);
-		}
+	// 		chart.draw(data, options);
+	// 	}
 	</script>
 </head>
 

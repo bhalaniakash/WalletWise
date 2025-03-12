@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
   <title>Saving Report</title>
   <base href="/expenseMVC/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   {{-- add link.add over here  --}}
-  <script type="text/javascript" src="lib/js/main.js"></script>
+  {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
   <style type="text/css">
     body {
       min-height: 100vh;
@@ -21,17 +23,21 @@
       color: #000;
 
     }
+
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
     }
+
     .card {
-      border-color: #000; 
+      border-color: #000;
     }
 
-    .table tbody tr th, .table tbody tr td {
-      color: #000; 
+    .table tbody tr th,
+    .table tbody tr td {
+      color: #000;
     }
+
     .btn-dark {
       background-color: #000;
       border-color: #000;
@@ -66,47 +72,51 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <br>
-    <section>
-      <div class="container-fluid shadow">
-        <br>
-        <table class="table table-striped table-bordered" id="Report">
-          <thead style="background-color: #121212;">
-            <tr>
-              <th colspan="2"><center><h5>Saving details</h5></center></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="col">Total Income:</th>
-              <td scope="col"></td>
-            </tr>
-            <tr>
-              <th scope="col">Total Expense:</th>
-              <td scope="col"></td>
-            </tr>
-            <tr>
-              <th scope="col">Total Saving:</th>
-              <td scope="col"></td>
-            </tr>
-          </tbody>
-        </table>
-        <button class="btn btn-dark" id="print">print</button>
-        <br>
-      </div>
-    </section>
+      </section>
+      <br>
+      <section>
+        <div class="container-fluid shadow">
+          <br>
+          <table class="table table-striped table-bordered" id="Report">
+            <thead style="background-color: #121212;">
+              <tr>
+                <th colspan="2">
+                  <center>
+                    <h5>Saving details</h5>
+                  </center>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">Total Income:</th>
+                <td scope="col"></td>
+              </tr>
+              <tr>
+                <th scope="col">Total Expense:</th>
+                <td scope="col"></td>
+              </tr>
+              <tr>
+                <th scope="col">Total Saving:</th>
+                <td scope="col"></td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-dark" id="print">print</button>
+          <br>
+        </div>
+      </section>
+    </div>
   </div>
-</div>
-<script type="text/javascript">
-  $('#print').click(function(){
-    var printme=document.getElementById('Report');
-    var wme=window.open("","","width=900,height=800");
-    wme.document.write(printme.outerHTML);
-    wme.document.close();
-    wme.print();
-  });
-</script>
+  <script type="text/javascript">
+    $('#print').click(function() {
+      var printme = document.getElementById('Report');
+      var wme = window.open("", "", "width=900,height=800");
+      wme.document.write(printme.outerHTML);
+      wme.document.close();
+      wme.print();
+    });
+  </script>
 </body>
+
 </html>

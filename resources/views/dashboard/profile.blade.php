@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <title>Profile</title>
     <base href="/expenseMVC/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" type="text/css" href="link/link.css">
-    <script type="text/javascript" src="lib/js/main.js"></script>
+    {{-- <link rel="stylesheet" type="text/css" href="link/link.css">
+    <script type="text/javascript" src="lib/js/main.js"></script> --}}
     <style type="text/css">
         body {
             min-height: 100vh;
@@ -135,4 +136,4 @@
     </div>
     <script type="text/javascript" src="lib/js/password.js"></script>
 </body>
-</html>
+</html> -->
