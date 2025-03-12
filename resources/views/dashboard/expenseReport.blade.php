@@ -5,8 +5,8 @@
   <title>Expense Report</title>
   <base href="/expenseMVC/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="stylesheet" type="text/css" href="link/link.css">
-  <script type="text/javascript" src="lib/js/main.js"></script>
+  {{-- <link rel="stylesheet" type="text/css" href="link/link.css"> --}}
+  {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
   <style type="text/css">
     body {
       min-height: 100vh;

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/expenseMVC/">
 
-  <script type="text/javascript" src="lib/js/main.js"></script>
+  {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
   <style type="text/css">
     body {
       min-height: 100vh;
