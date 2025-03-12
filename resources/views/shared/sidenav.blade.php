@@ -27,8 +27,9 @@
       color: #E0E0E0;
       /* Text - Light Gray */
     }
-
+    
     .vertical-nav {
+      margin-top: 58px;
       min-width: 16rem;
       width: 16rem;
       height: 100vh;
