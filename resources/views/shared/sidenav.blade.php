@@ -246,5 +246,22 @@
   });
 </script>
 </body>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get current URL path
+    let currentPath = window.location.pathname;
 
+    // Select all sidebar links
+    let navLinks = document.querySelectorAll(".nav-item a");
+
+    navLinks.forEach(link => {
+      // If the href matches the current path, add "active" class
+      if (link.href.includes(currentPath)) {
+        link.parentElement.classList.add("active");
+      }
+    });
+  });
+</script>
+
+</script>
 </html>

@@ -38,9 +38,9 @@
                 <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
                     {{ __('Register here') }}
                 </a>
-                <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                <!-- <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
-                </a>
+                </a> -->
                 <x-primary-button class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600">
                     {{ __('Log in') }}
                 </x-primary-button>
