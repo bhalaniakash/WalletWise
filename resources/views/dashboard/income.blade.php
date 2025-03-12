@@ -105,9 +105,7 @@
                         </div>
                     </div>
                 </div>
-
             </form>
-
         </div>
         <br>
         <section>
@@ -139,7 +137,6 @@
                         </tr>
                     </tbody>
                 </table>
-
                 <br>
             </div>
         </section>

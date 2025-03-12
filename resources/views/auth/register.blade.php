@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WalletWise Registration</title>
+{{--     
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+<script src="lib/bootstrap/js/jquery.slim.min.js"></script>
+<script src="lib/bootstrap/js/poper.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> --}}
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: rgb(112, 112, 112);
             margin: 0;
             padding: 0;
             display: flex;
@@ -90,10 +102,11 @@
             <img src="/img/logo-removebg-preview.png" alt="Logo">
             <h4>WalletWise</h4>
         </div>
-
+        
         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
             <h2 class="text-center">Register Yourself</h2>
+            {{-- <hr><br> --}}
             <div class="form-container">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -132,7 +145,7 @@
                 </div>
                 <div class="form-group full-width">
                     <label for="profile_picture">Profile Picture</label>
-                    <input id="profile_picture" type="file" name="profile_picture" accept="image/*">
+                    <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture" accept="image/*">
                 </div>
             </div>
             

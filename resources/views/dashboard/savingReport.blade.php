@@ -21,7 +21,7 @@
       transition: all 0.4s;
       background-color: white;
       color: #000;
-
+      margin-top: 50px;
     }
 
     .content.active {
