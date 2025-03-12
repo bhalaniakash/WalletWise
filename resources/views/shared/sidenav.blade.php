@@ -243,12 +243,15 @@
     let navLinks = document.querySelectorAll(".nav-item a");
 
     navLinks.forEach(link => {
-      // If the href matches the current path, add "active" class
-      if (link.href.includes(currentPath)) {
-        link.parentElement.classList.add("active");
-      }
+        let linkPath = new URL(link.href).pathname; // Get the path from href
+
+        // Exact match check
+        if (currentPath === linkPath) {
+            link.parentElement.classList.add("active");
+        }
     });
-  });
+});
+
 </script>
 
 </script>
