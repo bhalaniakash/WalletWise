@@ -11,9 +11,11 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      background-color: white; /* Background color */
-      color: black; /* Text color */
-     
+      background-color: white;
+      /* Background color */
+      color: black;
+      /* Text color */
+
     }
 
     .page-content {
@@ -23,18 +25,21 @@
       color: #000;
       background-color: white;
     }
-   
+
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
     }
 
-  
+
 
     .table thead {
-      background-color: #121212; /* dark color */
+      background-color: #121212;
+      /* dark color */
     }
-    th, td {
+
+    th,
+    td {
       color: #000;
       background-color: white;
     }
@@ -50,6 +55,9 @@
       <section>
         <div class="container-fluid">
           <div class="row">
+            <div style="margin-left: 1rem; margin-bottom: 1rem; font-size: 1rem; font-weight: bold; color: #4A5568; background: #F7FAFC; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block;">
+              <span style="color: #2D3748;">HOME</span> &gt; <span style="color: #3182CE;">INCOME REPORT</span>
+            </div>
             <div class="col-xl-12">
               <div class="card shadow">
                 <div class="card-body">
@@ -113,7 +121,7 @@
           <br>
         </div>
         <br>
-      </section>  
+      </section>
     </div>
   </div>
   <script type="text/javascript">

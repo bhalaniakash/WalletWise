@@ -23,7 +23,8 @@
         }
 
         .sb-topnav {
-
+            /* width: calc(100% - 16rem); */
+            /* margin-left: 16rem; */
             margin-top: -25px;
             transition: all 0.4s;
             background-color: #121212;
