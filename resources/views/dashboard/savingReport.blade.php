@@ -36,10 +36,6 @@
       background-color: #000;
       border-color: #000;
     }
-    .btn-dark:hover {
-      /* background-color: #03DAC6; 
-      border-color: #03DAC6;  */
-    }
     th, td {
       color: #000;
       background-color: white;
@@ -47,8 +43,8 @@
   </style>
 </head>
 <body>
-@include('shared.sidenav')
-@include('shared.header')
+@include('shared.sidenav');
+@include('shared.header');
 <div class="page-content" id="content">
   <div id="page-wrapper">
     <br>

@@ -4,7 +4,6 @@
     <title>Add Expense</title>
     <base href="/expenseMVC/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" type="text/css" href="link/link.css">
     <script type="text/javascript" src="lib/js/main.js"></script>
     {{-- @include("link.link"); --}}
     <style type="text/css">
@@ -31,8 +30,8 @@
     </style>
 </head>
 <body>
-@include('shared.sidenav')
-@include('shared.header')
+@include('shared.sidenav');
+@include('shared.header');
 <div class="page-content" id="content">
     <div class="container-fluid shadow">
         <br>

@@ -6,7 +6,6 @@
 
     <base href="/expenseMVC/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <?php include_once('link/link.php'); ?>
     <script type="text/javascript" src="lib/js/main.js"></script>
     <style type="text/css">
         body {
