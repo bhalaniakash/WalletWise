@@ -210,19 +210,19 @@
         <a href="{{ url('dashboard/savingReport') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Saving report</a>
       </li>
       <li class="nav-item">
-        <i class="fas fa-user" style="margin: 20px 0px 20px 20px;"></i>
-        <x-slot name="content">
-          <x-dropdown-link :href="route('profile.edit')">
-            {{ __('Profile') }}
-          </x-dropdown-link>
+        <x-dropdown-link :href="route('profile.edit')" class="nav-link"> 
+          <i class="fas fa-user"></i> 
+          {{ __('Profile') }} 
+          
+         </x-dropdown-link>
       </li>
+          
+       
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <i class="fas fa-sign-out-alt" style="margin: 20px 0px 20px 20px;"></i>
-          <x-dropdown-link :href="route('logout')"
-            onclick="event.preventDefault();
-        this.closest('form').submit();">
+          <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+          <i class="fas fa-sign-out-alt" ></i>
             {{ __('Log Out') }}
           </x-dropdown-link>
         </form>
