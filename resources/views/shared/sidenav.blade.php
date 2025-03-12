@@ -29,12 +29,7 @@
     }
     
     .vertical-nav {
-<<<<<<< HEAD
-      margin-top: 69px;
-      /* margin-top: 58px; */
-=======
       margin-top: 58px;
->>>>>>> ec931386d1fd46299da733caf6856d73c2c9e3e7
       min-width: 16rem;
       width: 16rem;
       height: 100vh;
