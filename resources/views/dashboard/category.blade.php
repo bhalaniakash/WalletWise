@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
   <title>category</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/expenseMVC/">
