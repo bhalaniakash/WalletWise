@@ -226,38 +226,42 @@
         <a href="{{ url('dashboard/savingReport') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Saving report</a>
       </li>
       <li class="nav-item">
-        <x-dropdown-link :href="route('profile.edit')" class="nav-link"> 
-          <i class="fas fa-user"></i> 
-          {{ __('Profile') }} 
-          
-         </x-dropdown-link>
+        {{-- <x-dropdown-link :href="route('profile.edit')" class="nav-link">  --}}
+            <a href="{{ route('profile.edit') }}" class="nav-link">
+            <i class="fas fa-user"></i> 
+            {{ __('Profile') }} 
+            </a>
+         {{-- </x-dropdown-link> --}}
       </li>
           
        
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
           <i class="fas fa-sign-out-alt" ></i>
             {{ __('Log Out') }}
-          </x-dropdown-link>
+          </a>
         </form>
       </li>
     </ul>
   </div>
-  <script type="text/javascript" src="lib/js/main.js"></script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var currentUrl = window.location.href;
-    var sidebarLinks = document.querySelectorAll(".nav-link");
 
-    sidebarLinks.forEach(function (link) {
-      if (link.href === currentUrl) {
-        link.classList.add("active");
-      }
+  {{-- this script does not do anything  --}}
+
+  {{-- <script type="text/javascript" src="lib/js/main.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentUrl = window.location.href;
+      var sidebarLinks = document.querySelectorAll(".nav-link");
+
+      sidebarLinks.forEach(function (link) {
+        if (link.href === currentUrl) {
+          link.classList.add("active");
+        }
+      });
     });
-  });
-</script>
+  </script> --}}
 </body>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -278,6 +282,5 @@
 });
 
 </script>
-
 </script>
 </html>

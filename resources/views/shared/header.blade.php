@@ -47,6 +47,7 @@
             color: white;
             text-decoration: none;
             gap: 20px;
+           
         }
 
         button i:hover {

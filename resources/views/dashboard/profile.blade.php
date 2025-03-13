@@ -92,8 +92,8 @@
     </style>
 </head>
 <body>
-@include('shared.sidenav');
-@include('shared.header');
+{{-- @include('shared.sidenav');
+@include('shared.header'); --}}
     <div class="page-content" id="content">
         <br>
         <div class="container-fluid shadow" style="margin=10px;">
