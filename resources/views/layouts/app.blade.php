@@ -46,8 +46,8 @@ main {
     <body class="font-sans antialiased">
      
             @include('layouts.navigation')
-            @include('shared.sidenav');
-            @include('shared.header');
+            {{-- @include('shared.sidenav');
+            @include('shared.header'); --}}
             <!-- Page Heading -->
             {{-- @isset($header)
                 <header class="bg-white dark:bg-gray-800 shadow">
