@@ -1,3 +1,18 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: 'Nunito', sans-serif;
+                background-color: #f7fafc;
+                color: #000;
+            }
+            button {
+                background-color: #000;
+                border-color: #000;
+            }
+            </style>
+    </head>
+<body>
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -62,3 +77,5 @@
         </div>
     </form>
 </section>
+</body>
+</html>

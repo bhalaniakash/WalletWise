@@ -102,8 +102,10 @@
               </tr>
             </tbody>
           </table>
-          <button class="btn btn-dark" id="print">print</button>
-          <br>
+          <div class="d-flex justify-content-start">
+            <button class="btn btn-dark" id="print">Print</button>
+          </div>
+         <br>
         </div>
       </section>
     </div>

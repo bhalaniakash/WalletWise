@@ -30,65 +30,21 @@ main {
     margin-top: 5%;
     padding: 2rem;
     transition: all 0.4s ease-in-out;
-    background-color: white;
-    color: #000;
+    background-color: #fff;
+    color: #333;
+    /* color: #000; */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
 
-/* Sidebar */
-.sidenav {
-    width: 16rem;
-    position: fixed;
-    height: 100vh;
-    background-color: #1e293b;
-    color: white;
-    padding-top: 1rem;
-    transition: transform 0.3s ease-in-out;
-}
 
-/* Header */
-.header {
-    background-color: #f8fafc;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark Mode */
-.dark body {
-    background-color: #1e293b;
-    color: white;
-}
-
-.dark main {
-    background-color: #2d3748;
-    color: white;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    main {
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-
-    .sidenav {
-        transform: translateX(-100%);
-    }
-}
-
-@media (max-width: 640px) {
-    main {
-        padding: 1rem;
-    }
-}
 
             </style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+     
             @include('layouts.navigation')
             @include('shared.sidenav');
             @include('shared.header');
@@ -106,6 +62,6 @@ main {
                 {{ $slot }}
            
             </main>
-        </div>
+  
     </body>
 </html>

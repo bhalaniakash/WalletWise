@@ -67,7 +67,12 @@
       text-decoration: none;
       transition: 0.3s;
     }
-
+    x-dropdown-link{
+      color: #E0E0E0;
+      /* Text - Light Gray */
+      text-decoration: none;
+      transition: 0.3s;
+    }
     .nav-item {
       background-color: #121212;
       /* Primary - Pure Black */
@@ -85,7 +90,14 @@
       background-color: white;
       border-radius: 5px;
     }
-
+    x-dropdown-link:hover {
+      font-size: 17px;
+      padding-left: 10px;
+      transition: 0.5s;
+      color: black;
+      background-color: white;
+      border-radius: 5px;
+    }
     @media (max-width: 768px) {
       #sidebar {
         margin-left: -17rem;
@@ -95,7 +107,7 @@
         margin-left: 0;
       }
     }
-
+   
     li {
       list-style: none;
     }
@@ -120,10 +132,12 @@
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
+   
+
     }
 
     .nav-item.active .nav-link {
-      background-color: white;
+      background-color: rgb(177, 177, 177);
       /* Secondary - Cyan */
       color: black !important;
       /* Primary - Pure Black */
@@ -141,47 +155,47 @@
     <ul class="nav flex-column bg-dark mb-0">
       <li class="nav-item">
         <a href="{{ url('dashboard') }}" class="nav-link">
-          <p><i class="fas fa-tachometer-alt" style="margin-right: 8px;"></i> Dashboard</p>
+          <i class="fas fa-tachometer-alt" style="margin-right: 8px;"></i> Dashboard</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/category') }}" class="nav-link">
-          <p><i class="fas fa-layer-group" style="margin-right: 8px;"></i> Create Category</p>
+          <i class="fas fa-layer-group" style="margin-right: 8px;"></i><p> Create Category</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/income') }}" class="nav-link">
-          <p><i class="fas fa-money-bill-wave" style="margin-right: 8px;"></i> Add Income</p>
+          <i class="fas fa-money-bill-wave" style="margin-right: 8px;"></i><p> Add Income</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/expense') }}" class="nav-link">
-          <p><i class="fas fa-receipt" style="margin-right: 8px;"></i> Add Expense</p>
+          <i class="fas fa-receipt" style="margin-right: 8px;"></i> <p>Add Expense</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/incomeReport') }}" class="nav-link">
-          <p><i class="fas fa-chart-line" style="margin-right: 8px;"></i> Income Report</p>
+          <i class="fas fa-chart-line" style="margin-right: 8px;"></i> <p>Income Report</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/expenseReport') }}" class="nav-link">
-          <p><i class="fas fa-chart-pie" style="margin-right: 8px;"></i> Expense Report</p>
+          <i class="fas fa-chart-pie" style="margin-right: 8px;"></i><p> Expense Report</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/savingReport') }}" class="nav-link">
-          <p><i class="fas fa-piggy-bank" style="margin-right: 8px;"></i> Saving Report</p>
+          <i class="fas fa-piggy-bank" style="margin-right: 8px;"></i><p> Saving Report</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/profile') }}" class="nav-link">
-          <p><i class="fas fa-user" style="margin-right: 8px;"></i> Profile</p>
+          <i class="fas fa-user" style="margin-right: 8px;"></i><p> Profile</p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"><p>
         <a href="{{ url('dashboard') }}" class="nav-link">
-          <p><i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i> Logout</p>
+          <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i><p> Logout</p>
         </a>
       </li>
     </ul>
