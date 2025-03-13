@@ -1,50 +1,115 @@
-<x-guest-layout>
-    <div class="flex flex-col items-center justify-center h-screen bg-gray-100 rounded-md">
-        <!-- Logo and Heading -->
-        <div class="text-center mb-6 w-3/4 max-w-lg">
-            <img src="/img/logo-removebg-preview.png" width="150" height="150" class="mx-auto" />
-            <h4 class="text-3xl font-bold text-gray-800">WalletWise</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WalletWise Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .form-header img {
+            width: 80px;
+            height: auto;
+            border: 3px solid #111010;
+            border-radius: 50%;
+        }
+        .form-header h4 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        label {
+            color: #555;
+        }
+        .remember-me {
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+          
+        }
+        .form-footer a {
+            margin-bottom: 10px;
+        }
+        .btn {
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30%;
+        }
+        .btn:hover {
+            background: black;
+            color: #fff;
+        }
+        a{
+            text-decoration: none;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-header">
+            <img src="/img/logo-removebg-preview.png" alt="Logo">
+            <h4>WalletWise</h4>
         </div>
-
-        <!-- Login Form -->
-        <form method="POST" action="{{ route('login') }}" class=" rounded-lg p-8 w-11/12 max-w-md" style="width: 90%; margin-bottom: 10px;">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
-
-            <h2 class="text-2xl font-semibold text-center mb-6">Log in</h2>
-
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block w-full p-2 border rounded-md" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <h2>Log in</h2>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-                <x-text-input id="password" class="block w-full p-2 border rounded-md" type="password" name="password" required autocomplete="current-password" />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" required>
             </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
+            <div class=" remember-me">
+                <input id="remember_me" type="checkbox" name="remember">
+                <label for="remember_me">Remember me</label>
             </div>
-
-            <div class="flex items-center justify-between mt-6">
-                <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                    {{ __('Register here') }}
-                </a>
-                <!-- <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a> -->
-                <x-primary-button class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600">
-                    {{ __('Log in') }}
-                </x-primary-button>
+            <div class="form-footer">
+                <a href="{{ route('register') }}">Register here</a>
+                <button type="submit" class="btn">Log in</button>
             </div>
         </form>
     </div>
-</x-guest-layout>
+</body>
+</html>

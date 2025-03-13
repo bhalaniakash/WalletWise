@@ -19,7 +19,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: rgb(112, 112, 112);
+            background-color: black;
             margin: 0;
             padding: 0;
             display: flex;
@@ -42,10 +42,13 @@
         .form-header img {
             width: 80px;
             height: auto;
+            border: 3px solid #111010;
+            border-radius: 50%;
         }
         .form-header h4 {
             font-size: 24px;
-            color: #333;
+            /* color: #333; */
+           
             margin-top: 10px;
         }
         .form-container {
@@ -99,7 +102,9 @@
 <body>
     <div class="container">
         <div class="form-header">
+         
             <img src="/img/logo-removebg-preview.png" alt="Logo">
+         
             <h4>WalletWise</h4>
         </div>
         
@@ -130,7 +135,7 @@
                 </div>
                 <div class="form-group">
                     <label for="contact">Contact</label>
-                    <input id="contact" type="text" name="contact" required>
+                    <input id="contact" type="number" name="contact" required>
                 </div>
                 <div class="form-group">
                     <label for="plan_type">Plan Type</label>
