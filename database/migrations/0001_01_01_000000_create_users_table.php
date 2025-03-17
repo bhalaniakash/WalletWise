@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('plan_type', ['regular', 'premium'])->default('regular');
             $table->decimal('limit', 10, 2)->check('limit >= 0');
             $table->string('profile_picture')->nullable();
+            $table->string('is_Admin');
             $table->rememberToken();
             $table->timestamps();
         });

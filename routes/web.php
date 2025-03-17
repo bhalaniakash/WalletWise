@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -11,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
 Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
+
+    // dd(Auth::check(),Auth::user());
+    if (Auth::check() && Auth::user()->is_Admin === 'Yes') {
+        return view('admin.dashboard'); // Redirect to admin dashboard
+    }
+    return view('dashboard.dashboard'); // Redirect to normal user dashboard
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

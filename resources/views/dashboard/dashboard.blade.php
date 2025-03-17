@@ -1,4 +1,13 @@
-@include('shared.sidenav');
+@php
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Hash;
+@endphp
+
+@if (Auth::check() && Auth::user()->email === 'nishtha9909@gmail.com' && Hash::check('nishtha123456', Auth::user()->password))
+    @include('shared.sidenav-admin');
+@else
+	@include('shared.sidenav');
+@endif
 @include('shared.header');
 <!DOCTYPE html>
 
