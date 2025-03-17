@@ -1,5 +1,14 @@
-@include('shared.sidenav');
-@include('shared.header');
+@php
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Hash;
+@endphp
+@if (Auth::check() && Auth::user()->email === 'admin@gmail.com' && Hash::check('admin123456', Auth::user()->password))
+    @include('shared.sidenav_admin')
+@else
+    @include('shared.sidenav')
+@endif
+@include('shared.header')
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -10,7 +19,6 @@
 	<base href="/expenseMVC/">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	
-
 	<style type="text/css">
 	
 		body {

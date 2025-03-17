@@ -150,47 +150,29 @@
 </head>
 
 <body>
-  <!-- Vertical Sidebar -->
-
-
+ 
   <!--vertical bar-->
   <div class="vertical-nav" id="sidebar">
     <ul class="nav flex-column bg-dark mb-0">
       <li class="nav-item">
-        <a href="{{ url('dashboard') }}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
-      </li>
-      {{-- <li class="nav-item">
-        <a href="{{ url('dashboard/category') }}" class="nav-link"> <i class="fas fa-list-alt"></i> Create category</a>
-      </li> --}}
-      <li class="nav-item">
-        <a href="{{ url('dashboard/income') }}" class="nav-link"> <i class="fas fa-dollar-sign"></i> Add income</a>
+        <a href="" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('dashboard/expense') }}" class="nav-link"> <i class="fas fa-money-bill-wave"></i> Add expense</a>
+        <a href="" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
+      </li>
+      <li>
+        <a href="" class="nav-link"><i class="fas fa-address-card-o-alt"></i> Subscriptions Plans</a>
+      </li>
+      <li>
+        <a href="" class="nav-link"><i class="fas fa-edit-alt"></i> Update Category</a>
+      </li>
+      <li>
+        <a href="" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('dashboard/incomeReport') }}" class="nav-link"> <i class="fas fa-chart-line"></i> Income report</a>
-      </li>
-      <li class="nav-item">
-        <a href="{{ url('dashboard/expenseReport') }}" class="nav-link"> <i class="fas fa-chart-pie"></i> Expense report</a>
-      </li>
-      <li class="nav-item">
-        <a href="{{ url('dashboard/savingReport') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Saving report</a>
-      </li>
-      <li class="nav-item">
-        {{-- <x-dropdown-link :href="route('profile.edit')" class="nav-link">  --}}
-            <a href="{{ route('profile.edit') }}" class="nav-link">
-            <i class="fas fa-user"></i> 
-            {{ __('Profile') }} 
-            </a>
-         {{-- </x-dropdown-link> --}}
-      </li>
-          
-       
-      <li class="nav-item">
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="">
           @csrf
-          <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+          <a href="" onclick="" class="nav-link">
           <i class="fas fa-sign-out-alt" ></i>
             {{ __('Log Out') }}
           </a>

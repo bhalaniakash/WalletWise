@@ -44,12 +44,12 @@
     @include('shared.header');
     <div class="page-content" id="content">
         <div class="container-fluid shadow">
-            <br>
+            <br>    
             <header>
                 <h1 class="h3 display">Add Income </h1>
             </header>
 
-            <form class="mt-3" method="POST" action="Income/InsertIncome">
+            <form class="mt-3" method="POST" action="">
                 <input type="hidden" name="IId" value="1" />
                 <div class="row">
                     <div class="col-md-6">
@@ -79,10 +79,9 @@
                         <div class="form-group">
                             <label for="incomecategory">Category:</label>
                             <select class="form-control" name="icategory" id="">
-                                <option value=""></option>
-
-
-                                <option value="1">name</option>
+                                <option value="medical">Medical</option>
+                                <option value="Entertainmnet">Entertainmnet</option>
+                                <option value="other">other</option>
                             </select>
                         </div>
                     </div>
