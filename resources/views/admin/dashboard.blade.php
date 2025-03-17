@@ -9,7 +9,6 @@
     <title>Admin Dashboard</title>
     <style type="text/css">
         body {
-          
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -21,7 +20,7 @@
             transition: all 0.4s;
             margin-top: 5% !important;
             width: calc(100% - 18rem);
-            padding: 2rem;
+            padding: 1rem;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -34,20 +33,11 @@
         }
 
         #page-wrapper {
-            padding: 1rem;
+            
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-
         .btn {
             display: inline-block;
             padding: 0.5rem 1rem;
@@ -75,8 +65,7 @@
     <div class="page-content" id="content">
         <div id="page-wrapper">
             <h1>Admin Dashboard</h1>
-            <p>Welcome to the admin dashboard.</p>
-            <p>Here you can manage the system.</p>
+         
         </div>
     </div>
 </body>

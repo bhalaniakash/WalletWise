@@ -81,7 +81,7 @@
     #sidebar.active {
       margin-left: -16rem;
     }
-
+   
     ul li a:hover {
       font-size: 17px;
       padding-left: 10px;
@@ -155,29 +155,34 @@
   <div class="vertical-nav" id="sidebar">
     <ul class="nav flex-column bg-dark mb-0">
       <li class="nav-item">
-        <a href="url{{'admin/dashboard'}}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href=" {{url('admin/dashboard')}}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
       </li>
+      
       <li class="nav-item">
-        <a href="" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
+        <a href="{{url('admin/Category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
       </li>
-      <li>
-        <a href="" class="nav-link"><i class="fas fa-address-card-o-alt"></i> Subscriptions Plans</a>
+      
+      <li class="nav-item">
+        <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fas fa-address-card-o-alt"></i> Subscriptions Plans</a>
       </li>
-      <li>
-        <a href="" class="nav-link"><i class="fas fa-edit-alt"></i> Update Category</a>
+      
+      <li class="nav-item">
+        <a href="{{url('admin/Update_category')}}" class="nav-link"><i class="fas fa-edit-alt"></i> Show Category</a>
       </li>
-      <li>
+      
+      <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
       </li>
+      
       <li class="nav-item">
-        <form method="POST" action="">
-          @csrf
-          <a href="" onclick="" class="nav-link">
-          <i class="fas fa-sign-out-alt" ></i>
-            {{ __('Log Out') }}
-          </a>
+        <form method="POST" action="{{ route('logout') }}"  >
+            @csrf
+            <button type="submit" class="nav-link" style="width: 100%; text-align: left;">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </button>
         </form>
-      </li>
+        </li>
+    
     </ul>
   </div>
 
@@ -196,6 +201,7 @@
       });
     });
   </script> --}}
+
 </body>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -212,6 +218,7 @@
         if (currentPath === linkPath) {
             link.parentElement.classList.add("active");
         }
+
     });
 });
 
