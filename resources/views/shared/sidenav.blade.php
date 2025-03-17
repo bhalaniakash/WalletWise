@@ -158,11 +158,13 @@
           <i class="fas fa-tachometer-alt" style="margin-right: 8px;"></i> Dashboard</p>
         </a>
       </li>
-      <li class="nav-item">
+      
+      {{-- <li class="nav-item">
         <a href="{{ url('dashboard/category') }}" class="nav-link">
           <i class="fas fa-layer-group" style="margin-right: 8px;"></i><p> Create Category</p>
         </a>
-      </li>
+      </li> --}}
+      
       <li class="nav-item">
         <a href="{{ url('dashboard/income') }}" class="nav-link">
           <i class="fas fa-money-bill-wave" style="margin-right: 8px;"></i><p> Add Income</p>
@@ -207,9 +209,9 @@
       <li class="nav-item">
         <a href="{{ url('dashboard') }}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a href="{{ url('dashboard/category') }}" class="nav-link"> <i class="fas fa-list-alt"></i> Create category</a>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a href="{{ url('dashboard/income') }}" class="nav-link"> <i class="fas fa-dollar-sign"></i> Add income</a>
       </li>

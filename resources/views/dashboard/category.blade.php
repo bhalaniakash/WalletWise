@@ -71,7 +71,7 @@
             </div>
 
             <div class="card-body">
-              <form class="form-inline" id="add1" method="post" action="Dashboard/addIncomeCategory">
+              <form class="form-inline" id="add1" method="post" action="">
                 <label for="incomecategory" class="sr-only"></label>
                 <input type="text" name="incomename" id="inlineFormInput" class="form-control">
                 &nbsp;
@@ -181,7 +181,6 @@
       </div>
     </div>
   </div>
-
 
 </body>
 
