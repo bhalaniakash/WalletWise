@@ -37,7 +37,7 @@ class RegisteredUserController extends Controller
             'contact' => 'nullable|numeric|unique:users',
             'plan_type' => 'required|in:regular,premium',
             'limit' => 'required|numeric|min:0',
-            'profile_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'profile_picture' => 'nullable|image|mimes:jpg,png,jpeg',
         ]);
 
         $profilePicturePath = null;

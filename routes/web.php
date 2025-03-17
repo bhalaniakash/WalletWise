@@ -52,6 +52,7 @@ Route::get('/dashboard/savingReport',function(){
 Route::get('/dashboard/profile',function(){
     return view('dashboard.profile');
 });
+<<<<<<< HEAD
 
 Route::view('admin/dashboard','admin.dashboard');
 Route::view('admin/members','admin.members');
@@ -60,6 +61,11 @@ Route::view('admin/members','admin.members');
 Route::get('/admin/category',function(){
     return view('admin.category');
 });
+=======
+route::view('admin/dashboard','admin.dashboard');
+route::view('admin/members','admin.members');
+
+>>>>>>> 16dffd73c213e54be3e0adcf71f5ffa95eaef701
 
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
