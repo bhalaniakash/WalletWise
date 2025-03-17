@@ -173,7 +173,14 @@
       <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
       </li>
-      
+      <li class="nav-item">
+        {{-- <x-dropdown-link :href="route('profile.edit')" class="nav-link">  --}}
+            <a href="{{ route('profile.edit') }}" class="nav-link">
+            <i class="fas fa-user"></i> 
+            {{ __('Profile') }} 
+            </a>
+         {{-- </x-dropdown-link> --}}
+      </li>
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}"  >
             @csrf
