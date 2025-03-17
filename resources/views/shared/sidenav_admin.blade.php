@@ -8,7 +8,7 @@
   {{-- <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
   <script src="lib/bootstrap/js/jquery.slim.min.js"></script>
   <script src="lib/bootstrap/js/poper.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="lib/bootst    rap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script> --}}
 
   <meta charset="utf-8">
@@ -155,7 +155,7 @@
   <div class="vertical-nav" id="sidebar">
     <ul class="nav flex-column bg-dark mb-0">
       <li class="nav-item">
-        <a href="" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="url{{'admin/dashboard'}}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
       </li>
       <li class="nav-item">
         <a href="" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
@@ -167,7 +167,7 @@
         <a href="" class="nav-link"><i class="fas fa-edit-alt"></i> Update Category</a>
       </li>
       <li>
-        <a href="" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
+        <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
       </li>
       <li class="nav-item">
         <form method="POST" action="">

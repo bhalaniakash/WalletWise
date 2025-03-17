@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminController;
 
 
 // Route::get('/', function () {
@@ -50,4 +51,9 @@ Route::get('/dashboard/savingReport',function(){
 Route::get('/dashboard/profile',function(){
     return view('dashboard.profile');
 });
+route::view('admin/dashboard','admin.dashboard');
+route::view('admin/members','admin.members');
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
+Route::get('/admin/member', [AdminController::class, 'member']);
 
