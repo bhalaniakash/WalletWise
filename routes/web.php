@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -51,9 +52,18 @@ Route::get('/dashboard/savingReport',function(){
 Route::get('/dashboard/profile',function(){
     return view('dashboard.profile');
 });
+<<<<<<< HEAD
 route::view('admin/dashboard','admin.dashboard');
 route::view('admin/members','admin.members');
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 Route::get('/admin/member', [AdminController::class, 'member']);
+=======
+Route::get('/admin/category',function(){
+    return view('admin.category');
+});
+
+Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
+Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
+>>>>>>> b37dacc7baee8a6446a27302022a642e687ec19a
 
