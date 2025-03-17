@@ -14,7 +14,7 @@
             overflow-x: hidden;
 
         }
-
+        
         .page-content {
             margin-top: 5% !important;
             margin-left: 17rem;
@@ -23,6 +23,7 @@
             color: #000;
             background-color: white;
             margin-top: 5% !important;
+            
         }
 
         .content.active {

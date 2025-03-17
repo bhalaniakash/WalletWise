@@ -20,6 +20,8 @@
         body {
             color: #000;
             background-color: white;
+            margin-top: 0;
+
         }
 
         .sb-topnav {
@@ -103,5 +105,4 @@
     </nav>
     <script type="text/javascript" src="../../lib/js/main.js"></script>
 </body>
-
 </html>

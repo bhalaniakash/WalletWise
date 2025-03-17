@@ -67,7 +67,7 @@
 
         .btn-custom:hover {
             background-color: black;
-            color: red;
+            color: white;
             border: 1px solid red;
         }
     </style>
@@ -84,21 +84,22 @@
             <h2 class="font-semibold text-xl mb-4">Profile</h2>
             
             <div class="row">
-                <!-- Profile Update Form -->
-                <div class="col-md-6">
-                    <div class="card p-4 mb-4 shadow-lg equal-height">
-                        <h4 class="mb-3">Update Profile Information</h4>
-                        @include('profile.partials.update-profile-information-form')
-                        <button class="btn btn-custom mt-3">Save Changes</button>
-                    </div>
-                </div>
-
+                
                 <!-- Update Password Form -->
                 <div class="col-md-6">
                     <div class="card p-4 mb-4 shadow-lg equal-height">
                         <h4 class="mb-3">Change Password</h4>
                         @include('profile.partials.update-password-form')
-                        <button class="btn btn-custom mt-3">Update Password</button>
+                        
+                    </div>
+                </div>
+                
+                <!-- Profile Update Form -->
+                <div class="col-md-6">
+                    <div class="card p-4 mb-4 shadow-lg equal-height">
+                        <h4 class="mb-3">Update Profile Information</h4>
+                        @include('profile.partials.update-profile-information-form')
+                        
                     </div>
                 </div>
 
@@ -107,7 +108,6 @@
                     <div class="card p-4 mb-4 shadow-lg">
                         <h4 class="mb-3 text-danger">Delete Account</h4>
                         @include('profile.partials.delete-user-form')
-                     
                     </div>
                 </div>
             </div>
