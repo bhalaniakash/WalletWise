@@ -1,3 +1,6 @@
+<br>
+@include('shared.header')
+@include('shared.sidenav_admin')
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/expenseMVC/">
 
-    {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
     <style type="text/css">
         body {
             min-height: 100vh;
@@ -101,27 +103,6 @@
 
                     </div>
                     <br>
-                    <div class="card shadow">
-                        <table class="table table-striped table-bordered">
-                            <thead style="background-color: #616b6b;">
-                                <tr>
-                                    <th colspan="3">
-                                        <center>
-                                            <h5>Categories</h5>
-                                        </center>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </section>

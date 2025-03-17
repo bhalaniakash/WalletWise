@@ -159,7 +159,7 @@
       </li>
       
       <li class="nav-item">
-        <a href="{{url('admin/Category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
+        <a href="{{url('admin/category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
       </li>
       
       <li class="nav-item">
@@ -167,7 +167,7 @@
       </li>
       
       <li class="nav-item">
-        <a href="{{url('admin/Update_category')}}" class="nav-link"><i class="fas fa-edit-alt"></i> Show Category</a>
+        <a href="{{url('admin/showcategory')}}" class="nav-link"><i class="fas fa-edit-alt"></i> Show Category</a>
       </li>
       
       <li class="nav-item">

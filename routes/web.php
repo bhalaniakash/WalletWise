@@ -52,18 +52,15 @@ Route::get('/dashboard/savingReport',function(){
 Route::get('/dashboard/profile',function(){
     return view('dashboard.profile');
 });
-<<<<<<< HEAD
-route::view('admin/dashboard','admin.dashboard');
-route::view('admin/members','admin.members');
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
-Route::get('/admin/member', [AdminController::class, 'member']);
-=======
+Route::view('admin/dashboard','admin.dashboard');
+Route::view('admin/members','admin.members');
+
+
 Route::get('/admin/category',function(){
     return view('admin.category');
 });
 
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
->>>>>>> b37dacc7baee8a6446a27302022a642e687ec19a
 
