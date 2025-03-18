@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -10,15 +9,11 @@
   <script src="lib/bootstrap/js/poper.min.js"></script>
   <script type="text/javascript" src="lib/bootst    rap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script> --}}
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <title>Collapsible sidebar using Bootstrap 4</title>
-
   <base href="/expenseMVC/">
-
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
     body {
@@ -27,7 +22,6 @@
       color: #E0E0E0;
       /* Text - Light Gray */
     }
-    
     .vertical-nav {
       margin-top: 69px;
       min-width: 16rem;
@@ -43,9 +37,7 @@
       color: #E0E0E0;
       /* Text - Light Gray */
       text-decoration: none;
-
     }
-
     .text-gray {
       color: #E0E0E0;
       /* Text - Light Gray */
@@ -53,14 +45,12 @@
       font-size: 25px;
       padding-left: 10px;
     }
-
     ul li {
       line-height: 40px;
       border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       padding-left: 1px;
       text-decoration: none;
     }
-
     ul li a {
       color: #E0E0E0;
       /* Text - Light Gray */
@@ -77,11 +67,9 @@
       background-color: #121212;
       /* Primary - Pure Black */
     }
-
     #sidebar.active {
       margin-left: -16rem;
     }
-   
     ul li a:hover {
       font-size: 17px;
       padding-left: 10px;
@@ -102,16 +90,13 @@
       #sidebar {
         margin-left: -17rem;
       }
-
       #sidebar.active {
         margin-left: 0;
       }
     }
-   
     li {
       list-style: none;
     }
-
     .nav-link {
       display: flex;
       align-items: center;
@@ -121,61 +106,49 @@
       transition: background-color 0.3s, color 0.3s;
       color: #E0E0E0;
     }
-
     .nav-link:hover {
       background-color: white;
       color: black;
       /* Primary - Pure Black */
       box-shadow: 0 3px 5px rgb(162, 150, 150);
     }
-
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
-   
-
     }
-
     .nav-item.active .nav-link {
       background-color: rgb(177, 177, 177);
       /* Secondary - Cyan */
       color: black !important;
       /* Primary - Pure Black */
     }
-
     .nav-item.active .nav-link i {
       color: #121212 !important;
     }
   </style>
 </head>
-
 <body>
- 
   <!--vertical bar-->
   <div class="vertical-nav" id="sidebar">
     <ul class="nav flex-column bg-dark mb-0">
       <li class="nav-item">
         <a href=" {{url('admin/dashboard')}}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
       </li>
-      
       <li class="nav-item">
         <a href="{{url('admin/category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
       </li>
-      
       <li class="nav-item">
         <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fas fa-address-card-o-alt"></i> Subscriptions Plans</a>
       </li>
-      
       <li class="nav-item">
         <a href="{{url('admin/showcategory')}}" class="nav-link"><i class="fas fa-edit-alt"></i> Show Category</a>
       </li>
-      
       <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
       </li>
       <li class="nav-item">
         <a href="{{ route('profile.edit') }}" class="nav-link">
-        <i class="fas fa-user"></i> 
+        <i class="fas fa-user"></i>
         Profile
         </a>
       </li>
@@ -187,18 +160,14 @@
             </button>
         </form>
         </li>
-    
     </ul>
   </div>
-
   {{-- this script does not do anything  --}}
-
   {{-- <script type="text/javascript" src="lib/js/main.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
       var currentUrl = window.location.href;
       var sidebarLinks = document.querySelectorAll(".nav-link");
-
       sidebarLinks.forEach(function (link) {
         if (link.href === currentUrl) {
           link.classList.add("active");
@@ -206,27 +175,21 @@
       });
     });
   </script> --}}
-
 </body>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Get current URL path
     let currentPath = window.location.pathname;
-
     // Select all sidebar links
     let navLinks = document.querySelectorAll(".nav-item a");
-
     navLinks.forEach(link => {
         let linkPath = new URL(link.href).pathname; // Get the path from href
-
         // Exact match check
         if (currentPath === linkPath) {
             link.parentElement.classList.add("active");
         }
-
     });
 });
-
 </script>
 </script>
 </html>

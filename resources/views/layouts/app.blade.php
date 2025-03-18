@@ -41,11 +41,11 @@ main {
     </head>
     <body class="font-sans antialiased">
      
-            @include('layouts.navigation')
-            {{-- @include('shared.sidenav');
-            @include('shared.header'); --}}
-            <!-- Page Heading -->
-            {{-- @isset($header)
+    {{--
+             @include('layouts.navigation')
+             @include('shared.sidenav');
+            @include('shared.header');
+             @isset($header)
                 <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
@@ -56,7 +56,6 @@ main {
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-           
             </main>
     </body>
 </html>
