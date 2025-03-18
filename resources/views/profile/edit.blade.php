@@ -75,8 +75,15 @@
 <body>
 
     <!-- Include Sidebar & Header -->
-    @include('shared.sidenav');
-    @include('shared.header');
+    @auth
+        @if (Auth::user()->is_Admin == 'Yes')
+            @include('shared.sidenav_admin')
+        @else
+            @include('shared.sidenav')
+        @endif
+    @endauth
+
+    @include('shared.header')
 
     <!-- Page Layout -->
     <x-app-layout>
