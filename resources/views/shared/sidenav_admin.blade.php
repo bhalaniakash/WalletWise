@@ -155,26 +155,13 @@
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}"  >
             @csrf
-            <button type="submit" class="nav-link" style="width: 100%; text-align: left;">
+            <a type="submit" class="nav-link" style="width: 100%; text-align: left;">
                 <i class="fas fa-sign-out-alt"></i> Log Out
-            </button>
+            </a>
         </form>
         </li>
     </ul>
   </div>
-  {{-- this script does not do anything  --}}
-  {{-- <script type="text/javascript" src="lib/js/main.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var currentUrl = window.location.href;
-      var sidebarLinks = document.querySelectorAll(".nav-link");
-      sidebarLinks.forEach(function (link) {
-        if (link.href === currentUrl) {
-          link.classList.add("active");
-        }
-      });
-    });
-  </script> --}}
 </body>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
