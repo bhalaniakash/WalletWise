@@ -30,7 +30,7 @@
       left: 0;
       background: #121212;
       /* Primary - Pure Black */
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 2px  10px 10px rgb(6, 6, 6);
       transition: all 0.4s;
       color: #E0E0E0;
       /* Text - Light Gray */
@@ -137,7 +137,7 @@
         <a href="{{url('admin/category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
       </li>
       <li class="nav-item">
-        <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fa-id-card-o"></i> Subscriptions Plans</a>
+        <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fa fa-id-card-o"></i> Subscriptions Plans</a>
       </li>
       <li class="nav-item">
         <a href="{{url('admin/showCategory')}}" class="nav-link"><i class="fas fa-eye"></i> Show Category</a>
