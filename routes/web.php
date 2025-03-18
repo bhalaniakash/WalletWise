@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\IncomeController;
@@ -63,3 +62,5 @@ Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('a
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
 
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
+
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');

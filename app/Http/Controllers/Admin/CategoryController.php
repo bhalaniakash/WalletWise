@@ -29,4 +29,10 @@ class CategoryController extends Controller
         // dd($categories);
         return view('admin.showCategory', compact('categories'));
     }
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->back()->with('success', 'Category deleted successfully!');
+    }
 }
