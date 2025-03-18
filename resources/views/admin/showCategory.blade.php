@@ -81,28 +81,11 @@
     @include('shared.header');
     @include('shared.sidenav_admin');
 
-<<<<<<< HEAD
     <div class="page-content" id="content" >
         
         <div class="page-wrapper">
             <h1>Admin Dashboard</h1>
                
-=======
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
-    <title>header</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/expenseMVC/">
-    <link href="{{ asset('link/link.php') }}">
-
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
-
-    <div class="page-content" id="content">
->>>>>>> 8aec43f9c9cb39f0ce383c15c5de28cc3f56bad3
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
 
@@ -115,7 +98,6 @@
                 </tr>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Type</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -124,7 +106,6 @@
                 @if($category->type == 'income')
                 <tr>
                     <td>{{ $category->name }}</td>
-                    <td>{{ ucfirst($category->type) }}</td>
                     <td>
                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                             @csrf
@@ -148,7 +129,6 @@
                 </tr>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Type</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -157,7 +137,6 @@
                 @if($category->type == 'expense')
                 <tr>
                     <td>{{ $category->name }}</td>
-                    <td>{{ ucfirst($category->type) }}</td>
                     <td>
                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                             @csrf
@@ -170,10 +149,7 @@
                 @endforeach
             </tbody>
         </table>
-<<<<<<< HEAD
         </div>
-=======
->>>>>>> 8aec43f9c9cb39f0ce383c15c5de28cc3f56bad3
     </div>
     <!-- <div id="Modal1" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade text-left">
             <div role="document" class="modal-dialog">
