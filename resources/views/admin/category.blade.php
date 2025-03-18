@@ -78,26 +78,26 @@
 
                     <div class="card shadow">
                         <div class="card-header d-flex ">
-                            <h5>Add Income Catagory</h5>
+                            <h5>Add  Catagory</h5>
                         </div>
 
                         <div class="card-body">
                             <form id="addIncomeForm" method="post" action="{{ route('admin.category.store') }}">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="incomeName" class="form-label">Income Name</label>
+                                    <label for="incomeName" class="form-label">Category of Expense/Income</label>
                                     <input type="text" name="income_name" id="incomeName" class="form-control" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="type" class="form-label">Income Type</label>
+                                    <label for="type" class="form-label">Category Type</label>
                                     <select name="income_type" id="type" class="form-control" required>
                                         <option value="">Select Type</option>
                                         <option value="income">Income</option>
                                         <option value="expense">Expense</option>
                                     </select>
                                 </div>
-                                <button type="submit" name="insert" class="btn btn-dark">Add Income</button>
+                                <button type="submit" name="insert" class="btn btn-dark">Add Category</button>
                             </form>
                         </div>
 

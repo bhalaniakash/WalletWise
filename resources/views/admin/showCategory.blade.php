@@ -18,8 +18,8 @@
             overflow-x: hidden;
             background-color: white;
             margin-top: 0%;
-        }
-
+        }   
+       
         .page-content {
             margin-left: 17rem;
             margin-right: 1rem;
@@ -75,7 +75,7 @@
     <div class="page-content" id="content">
         <div class="card shadow">
             <table class="table table-striped">
-                <thead class="thead-dark" style="background-color: #616b6b;">
+                <thead  style="background-color: #616b6b;">
                     <tr>
                         <th colspan="3">
                             <center>

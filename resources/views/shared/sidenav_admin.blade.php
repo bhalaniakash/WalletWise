@@ -138,10 +138,10 @@
         <a href="{{url('admin/category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
       </li>
       <li class="nav-item">
-        <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fas fa-address-card-o-alt"></i> Subscriptions Plans</a>
+        <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fa-id-card-o"></i> Subscriptions Plans</a>
       </li>
       <li class="nav-item">
-        <a href="{{url('admin/showCategory')}}" class="nav-link"><i class="fas fa-edit-alt"></i> Show Category</a>
+        <a href="{{url('admin/showcategory')}}" class="nav-link"><i class="fas fa-eye"></i> Show Category</a>
       </li>
       <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
@@ -153,13 +153,14 @@
         </a>
       </li>
       <li class="nav-item">
-        <form method="POST" action="{{ route('logout') }}"  >
-            @csrf
-            <a type="submit" class="nav-link" >
-                <i class="fas fa-sign-out-alt"></i> Log Out
-            </a>
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+          <i class="fas fa-sign-out-alt" ></i>
+            {{ __('Log Out') }}
+          </a>
         </form>
-        </li>
+      </li>
     </ul>
   </div>
 </body>
