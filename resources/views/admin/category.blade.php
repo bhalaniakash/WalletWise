@@ -104,29 +104,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- <div id="Modal1" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade text-left">
-            <div role="document" class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 id="exampleModalLabel" class="modal-title">Update Income Category </h5>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="Dashboard/updateIncomeCategory">
-                            <div class="form-group">
-                                <input type="text" name="incomename" class="form-control" placeholder="1">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="update" class="btn btn-dark">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 
 </body>

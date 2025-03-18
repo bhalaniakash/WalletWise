@@ -81,7 +81,6 @@
     @include('shared.header');
     @include('shared.sidenav_admin');
 
-<<<<<<< HEAD
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -96,11 +95,6 @@
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
     <div class="page-content" id="content">
-=======
-    <div class="page-content" id="content" >
-        
-        <div class="page-wrapper">
->>>>>>> dd720bdb13ece9379c94340bcd41aefac84f93dd
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
                 <tr>
