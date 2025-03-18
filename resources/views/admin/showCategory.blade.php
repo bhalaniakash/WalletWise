@@ -1,4 +1,4 @@
-<br>
+<></>
 @include('shared.header');
 @include('shared.sidenav_admin');
 <!DOCTYPE html>
@@ -95,8 +95,11 @@
                         <td>{{ $category->name }}</td>
                         <td>{{ ucfirst($category->type) }}</td>
                         <td>
-                            <a class="btn btn-danger" href="{{ url('admin/delete-category/'.$category->id) }}"
-                                onClick="return confirm('Do you want to Delete? Y/N')"> Delete </a>
+                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
