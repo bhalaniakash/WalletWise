@@ -74,8 +74,8 @@
 
     <div class="page-content" id="content">
         <div class="card shadow">
-            <table class="table table-striped table-bordered">
-                <thead style="background-color: #616b6b;">
+            <table class="table table-striped">
+                <thead class="thead-dark" style="background-color: #616b6b;">
                     <tr>
                         <th colspan="3">
                             <center>
