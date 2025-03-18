@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
+    <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <title>Add Income</title>
 
     <base href="/expenseMVC/">
@@ -14,7 +14,7 @@
             overflow-x: hidden;
 
         }
-        
+
         .page-content {
             margin-top: 5% !important;
             margin-left: 17rem;
@@ -23,7 +23,7 @@
             color: #000;
             background-color: white;
             margin-top: 5% !important;
-            
+
         }
 
         .content.active {
@@ -44,26 +44,27 @@
     @include('shared.header');
     <div class="page-content" id="content">
         <div class="container-fluid shadow">
-            <br>    
+            <br>
             <header>
                 <h1 class="h3 display">Add Income </h1>
             </header>
 
             <form class="mt-3" method="POST" action="">
+                @csrf
                 <input type="hidden" name="IId" value="1" />
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomename">Name: </label>
                             <input type="text" class="form-control" name="iname" id=""
-                                placeholder="Income name" required="" value="abc" />
+                                placeholder="Income name" required />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomeamount">Amount:</label>
                             <input type="number" class="form-control" name="iamount" id=""
-                                placeholder="Amount" required="" value="7000" />
+                                placeholder="Amount" required value="" />
                         </div>
                     </div>
                 </div>
@@ -72,16 +73,18 @@
                         <div class="form-group">
                             <label for="incomedate">Date: </label>
                             <input type="date" class="form-control" name="idate" id=""
-                                placeholder="Income date" required="" value="" />
+                                placeholder="Income date" required />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomecategory">Category:</label>
                             <select class="form-control" name="icategory" id="">
-                                <option value="medical">Medical</option>
-                                <option value="Entertainmnet">Entertainmnet</option>
-                                <option value="other">other</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->name }}">
+                                    <p>{{ $category->name }}</p>
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -97,11 +100,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-
-                            <button type="submit" name="update" class="btn btn-dark">Update</button>
-
                             <button type="submit" name="insert" class="btn btn-dark">Insert</button>
-
                         </div>
                     </div>
                 </div>
