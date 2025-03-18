@@ -63,13 +63,12 @@
 
     ul li a {
       color: #E0E0E0;
-      /* Text - Light Gray */
       text-decoration: none;
       transition: 0.3s;
     }
     x-dropdown-link{
       color: #E0E0E0;
-      /* Text - Light Gray */
+     
       text-decoration: none;
       transition: 0.3s;
     }
@@ -132,7 +131,7 @@
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
-   
+      
 
     }
 
@@ -143,9 +142,6 @@
       /* Primary - Pure Black */
     }
 
-    .nav-item.active .nav-link i {
-      color: #121212 !important;
-    }
   </style>
 </head>
 
@@ -188,10 +184,10 @@
           
        
       <li class="nav-item">
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('logout') }}" class="nav-item">
           @csrf
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
-          <i class="fas fa-sign-out-alt" ></i>
+          <i class="fas fa-sign-out-alt"></i>
             {{ __('Log Out') }}
           </a>
         </form>

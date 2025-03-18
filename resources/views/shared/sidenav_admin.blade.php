@@ -182,9 +182,9 @@
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}"  >
             @csrf
-            <button type="submit" class="nav-link" style="width: 100%; text-align: left;">
+            <a type="submit" class="nav-link" >
                 <i class="fas fa-sign-out-alt"></i> Log Out
-            </button>
+            </a>
         </form>
         </li>
     
