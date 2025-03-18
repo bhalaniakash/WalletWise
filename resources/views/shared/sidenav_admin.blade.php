@@ -141,7 +141,7 @@
         <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fas fa-address-card-o-alt"></i> Subscriptions Plans</a>
       </li>
       <li class="nav-item">
-        <a href="{{url('admin/showcategory')}}" class="nav-link"><i class="fas fa-edit-alt"></i> Show Category</a>
+        <a href="{{url('admin/showCategory')}}" class="nav-link"><i class="fas fa-edit-alt"></i> Show Category</a>
       </li>
       <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>

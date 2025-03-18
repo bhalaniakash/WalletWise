@@ -1,6 +1,6 @@
 <br>
-@include('shared.header')
-@include('shared.sidenav_admin')
+@include('shared.header');
+@include('shared.sidenav_admin');
 <!DOCTYPE html>
 <html lang="en">
 <head>
