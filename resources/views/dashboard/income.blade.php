@@ -48,8 +48,7 @@
             <header>
                 <h1 class="h3 display">Add Income </h1>
             </header>
-
-            <form class="mt-3" method="POST" action="">
+            <form class="mt-3" method="POST" action="{{ route('income.store') }}">
                 @csrf
                 <input type="hidden" name="IId" value="1" />
                 <div class="row">
@@ -81,7 +80,7 @@
                             <label for="incomecategory">Category:</label>
                             <select class="form-control" name="icategory" id="">
                                 @foreach($categories as $category)
-                                <option value="{{ $category->name }}">
+                                <option value="{{ $category->id }}">
                                     <p>{{ $category->name }}</p>
                                 </option>
                                 @endforeach
