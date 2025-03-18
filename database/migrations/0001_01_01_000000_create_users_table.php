@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('age')->check('age >= 15');
-            $table->string('contact')->unique()->nullable();
+            $table->string('contact')->nullable();
             $table->enum('plan_type', ['regular', 'premium'])->default('regular');
             $table->decimal('limit', 10, 2)->check('limit >= 0');
             $table->string('profile_picture')->nullable();

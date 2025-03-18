@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -60,3 +61,5 @@ Route::get('/admin/category',function(){
 
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
+
+Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
