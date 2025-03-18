@@ -84,11 +84,8 @@
     <div class="page-content" id="content" >
         
         <div class="page-wrapper">
-            <h1>Admin Dashboard</h1>
-               
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
-
                 <tr>
                     <th colspan="3">
                         <center>
