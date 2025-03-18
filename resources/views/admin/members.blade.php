@@ -59,8 +59,6 @@
     <br>
     <div class="page-content" id="content">
         <div id="page-content">
-            <h1>Welcome</h1>
-
             <!-- Regular Members Table -->
             <table class="table table-striped table-bordered">
                 <thead style="background-color: #616b6b;">
@@ -83,7 +81,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->age }}</td>
-                        <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100"></td>
+                        <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100" style="border-radius: 10%; object-fit: cover;"></td>
                             </tr>
                             @endif
                             @endforeach
@@ -112,7 +110,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->age }}</td>
-                                <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100"></td>
+                                <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100" style="border-radius: 10%; object-fit: cover;"></td>
                             </tr>
                         @endif
                     @endforeach

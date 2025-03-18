@@ -74,10 +74,8 @@
         <br>
         <section>
             <div class="row">
-                <div class="container-fluid col-lg-6">
-
-                    <div class="card shadow">
-                        <div class="card-header d-flex ">
+                <div class="container-fluid col-lg-12">
+                    <div class="card shadow p-3" style="background-color: #616b6b; color: white;">
                             <h5>Add  Catagory</h5>
                         </div>
 
