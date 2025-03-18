@@ -17,10 +17,8 @@
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
     body {
-      background-color: #121212;
-      /* Primary - Pure Black */
-      color: #E0E0E0;
-      /* Text - Light Gray */
+        margin: 0;
+        padding: 0;
     }
     .vertical-nav {
       margin-top: 69px;
@@ -125,6 +123,7 @@
     .nav-item.active .nav-link i {
       color: #121212 !important;
     }
+    
   </style>
 </head>
 <body>
