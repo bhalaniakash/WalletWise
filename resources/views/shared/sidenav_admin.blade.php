@@ -153,12 +153,20 @@
         </a>
       </li>
       <li class="nav-item">
+<<<<<<< HEAD
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
           <i class="fas fa-sign-out-alt" ></i>
             {{ __('Log Out') }}
           </a>
+=======
+        <form method="POST" action="{{ route('logout') }}"  >
+            @csrf
+            <button type="submit" class="nav-link" style="width: 100%; text-align: left;">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </button>
+>>>>>>> b02668a01d8a66f53d5bd5a2b6cba062208fec03
         </form>
       </li>
     </ul>

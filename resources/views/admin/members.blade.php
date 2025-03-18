@@ -1,15 +1,15 @@
 <br>
 @include('shared.header')
 @include('shared.sidenav_admin')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <style type="text/css">
+    <style>
         body {
-          
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -33,6 +33,7 @@
             width: calc(100% - 2rem);
         }
 
+<<<<<<< HEAD
         #page-wrapper {
             padding: 1rem;
             background-color: #fff;
@@ -41,12 +42,11 @@
         }
 
         /* h1, h2, h3, h4, h5, h6 {
+=======
+        h1, h5 {
+>>>>>>> b02668a01d8a66f53d5bd5a2b6cba062208fec03
             color: #333;
         } */
-
-        p {
-            color: #666;
-        }
 
         .btn {
             display: inline-block;
@@ -56,7 +56,6 @@
             border-radius: 4px;
             background-color: #007bff;
             color: #fff;
-            text-align: center;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -65,16 +64,71 @@
             background-color: #0056b3;
         }
     </style>
-    
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-    </script>
 </head>
+
 <body>
     <br>
     <div class="page-content" id="content">
-        <div id="page-wrapper">
-            <h1>welcome</h1>
+        <div id="page-content">
+            <h1>Welcome</h1>
+
+            <!-- Regular Members Table -->
+            <table class="table table-striped table-bordered">
+                <thead style="background-color: #616b6b;">
+                    <tr>
+                        <th colspan="4">
+                            <center><h5>Regular Members</h5></center>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Profile Picture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($members as $user)
+                    @if ($user->is_Admin == 'No' && $user->plan_type == 'regular')
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->age }}</td>
+                        <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100"></td>
+                            </tr>
+                            @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                    
+                    <!-- Premium Members Table -->
+                    <table class="table table-striped table-bordered">
+                        <thead style="background-color: #616b6b;">
+                            <tr>
+                                <th colspan="4">
+                                    <center><h5>Premium Members</h5></center>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Profile Picture</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($members as $user)
+                            @if ($user->is_Admin == 'No' && $user->plan_type == 'premium')
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->age }}</td>
+                                <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100"></td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </body>

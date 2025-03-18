@@ -73,6 +73,7 @@
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
     <div class="page-content" id="content">
+<<<<<<< HEAD
         <div class="card shadow">
             <table class="table table-striped">
                 <thead  style="background-color: #616b6b;">
@@ -106,6 +107,74 @@
                 </tbody>
             </table>
         </div>
+=======
+        <table class="table table-striped table-bordered">
+            <thead style="background-color: #616b6b;">
+                <tr>
+                    <th colspan="3">
+                        <center>
+                            <h5>Income Categories</h5>
+                        </center>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($categories as $category)
+                @if($category->type == 'income')
+                <tr>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ ucfirst($category->type) }}</td>
+                    <td>
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                @endif
+                @endforeach
+            </tbody>
+        </table>
+        <table class="table table-striped table-bordered">
+            <thead style="background-color: #616b6b;">
+                <tr>
+                    <th colspan="3">
+                        <center>
+                            <h5>Expense Categories</h5>
+                        </center>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($categories as $category)
+                @if($category->type == 'expense')
+                <tr>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ ucfirst($category->type) }}</td>
+                    <td>
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                @endif
+                @endforeach
+            </tbody>
+        </table>
+>>>>>>> b02668a01d8a66f53d5bd5a2b6cba062208fec03
     </div>
     <!-- <div id="Modal1" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade text-left">
             <div role="document" class="modal-dialog">
