@@ -136,9 +136,7 @@
       <li class="nav-item">
         <a href="{{url('admin/category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
       </li>
-      <li class="nav-item">
-        <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fa-id-card-o"></i> Subscriptions Plans</a>
-      </li>
+      
       <li class="nav-item">
         <a href="{{url('admin/showCategory')}}" class="nav-link"><i class="fas fa-eye"></i> Show Category</a>
       </li>
@@ -174,6 +172,6 @@
         }
     });
 });
-</script>
-</script>
+    </script>
+  </script>
 </html>

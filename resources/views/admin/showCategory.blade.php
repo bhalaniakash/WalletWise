@@ -17,8 +17,9 @@
             background-color: white; 
             margin: 0; 
             font-family: Arial, sans-serif;
+         
         }
-     
+        
         .page-content {
             margin-left: 17rem;
             margin-right: 1rem;
@@ -77,7 +78,7 @@
 </head>
 
 <body>
-    <></>   
+    <br>   
     @include('shared.header');
     @include('shared.sidenav_admin');
 
@@ -157,7 +158,7 @@
                 @endforeach
             </tbody>
         </table>
-        </div>
+       
     </div>
     <!-- <div id="Modal1" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade text-left">
             <div role="document" class="modal-dialog">
