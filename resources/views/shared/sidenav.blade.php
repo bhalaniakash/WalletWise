@@ -174,14 +174,7 @@
       <li class="nav-item">
         <a href="{{ url('dashboard/savingReport') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Saving report</a>
       </li>
-      <li class="nav-item">
-        {{-- <x-dropdown-link :href="route('profile.edit')" class="nav-link">  --}}
-            <a href="{{ route('profile.edit') }}" class="nav-link">
-            <i class="fas fa-user"></i> 
-            {{ __('Profile') }} 
-            </a>
-         {{-- </x-dropdown-link> --}}
-      </li>
+     
           
        
       <li class="nav-item">

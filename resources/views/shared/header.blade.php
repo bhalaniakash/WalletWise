@@ -104,6 +104,10 @@
             </div>
             <h4>WalletWise</h4>
         </div>
+        <a href="{{ route('profile.edit') }}" class="nav-link">
+            <i class="fas fa-user"></i>
+            Profile
+            </a>
     </nav>
     {{-- <script type="text/javascript" src="../../lib/js/main.js"></script> --}}
 </body>
