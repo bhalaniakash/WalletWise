@@ -23,7 +23,7 @@
             margin-top: 0;
 
         }
-        
+       
         .sb-topnav {
             /* width: calc(100% - 16rem);
             margin-left: 16rem; */
@@ -37,6 +37,7 @@
         #content.active {
             width: 100%;
             margin: 0;
+            position: fixed;
         }
 
         button i {
@@ -49,7 +50,7 @@
             color: white;
             text-decoration: none;
             gap: 20px;
-           
+          
         }
 
         button i:hover {
@@ -65,8 +66,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            
         }
-
+        
         @media (max-width: 768px) {
             .navbar-brand {
                 font-size: 20px;
@@ -95,7 +97,7 @@
 </head>
 
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0" id="content" style="display: flex;">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0" id="content" style="display: flex; position: fixed; justify-content: space-between; align-items: center;">
         <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center;">
             <div class="logo">
                 <img src="/img/logo-removebg-preview.png" width="50px" height="50px"  />
@@ -103,6 +105,6 @@
             <h4>WalletWise</h4>
         </div>
     </nav>
-    <script type="text/javascript" src="../../lib/js/main.js"></script>
+    {{-- <script type="text/javascript" src="../../lib/js/main.js"></script> --}}
 </body>
 </html>

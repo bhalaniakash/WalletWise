@@ -17,10 +17,8 @@
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
     body {
-      background-color: #121212;
-      /* Primary - Pure Black */
-      color: #E0E0E0;
-      /* Text - Light Gray */
+        margin: 0;
+        padding: 0;
     }
     .vertical-nav {
       margin-top: 69px;
@@ -125,6 +123,7 @@
     .nav-item.active .nav-link i {
       color: #121212 !important;
     }
+    
   </style>
 </head>
 <body>
@@ -141,7 +140,7 @@
         <a href="{{url('admin/Subsription')}}" class="nav-link"><i class="fa-id-card-o"></i> Subscriptions Plans</a>
       </li>
       <li class="nav-item">
-        <a href="{{url('admin/showcategory')}}" class="nav-link"><i class="fas fa-eye"></i> Show Category</a>
+        <a href="{{url('admin/showCategory')}}" class="nav-link"><i class="fas fa-eye"></i> Show Category</a>
       </li>
       <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
@@ -153,20 +152,12 @@
         </a>
       </li>
       <li class="nav-item">
-<<<<<<< HEAD
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
           <i class="fas fa-sign-out-alt" ></i>
             {{ __('Log Out') }}
           </a>
-=======
-        <form method="POST" action="{{ route('logout') }}"  >
-            @csrf
-            <button type="submit" class="nav-link" style="width: 100%; text-align: left;">
-                <i class="fas fa-sign-out-alt"></i> Log Out
-            </button>
->>>>>>> b02668a01d8a66f53d5bd5a2b6cba062208fec03
         </form>
       </li>
     </ul>
