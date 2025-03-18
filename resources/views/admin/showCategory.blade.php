@@ -99,7 +99,6 @@
                 </tr>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Type</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -108,7 +107,6 @@
                 @if($category->type == 'income')
                 <tr>
                     <td>{{ $category->name }}</td>
-                    <td>{{ ucfirst($category->type) }}</td>
                     <td>
                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                             @csrf
@@ -132,7 +130,6 @@
                 </tr>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Type</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -141,7 +138,6 @@
                 @if($category->type == 'expense')
                 <tr>
                     <td>{{ $category->name }}</td>
-                    <td>{{ ucfirst($category->type) }}</td>
                     <td>
                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                             @csrf

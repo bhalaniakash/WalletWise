@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -62,5 +63,6 @@ Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('a
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
 
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
+Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
 
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Income;
 use App\Models\incomeController as ModelsIncomeController;
+
 use Illuminate\Support\Facades\Auth;
 
 class IncomeController extends Controller

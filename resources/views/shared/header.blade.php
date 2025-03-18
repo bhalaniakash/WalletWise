@@ -31,8 +31,7 @@
             transition: all 0.4s;
             background-color: #121212;
             position: fixed;
-            box-shadow: 0 0 20px rgb(6, 6, 6);
-         
+            
         }
 
         #content.active {
