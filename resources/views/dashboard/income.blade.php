@@ -106,38 +106,7 @@
             </form>
         </div>
         <br>
-        <section>
-            <div class="container-fluid shadow">
-                <br>
-                <table class="table table-striped table-bordered" id="Report">
-                    <thead style="background-color: #616b6b;">
-                        <tr>
-                            <th colspan="6">
-                                <center>
-                                    <h5>Income details</h5>
-                                </center>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">description</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="6">
-                                <center>No Data Available</center>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br>
-            </div>
-        </section>
+       
 
     </div>
 
