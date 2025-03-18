@@ -45,19 +45,19 @@
             <header>
                 <h1 class="h3 display">Add Expense</h1>
             </header>
-            <form class="mt-3" method="POST" action="">
+            <form class="mt-3" method="POST" action="{{ route('expense.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="expensename">Name: </label>
-                            <input type="text" class="form-control" name="ename" placeholder="Expense name" required />
+                            <input type="text" class="form-control" name="expense_name" placeholder="Expense name" required />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="expenseamount">Amount:</label>
-                            <input type="number" class="form-control" name="eamount" placeholder="Amount" required />
+                            <input type="number" class="form-control" name="amount" placeholder="Amount" required />
                         </div>
                     </div>
                 </div>
@@ -65,15 +65,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="expensedate">Date: </label>
-                            <input type="date" class="form-control" name="edate" required />
+                            <input type="date" class="form-control" name="date" required />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomecategory">Category:</label>
-                            <select class="form-control" name="icategory" id="">
-                                @foreach($categories as $category)
-                                <option value="{{ $category->name }}">
+                            <select class="form-control" name="category_id" id="">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">
                                     <p>{{ $category->name }}</p>
                                 </option>
                                 @endforeach
@@ -82,10 +82,20 @@
                     </div>
                 </div>
                 <div class="row">
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="payment_mode">Mode: </label>
+                            <select class="form-control" name="payment_method" required>
+                                <option value="Cash">Cash</option>
+                                <option value="Cheque">Cheque</option>
+                                <option value="Online">Online</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="comment">Description:</label>
-                            <textarea class="form-control" rows="3" id="comment" name="edescription"></textarea>
+                            <textarea class="form-control" rows="3" id="comment" name="description"></textarea>
                         </div>
                     </div>
                 </div>
