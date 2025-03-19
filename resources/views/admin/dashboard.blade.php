@@ -138,8 +138,10 @@
                         <div class="card-body">
                             <h5 class="card-title">Inactive Users</h5>
                             @php
+                            $expense_data = $expenseReport->all();
+                            $income_data = $incomeReport->all();
                                 $inactiveUsers = $totalUsers->filter(function($user) use ($expense_data, $income_data) {
-                                    return $expense_data->updated_at < now()->subDays(1) && $income_data->updated_at < now()->subDays(1);
+                                    return $expense_data->updated_at < now()->subHours(24) && $income_data->updated_at < now()->subHours(1);
                                 });
                             @endphp
                             <p>{{$inactiveUsers->count()}}</p>
