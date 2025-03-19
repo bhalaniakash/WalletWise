@@ -138,11 +138,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Inactive Users</h5>
                             @php
-                            $expense_data = $expenseReport->all();
-                            $income_data = $incomeReport->all();
-                                $inactiveUsers = $totalUsers->filter(function($user) use ($expense_data, $income_data) {
-                                    return $expense_data->updated_at < now()->subHours(24) && $income_data->updated_at < now()->subHours(1);
-                                });
+                                $inactiveUsers = $expense_data->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1));
                             @endphp
                             <p>{{$inactiveUsers->count()}}</p>
                             <a href="{{url('/admin/inactive-users')}}" class="btn btn-dark">View Inactive Users</a>
