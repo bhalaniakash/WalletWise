@@ -15,14 +15,14 @@ use App\Http\Controllers\AdminDashboardController;
 
 Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
-Route::get('/dashboard', function () {
+// Route::get('/dashboard', function () {
 
-    // dd(Auth::check(),Auth::user());
+Route::get('/dashboard', function () {
     if (Auth::check() && Auth::user()->is_Admin === 'Yes') {
-        return view('admin.dashboard'); // Redirect to admin dashboard
+        return redirect()->route('admin.dashboard'); // Redirect to admin dashboard route
     }
     return view('dashboard.dashboard'); // Redirect to normal user dashboard
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard'); 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -64,6 +64,8 @@ Route::get('/admin/category',function(){
 
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
+
+// user income and expense routes
 
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
