@@ -73,4 +73,4 @@ Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expens
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 // Admin Dashboard Route
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-// Route::get('/admin/dashboard', [AdminDashboardController::class, 'fetch_data'])->name('admin.dashboard');
+
