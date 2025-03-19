@@ -63,20 +63,20 @@
             <div class="col-xl-12">
               <div class="card shadow">
                 <div class="card-body">
-                  <form class="form-inline">
+                  <form class="form-inline" method="get">
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
-                          <input type="month" class="form-control" name="date" placeholder="year" required />
+                          <input type="month" class="form-control" name="date" placeholder="year" value="{{ request('data') }}" />
                         </div>
                       </div>
-                      <div class="col">
+                      <!-- <div class="col">
                         <div class="form-group">
                           <select class="form-control" name="icat">
                             <option value="">All</option>
                           </select>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="col">
                         <div class="form-group">
                           <input type="submit" value="Enter" class="btn btn-dark" id="table">
@@ -112,7 +112,14 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($incomeReport as $i)
+              @php
+              $filteredincomes = request('date')
+              ? $incomeReport->filter(function ($i) {
+              return date('Y-m', strtotime($i->date)) == request('date');
+              })
+              : $incomeReport;
+              @endphp
+              @foreach ($filteredincomes as $i)
               <tr>
                 <td>{{ $i->date }}</td>
                 <td>{{ $i->source }}</td>
