@@ -34,7 +34,7 @@
         }
 
         #page-wrapper {
-            background-color: black;
+            background-color: #616b6b;
             border-radius: 8px;
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
             padding: 0.5rem;

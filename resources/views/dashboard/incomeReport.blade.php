@@ -61,8 +61,8 @@
               <span style="color: #2D3748;">HOME</span> &gt; <span style="color: #3182CE;">INCOME REPORT</span>
             </div>
             <div class="col-xl-12">
-              <div class="card shadow">
-                <div class="card-body">
+              <div class="container-fluid shadow">
+                <div class="card-body ">
                   <form class="form-inline" method="get">
                     <div class="row">
                       <div class="col">
@@ -143,8 +143,8 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-start">
-            <button class="btn btn-dark" id="print">Print</button>
-          </div>
+            <button class="btn btn-dark" id="downloadReport">Download Report</button>
+        </div>
           <br>
         </div>
         <br>
@@ -152,13 +152,59 @@
     </div>
   </div>
   <script type="text/javascript">
-    document.getElementById('print').addEventListener('click', function() {
-      var printme = document.getElementById('Report');
-      var wme = window.open("", "", "width=900,height=800");
-      wme.document.write(printme.outerHTML);
-      wme.document.close();
-      wme.print();
+    document.getElementById('downloadReport').addEventListener('click', function() {
+        let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
+        
+        if (choice && choice.toLowerCase() === 'csv') {
+            downloadCSV();
+        } else if (choice && choice.toLowerCase() === 'pdf') {
+            downloadPDF();
+        } else {
+            alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
+        }
     });
+
+    function downloadCSV() {
+        let table = document.getElementById('Report');
+        let rows = table.querySelectorAll('tr');
+        let csvContent = "";
+
+        rows.forEach(row => {
+            let cols = row.querySelectorAll('th, td');
+            let rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
+            csvContent += rowData + "\n";
+        });
+
+        let blob = new Blob([csvContent], { type: "text/csv" });
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement("a");
+        a.href = url;
+        a.download = "Income_Report.csv";
+        a.click();
+    }
+
+    function downloadPDF() {
+        let table = document.getElementById('Report').outerHTML;
+        let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
+        let win = window.open("", "", "width=800,height=800");
+        win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
+        win.document.write("<h2>Income Report</h2>");
+        win.document.write(table);
+        win.document.write("</body></html>");
+        win.document.close();
+        win.print();
+    }
+</script>
+
+{{-- this is for an graph --}}
+
+<script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="incomeChart" width="400" height="400"></canvas>
+
+
+
   </script>
 </body>
 
