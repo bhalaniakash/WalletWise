@@ -62,13 +62,20 @@
                             <input type="month" class="form-control" name="date" placeholder="year" value="{{ request('data') }}" />
                           </div>
                         </div>
-                        <!-- <div class="col">
+                        <div class="col">
                           <div class="form-group">
-                            <select class="form-control" name="icat">
-                              <option value="">All</option>
-                            </select>
+                          <select class="form-control" name="icat" onchange="this.form.submit()">
+                            <option value="">All Categories</option>
+                            @foreach ($categories as $category)
+                            @if ($category->type == 'expense')
+                            <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
+                              {{ $category->name }}
+                            </option>
+                            @endif
+                            @endforeach
+                          </select>
                           </div>
-                        </div> -->
+                        </div>
                         <div class="col">
                           <div class="form-group">
                             <button type="submit" class="btn btn-dark">Enter</button>
@@ -106,11 +113,11 @@
               </thead>
               <tbody>
                 @php
-                $filteredExpenses = request('date')
-                ? $expenseReport->filter(function ($e) {
-                return date('Y-m', strtotime($e->date)) == request('date');
-                })
-                : $expenseReport;
+                $filteredExpenses = $expenseReport->filter(function ($i) {
+                $dateMatch = request('date') ? date('Y-m', strtotime($i->date)) == request('date') : true;
+                $categoryMatch = request('icat') ? $i->category_id == request('icat') : true;
+                return $dateMatch && $categoryMatch;
+                });
                 @endphp
                 @foreach ($filteredExpenses as $e)
                 <tr>

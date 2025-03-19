@@ -70,13 +70,20 @@
                           <input type="month" class="form-control" name="date" placeholder="year" value="{{ request('data') }}" />
                         </div>
                       </div>
-                      <!-- <div class="col">
+                      <div class="col">
                         <div class="form-group">
-                          <select class="form-control" name="icat">
-                            <option value="">All</option>
+                          <select class="form-control" name="icat" onchange="this.form.submit()">
+                            <option value="">All Categories</option>
+                            @foreach ($categories as $category)
+                            @if ($category->type == 'income')
+                            <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
+                              {{ $category->name }}
+                            </option>
+                            @endif
+                            @endforeach
                           </select>
                         </div>
-                      </div> -->
+                      </div>
                       <div class="col">
                         <div class="form-group">
                           <input type="submit" value="Enter" class="btn btn-dark" id="table">
@@ -113,11 +120,11 @@
             </thead>
             <tbody>
               @php
-              $filteredincomes = request('date')
-              ? $incomeReport->filter(function ($i) {
-              return date('Y-m', strtotime($i->date)) == request('date');
-              })
-              : $incomeReport;
+              $filteredincomes = $incomeReport->filter(function ($i) {
+              $dateMatch = request('date') ? date('Y-m', strtotime($i->date)) == request('date') : true;
+              $categoryMatch = request('icat') ? $i->category_id == request('icat') : true;
+              return $dateMatch && $categoryMatch;
+              });
               @endphp
               @foreach ($filteredincomes as $i)
               <tr>
