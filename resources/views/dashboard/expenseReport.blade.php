@@ -97,15 +97,24 @@
                   <th>Date</th>
                   <th>Name</th>
                   <th>Category</th>
-                  <th>Amount</th>
                   <th>Description</th>
+                  <th>Amount</th>
                 </tr>
               </thead>
               <tbody>
+                @foreach ($expenseReport as $e)
                 <tr>
-                  <td colspan="3">Total:</td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ $e->date }}</td>
+                  <td>{{ $e->expense_name }}</td>
+                  <!-- <td>{{ $e->category_id }}</td> -->
+                  <td>{{ $categories->where('id', $e->category_id)->first()?->name }}</td>
+                  <td>{{ $e->description }}</td>
+                  <td>₹ {{ $e->amount }}</td>
+                </tr>
+                  @endforeach
+                <tr>
+                  <td colspan="4">Total:</td>
+                  <td>₹ {{number_format($expenseReport->sum('amount'),2)}}</td>
                 </tr>
               </tbody>
             </table>
