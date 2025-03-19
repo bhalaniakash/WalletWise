@@ -67,7 +67,7 @@
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
-                          <input type="month" class="form-control" name="date" placeholder="year" value="{{ request('data') }}" />
+                          <input type="month" class="form-control" name="date" placeholder="year" onchange="this.form.submit()" value="{{ request('data') }}" />
                         </div>
                       </div>
                       <div class="col">
@@ -85,9 +85,7 @@
                         </div>
                       </div>
                       <div class="col">
-                        <div class="form-group">
-                          <input type="submit" value="Enter" class="btn btn-dark" id="table">
-                        </div>
+                     
                       </div>
                     </div>
                   </form>
