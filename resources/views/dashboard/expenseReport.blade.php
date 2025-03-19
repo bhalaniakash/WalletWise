@@ -64,20 +64,20 @@
                         </div>
                         <div class="col">
                           <div class="form-group">
-                          <select class="form-control" name="icat" onchange="this.form.submit()">
-                            <option value="">All Categories</option>
-                            @foreach ($categories as $category)
-                            @if ($category->type == 'expense')
-                            <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
-                              {{ $category->name }}
-                            </option>
-                            @endif
-                            @endforeach
-                          </select>
+                            <select class="form-control" name="icat" onchange="this.form.submit()">
+                              <option value="">All Categories</option>
+                              @foreach ($categories as $category)
+                              @if ($category->type == 'expense')
+                              <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                              </option>
+                              @endif
+                              @endforeach
+                            </select>
                           </div>
                         </div>
                         <div class="col">
-                          
+
                         </div>
                       </div>
                     </form>
@@ -111,9 +111,11 @@
               </thead>
               <tbody>
                 @php
-                $filteredExpenses = $expenseReport->filter(function ($i) {
-                $dateMatch = request('date') ? date('Y-m', strtotime($i->date)) == request('date') : true;
-                $categoryMatch = request('icat') ? $i->category_id == request('icat') : true;
+                $currentUser = auth()->user(); // Get the currently logged-in user
+
+                $filteredExpenses = $expenseReport->where('user_id', $currentUser->id)->filter(function ($e) {
+                $dateMatch = request('date') ? date('Y-m', strtotime($e->date)) == request('date') : true;
+                $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
                 return $dateMatch && $categoryMatch;
                 });
                 @endphp
@@ -130,7 +132,7 @@
                 @endforeach
                 <tr>
                   <td colspan="5">Total:</td>
-                  <td>₹ {{number_format($filteredExpenses->sum('amount'),2)}}</td>
+                  <td>₹ {{ number_format(collect($filteredExpenses)->sum('amount'), 2) }}</td>
                 </tr>
               </tbody>
             </table>

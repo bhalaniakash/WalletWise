@@ -106,11 +106,13 @@
 									<div><span>current month</span></div>
 									<div class="count-number">
 										@php
-										$currentMonth = now()->format('Y-m'); // Get the current year and month (e.g., "2025-03")
+										$currentMonth = now()->format('Y-m');
+										$user = auth()->user();
 
-										$currentMonthIncome = $incomeReport->filter(function ($i) use ($currentMonth) {
-										return date('Y-m', strtotime($i->date)) == $currentMonth;
-										})->sum('amount');
+										$currentMonthIncome = $incomeReport
+										->where('user_id', $user->id)
+										->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+										->sum('amount');
 										@endphp
 										<td>₹ {{ number_format($currentMonthIncome, 2) }}</td>
 										</tr>
@@ -127,13 +129,15 @@
 									<div><span>current month</span></div>
 									<div class="count-number">
 										@php
-										$currentMonth = now()->format('Y-m'); // Get the current year and month (e.g., "2025-03")
+										$currentMonth = now()->format('Y-m'); 
+										$user = auth()->user();
 
-										$currentMonthIncome = $expenseReport->filter(function ($i) use ($currentMonth) {
-										return date('Y-m', strtotime($i->date)) == $currentMonth;
-										})->sum('amount');
+										$currentMonthExpense = $expenseReport
+										->where('user_id', $user->id)
+										->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+										->sum('amount');
 										@endphp
-										<td>₹ {{ number_format($currentMonthIncome, 2) }}</td>
+										<td>₹ {{ number_format($currentMonthExpense, 2) }}</td>
 										</tr>
 									</div>
 								</div>
@@ -148,9 +152,17 @@
 									<div><span>current month</span></div>
 									<div class="count-number">
 										@php
-										$income = $incomeReport->sum('amount');
-										$expense = $expenseReport->sum('amount');
-										$saving = $income - $expense;
+										$currentMonthIncome = $incomeReport
+										->where('user_id', $user->id)
+										->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+										->sum('amount');
+
+										$currentMonthExpense = $expenseReport
+										->where('user_id', $user->id)
+										->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+										->sum('amount');
+
+										$saving = $currentMonthIncome - $currentMonthExpense;
 										@endphp
 										@if ($saving < 0)
 											<div class="text-danger">

@@ -143,7 +143,6 @@
                                 $inactiveUsers = $expenseReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subDay(7))->merge($incomeReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subDay(7)));
                             @endphp
                             <p>{{$inactiveUsers->count()}}</p>
-                            
                         </div>
                     </div>
                     </div>
