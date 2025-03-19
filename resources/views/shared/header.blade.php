@@ -23,7 +23,7 @@
             margin-top: 0;
 
         }
-       
+        
         .sb-topnav {
             /* width: calc(100% - 16rem);
             margin-left: 16rem; */
@@ -104,10 +104,11 @@
             </div>
             <h4>WalletWise</h4>
         </div>
-        <a href="{{ route('profile.edit') }}" class="nav-link">
+        <div>
+        <a href="{{ route('profile.edit') }}" class="nav-link" >
             <i class="fas fa-user"></i>
             Profile
-            </a>
+            </a></div>
     </nav>
     {{-- <script type="text/javascript" src="../../lib/js/main.js"></script> --}}
 </body>

@@ -6,6 +6,9 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminDashboardController;
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -66,3 +69,5 @@ Route::post('/income/store', [IncomeController::class, 'store'])->name('income.s
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
 
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+// Admin Dashboard Route
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');

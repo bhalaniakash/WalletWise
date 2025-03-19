@@ -120,6 +120,7 @@
       font-weight: 500;
       transition: background-color 0.3s, color 0.3s;
       color: #E0E0E0;
+      border-radius: 5px;
     }
 
     .nav-link:hover {
