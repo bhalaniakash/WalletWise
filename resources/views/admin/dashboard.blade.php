@@ -138,7 +138,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Inactive Users</h5>
                             @php
-                                $inactiveUsers = $expense_data->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1));
+                                $inactiveUsers = $expenseReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1))
+                                    ->merge($incomeReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1)));
                             @endphp
                             <p>{{$inactiveUsers->count()}}</p>
                             <a href="{{url('/admin/inactive-users')}}" class="btn btn-dark">View Inactive Users</a>
