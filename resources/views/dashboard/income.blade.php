@@ -80,9 +80,11 @@
                             <label for="incomecategory">Category:</label>
                             <select class="form-control" name="icategory" id="">
                                 @foreach($categories as $category)
+                                @if($category->type == 'income')
                                 <option value="{{ $category->id }}">
                                     <p>{{ $category->name }}</p>
                                 </option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>

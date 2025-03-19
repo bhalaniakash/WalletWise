@@ -73,9 +73,11 @@
                             <label for="incomecategory">Category:</label>
                             <select class="form-control" name="category_id" id="">
                             @foreach($categories as $category)
+                            @if($category->type == 'expense')
                                 <option value="{{ $category->id }}">
                                     <p>{{ $category->name }}</p>
                                 </option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>
