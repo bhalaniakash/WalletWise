@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
+  <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
   <title>Income Report</title>
   <base href="/expenseMVC/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -107,22 +107,31 @@
                 <th>Date</th>
                 <th>Name</th>
                 <th>Category</th>
-                <th>Amount</th>
                 <th>Description</th>
+                <th>Amount</th>
               </tr>
             </thead>
             <tbody>
+              @foreach ($incomeReport as $i)
               <tr>
-                <td colspan="3">Total:</td>
-                <td></td>
-                <td></td>
+                <td>{{ $i->date }}</td>
+                <td>{{ $i->source }}</td>
+                <!-- <td>{{ $i->category_id }}</td> -->
+                <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
+                <td>{{ $i->description }}</td>
+                <td>₹ {{ $i->amount }}</td>
+              </tr>
+              @endforeach
+              <tr>
+                <td colspan="4">Total: </td>
+                <td>₹ {{ number_format($incomeReport->sum('amount'),2)}}</td>
               </tr>
             </tbody>
           </table>
           <div class="d-flex justify-content-start">
             <button class="btn btn-dark" id="print">Print</button>
           </div>
-         <br>
+          <br>
         </div>
         <br>
       </section>
