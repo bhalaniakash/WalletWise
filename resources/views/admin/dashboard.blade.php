@@ -59,7 +59,9 @@
 
         .col-md-4 {
             flex: 1 1 calc(33.333% - 1.5rem);
-            max-width: calc(33.333% - 1.5rem);
+            width: calc(33.333% - 1.5rem);
+            display: flex;
+            gap: 1.5rem;
         }
 
         .card {
@@ -132,9 +134,21 @@
                             <a href="{{url('/admin/members')}}" class="btn btn-dark">View Users</a>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Inactive Users</h5>
+                            @php
+                                $inactiveUsers = $totalUsers->filter(function($user) use ($expense_data, $income_data) {
+                                    return $expense_data->updated_at < now()->subDays(1) && $income_data->updated_at < now()->subDays(1);
+                                });
+                            @endphp
+                            <p>{{$inactiveUsers->count()}}</p>
+                            <a href="{{url('/admin/inactive-users')}}" class="btn btn-dark">View Inactive Users</a>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+       
 </body>
 </html>
