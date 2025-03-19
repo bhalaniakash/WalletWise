@@ -14,8 +14,7 @@ class AdminDashboardController extends Controller
     }
     public function fetch_data() {
         $expense_data = ExpenseController::all(); 
-        $income_data = incomeController::all();
-        return view('admin.dashboard', compact('expense_data', 'income_data'));
+        // $income_data = incomeController::all();
+        return view('admin.dashboard', compact('expense_data'));
     }
-
 }
