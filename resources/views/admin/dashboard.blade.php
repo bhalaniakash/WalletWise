@@ -1,6 +1,6 @@
 <br>
-@include('shared.header');
-@include('shared.sidenav_admin');
+@include('shared.header')
+@include('shared.sidenav_admin')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +10,9 @@
     <style type="text/css">
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
         }
 
         .page-content {
@@ -20,9 +21,9 @@
             transition: all 0.4s;
             margin-top: 5% !important;
             width: calc(100% - 18rem);
-            padding: 1rem;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
 
@@ -33,26 +34,80 @@
         }
 
         #page-wrapper {
-            
-            background-color: #fff;
+            background-color: black;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
         }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .container {
+            margin-top: 2rem;
+            /* height:100%; */
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .col-md-4 {
+            flex: 1 1 calc(33.333% - 1.5rem);
+            max-width: calc(33.333% - 1.5rem);
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #343a40;
+        }
+
         .btn {
             display: inline-block;
             padding: 0.5rem 1rem;
             margin: 0.5rem 0;
             border: none;
             border-radius: 4px;
-            background-color: #007bff;
-            color: #fff;
+           
+            color: #ffffff;
             text-align: center;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #6c7176;
+            transform: scale(1.05);
+        }
+
+        p {
+            font-size: 1rem;
+            color: #6c757d;
         }
     </style>
     
@@ -73,13 +128,11 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Total Users</h5>
-                      
-                                <p>{{$totalUsers->count('id')}}</p>
-                               
+                            <p>{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
+                            <a href="{{url('/admin/members')}}" class="btn btn-dark">View Users</a>
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
