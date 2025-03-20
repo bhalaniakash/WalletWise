@@ -104,7 +104,7 @@
 									<div class="count-number">
 										@php
 										$currentMonth = now()->format('Y-m');
-										$user = auth()->user();
+										$user = auth()->user();	
 
 										$currentMonthExpense = $expenseReport
 										->where('user_id', $user->id)

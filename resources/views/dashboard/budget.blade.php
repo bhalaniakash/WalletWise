@@ -98,7 +98,7 @@
                                 @php
                               $user = Auth::user();
                               $currentMonth = now()->format('Y-m');
-                              
+
             
                                 $currentMonthExpense = $expenseReport
                                 ->where('user_id', $user->id)
@@ -147,6 +147,8 @@
             </section>
 
             <br>
+
+            {{-- from here budget categorys starts --}}
 
             <section>
                 <div class="container-fluid shadow">
@@ -202,6 +204,8 @@
             </section>
 
             <br>
+
+            {{-- from here chart section starts --}}
 
             <section>
                 <div class="container-fluid shadow">
