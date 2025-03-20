@@ -40,55 +40,29 @@
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
-			google.charts.load('current', {
-				'packages': ['corechart']
-			});
-			google.charts.setOnLoadCallback(drawChart);
+		google.charts.load('current', {
+			'packages': ['corechart']
+		});
+		google.charts.setOnLoadCallback(drawChart);
 
-			function drawChart() {
+		function drawChart() {
 
-				var data = google.visualization.arrayToDataTable([
-					['Category', 'Amount'],
+			var data = google.visualization.arrayToDataTable([
+				['Category', 'Amount'],
 
 
-				]);
+			]);
 
-				var options = {
-					title: 'My Daily Activities'
-				};
+			var options = {
+				title: 'My Daily Activities'
+			};
 
-				var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-				chart.draw(data, options);
-			}
+			chart.draw(data, options);
+		}
 	</script>
-	</script>
-
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-			google.charts.load('current', {
-				'packages': ['corechart']
-			});
-			google.charts.setOnLoadCallback(drawChart);
-
-			function drawChart() {
-
-				var data = google.visualization.arrayToDataTable([
-					['Task', 'Hours per Day'],
-
-
-				]);
-
-				var options = {
-					title: 'My Daily Activities'
-				};
-
-				var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-
-				chart.draw(data, options);
-			}
 	</script>
 </head>
 
@@ -129,7 +103,7 @@
 									<div><span>current month</span></div>
 									<div class="count-number">
 										@php
-										$currentMonth = now()->format('Y-m'); 
+										$currentMonth = now()->format('Y-m');
 										$user = auth()->user();
 
 										$currentMonthExpense = $expenseReport
@@ -200,21 +174,12 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="card shadow">
-						<div class="card-header d-flex">
-							<h5>Expense chart</h5>
-						</div>
-						<div class="card-body">
-							<div class="col">
-								<div id="piechart1">
-									
-								</div>
-							</div>
-						</div>
+						<h2>Income vs Expense for {{ Auth::user()->name }}</h2> <!-- Show User Name -->
+						<canvas id="incomeExpenseChart">
+						</canvas> <!-- Pie Chart Canvas -->
 					</div>
 				</div>
-
 			</div>
-
 		</section>
 		<br>
 	</div>
@@ -222,5 +187,28 @@
 	<script type="text/javascript" src="lib/js/main.js"></script>
 
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ensure Chart.js is Included -->
+
+<script>
+	var ctx = document.getElementById('incomeExpenseChart').getContext('2d');
+
+	var totalExpense = {{  json_encode($totalExpense ) }};
+	var totalIncome = {{  json_encode($totalIncome ) }};
+
+	console.log("Total Expense:", totalExpense);
+	console.log("Total Income:", totalIncome);
+
+	var incomeExpenseChart = new Chart(ctx, {
+		type: 'pie', // Pie Chart Type
+		data: {
+			labels: ['Expense', 'Income'], // Labels
+			datasets: [{
+				data: [totalExpense, totalIncome], // Correctly Pass Data
+				backgroundColor: ['#FF5733', '#33FF57'], // Colors
+			}]
+		}
+	});
+</script>
 
 </html>
