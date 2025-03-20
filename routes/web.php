@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CharttController;
+use App\Http\Controllers\UpdateCategory;
 
 Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
@@ -60,6 +61,9 @@ Route::get('/admin/category',function(){
 });
 
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
+Route::get('/update/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+Route::put('/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
 
 // user income and expense routes
@@ -73,3 +77,5 @@ Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destr
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 // Route::get('/dashboard',[CharttController::class, 'index'])->name('dashboard');
+
+Route::put('/update/{id}', [UpdateCategory::class, 'edit'])->name('update');
