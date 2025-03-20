@@ -146,8 +146,10 @@
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
                 <tr>
-                    <th colspan="3" align="center">
-                        <h5>Expense Categories</h5>
+                <th colspan="3">
+                        <center>
+                            <h5>Expense Categories</h5>
+                        </center>
                     </th>
                 </tr>
                 <tr>
