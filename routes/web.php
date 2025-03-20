@@ -8,11 +8,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\Http\Controllers\CharttController;
 
 Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
@@ -76,3 +72,4 @@ Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destr
 // Admin Dashboard Route
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
+// Route::get('/dashboard',[CharttController::class, 'index'])->name('dashboard');

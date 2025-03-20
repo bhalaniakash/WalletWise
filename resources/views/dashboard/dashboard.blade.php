@@ -190,11 +190,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ensure Chart.js is Included -->
 
-<script>
+ <script>
 	var ctx = document.getElementById('incomeExpenseChart').getContext('2d');
-
-	var totalExpense = {{  json_encode($totalExpense ) }};
-	var totalIncome = {{  json_encode($totalIncome ) }};
+	
+	var totalExpense = $currentMonthExpense;
+	var totalIncome =  $currentMonthIncome;
 
 	console.log("Total Expense:", totalExpense);
 	console.log("Total Income:", totalIncome);
@@ -209,6 +209,6 @@
 			}]
 		}
 	});
-</script>
+</script> 
 
 </html>
