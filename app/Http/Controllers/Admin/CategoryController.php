@@ -35,9 +35,24 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->back()->with('success', 'Category deleted successfully!');
     }
-    public function update($id)
+    public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.UpdateCategory', compact('category'));
+        $category = Category::findOrFail($id);
+        return view('admin.editCategory', compact('category')); // Return edit form view
+    }
+    public function update(Request $request, $id)
+    {
+        $category = Category::findOrFail($id);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'type' => 'required|in:income,expense', // Ensure the type is either "income" or "expense"
+        ]);
+    
+        $category->update([
+            'name' => $request->input('name'),
+            'type' => $request->input('type'), // Updating the type as well
+        ]);
+
+        return redirect()->route('admin.categories')->with('success', 'Category updated successfully!');
     }
 }

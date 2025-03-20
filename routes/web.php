@@ -61,8 +61,10 @@ Route::get('/admin/category',function(){
 });
 
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
-Route::get('/update/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-Route::put('/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');//passing id to edit category
+Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');//passing id to update category
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
+
 
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
 
@@ -78,4 +80,3 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name
 
 // Route::get('/dashboard',[CharttController::class, 'index'])->name('dashboard');
 
-Route::put('/update/{id}', [UpdateCategory::class, 'edit'])->name('update');

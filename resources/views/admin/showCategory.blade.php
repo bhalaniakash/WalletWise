@@ -133,9 +133,8 @@
                         </form>
                     </td>
                     <td>
-                        <form action="{{ route('update', $category->id) }}" method="POST">
+                        <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
                             @csrf
-                            @method('PUT')
                             <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
                         </form>
                     </td>
