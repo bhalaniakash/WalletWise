@@ -146,13 +146,13 @@
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
                 <tr>
-                    <th colspan="3" align="center">
+                    <th colspan="" align="center">
                         <h5>Expense Categories</h5>
                     </th>
                 </tr>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Action</th>
+                    <th colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
