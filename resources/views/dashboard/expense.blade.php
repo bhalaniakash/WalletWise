@@ -37,6 +37,7 @@
 </head>
 
 <body>
+
     @include('shared.sidenav');
     @include('shared.header');
     <div class="page-content" id="content">

@@ -48,8 +48,8 @@ Route::get('/dashboard/incomeReport',function(){
 Route::get('/dashboard/expenseReport',function(){
     return view('dashboard.expenseReport');
 });
-Route::get('/dashboard/savingReport',function(){
-    return view('dashboard.savingReport');
+Route::get('/dashboard/budget',function(){
+    return view('dashboard.budget');
 });
 Route::get('/dashboard/profile',function(){
     return view('dashboard.profile');

@@ -173,7 +173,7 @@
         <a href="{{ url('dashboard/expenseReport') }}" class="nav-link"> <i class="fas fa-chart-pie"></i> Expense report</a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('dashboard/savingReport') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Saving report</a>
+        <a href="{{ url('dashboard/budget') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Budget</a>
       </li>
      
           

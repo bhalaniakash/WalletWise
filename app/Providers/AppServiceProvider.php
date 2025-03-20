@@ -34,5 +34,5 @@ class AppServiceProvider extends ServiceProvider
             'expenseReport'=>$expense
         ]);
     }
-    
+     
 }

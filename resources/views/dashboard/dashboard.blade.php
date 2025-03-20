@@ -169,14 +169,20 @@
 							<div class="col">
 								<div id="piechart"></div>
 							</div>
-						</div>
+						</div>	
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="card shadow">
-						<h2>Income vs Expense for {{ Auth::user()->name }}</h2> <!-- Show User Name -->
-						<canvas id="incomeExpenseChart">
-						</canvas> <!-- Pie Chart Canvas -->
+						<div class="card-header d-flex">
+						<h5>{{ Auth::user()->name }}</h5>
+						</div>
+						<div class="card-body">
+							<div class="col">
+								<div id="piechart"></div>
+							</div>
+						</div>	
+
 					</div>
 				</div>
 			</div>
@@ -193,8 +199,8 @@
 <script>
 	var ctx = document.getElementById('incomeExpenseChart').getContext('2d');
 
-	var totalExpense = {{  json_encode($totalExpense ) }};
-	var totalIncome = {{  json_encode($totalIncome ) }};
+	var totalExpense = {{  json_encode($expenseReport ) }};
+	var totalIncome = {{  json_encode($incomeReport ) }};
 
 	console.log("Total Expense:", totalExpense);
 	console.log("Total Income:", totalIncome);

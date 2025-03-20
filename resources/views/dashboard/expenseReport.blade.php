@@ -9,37 +9,34 @@
   {{-- <link rel="stylesheet" type="text/css" href="link/link.css"> --}}
   {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
   <style type="text/css">
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-color: white;
-      color: black;
+   body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    }
+        .page-content {
+            margin-left: 17rem;
+            margin-right: 1rem;
+            transition: all 0.4s;
+            background-color: white;
+            color: black;
+            margin-top: 5% !important;
+        }
 
-    .page-content {
-      margin-left: 17rem;
-      margin-right: 1rem;
-      transition: all 0.4s;
-      margin-top: 5% !important;
-    }
+        .content.active {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
 
-    .content.active {
-      margin-left: 1rem;
-      margin-right: 1rem;
-    }
-
-    th,
-    td {
-      color: #000;
-      background-color: white;
-    }
+        th,
+        td {
+            color: #000;
+            background-color: white;
+        }
   </style>
 </head>
 
 <body>
-
-  <body>
     @include('shared.sidenav');
     @include('shared.header');
     <div class="page-content" id="content">
