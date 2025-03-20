@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\admin\members;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
@@ -71,6 +72,7 @@ Route::post('/income/store', [IncomeController::class, 'store'])->name('income.s
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
 
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destroy');
 // Admin Dashboard Route
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 

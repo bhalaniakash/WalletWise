@@ -80,18 +80,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                @php
-                    $inactiveUsers = $expenseReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1))->merge($incomeReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1)));
-                           
-                            @endphp
-                    @foreach($inactiveUsers as $user)   
-                            <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->age }}</td>
-                                <!-- <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100" style="border-radius: 10%; object-fit: cover;"></td> -->
-                            </tr>
-                            @endforeach
+                    @php
+                    // Merge reports and extract unique user IDs
+                    $activeUserIds = $expenseReport->concat($incomeReport)
+                    ->where('is_Admin', '!=', 'Yes')
+                    ->where('updated_at', '>=', now()->subHour(1))
+                    ->pluck('user_id')
+                    ->unique();
+                    // Fetch all inactive users in one query
+                    $activeUsers = \App\Models\User::whereIn('id', $activeUserIds)->get();
+                    @endphp
+
+                    @foreach($activeUsers as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->age }}</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $user->profile_picture) }}"
+                                width="100" height="100" style="border-radius: 10%; object-fit: cover;">
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 
@@ -99,9 +109,9 @@
             <table class="table table-striped table-bordered">
                 <thead style="background-color: #616b6b;">
                     <tr>
-                        <th colspan="4">
+                        <th colspan="5">
                             <center>
-                                <h5>Premium Members</h5>
+                                <h5>Inactive Members</h5>
                             </center>
                         </th>
                     </tr>
@@ -110,20 +120,60 @@
                         <th scope="col">Email</th>
                         <th scope="col">Age</th>
                         <th scope="col">Profile Picture</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($members as $user)
-                    @if ($user->is_Admin == 'No' && $user->plan_type == 'premium')
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->age }}</td>
-                        <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100" style="border-radius: 10%; object-fit: cover;"></td>
-                    </tr>
-                    @endif
-                    @endforeach
+                    @php
+                    // Ensure both reports are collections before merging
+                    $expenseReport = collect($expenseReport);
+                    $incomeReport = collect($incomeReport);
+
+                    // Extract unique user IDs from both reports for active users
+                    $activeUserIds = $expenseReport->concat($incomeReport)
+                    ->where('is_Admin', '!=', 'Yes')
+                    ->where('updated_at', '>=', now()->subHour(1)) // Active users within the last hour
+                    ->pluck('user_id')
+                    ->unique();
+
+                    // Extract inactive user IDs (users who haven't updated in the last hour)
+                    $inactiveUserIds = $expenseReport->concat($incomeReport)
+                    ->where('is_Admin', '!=', 'Yes')
+                    ->where('updated_at', '<', now()->subHour(1)) // Inactive users
+                        ->pluck('user_id')
+                        ->unique();
+
+                        // Fetch all non-admin users who have no records in reports
+                        $allNonAdminUsers = \App\Models\User::where('is_Admin', '!=', 'Yes')->pluck('id');
+                        $usersWithoutRecords = $allNonAdminUsers->diff($expenseReport->pluck('user_id')->merge($incomeReport->pluck('user_id')));
+
+                        // Final inactive users = inactive users + users without records, but excluding active users
+                        $finalInactiveUserIds = $inactiveUserIds->merge($usersWithoutRecords)->diff($activeUserIds);
+
+                        // Fetch inactive users
+                        $inactiveUsers = \App\Models\User::whereIn('id', $finalInactiveUserIds)->get();
+                        @endphp
+
+                        @foreach($inactiveUsers as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->age }}</td>
+                            <td>
+                                <img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100"
+                                    style="border-radius: 10%; object-fit: cover;">
+                            </td>
+                            <td>
+                                <form action="{{ route('members.destroy', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
                 </tbody>
+
             </table>
         </div>
     </div>
