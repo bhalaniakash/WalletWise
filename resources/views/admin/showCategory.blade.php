@@ -167,6 +167,12 @@
                             <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
                         </form>
                     </td>
+                    <td>
+                        <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
+                            @csrf
+                            <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
+                        </form>
+                    </td>
                 </tr>
                 @endif
                 @endforeach
