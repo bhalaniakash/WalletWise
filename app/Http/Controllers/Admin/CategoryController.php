@@ -35,4 +35,9 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->back()->with('success', 'Category deleted successfully!');
     }
+    public function update($id)
+    {
+        $category = Category::find($id);
+        return view('admin.UpdateCategory', compact('category'));
+    }
 }

@@ -108,7 +108,7 @@
         <div>
         <a href="{{ route('profile.edit') }}" class="nav-link" >
             <i class="fas fa-user"></i>
-            Profile
+            {{ Auth::user()->name }}
             </a></div>
     </nav>
     {{-- <script type="text/javascript" src="../../lib/js/main.js"></script> --}}
