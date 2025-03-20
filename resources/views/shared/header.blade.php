@@ -32,7 +32,7 @@
             transition: all 0.4s;
             background-color: #121212;
             position: fixed;
-            
+                z-index: 1000;
         }
 
         #content.active {

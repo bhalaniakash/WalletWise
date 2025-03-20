@@ -34,7 +34,7 @@
         }
 
         #page-wrapper {
-            background-color: black;
+            background-color: #616b6b;
             border-radius: 8px;
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
             padding: 0.5rem;
@@ -130,6 +130,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Total Users</h5>
+                            {{-- this is an code for get total user count --}}
                             <p>{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
                             <a href="{{url('/admin/members')}}" class="btn btn-dark">View Users</a>
                         </div>
@@ -137,6 +138,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Inactive Users</h5>
+                            {{-- this is an code to get the user data  who is not done anything from last 7 days(1 week) --}}
                             @php
                                 $inactiveUsers = $expenseReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1))->merge($incomeReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1)));
                             @endphp
