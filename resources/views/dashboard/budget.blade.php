@@ -108,9 +108,7 @@
                               
                                 @endphp
                                 <p><strong>₹ {{ number_format($currentMonthExpense, 2) }}</strong></p>
-                                
-                             
-            
+                         
                             </div>
                         </div>
                     </div>
