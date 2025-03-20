@@ -57,54 +57,40 @@
     <section>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xl-12">
-            <div class="card shadow">
-              <div class="card-body">
-                <form class="form-inline" method="" action="">
-                  <div class="form-group">
-                    <input type="month" class="form-control" name="date" id="" required="" />
-                    &nbsp;
-                    &nbsp;
-                    <button type="submit" name="insert" class="btn btn-dark">Enter</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </section>
       <br>
       <section>
         <div class="container-fluid shadow">
           <br>
-          <table class="table table-striped table-bordered" id="Report">
-            <thead style="background-color: #121212;">
-              <tr>
-                <th colspan="2">
-                  <center>
-                    <h5>Saving details</h5>
-                  </center>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="col">Total Income:</th>
-                <td scope="col"></td>
-              </tr>
-              <tr>
-                <th scope="col">Total Expense:</th>
-                <td scope="col"></td>
-              </tr>
-              <tr>
-                <th scope="col">Total Saving:</th>
-                <td scope="col"></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="d-flex justify-content-start">
-            <button class="btn btn-dark" id="print">Print</button>
-          </div>
+          <form class="mt-3" method="POST" action="{{ route('budget.store') }}">
+                @csrf
+                <input type="hidden" name="IId" value="1" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="incomename">Expense limit: </label>
+                            <input type="text" class="form-control" name="eGoal" id=""
+                                placeholder="Expense goal" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="incomeamount">Saving Goal:</label>
+                            <input type="number" class="form-control" name="sGoal" id=""
+                                placeholder="Saving Goal" required value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <button type="submit" name="insert" class="btn btn-dark">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
          <br>
         </div>
       </section>

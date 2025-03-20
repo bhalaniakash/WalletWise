@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,11 +34,12 @@
             width: calc(100% - 2rem);
         }
 
-        h1, h5 {
+        h1,
+        h5 {
             color: #333;
-        } */
+        }
 
-        .btn {
+        */ .btn {
             display: inline-block;
             padding: 0.5rem 1rem;
             margin: 0.5rem 0;
@@ -60,11 +62,47 @@
     <div class="page-content" id="content">
         <div id="page-content">
             <!-- Regular Members Table -->
+
             <table class="table table-striped table-bordered">
                 <thead style="background-color: #616b6b;">
                     <tr>
                         <th colspan="4">
-                            <center><h5>Regular Members</h5></center>
+                            <center>
+                                <h5>Active Members</h5>
+                            </center>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Profile Picture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @php
+                    $inactiveUsers = $expenseReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1))->merge($incomeReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1)));
+                           
+                            @endphp
+                    @foreach($inactiveUsers as $user)   
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->age }}</td>
+                                <!-- <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100" style="border-radius: 10%; object-fit: cover;"></td> -->
+                            </tr>
+                            @endforeach
+                </tbody>
+            </table>
+
+            <!-- Premium Members Table -->
+            <table class="table table-striped table-bordered">
+                <thead style="background-color: #616b6b;">
+                    <tr>
+                        <th colspan="4">
+                            <center>
+                                <h5>Premium Members</h5>
+                            </center>
                         </th>
                     </tr>
                     <tr>
@@ -76,47 +114,19 @@
                 </thead>
                 <tbody>
                     @foreach($members as $user)
-                    @if ($user->is_Admin == 'No' && $user->plan_type == 'regular')
+                    @if ($user->is_Admin == 'No' && $user->plan_type == 'premium')
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->age }}</td>
                         <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100" style="border-radius: 10%; object-fit: cover;"></td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                    
-                    <!-- Premium Members Table -->
-                    <table class="table table-striped table-bordered">
-                        <thead style="background-color: #616b6b;">
-                            <tr>
-                                <th colspan="4">
-                                    <center><h5>Premium Members</h5></center>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Profile Picture</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($members as $user)
-                            @if ($user->is_Admin == 'No' && $user->plan_type == 'premium')
-                            <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->age }}</td>
-                                <td><img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100" style="border-radius: 10%; object-fit: cover;"></td>
-                            </tr>
-                        @endif
+                    </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </body>
+
 </html>

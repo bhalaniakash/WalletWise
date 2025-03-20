@@ -138,7 +138,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Inactive Users</h5>
                             @php
-                                $inactiveUsers = $expenseReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subDay(7))->merge($incomeReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subDay(7)));
+                                $inactiveUsers = $expenseReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1))->merge($incomeReport->where('is_Admin', '!=', 'Yes')->where('updated_at', '<', now()->subHour(1)));
                             @endphp
                             <p>{{$inactiveUsers->count()}}</p>
                         </div>
