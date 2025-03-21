@@ -86,11 +86,10 @@
     @include('shared.header');
     
     <x-app-layout>
-        <div class="container mt-5">
-            <h2 class="font-semibold text-xl mb-4">Profile</h2>
+        {{-- <div class="container mt-5"> --}}
+            {{-- <h2 class="font-semibold text-xl mb-4">Profile</h2> --}}
             
             <div class="row">
-                
                 
                 <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg equal-height">
@@ -113,7 +112,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
     </x-app-layout>
 
 </body>

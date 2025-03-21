@@ -75,15 +75,17 @@
             <x-input-error class="mt-2" :messages="$errors->get('contact')" />
         </div>
 
+        {{-- this was created to update the membership status which is for future use --}}
+
         <!-- Plan Type Field -->
-        <div>
+        {{-- <div>
             <x-input-label for="plan_type" :value="__('Plan Type')" />
             <select id="plan_type" name="plan_type" class="mt-1 block w-full">
                 <option value="regular" {{ old('plan_type', $user->plan_type) == 'regular' ? 'selected' : '' }}>Regular</option>
                 <option value="premium" {{ old('plan_type', $user->plan_type) == 'premium' ? 'selected' : '' }}>Premium</option>
             </select>
             <x-input-error class="mt-2" :messages="$errors->get('plan_type')" />
-        </div>
+        </div> --}}
 
         <!-- Budget Limit Field -->
         <div>

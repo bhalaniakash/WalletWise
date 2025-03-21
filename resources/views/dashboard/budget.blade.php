@@ -66,7 +66,7 @@
         }
 
         /* this css is for an Spend amount  */
-        
+
         .amount-positive {
             color: green;
             font-weight: bold;
@@ -292,7 +292,7 @@
                                 <canvas id="categoryChart"></canvas>
                             </div>
                         </div>
-                        
+                
                         <div class="col-md-6">
                             <div class="card">
                                 <h6>Expense Distribution</h6>
@@ -351,7 +351,7 @@
                         }
                     });
                 });
-        });
+            });
     </script>
     
 </body>
