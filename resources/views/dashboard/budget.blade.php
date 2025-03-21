@@ -100,6 +100,35 @@
                                 <p><strong>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</strong></p>
                             </div>
                         </div>
+
+                        {{-- here we are going to show amount 
+                           reaming amount = budget - total amount spent in current month
+                        --}}
+
+                        {{-- <div class="col-md-4">
+                            <div class="card">
+                                <h5>Remaining Budget</h5>
+                                @php
+                                    $user = Auth::user();
+                                    $budget = \App\Models\Budget::where('user_id', $user->id)->first();
+                                    $currentMonth = now()->format('Y-m');
+
+                                    $totalSpent = $expenseReport
+                                        ->where('user_id', $user->id)
+                                        ->filter(fn($expense) => date('Y-m', strtotime($expense->date)) === $currentMonth)
+                                        ->sum('amount');
+
+                                    $remainingBudget = $budget ? $budget->limit - $totalSpent : 0;
+                                @endphp
+                                <p><strong>₹{{ $remainingBudget > 0 ? number_format($remainingBudget, 2) : '0.00' }}</strong></p>
+                                @if($remainingBudget <= 0)
+                                    <div class="alert alert-danger">
+                                        Warning: You have exceeded your budget limit!
+                                    </div>
+                                @endif
+                            </div> --}}
+                      
+                      
                         <div class="col-md-4">
                             <div class="card">
                                 <h5>Saving Goal</h5>

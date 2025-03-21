@@ -191,9 +191,7 @@
 	</div>
 	</div>
 	<script type="text/javascript" src="lib/js/main.js"></script>
-
 </body>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ensure Chart.js is Included -->
 
  <script>
@@ -215,6 +213,5 @@
 			}]
 		}
 	});
-</script> 
-
+</script>
 </html>
