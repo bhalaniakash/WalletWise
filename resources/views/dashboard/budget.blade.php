@@ -64,7 +64,19 @@
         .progress-bar {
             background-color: #000;
         }
-    </style>
+
+        /* this css is for an Spend amount  */
+
+      
+                                .amount-positive {
+                                    color: green;
+                                    font-weight: bold;
+                                }
+                                .amount-negative {
+                                    color: red;
+                                    font-weight: bold;
+                                }
+                     </style>
 </head>
 
 <body>
@@ -82,7 +94,11 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <h5>Total Budget</h5>
-                                <p><strong>₹10,000</strong></p>
+                                @php
+                                    $user = Auth::user();
+                                    $budget = \App\Models\Budget::where('user_id', $user->id)->first();
+                                @endphp
+                                <p><strong>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</strong></p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -92,24 +108,61 @@
                             </div>
                         </div>
                         <div class="col-md-4">
+                           
+                            
                             <div class="card">
                                 <h5>Spent Amount</h5>
-
                                 @php
-                              $user = Auth::user();
-                              $currentMonth = now()->format('Y-m');
-
-            
-                                $currentMonthExpense = $expenseReport
-                                ->where('user_id', $user->id)
-                                ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-                                ->sum('amount');
-                              
-                              
+                                    use Illuminate\Support\Facades\Auth;
+                                    use App\Models\Budget;
+                            
+                                    $user = Auth::user();
+                                    $currentMonth = now()->format('Y-m');
+                            
+                                    // Get current month's expenses
+                                    $currentMonthExpense = $expenseReport
+                                        ->where('user_id', $user->id)
+                                        ->filter(function ($expense) use ($currentMonth) {
+                                            return date('Y-m', strtotime($expense->date)) === $currentMonth;
+                                        })
+                                        ->sum('amount');
+                            
+                                    // Get current month's income
+                                    $currentMonthIncome = $incomeReport
+                                        ->where('user_id', $user->id)
+                                        ->filter(function ($income) use ($currentMonth) {
+                                            return date('Y-m', strtotime($income->date)) === $currentMonth;
+                                        })
+                                        ->sum('amount');
+                            
+                                    // Calculate net amount
+                                    $netAmount = $currentMonthIncome - $currentMonthExpense;
+                            
+                                    // Get the user's saving goal from the budget table
+                                    $budget = Budget::whereYear('created_at', now()->year)
+                                                    ->whereMonth('created_at', now()->month)
+                                                    ->first();
+                            
+                                    $savingGoal = $budget ? $budget->saving : 0; // Default to 0 if no budget is set
+                            
+                                    // Determine CSS class based on comparison
+                                    $amountClass = $netAmount >= $savingGoal ? 'amount-positive' : 'amount-negative';
                                 @endphp
-                                <p><strong>₹ {{ number_format($currentMonthExpense, 2) }}</strong></p>
-                         
+                            
+                                <p>
+                                    <strong class="{{ $amountClass }}">
+                                        ₹ {{ number_format($netAmount, 2) }}
+                                    </strong>
+                                </p>
+                            
+                                @if($netAmount < $savingGoal)
+                                    <div class="alert alert-danger">
+                                        Warning: Your savings are below your goal for this month!
+                                    </div>
+                                @endif
                             </div>
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -120,25 +173,38 @@
             <section>
                 <div class="container-fluid shadow">
                     <br>
-                    <form class="mt-3" method="POST" action="">
+                    <form class="mt-3" method="POST" action="{{ route('budget.store') }}">
                         @csrf
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Expense Limit:</label>
-                                    <input type="text" class="form-control" name="eGoal"
-                                        placeholder="Enter Expense Limit" required />
+                                    <input type="number" class="form-control" name="limit" placeholder="Enter Expense Limit" required />
+                                   
+                                    
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Saving Goal:</label>
-                                    <input type="number" class="form-control" name="sGoal"
-                                        placeholder="Enter Saving Goal" required />
+                                    <input type="number" class="form-control" name="saving" placeholder="Enter Saving Goal" required />
                                 </div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-dark">Add Budget</button>
+                       
+
                     </form>
                     <br>
                 </div>
@@ -209,12 +275,13 @@
                 <div class="container-fluid shadow">
                     <h5>Analytics & Reports</h5>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="card">
-                                <h6>Budget vs Expenses</h6>
-                                <canvas id="budgetChart"></canvas>
+                                <h6>Expenses vs. Income by Category</h6>
+                                <canvas id="categoryChart"></canvas>
                             </div>
                         </div>
+                        
                         <div class="col-md-6">
                             <div class="card">
                                 <h6>Expense Distribution</h6>
@@ -231,30 +298,50 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        var ctx1 = document.getElementById('budgetChart').getContext('2d');
-        var budgetChart = new Chart(ctx1, {
-            type: 'bar',
-            data: {
-                labels: ['Total Budget', 'Spent Amount', 'Remaining Budget'],
-                datasets: [{
-                    label: 'Amount in ₹',
-                    data: [10000, 5500, 4500],
-                    backgroundColor: ['#000', '#f00', '#0f0']
-                }]
-            }
-        });
-
-        var ctx2 = document.getElementById('expenseChart').getContext('2d');
-        var expenseChart = new Chart(ctx2, {
-            type: 'pie',
-            data: {
-                labels: ['Housing', 'Food', 'Transport'],
-                datasets: [{
-                    data: [2000, 1800, 900],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-                }]
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/chart-data")
+                .then(response => response.json())
+                .then(data => {
+                    const categories = [...new Set([...data.expenses.map(e => e.category), ...data.incomes.map(i => i.category)])];
+    
+                    const expenseData = categories.map(category => {
+                        const expense = data.expenses.find(e => e.category === category);
+                        return expense ? expense.total : 0;
+                    });
+    
+                    const incomeData = categories.map(category => {
+                        const income = data.incomes.find(i => i.category === category);
+                        return income ? income.total : 0;
+                    });
+    
+                    var ctx3 = document.getElementById('categoryChart').getContext('2d');
+                    new Chart(ctx3, {
+                        type: 'bar',
+                        data: {
+                            labels: categories,
+                            datasets: [
+                                {
+                                    label: 'Expenses (₹)',
+                                    data: expenseData,
+                                    backgroundColor: 'rgba(255, 99, 132, 0.7)'
+                                },
+                                {
+                                    label: 'Income (₹)',
+                                    data: incomeData,
+                                    backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: { beginAtZero: true }
+                            }
+                        }
+                    });
+                });
         });
     </script>
+    
 </body>
 </html>

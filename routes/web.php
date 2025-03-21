@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CharttController;
 use App\Http\Controllers\UpdateCategory;
+use App\Http\Controllers\BudgetController;
+
+
 
 Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
@@ -80,3 +83,5 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name
 
 // Route::get('/dashboard',[CharttController::class, 'index'])->name('dashboard');
 
+Route::post('/budget/store', [BudgetController::class, 'store'])->name('budget.store');
+Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
