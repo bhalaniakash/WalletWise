@@ -11,20 +11,17 @@ class BudgetController extends Controller
 {
     public function store(Request $request)
 {
-    // Validate input fields
+    
     $validatedData = $request->validate([
         'limit' => 'required|numeric',
         'saving' => 'required|numeric',
     ]);
 
-    // Get the authenticated user
     $user = Auth::user();
-  
     if (!$user) {
         return redirect()->back()->with('error', 'User not authenticated.');
     }
 
-    // Check if a budget already exists for the current month
     $existingBudget = Budget::where('user_id', $user->id)
                             ->whereYear('created_at', now()->year)
                             ->whereMonth('created_at', now()->month)
@@ -42,7 +39,7 @@ class BudgetController extends Controller
     ]);
 
     return redirect()->back()->with('success', 'Budget created successfully!');
-}
 
+}
     
 }

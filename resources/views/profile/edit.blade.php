@@ -90,21 +90,21 @@
             <h2 class="font-semibold text-xl mb-4">Profile</h2>
             
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card p-4 mb-4 shadow-lg equal-height">
-                        <h4 class="mb-3">Change Password</h4>
-                        @include('profile.partials.update-password-form')
-                    </div>
-                </div>
                 
                 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg equal-height">
                         <h4 class="mb-3">Update Profile Information</h4>
                         @include('profile.partials.update-profile-information-form')
                     </div>
                 </div>
-
+                
+                <div class="col-md-12">
+                    <div class="card p-4 mb-4 shadow-lg equal-height">
+                        <h4 class="mb-3">Change Password</h4>
+                        @include('profile.partials.update-password-form')
+                    </div>
+                </div>
                 
                 <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg">
