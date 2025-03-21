@@ -66,17 +66,16 @@
         }
 
         /* this css is for an Spend amount  */
-
-      
-                                .amount-positive {
-                                    color: green;
-                                    font-weight: bold;
-                                }
-                                .amount-negative {
-                                    color: red;
-                                    font-weight: bold;
-                                }
-                     </style>
+        
+        .amount-positive {
+            color: green;
+            font-weight: bold;
+        }
+        .amount-negative {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -103,22 +102,28 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card">
-                                <h5>Remaining Budget</h5>
-                                <p><strong>₹4,500</strong></p>
+                                <h5>Saving Goal</h5>
+                                @php
+                                    $currentMonthSaving = \App\Models\Budget::where('user_id', $user->id)
+                                        ->whereYear('created_at', now()->year)
+                                        ->whereMonth('created_at', now()->month)
+                                        ->value('saving');
+                                @endphp
+                                <p><strong>₹{{ $currentMonthSaving ? number_format($currentMonthSaving, 2) : '0.00' }}</strong></p>
                             </div>
                         </div>
                         <div class="col-md-4">
                            
                             
                             <div class="card">
-                                <h5>Spent Amount</h5>
+                                <h5>Remaining Amount</h5>
                                 @php
                                     use Illuminate\Support\Facades\Auth;
                                     use App\Models\Budget;
-                            
+
                                     $user = Auth::user();
                                     $currentMonth = now()->format('Y-m');
-                            
+
                                     // Get current month's expenses
                                     $currentMonthExpense = $expenseReport
                                         ->where('user_id', $user->id)
@@ -126,7 +131,7 @@
                                             return date('Y-m', strtotime($expense->date)) === $currentMonth;
                                         })
                                         ->sum('amount');
-                            
+
                                     // Get current month's income
                                     $currentMonthIncome = $incomeReport
                                         ->where('user_id', $user->id)
@@ -134,35 +139,41 @@
                                             return date('Y-m', strtotime($income->date)) === $currentMonth;
                                         })
                                         ->sum('amount');
-                            
+
                                     // Calculate net amount
                                     $netAmount = $currentMonthIncome - $currentMonthExpense;
-                            
+
                                     // Get the user's saving goal from the budget table
-                                    $budget = Budget::whereYear('created_at', now()->year)
+                                    $budget = Budget::where('user_id', $user->id)
+                                                    ->whereYear('created_at', now()->year)
                                                     ->whereMonth('created_at', now()->month)
                                                     ->first();
-                            
+
                                     $savingGoal = $budget ? $budget->saving : 0; // Default to 0 if no budget is set
-                            
+
+                                    // Calculate remaining amount after subtracting saving goal
+                                    $remainingAmount = $netAmount - $savingGoal;
+
                                     // Determine CSS class based on comparison
-                                    $amountClass = $netAmount >= $savingGoal ? 'amount-positive' : 'amount-negative';
+                                    $amountClass = $remainingAmount >= 0 ? 'amount-positive' : 'amount-negative';
                                 @endphp
-                            
+
                                 <p>
                                     <strong class="{{ $amountClass }}">
-                                        ₹ {{ number_format($netAmount, 2) }}
+                                        ₹ {{ number_format($remainingAmount, 2) }}
                                     </strong>
                                 </p>
-                            
-                                @if($netAmount < $savingGoal)
+
+                                @if($remainingAmount < 0)
                                     <div class="alert alert-danger">
-                                        Warning: Your savings are below your goal for this month!
+                                        Warning: You are ₹{{ number_format(abs($remainingAmount), 2) }} below your saving goal for this month!
+                                    </div>
+                                @else
+                                    <div class="alert alert-success">
+                                        Great! You have ₹{{ number_format($remainingAmount, 2) }} remaining after meeting your saving goal.
                                     </div>
                                 @endif
                             </div>
-                            
-                            
                         </div>
                     </div>
                 </div>
