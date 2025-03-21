@@ -53,7 +53,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-
        
         /* Button Styling */
         .btn-custom {

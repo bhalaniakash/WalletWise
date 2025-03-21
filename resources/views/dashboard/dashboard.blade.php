@@ -1,7 +1,6 @@
 @include('shared.sidenav');
 @include('shared.header');
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -175,14 +174,15 @@
 				<div class="col-lg-6">
 					<div class="card shadow">
 						<div class="card-header d-flex">
-						<h5>{{ Auth::user()->name }}</h5>
+							<h5>Expense chart</h5>
+						{{-- <h5>{{ Auth::user()->name }}</h5> --}}
 						</div>
+
 						<div class="card-body">
 							<div class="col">
 								<div id="piechart"></div>
 							</div>
 						</div>	
-
 					</div>
 				</div>
 			</div>
