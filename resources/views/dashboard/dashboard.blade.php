@@ -145,7 +145,7 @@
 						<div class="card-body">
 							<div class="col">
 								<div id="piechart">
-									<canvas id="incomeChart"></canvas>
+									<canvas id="incomeChart"></canvas>	
 								</div>
 							</div>
 						</div>
