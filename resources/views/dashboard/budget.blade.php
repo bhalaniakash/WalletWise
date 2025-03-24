@@ -75,6 +75,15 @@
             color: red;
             font-weight: bold;
         }
+
+        /* this is for the chart */
+
+        .categoryChart{
+            width: 500px;
+            height: 500px;
+
+
+        }
     </style>
 </head>
 
@@ -242,7 +251,6 @@
                         </div>
                         <button type="submit" class="btn btn-dark">Add Budget</button>
                        
-
                     </form>
                     <br>
                 </div>
@@ -254,11 +262,11 @@
 
             <section>
                 <div class="container-fluid shadow">
-                    <h5>Budget Categories</h5>
+                    <h5>Budget Table</h5>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Category</th>
+                                <th>#</th>
                                 <th>Allocated</th>
                                 <th>Spent</th>
                                 <th>Remaining</th>
@@ -267,38 +275,60 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Housing</td>
-                                <td>₹3,000</td>
-                                <td>₹2,000</td>
-                                <td>₹1,000</td>
+                                <td>Expense</td>
+                                <td>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</td>
+                                @php
+                                    $totalExpenses = \App\Models\ExpenseController::where('user_id', $user->id)->sum('amount');
+                                @endphp
+                                <td>₹{{ number_format($totalExpenses, 2) }}</td>
+                                @php
+                                    $remainingExpense = $budget ? $budget->limit - $totalExpenses : 0;
+                                    $progressPercentage = $budget && $budget->limit > 0 ? ($totalExpenses / $budget->limit) * 100 : 0;
+                                @endphp
+                                <td>₹{{ number_format($remainingExpense, 2) }}</td>
                                 <td>
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: 67%"></div>
+                                        <div class="progress-bar" style="width: {{ $progressPercentage }}%"></div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Food</td>
-                                <td>₹2,500</td>
-                                <td>₹1,800</td>
-                                <td>₹700</td>
+                                <td>Saving</td>
+                                @php
+                                    $totalSavings = \App\Models\Budget::where('user_id', $user->id)
+                                        ->whereYear('created_at', now()->year)
+                                        ->whereMonth('created_at', now()->month)
+                                        ->value('saving');
+                                @endphp
+                                <td>₹{{ $totalSavings ? number_format($totalSavings, 2) : '0.00' }}</td>
+                                @php
+                                    $totalIncome = \App\Models\IncomeController::where('user_id', $user->id)->sum('amount');
+                                    $totalExpense = \App\Models\ExpenseController::where('user_id', $user->id)->sum('amount');
+                                    $totalAmount = $totalIncome - $totalExpense;
+                                @endphp
+                                <td>₹{{ number_format($totalAmount, 2) }}</td>
+                                @php
+                                    $remainingSavings = $totalSavings ? $totalSavings - $totalAmount : 0;
+                                    $savingsProgress = $totalSavings && $totalSavings > 0 ? ($totalAmount / $totalSavings) * 100 : 0;
+                                @endphp
+                                <td>₹{{ number_format($remainingSavings, 2) }}</td>
                                 <td>
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: 72%"></div>
+                                        <div class="progress-bar" style="width: {{ $savingsProgress }}%"></div>
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td>Transportation</td>
                                 <td>₹1,500</td>
                                 <td>₹900</td>
                                 <td>₹600</td>
                                 <td>
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: 60%"></div>
+                                        <div class="progress-bar" style="width: 10%"></div>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                     <br>
@@ -315,8 +345,46 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <h6>Expenses vs. Income by Category</h6>
-                                <canvas id="categoryChart"></canvas>
+                                <h6>Budget Chart</h6>
+                               
+                                <canvas id="categoryChart"> <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const ctx = document.getElementById('categoryChart').getContext('2d');
+                                        const totalIncome = {{ $totalIncome }};
+                                        const totalExpenses = {{ $totalExpense }};
+                                        const totalSavings = totalIncome - totalExpenses;
+
+                                        new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: ['Expenses', 'Savings'],
+                                                datasets: [{
+                                                    data: [totalExpenses, totalSavings],
+                                                    backgroundColor: ['#FF0000', '#00FF00'],    
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'top',
+                                                    },
+                                                    tooltip: {
+                                                        callbacks: {
+                                                            label: function (context) {
+                                                                const label = context.label || '';
+                                                                const value = context.raw || 0;
+                                                                const percentage = ((value / totalIncome) * 100).toFixed(2);
+                                                                return `${label}: ₹${value.toLocaleString()} (${percentage}%)`;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
+                                </canvas>
                             </div>
                         </div>
                 
@@ -324,6 +392,57 @@
                             <div class="card">
                                 <h6>Expense Distribution</h6>
                                 <canvas id="expenseChart"></canvas>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const ctx = document.getElementById('expenseChart').getContext('2d');
+
+                                        const categories = @json(\App\Models\Category::where('type', 'expense')->get());
+                                        const expenses = @json(\App\Models\ExpenseController::where('user_id', Auth::id())->get());
+
+                                        const categoryData = categories.map(category => {
+                                            const totalExpense = expenses
+                                                .filter(expense => expense.category_id === category.id)
+                                                .reduce((sum, expense) => sum + expense.amount, 0);
+                                            return {
+                                                name: category.name,
+                                                total: totalExpense,
+                                                color: category.color || `#${Math.floor(Math.random()*16777215).toString(16)}`
+                                            };
+                                        });
+
+                                        const labels = categoryData.map(data => data.name);
+                                        const data = categoryData.map(data => data.total);
+                                        const backgroundColors = categoryData.map(data => data.color);
+
+                                        new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: labels,
+                                                datasets: [{
+                                                    data: data,
+                                                    backgroundColor: backgroundColors,
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'top',
+                                                    },
+                                                    tooltip: {
+                                                        callbacks: {
+                                                            label: function (context) {
+                                                                const label = context.label || '';
+                                                                const value = context.raw || 0;
+                                                                return `${label}: ₹${value.toLocaleString()}`;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -335,51 +454,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch("/chart-data")
-                .then(response => response.json())
-                .then(data => {
-                    const categories = [...new Set([...data.expenses.map(e => e.category), ...data.incomes.map(i => i.category)])];
     
-                    const expenseData = categories.map(category => {
-                        const expense = data.expenses.find(e => e.category === category);
-                        return expense ? expense.total : 0;
-                    });
-    
-                    const incomeData = categories.map(category => {
-                        const income = data.incomes.find(i => i.category === category);
-                        return income ? income.total : 0;
-                    });
-    
-                    var ctx3 = document.getElementById('categoryChart').getContext('2d');
-                    new Chart(ctx3, {
-                        type: 'bar',
-                        data: {
-                            labels: categories,
-                            datasets: [
-                                {
-                                    label: 'Expenses (₹)',
-                                    data: expenseData,
-                                    backgroundColor: 'rgba(255, 99, 132, 0.7)'
-                                },
-                                {
-                                    label: 'Income (₹)',
-                                    data: incomeData,
-                                    backgroundColor: 'rgba(54, 162, 235, 0.7)'
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                y: { beginAtZero: true }
-                            }
-                        }
-                    });
-                });
-            });
-    </script>
     
 </body>
 </html>
