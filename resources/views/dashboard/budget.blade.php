@@ -285,10 +285,17 @@
                                     $remainingExpense = $budget ? $budget->limit - $totalExpenses : 0;
                                     $progressPercentage = $budget && $budget->limit > 0 ? ($totalExpenses / $budget->limit) * 100 : 0;
                                 @endphp
-                                <td>₹{{ number_format($remainingExpense, 2) }}</td>
+                                <td>
+                                    <strong style="color: {{ $remainingExpense < 0 ? 'red' : 'green' }};">
+                                        ₹{{ number_format($remainingExpense, 2) }}
+                                    </strong>
+                                </td>
                                 <td>
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: {{ $progressPercentage }}%"></div>
+                                        <div class="progress-bar" 
+                                             style="width: {{ $progressPercentage }}%; 
+                                                    background-color: {{ $remainingExpense < 0 ? 'red' : 'green' }};">
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -507,7 +514,6 @@
             </section>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
     
 </body>
 </html>
