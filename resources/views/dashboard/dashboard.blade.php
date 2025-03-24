@@ -39,30 +39,8 @@
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		google.charts.load('current', {
-			'packages': ['corechart']
-		});
-		google.charts.setOnLoadCallback(drawChart);
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-		function drawChart() {
-
-			var data = google.visualization.arrayToDataTable([
-				['Category', 'Amount'],
-
-
-			]);
-
-			var options = {
-				title: 'My Daily Activities'
-			};
-
-			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-			chart.draw(data, options);
-		}
-	</script>
-	</script>
 </head>
 
 <body>
@@ -103,7 +81,7 @@
 									<div class="count-number">
 										@php
 										$currentMonth = now()->format('Y-m');
-										$user = auth()->user();	
+										$user = auth()->user();
 
 										$currentMonthExpense = $expenseReport
 										->where('user_id', $user->id)
@@ -166,23 +144,25 @@
 						</div>
 						<div class="card-body">
 							<div class="col">
-								<div id="piechart"></div>
+								<div id="piechart">
+									<canvas id="incomeChart"></canvas>
+								</div>
 							</div>
-						</div>	
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="card shadow">
 						<div class="card-header d-flex">
-							<h5>Expense chart</h5>
-						{{-- <h5>{{ Auth::user()->name }}</h5> --}}
+							<h5>Category wise expense chart</h5>
 						</div>
-
-						<div class="card-body">
-							<div class="col">
-								<div id="piechart"></div>
+					</div>
+					<div class="card-body">
+						<div class="col">
+							<div id="piechart">
+								<canvas id="expenseChart"></canvas>
 							</div>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
@@ -192,26 +172,89 @@
 	</div>
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ensure Chart.js is Included -->
+@php
+$currentMonth = now()->format('Y-m');
+$user = auth()->user();
 
- <script>
-	var ctx = document.getElementById('incomeExpenseChart').getContext('2d');
-	
-	var totalExpense = $currentMonthExpense;
-	var totalIncome =  $currentMonthIncome;
+// Get category-wise expenses for the current month
+$categoryWiseExpenses = $expenseReport
+->where('user_id', $user->id)
+->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+->groupBy('category_id')
+->map(fn($items) => $items->sum('amount'));
 
-	console.log("Total Expense:", totalExpense);
-	console.log("Total Income:", totalIncome);
+// Fetch category names for labels
+$categoryLabels = $categories->whereIn('id', $categoryWiseExpenses->keys())->pluck('name');
 
-	var incomeExpenseChart = new Chart(ctx, {
-		type: 'pie', // Pie Chart Type
-		data: {
-			labels: ['Expense', 'Income'], // Labels
-			datasets: [{
-				data: [totalExpense, totalIncome], // Correctly Pass Data
-				backgroundColor: ['#FF5733', '#33FF57'], // Colors
-			}]
-		}
+
+
+// Get category-wise expenses for the current month
+$categoryWiseIncome = $incomeReport
+->where('user_id', $user->id)
+->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+->groupBy('category_id')
+->map(fn($items) => $items->sum('amount'));
+
+// Fetch category names for labels
+$categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
+
+
+function generateRandomColor()
+{
+    return 'rgb(' . rand(0, 255) . ',' . rand(0, 255) . ',' . rand(0, 255) . ')';
+}
+
+// Generate colors based on category count
+$categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor());
+
+@endphp
+
+<script>
+	const ctxe = document.getElementById('expenseChart');
+	const ctxi = document.getElementById('incomeChart');
+
+	// Convert PHP data to JavaScript
+	var categoryLabels = @json($categoryLabels -> values());
+	var categoryExpenses = @json($categoryWiseExpenses -> values());
+	var categoryColors = @json($categoryColors->values());
+
+
+	const datae = {
+		labels: categoryLabels, // Dynamic category names
+		datasets: [{
+			label: 'Expense Distribution',
+			data: categoryExpenses, // Dynamic expenses per category
+			backgroundColor: categoryColors,
+			hoverOffset: 4
+		}]
+	};
+
+	new Chart(ctxe, {
+		type: 'pie', // Change chart type if needed
+		data: datae
+	});
+
+	var categoryLabelsI = @json($categoryLabelsI -> values());
+	var categoryIncomes = @json($categoryWiseIncome -> values());
+	const datai = {
+		labels: categoryLabelsI, // Dynamic category names
+		datasets: [{
+			label: 'Income Distribution',
+			data: categoryIncomes, // Dynamic expenses per category
+			backgroundColor: [
+				'rgb(255, 99, 132)',
+				'rgb(54, 162, 235)',
+				'rgb(255, 205, 86)',
+				'rgb(75, 192, 192)',
+				'rgb(153, 102, 255)'
+			],
+			hoverOffset: 4
+		}]
+	};
+	new Chart(ctxi, {
+		type: 'pie', // Change chart type if needed
+		data: datai
 	});
 </script>
+
 </html>
