@@ -83,7 +83,7 @@
             height: 500px;
 
 
-        }
+        }}
     </style>
 </head>
 
@@ -160,7 +160,7 @@
                                     $user = Auth::user();
                                     $currentMonth = now()->format('Y-m');
 
-                                    // Get current month's expenses
+                                   
                                     $currentMonthExpense = $expenseReport
                                         ->where('user_id', $user->id)
                                         ->filter(function ($expense) use ($currentMonth) {
@@ -168,7 +168,7 @@
                                         })
                                         ->sum('amount');
 
-                                    // Get current month's income
+                                   
                                     $currentMonthIncome = $incomeReport
                                         ->where('user_id', $user->id)
                                         ->filter(function ($income) use ($currentMonth) {
@@ -176,40 +176,38 @@
                                         })
                                         ->sum('amount');
 
-                                    // Calculate net amount
+                                    
                                     $netAmount = $currentMonthIncome - $currentMonthExpense;
 
-                                    // Get the user's saving goal from the budget table
+                                  
                                     $budget = Budget::where('user_id', $user->id)
                                                     ->whereYear('created_at', now()->year)
                                                     ->whereMonth('created_at', now()->month)
                                                     ->first();
 
-                                    $savingGoal = $budget ? $budget->saving : 0; // Default to 0 if no budget is set
-
-                                    // Calculate remaining amount after subtracting saving goal
+                                    $savingGoal = $budget ? $budget->saving : 0; 
+                                  
                                     $remainingAmount = $netAmount - $savingGoal;
 
-                                    // Determine CSS class based on comparison
+                                 
                                     $amountClass = $remainingAmount >= 0 ? 'amount-positive' : 'amount-negative';
                                 @endphp
-
                                 <p>
-                                    <strong class="{{ $amountClass }}">
+                                    <strong class="{{ $amountClass }}" style="color: {{ $remainingAmount >= 0 ? 'green' : 'red' }};">
                                         ₹ {{ number_format($remainingAmount, 2) }}
                                     </strong>
                                 </p>
 
                                 @if($remainingAmount < 0)
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-danger" style="color: red;">
                                         Warning: You are ₹{{ number_format(abs($remainingAmount), 2) }} below your saving goal for this month!
                                     </div>
                                 @else
-                                    <div class="alert alert-success">
+                                    <div class="alert alert-success" style="color: green;">
                                         Great! You have ₹{{ number_format($remainingAmount, 2) }} remaining after meeting your saving goal.
                                     </div>
                                 @endif
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -300,42 +298,33 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Saving</td>
+                                {{-- <td>Saving</td> --}}
                                 @php
                                     $totalSavings = \App\Models\Budget::where('user_id', $user->id)
                                         ->whereYear('created_at', now()->year)
                                         ->whereMonth('created_at', now()->month)
                                         ->value('saving');
                                 @endphp
-                                <td>₹{{ $totalSavings ? number_format($totalSavings, 2) : '0.00' }}</td>
+                                {{-- <td>₹{{ $totalSavings ? number_format($totalSavings, 2) : '0.00' }}</td> --}}
                                 @php
                                     $totalIncome = \App\Models\IncomeController::where('user_id', $user->id)->sum('amount');
                                     $totalExpense = \App\Models\ExpenseController::where('user_id', $user->id)->sum('amount');
                                     $totalAmount = $totalIncome - $totalExpense;
                                 @endphp
-                                <td>₹{{ number_format($totalAmount, 2) }}</td>
+                                {{-- <td>₹{{ number_format($totalAmount, 2) }}</td> --}}
                                 @php
                                     $remainingSavings = $totalSavings ? $totalSavings - $totalAmount : 0;
                                     $savingsProgress = $totalSavings && $totalSavings > 0 ? ($totalAmount / $totalSavings) * 100 : 0;
                                 @endphp
-                                <td>₹{{ number_format($remainingSavings, 2) }}</td>
+                                {{-- <td>₹{{ number_format($remainingSavings, 2) }}</td>
                                 <td>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: {{ $savingsProgress }}%"></div>
                                     </div>
-                                </td>
+                                </td> --}}
                             </tr>
-                            {{-- <tr>
-                                <td>Transportation</td>
-                                <td>₹1,500</td>
-                                <td>₹900</td>
-                                <td>₹600</td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 10%"></div>
-                                    </div>
-                                </td>
-                            </tr> --}}
+
+                            
                         </tbody>
                     </table>
                     <br>
