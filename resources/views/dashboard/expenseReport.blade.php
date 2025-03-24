@@ -148,7 +148,7 @@
                     @php
                     function generateRandomColor()
                     {
-                        return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
+                    return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
                     }
 
                     $currentMonth = now()->format('Y-m');
@@ -174,8 +174,9 @@
 
 
                       const datae = {
-                        labels: categoryLabels, 
+                        labels: categoryLabels,
                         datasets: [{
+                          label: 'Expense Distribution',
                           data: categoryExpenses, // Dynamic expenses per category
                           backgroundColor: categoryColors,
                           hoverOffset: 4
@@ -184,9 +185,26 @@
 
                       new Chart(ctxe, {
                         type: 'bar', // Change chart type if needed
-                        data: datae
+                        data: datae,
+                        options: {
+                          plugins: {
+                            legend: {
+                              labels: {
+                                usePointStyle: false, // Disable default point styles
+                                boxWidth: 0, // Set box width to 0 to remove color box
+                                generateLabels: function(chart) {
+                                  let labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                                  labels.forEach(label => {
+                                    label.hidden = false; // Ensure text is visible
+                                    label.fillStyle = 'transparent'; // Hide color box
+                                  });
+                                  return labels;
+                                }
+                              }
+                            }
+                          }
+                        }
                       });
-
                     </script>
                   </canvas>
                 </div>

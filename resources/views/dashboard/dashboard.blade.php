@@ -208,8 +208,8 @@ $categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())
 @endphp
 
 <script>
-	const ctxe = document.getElementById('expenseChart');
-	const ctxi = document.getElementById('incomeChart');
+	const ctxe = document.getElementById('expenseChart').getContext('2d');
+	const ctxi = document.getElementById('incomeChart').getContext('2d');
 
 	// Convert PHP data to JavaScript
 	var categoryLabels = @json($categoryLabels -> values());
@@ -229,7 +229,11 @@ $categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())
 
 	new Chart(ctxe, {
 		type: 'pie', // Change chart type if needed
-		data: datae
+		data: datae,
+		options: {
+  animation: false
+}
+		
 	});
 
 	var categoryLabelsI = @json($categoryLabelsI -> values());
@@ -247,7 +251,11 @@ $categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())
 	};
 	new Chart(ctxi, {
 		type: 'pie', // Change chart type if needed
-		data: datai
+		data: datai,
+		options: {
+  animation: false
+}
+
 	});
 </script>
 
