@@ -1,46 +1,46 @@
-<!DOCTYPE html>
-<html>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-<head>
-    <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-    <title>Budget Management</title>
-    <base href="/expenseMVC/">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            min-height: 100vh;
-            overflow-x: hidden;
-            color: #000;
-            background-color: white;
-        ;
-        }
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: #000;
+        background-color: white;
+    }
 
-        .page-content {
-            margin-left: 17rem;
-            margin-right: 1rem;
-            transition: all 0.4s;
-            background-color: white;
-            color: #000;
-            margin-top: 50px;
-        }
+    .page-content {
+        margin-left: 17rem;
+        margin-right: 1rem;
+        transition: all 0.4s;
+        background-color: white;
+        color: #000;
+        margin-top: 50px;
+    }
 
-        .content.active {
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
+    .content.active {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 
-        .card {
-            border-color: #000;
-            padding: 15px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
+    .card {
+        border-color: #000;
+        padding: 15px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
 
+    .table tbody tr th,
+    .table tbody tr td {
+        color: #000;
+    }
+
+    .btn-dark {
+        background-color: #000;
+        border-
         .table tbody tr th,
         .table tbody tr td {
             color: #000;
@@ -338,16 +338,15 @@
             <br>
 
             {{-- from here chart section starts --}}
-
             <section>
                 <div class="container-fluid shadow">
                     <h5>Analytics & Reports</h5>
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
                             <div class="card">
-                                <h6>Budget Chart</h6>
-                               
-                                <canvas id="categoryChart"> <script>
+                                <h6 class="text-center">Budget Chart</h6>
+                                <canvas id="categoryChart"></canvas>
+                                <script>
                                     document.addEventListener('DOMContentLoaded', function () {
                                         const ctx = document.getElementById('categoryChart').getContext('2d');
                                         const totalIncome = {{ $totalIncome }};
@@ -384,36 +383,36 @@
                                         });
                                     });
                                 </script>
-                                </canvas>
                             </div>
                         </div>
-                
+                    </div>
+                    <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="card">
-                                <h6>Expense Distribution</h6>
-                                <canvas id="expenseChart">
+                                <h6 class="text-center">Expense Distribution</h6>
+                                <canvas id="expenseChart"></canvas>
                                 <script>
                                     document.addEventListener('DOMContentLoaded', function () {
                                         const ctx = document.getElementById('expenseChart').getContext('2d');
-
+                                        
                                         const categories = @json(\App\Models\Category::where('type', 'expense')->get());
                                         const expenses = @json(\App\Models\ExpenseController::where('user_id', Auth::id())->get());
-
+                                        
                                         const categoryData = categories.map(category => {
                                             const totalExpense = expenses
-                                                .filter(expense => expense.category_id === category.id)
-                                                .reduce((sum, expense) => sum + expense.amount, 0);
+                                            .filter(expense => expense.category_id === category.id)
+                                            .reduce((sum, expense) => sum + expense.amount, 0);
                                             return {
                                                 name: category.name,
                                                 total: totalExpense,
                                                 color: category.color || `#${Math.floor(Math.random()*16777215).toString(16)}`
                                             };
                                         });
-
+                                        
                                         const labels = categoryData.map(data => data.name);
                                         const data = categoryData.map(data => data.total);
                                         const backgroundColors = categoryData.map(data => data.color);
-
+                                        
                                         new Chart(ctx, {
                                             type: 'pie',
                                             data: {
@@ -442,34 +441,35 @@
                                             }
                                         });
                                     });
-                                </script></canvas>
+                                </script>
                             </div>
-
+                        </div>
+                        <div class="col-md-6">
                             <div class="card">
-                                <h6>Income  Distribution</h6>
+                                <h6 class="text-center">Income Distribution</h6>
                                 <canvas id="incomeChart"></canvas>
                                 <script>
                                     document.addEventListener('DOMContentLoaded', function () {
                                         const ctx = document.getElementById('incomeChart').getContext('2d');
-
+                                        
                                         const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
                                         const incomes = @json(\App\Models\IncomeController::where('user_id', Auth::id())->get());
-
+                                        
                                         const incomeCategoryData = incomeCategories.map(category => {
                                             const totalIncome = incomes
-                                                .filter(income => income.category_id === category.id)
-                                                .reduce((sum, income) => sum + income.amount, 0);
+                                            .filter(income => income.category_id === category.id)
+                                            .reduce((sum, income) => sum + income.amount, 0);
                                             return {
                                                 name: category.name,
                                                 total: totalIncome,
                                                 color: category.color || `#${Math.floor(Math.random()*16777215).toString(16)}`
                                             };
                                         });
-
+                                        
                                         const incomeLabels = incomeCategoryData.map(data => data.name);
                                         const incomeData = incomeCategoryData.map(data => data.total);
                                         const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
-
+                                        
                                         new Chart(ctx, {
                                             type: 'pie',
                                             data: {
@@ -499,14 +499,12 @@
                                         });
                                     });
                                 </script>
+                            </div>
                         </div>
                     </div>
                     <br>
                 </div>
             </section>
-
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     

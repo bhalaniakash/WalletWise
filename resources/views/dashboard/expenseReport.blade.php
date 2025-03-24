@@ -144,7 +144,51 @@
             <div class="card-body">
               <div class="col">
                 <div id="piechart">
-                  <canvas id="expenseChart"></canvas>
+                  <canvas id="expenseChart">
+                    @php
+                    function generateRandomColor()
+                    {
+                        return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
+                    }
+
+                    $currentMonth = now()->format('Y-m');
+                    $user = auth()->user();
+
+                    // Get category-wise expenses for the current month
+                    $categoryWiseExpenses = $expenseReport
+                    ->where('user_id', $user->id)
+                    ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+                    ->groupBy('category_id')
+                    ->map(fn($items) => $items->sum('amount'));
+
+                    // Fetch category names for labels
+                    $categoryLabels = $categories->whereIn('id', $categoryWiseExpenses->keys())->pluck('name');
+                    $categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor())->toArray();
+                    @endphp
+                    <script>
+                      const ctxe = document.getElementById('expenseChart');
+
+                      var categoryLabels = @json($categoryLabels -> values());
+                      var categoryExpenses = @json($categoryWiseExpenses -> values());
+                      var categoryColors = @json($categoryColors);
+
+
+                      const datae = {
+                        labels: categoryLabels, 
+                        datasets: [{
+                          data: categoryExpenses, // Dynamic expenses per category
+                          backgroundColor: categoryColors,
+                          hoverOffset: 4
+                        }]
+                      };
+
+                      new Chart(ctxe, {
+                        type: 'bar', // Change chart type if needed
+                        data: datae
+                      });
+
+                    </script>
+                  </canvas>
                 </div>
               </div>
             </div>
@@ -203,47 +247,5 @@
   </script>
 
 </body>
-@php
-function generateRandomColor()
-{
-    return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
-}
 
-$currentMonth = now()->format('Y-m');
-$user = auth()->user();
-
-// Get category-wise expenses for the current month
-$categoryWiseExpenses = $expenseReport
-->where('user_id', $user->id)
-->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-->groupBy('category_id')
-->map(fn($items) => $items->sum('amount'));
-
-// Fetch category names for labels
-$categoryLabels = $categories->whereIn('id', $categoryWiseExpenses->keys())->pluck('name');
-$categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor())->toArray();
-@endphp
-<script>
-  const ctxe = document.getElementById('expenseChart');
-
-  var categoryLabels = @json($categoryLabels -> values());
-	var categoryExpenses = @json($categoryWiseExpenses -> values());
-	var categoryColors = @json($categoryColors);
-
-
-	const datae = {
-		labels: categoryLabels, 
-		datasets: [{
-			data: categoryExpenses, // Dynamic expenses per category
-			backgroundColor: categoryColors,
-			hoverOffset: 4
-		}]
-	};
-
-	new Chart(ctxe, {
-		type: 'bar', // Change chart type if needed
-		data: datae
-	});
-
-</script>
 </html>

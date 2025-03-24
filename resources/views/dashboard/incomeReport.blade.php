@@ -186,18 +186,18 @@
 
   @endphp
 
-  <script type="text/javascript">
-    document.getElementById('downloadReport').addEventListener('click', function() {
-      let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
+<script type="text/javascript">
+  document.getElementById('downloadReport').addEventListener('click', function () {
+    let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
 
-      if (choice && choice.toLowerCase() === 'csv') {
-        downloadCSV();
-      } else if (choice && choice.toLowerCase() === 'pdf') {
-        downloadPDF();
-      } else {
-        alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
-      }
-    });
+    if (choice && choice.toLowerCase() === 'csv') {
+      downloadCSV();
+    } else if (choice && choice.toLowerCase() === 'pdf') {
+      downloadPDF();
+    } else {
+      alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
+    }
+  });
 
     function downloadCSV() {
       let table = document.getElementById('Report');
@@ -222,35 +222,56 @@
 
     function downloadPDF() {
       let table = document.getElementById('Report').outerHTML;
+      let chartCanvas = document.getElementById('incomeChart');
+      let chartImage = chartCanvas.toDataURL("image/png");
       let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
       let win = window.open("", "", "width=800,height=800");
       win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
       win.document.write("<h2>Income Report</h2>");
       win.document.write(table);
+      win.document.write("<h3>Income Chart</h3>");
+      win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
       win.document.write("</body></html>");
       win.document.close();
       win.print();
     }
 
+
+    // fromt here bar chart is starts
+
     const ctxi = document.getElementById('incomeChart');
 
-    var categoryLabelsI = @json($categoryLabelsI -> values());
-    var categoryIncomes = @json($categoryWiseIncome -> values());
-    var categoryColorsI = @json($categoryColorsI);
+      var categoryLabelsI = @json($categoryLabelsI);
+      var categoryIncomes = @json($categoryWiseIncome);
+      var categoryColorsI = @json($categoryColorsI);
 
-    const datae = {
-		labels: categoryLabels, 
-		datasets: [{
-			data: categoryIncomes, // Dynamic expenses per category
-			backgroundColor: categoryColorsI,
-			hoverOffset: 4
-		}]
-	};
+      const datai = {
+          labels: categoryLabelsI, // Corrected variable name
+          datasets: [{
+              label: 'Income by Category',
+              data: categoryIncomes, // Corrected variable
+              backgroundColor: categoryColorsI,
+              borderColor: categoryColorsI,
+              borderWidth: 1
+          }]
+      };
 
-	new Chart(ctxi, {
-		type: 'bar', // Change chart type if needed
-		data: datae
-	});
+      new Chart(ctxi, {
+          type: 'bar', 
+          data: datai,
+          options: {
+              responsive: true,
+              scales: {
+                  x: { // Ensure proper X-axis labeling
+                      beginAtZero: true
+                  },
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+
 
   </script>
 
