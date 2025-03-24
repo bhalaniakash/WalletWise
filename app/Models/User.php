@@ -24,7 +24,6 @@ class User extends Authenticatable
         'age',
         'contact',
         'plan_type',
-        'limit',
         'profile_picture',
     ];
 
