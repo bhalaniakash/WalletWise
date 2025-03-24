@@ -247,6 +247,7 @@
     const datae = {
       labels: categoryLabels,
       datasets: [{
+        label: 'Income Distribution',
         data: categoryIncomes, // Dynamic incomes per category
         backgroundColor: categoryColors,
         hoverOffset: 4
@@ -257,16 +258,23 @@
       type: 'bar', 
       data: datae,
       options: {
-        responsive: true,
-        scales: {
-          x: {
-            beginAtZero: true
-          },
-          y: {
-            beginAtZero: true
-          }
+        plugins: {
+            legend: {
+                labels: {
+                    usePointStyle: false,  // Disable default point styles
+                    boxWidth: 0, // Set box width to 0 to remove color box
+                    generateLabels: function (chart) {
+                        let labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                        labels.forEach(label => {
+                            label.hidden = false; // Ensure text is visible
+                            label.fillStyle = 'transparent'; // Hide color box
+                        });
+                        return labels;
+                    }
+                }
+            }
         }
-      }
+    }
     });
 
 
