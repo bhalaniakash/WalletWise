@@ -186,45 +186,18 @@
 
   @endphp
 
-<script>
-    
-        const ctxi = document.getElementById('incomeChart');
-    
-        var categoryLabelsI = @json($categoryLabelsI -> values());
-        var categoryIncomes = @json($categoryWiseIncome -> values());
-        var categoryColorsI = @json($categoryColorsI);
-    
-        const datai = {
-        labels: categoryLabelsI, 
-        datasets: [{
-          data: categoryIncomes, // Dynamic expenses per category
-          backgroundColor: categoryColorsI,
-          hoverOffset: 4
-        }]
-      };
-    
-      new Chart(ctxi, {
-        type: 'bar', // Change chart type if needed
-        data: datai,
-        options: {
-        plugins: {
-            legend: {
-                display: false  // ✅ This will remove the legend (including "undefined")
-            }
-        }
-    }
-      });
-    document.getElementById('downloadReport').addEventListener('click', function() {
-      let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
+<script type="text/javascript">
+  document.getElementById('downloadReport').addEventListener('click', function () {
+    let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
 
-      if (choice && choice.toLowerCase() === 'csv') {
-        downloadCSV();
-      } else if (choice && choice.toLowerCase() === 'pdf') {
-        downloadPDF();
-      } else {
-        alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
-      }
-    });
+    if (choice && choice.toLowerCase() === 'csv') {
+      downloadCSV();
+    } else if (choice && choice.toLowerCase() === 'pdf') {
+      downloadPDF();
+    } else {
+      alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
+    }
+  });
 
     function downloadCSV() {
       let table = document.getElementById('Report');
@@ -249,15 +222,53 @@
 
     function downloadPDF() {
       let table = document.getElementById('Report').outerHTML;
+      let chartCanvas = document.getElementById('incomeChart');
+      let chartImage = chartCanvas.toDataURL("image/png");
       let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
       let win = window.open("", "", "width=800,height=800");
       win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
       win.document.write("<h2>Income Report</h2>");
       win.document.write(table);
+      win.document.write("<h3>Income Chart</h3>");
+      win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
       win.document.write("</body></html>");
       win.document.close();
       win.print();
     }
+
+
+    // fromt here bar chart is starts
+    const ctxe = document.getElementById('incomeChart');
+
+    var categoryLabels = @json($categoryLabelsI->values());
+    var categoryIncomes = @json($categoryWiseIncome->values());
+    var categoryColors = @json($categoryColorsI);
+
+    const datae = {
+      labels: categoryLabels,
+      datasets: [{
+        data: categoryIncomes, // Dynamic incomes per category
+        backgroundColor: categoryColors,
+        hoverOffset: 4
+      }]
+    };
+
+    new Chart(ctxe, {
+      type: 'bar', 
+      data: datae,
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
 
   </script>
 
