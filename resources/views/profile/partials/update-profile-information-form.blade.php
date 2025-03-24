@@ -106,11 +106,23 @@
                 @if ($user->profile_picture)
                 <div class="mt-2">
                     <label for="profile_picture" class="mt-2 block">
-                        <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" class="w-20 h-20 rounded-full">
+                        <img id="profilePreview" src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" class="w-20 h-20 rounded-full">
                     </label>
                 </div>
                 @endif
             </div>
+            <script>
+                document.getElementById('profile_picture').addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            document.getElementById('profilePreview').src = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            </script>
 
             <div class="flex items-center gap-4">
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
