@@ -1,3 +1,4 @@
+<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
 <style type="text/css">
     * {
         margin: 0;

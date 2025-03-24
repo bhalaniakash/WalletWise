@@ -4,11 +4,10 @@
 <html lang="en">
 
 <head>
-	<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-	<title>Dashboard</title>
 	<base href="/expenseMVC/">
+	<title>Dashboard</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+	<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
 	<style type="text/css">
 		body {
 			min-height: 100vh;
