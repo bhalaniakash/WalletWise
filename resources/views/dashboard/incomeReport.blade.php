@@ -194,18 +194,51 @@
         win.document.close();
         win.print();
     }
+
+
+    
+	var categoryLabelsI = @json($categoryLabelsI -> values());
+	var categoryIncomes = @json($categoryWiseIncome -> values());
+	var categoryColorsI = @json($categoryColorsI);
+
+	const datai = {
+		labels: categoryLabelsI, // Dynamic category names
+		datasets: [{
+			label: 'Income Distribution',
+			data: categoryIncomes, // Dynamic expenses per category
+			backgroundColor: categoryColorsI,
+			hoverOffset: 4
+		}]
+	};
+	new Chart(ctxi, {
+		type: 'pie', // Change chart type if needed
+		data: datai
+	});
+
 </script>
+@php
+function generateRandomColor()
+{
+    return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
+}
 
-{{-- this is for an graph --}}
+$currentMonth = now()->format('Y-m');
+$user = auth()->user();
+// Get category-wise income for the current month
+$categoryWiseIncome = $incomeReport
+->where('user_id', $user->id)
+->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+->groupBy('category_id')
+->map(fn($items) => $items->sum('amount'));
 
-<script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<canvas id="incomeChart" width="400" height="400"></canvas>
-
+// Fetch category names for labels
+$categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
+$categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())->toArray();
 
 
-  </script>
+@endphp
+
+
 </body>
 
 </html>
