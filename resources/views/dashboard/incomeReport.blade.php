@@ -6,6 +6,7 @@
   <title>Income Report</title>
   <base href="/expenseMVC/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   {{-- <link rel="stylesheet" type="text/css" href="link/link.css">
   <script type="text/javascript" src="lib/js/main.js"></script> --}}
   <style type="text/css">
@@ -144,100 +145,114 @@
           </table>
           <div class="d-flex justify-content-start">
             <button class="btn btn-dark" id="downloadReport">Download Report</button>
-        </div>
+          </div>
+          <div class="card shadow">
+            <div class="card-header d-flex">
+              <h5>Income chart</h5>
+            </div>
+            <div class="card-body">
+              <div class="col">
+                <div id="piechart">
+                  <canvas id="incomeChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
           <br>
         </div>
         <br>
       </section>
     </div>
   </div>
+  @php
+  function generateRandomColor()
+  {
+  return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
+  }
+
+  $currentMonth = now()->format('Y-m');
+  $user = auth()->user();
+  // Get category-wise income for the current month
+  $categoryWiseIncome = $incomeReport
+  ->where('user_id', $user->id)
+  ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+  ->groupBy('category_id')
+  ->map(fn($items) => $items->sum('amount'));
+
+  // Fetch category names for labels
+  $categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
+  $categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())->toArray();
+
+
+  @endphp
+
   <script type="text/javascript">
     document.getElementById('downloadReport').addEventListener('click', function() {
-        let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
-        
-        if (choice && choice.toLowerCase() === 'csv') {
-            downloadCSV();
-        } else if (choice && choice.toLowerCase() === 'pdf') {
-            downloadPDF();
-        } else {
-            alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
-        }
+      let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
+
+      if (choice && choice.toLowerCase() === 'csv') {
+        downloadCSV();
+      } else if (choice && choice.toLowerCase() === 'pdf') {
+        downloadPDF();
+      } else {
+        alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
+      }
     });
 
     function downloadCSV() {
-        let table = document.getElementById('Report');
-        let rows = table.querySelectorAll('tr');
-        let csvContent = "";
+      let table = document.getElementById('Report');
+      let rows = table.querySelectorAll('tr');
+      let csvContent = "";
 
-        rows.forEach(row => {
-            let cols = row.querySelectorAll('th, td');
-            let rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
-            csvContent += rowData + "\n";
-        });
+      rows.forEach(row => {
+        let cols = row.querySelectorAll('th, td');
+        let rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
+        csvContent += rowData + "\n";
+      });
 
-        let blob = new Blob([csvContent], { type: "text/csv" });
-        let url = URL.createObjectURL(blob);
-        let a = document.createElement("a");
-        a.href = url;
-        a.download = "Income_Report.csv";
-        a.click();
+      let blob = new Blob([csvContent], {
+        type: "text/csv"
+      });
+      let url = URL.createObjectURL(blob);
+      let a = document.createElement("a");
+      a.href = url;
+      a.download = "Income_Report.csv";
+      a.click();
     }
 
     function downloadPDF() {
-        let table = document.getElementById('Report').outerHTML;
-        let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
-        let win = window.open("", "", "width=800,height=800");
-        win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
-        win.document.write("<h2>Income Report</h2>");
-        win.document.write(table);
-        win.document.write("</body></html>");
-        win.document.close();
-        win.print();
+      let table = document.getElementById('Report').outerHTML;
+      let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
+      let win = window.open("", "", "width=800,height=800");
+      win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
+      win.document.write("<h2>Income Report</h2>");
+      win.document.write(table);
+      win.document.write("</body></html>");
+      win.document.close();
+      win.print();
     }
 
+    const ctxi = document.getElementById('incomeChart');
 
-    
-	var categoryLabelsI = @json($categoryLabelsI -> values());
-	var categoryIncomes = @json($categoryWiseIncome -> values());
-	var categoryColorsI = @json($categoryColorsI);
+    var categoryLabelsI = @json($categoryLabelsI -> values());
+    var categoryIncomes = @json($categoryWiseIncome -> values());
+    var categoryColorsI = @json($categoryColorsI);
 
-	const datai = {
-		labels: categoryLabelsI, // Dynamic category names
+    const datae = {
+		labels: categoryLabels, 
 		datasets: [{
-			label: 'Income Distribution',
 			data: categoryIncomes, // Dynamic expenses per category
 			backgroundColor: categoryColorsI,
 			hoverOffset: 4
 		}]
 	};
+
 	new Chart(ctxi, {
-		type: 'pie', // Change chart type if needed
-		data: datai
+		type: 'bar', // Change chart type if needed
+		data: datae
 	});
 
-</script>
-@php
-function generateRandomColor()
-{
-    return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
-}
-
-$currentMonth = now()->format('Y-m');
-$user = auth()->user();
-// Get category-wise income for the current month
-$categoryWiseIncome = $incomeReport
-->where('user_id', $user->id)
-->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-->groupBy('category_id')
-->map(fn($items) => $items->sum('amount'));
-
-// Fetch category names for labels
-$categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
-$categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())->toArray();
-
-
-@endphp
-
+  </script>
 
 </body>
 
