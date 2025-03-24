@@ -13,7 +13,7 @@ class Budget extends Model
     protected $table = 'budget'; 
 
     protected $fillable = [
-        'name',
+        // 'name',
         'limit',
         'saving',
         'user_id', 

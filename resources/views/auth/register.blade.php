@@ -82,17 +82,11 @@
             background: black;
             color: #fff;
         }
-    </style>
-    <script>
-        function validateForm() {
-            var password = document.getElementById('password').value;
-            if (password.length < 8) {
-                alert('Password must be at least 8 characters long.');
-                return false;
-            }
-            return true;
+        .error {
+            color: red;
+            font-size: 14px;
         }
-    </script>
+    </style>
 </head>
 <body>
     <div class="container">
@@ -100,21 +94,24 @@
             <img src="/img/logo-removebg-preview.png" alt="Logo">
             <h4>WalletWise</h4>
         </div>
-        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
             <h2 class="text-center">Register Yourself</h2>
             <div class="form-container">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input id="name" type="text" name="name" required>
+                    @error('name') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" name="email" required>
+                    @error('email') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input id="password" type="password" name="password" required>
+                    @error('password') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
@@ -123,10 +120,12 @@
                 <div class="form-group">
                     <label for="age">Age</label>
                     <input id="age" type="number" name="age" min="15" required>
+                    @error('age') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="contact">Contact</label>
                     <input id="contact" type="number" name="contact" required>
+                    @error('contact') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="plan_type">Plan Type</label>
@@ -134,15 +133,19 @@
                         <option value="regular">Regular</option>
                         <option value="premium">Premium</option>
                     </select>
+                    @error('plan_type') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="limit">Limit</label>
-                    <input id="limit" type="number" name="limit" step="0.01" min="0" required>
+                    <input id="limit" type="number" name="limit" min="0" required>
+                    @error('limit') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group full-width">
                     <label for="profile_picture">Profile Picture</label>
                     <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture" accept="image/*">
+                    @error('profile_picture') <span class="error">{{ $message }}</span> @enderror
                 </div>
+                
             </div>
             <div class="form-footer">
                 <a href="{{ route('login') }}">Already registered?</a>

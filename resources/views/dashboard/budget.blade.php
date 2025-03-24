@@ -141,9 +141,7 @@
                                 <p><strong>₹{{ $currentMonthSaving ? number_format($currentMonthSaving, 2) : '0.00' }}</strong></p>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                           
-                            
+                        <div class="col-md-4"> 
                             <div class="card">
                                 <h5>Remaining Amount</h5>
                                 @php

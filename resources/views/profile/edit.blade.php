@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> --}}
 
     <style>
-      
+    
         /* body {
             font-family: 'Poppins', sans-serif;
             background-color: #000; 
@@ -23,6 +23,7 @@
         } */
 
         /* Navbar Styling */
+       
         .navbar {
             z-index: 1000;
         }
@@ -103,7 +104,7 @@
                         @include('profile.partials.update-password-form')
                     </div>
                 </div>
-                
+
                 <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg">
                         <h4 class="mb-3 text-danger">Delete Account</h4>

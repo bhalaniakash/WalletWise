@@ -30,14 +30,26 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'age' => 'required|integer|min:15',
-            'contact' => 'nullable|numeric',
-            'plan_type' => 'required|in:regular,premium',
-            'limit' => 'required|numeric|min:0',
-            'profile_picture' => 'nullable|image|mimes:jpg,png,jpeg',
+            'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::defaults(),
+                'regex:/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'
+            ],
+            'age' => ['required', 'integer', 'min:15'],
+            'contact' => ['required', 'digits:10'],
+            'plan_type' => ['required', 'in:regular,premium'],
+            'limit' => ['required', 'numeric', 'min:0'],
+            'profile_picture' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+        ], [
+            'name.regex' => 'The name should only contain letters and spaces.',
+            'password.regex' => 'The password must contain at least one letter, one number, and one special character.',
+            'contact.digits' => 'The contact number must be exactly 10 digits.',
+            'profile_picture.image' => 'The uploaded file must be an image.',
+            'profile_picture.mimes' => 'Only JPG, PNG, and JPEG formats are allowed.',
+            'profile_picture.max' => 'The profile picture must not be larger than 2MB.',
         ]);
 
         $profilePicturePath = null;

@@ -55,21 +55,19 @@
 
   @include('shared.sidenav');
   @include('shared.header');
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/register.css') }}"> --}}
 
   <div class="page-content" id="content">
     <br>
     <section>
       <div class="row">
         <div class="container-fluid col-lg-6">
-
           <div class="card shadow">
             <div class="card-header d-flex ">
               <h5>Add Income Catagory</h5>
             </div>
-
             <div class="card-body">
               <form class="form-inline" id="add1" method="post" action="">
                 <label for="incomecategory" class="sr-only"></label>
@@ -86,23 +84,17 @@
           <thead  class="thead-dark" style="background-color: #616b6b;">
                 <tr>
                   <th colspan="3" align="center">
-                  
                       <h5>Income Category</h5>
-               
                   </th>
                 </tr>
                 <tr>
                   <th scope="col">Name</th>
-
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-
                 <tr>
-
                   <td>name</td>
-
                   <td>
                     <a class="btn btn-danger" href="Dashboard/deleteIncomeCategory?incomeId=1" onClick="return confirm('Do you want to Delete? Y/N')"> Delete </a>
                   </td>
@@ -157,7 +149,6 @@
         </div>
       </div>
     </section>
-
     <div id="Modal1" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade text-left">
       <div role="document" class="modal-dialog">
         <div class="modal-content">
@@ -181,7 +172,6 @@
       </div>
     </div>
   </div>
-
 </body>
 
 </html>

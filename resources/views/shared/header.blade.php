@@ -18,7 +18,9 @@
     <link href="{{ asset('link/link.php') }}">
 
     <style type="text/css">
+
         body {
+           
             color: #000;
             background-color: white;
             margin-top: 0;
@@ -51,7 +53,6 @@
             color: white;
             text-decoration: none;
             gap: 20px;
-          
         }
 
         button i:hover {
@@ -67,7 +68,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            
         }
         
         @media (max-width: 768px) {
@@ -112,5 +112,5 @@
             </a></div>
     </nav>
     {{-- <script type="text/javascript" src="../../lib/js/main.js"></script> --}}
-</body>
+    </body>
 </html>
