@@ -101,6 +101,13 @@
                 
                 <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg equal-height">
+                        <h4 class="mb-3">Update plan</h4>
+                        @include('profile.partials.update-plan')
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="card p-4 mb-4 shadow-lg equal-height">
                         <h4 class="mb-3">Change Password</h4>
                         @include('profile.partials.update-password-form')
                     </div>

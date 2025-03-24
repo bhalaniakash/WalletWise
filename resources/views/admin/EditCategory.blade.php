@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,6 +56,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="page-content" id="content">
         <br>
@@ -62,30 +64,33 @@
             <div class="row">
                 <div class="container-fluid col-lg-12">
                     <div class="card shadow p-3" style="background-color: #616b6b; color: white;">
-                            <h5>Update  Catagory</h5>
-                        </div>
+                        <h5>Update Catagory</h5>
+                    </div>
 
-                        <div class="card-body">
-    <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
-        @csrf
-        @method('PUT') <!-- For updating the record -->
+                    <div class="card-body">
+                        <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
+                            @csrf
+                            @method('PUT') <!-- For updating the record -->
 
-        <label for="name">Category Name:</label>
-        <input type="text" name="name" id="name" class="form-control" value="{{ $category->name }}" required>
+                            <label for="name">Category Name:</label>
+                            <input type="text" name="name" id="name" class="form-control" value="{{ $category->name }}"
+                                required>
 
-        <label for="type" class="form-label">Category Type</label>
-        <select name="type" id="type" class="form-control" required>
-            <option value="income" {{ $category->type == 'income' ? 'selected' : '' }}>Income</option>
-            <option value="expense" {{ $category->type == 'expense' ? 'selected' : '' }}>Expense</option>
-        </select>
-        <br>
-        <button type="submit" class="btn btn-dark">Update Category</button>
-    </form>
-</div>
-</div>
+                            <label for="type" class="form-label">Category Type</label>
+                            <select name="type" id="type" class="form-control" required>
+                                <option value="income" {{ $category->type == 'income' ? 'selected' : '' }}>Income</option>
+                                <option value="expense" {{ $category->type == 'expense' ? 'selected' : '' }}>Expense
+                                </option>
+                            </select>
+                            <br>
+                            <button type="submit" class="btn btn-dark">Update Category</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 
 </body>
+
 </html>

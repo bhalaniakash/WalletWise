@@ -1,8 +1,6 @@
-@include('shared.sidenav');
-@include('shared.header');
 <!DOCTYPE html>
 <html lang="en">
-
+	
 <head>
 	<base href="/expenseMVC/">
 	<title>Dashboard</title>
@@ -14,19 +12,21 @@
 			overflow-x: hidden;
 			margin-top: 0;
 		}
-
+		
 		.page-content {
 			margin-left: 17rem;
 			margin-right: 1rem;
 			transition: all 0.4s;
 			margin-top: 5% !important;
 		}
-
+		
 		.content.active {
 			margin-left: 1rem;
 			margin-right: 1rem;
 		}
-	</style>
+		</style>
+		@include('shared.sidenav');
+		@include('shared.header');
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
