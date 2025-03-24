@@ -391,7 +391,7 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <h6>Expense Distribution</h6>
-                                <canvas id="expenseChart"></canvas>
+                                <canvas id="expenseChart">
                                 <script>
                                     document.addEventListener('DOMContentLoaded', function () {
                                         const ctx = document.getElementById('expenseChart').getContext('2d');
@@ -442,8 +442,63 @@
                                             }
                                         });
                                     });
-                                </script>
+                                </script></canvas>
                             </div>
+
+                            <div class="card">
+                                <h6>Income  Distribution</h6>
+                                <canvas id="incomeChart"></canvas>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const ctx = document.getElementById('incomeChart').getContext('2d');
+
+                                        const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
+                                        const incomes = @json(\App\Models\IncomeController::where('user_id', Auth::id())->get());
+
+                                        const incomeCategoryData = incomeCategories.map(category => {
+                                            const totalIncome = incomes
+                                                .filter(income => income.category_id === category.id)
+                                                .reduce((sum, income) => sum + income.amount, 0);
+                                            return {
+                                                name: category.name,
+                                                total: totalIncome,
+                                                color: category.color || `#${Math.floor(Math.random()*16777215).toString(16)}`
+                                            };
+                                        });
+
+                                        const incomeLabels = incomeCategoryData.map(data => data.name);
+                                        const incomeData = incomeCategoryData.map(data => data.total);
+                                        const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
+
+                                        new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: incomeLabels,
+                                                datasets: [{
+                                                    data: incomeData,
+                                                    backgroundColor: incomeBackgroundColors,
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'top',
+                                                    },
+                                                    tooltip: {
+                                                        callbacks: {
+                                                            label: function (context) {
+                                                                const label = context.label || '';
+                                                                const value = context.raw || 0;
+                                                                return `${label}: ₹${value.toLocaleString()}`;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
                         </div>
                     </div>
                     <br>
