@@ -242,7 +242,14 @@ $categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor())->
 
 	new Chart(ctxe, {
 		type: 'bar', // Change chart type if needed
-		data: datae
+		data: datae,
+    options: {
+        plugins: {
+            legend: {
+                display: false  // ✅ This will remove the legend (including "undefined")
+            }
+        }
+    }
 	});
 
 </script>

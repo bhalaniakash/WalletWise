@@ -186,7 +186,34 @@
 
   @endphp
 
-  <script type="text/javascript">
+<script>
+    
+        const ctxi = document.getElementById('incomeChart');
+    
+        var categoryLabelsI = @json($categoryLabelsI -> values());
+        var categoryIncomes = @json($categoryWiseIncome -> values());
+        var categoryColorsI = @json($categoryColorsI);
+    
+        const datai = {
+        labels: categoryLabelsI, 
+        datasets: [{
+          data: categoryIncomes, // Dynamic expenses per category
+          backgroundColor: categoryColorsI,
+          hoverOffset: 4
+        }]
+      };
+    
+      new Chart(ctxi, {
+        type: 'bar', // Change chart type if needed
+        data: datai,
+        options: {
+        plugins: {
+            legend: {
+                display: false  // ✅ This will remove the legend (including "undefined")
+            }
+        }
+    }
+      });
     document.getElementById('downloadReport').addEventListener('click', function() {
       let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
 
@@ -231,26 +258,6 @@
       win.document.close();
       win.print();
     }
-
-    const ctxi = document.getElementById('incomeChart');
-
-    var categoryLabelsI = @json($categoryLabelsI -> values());
-    var categoryIncomes = @json($categoryWiseIncome -> values());
-    var categoryColorsI = @json($categoryColorsI);
-
-    const datae = {
-		labels: categoryLabels, 
-		datasets: [{
-			data: categoryIncomes, // Dynamic expenses per category
-			backgroundColor: categoryColorsI,
-			hoverOffset: 4
-		}]
-	};
-
-	new Chart(ctxi, {
-		type: 'bar', // Change chart type if needed
-		data: datae
-	});
 
   </script>
 
