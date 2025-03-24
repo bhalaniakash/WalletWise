@@ -151,16 +151,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6 ">
 					<div class="card shadow">
 						<div class="card-header d-flex">
-							<h5>Category wise expense chart</h5>
+							<h5>Expense chart</h5>
 						</div>
-					</div>
-					<div class="card-body">
-						<div class="col">
-							<div id="piechart">
-								<canvas id="expenseChart"></canvas>
+						<div class="card-body">
+							<div class="col">
+								<div id="piechart">
+									<canvas id="expenseChart"></canvas>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -173,6 +173,11 @@
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
 @php
+function generateRandomColor()
+{
+    return 'rgb(' .mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
+}
+
 $currentMonth = now()->format('Y-m');
 $user = auth()->user();
 
@@ -185,10 +190,10 @@ $categoryWiseExpenses = $expenseReport
 
 // Fetch category names for labels
 $categoryLabels = $categories->whereIn('id', $categoryWiseExpenses->keys())->pluck('name');
+$categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor())->toArray();
 
 
-
-// Get category-wise expenses for the current month
+// Get category-wise income for the current month
 $categoryWiseIncome = $incomeReport
 ->where('user_id', $user->id)
 ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
@@ -197,15 +202,8 @@ $categoryWiseIncome = $incomeReport
 
 // Fetch category names for labels
 $categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
+$categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())->toArray();
 
-
-function generateRandomColor()
-{
-    return 'rgb(' . rand(0, 255) . ',' . rand(0, 255) . ',' . rand(0, 255) . ')';
-}
-
-// Generate colors based on category count
-$categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor());
 
 @endphp
 
@@ -216,7 +214,7 @@ $categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor());
 	// Convert PHP data to JavaScript
 	var categoryLabels = @json($categoryLabels -> values());
 	var categoryExpenses = @json($categoryWiseExpenses -> values());
-	var categoryColors = @json($categoryColors->values());
+	var categoryColors = @json($categoryColors);
 
 
 	const datae = {
@@ -236,18 +234,14 @@ $categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor());
 
 	var categoryLabelsI = @json($categoryLabelsI -> values());
 	var categoryIncomes = @json($categoryWiseIncome -> values());
+	var categoryColorsI = @json($categoryColorsI);
+
 	const datai = {
 		labels: categoryLabelsI, // Dynamic category names
 		datasets: [{
 			label: 'Income Distribution',
 			data: categoryIncomes, // Dynamic expenses per category
-			backgroundColor: [
-				'rgb(255, 99, 132)',
-				'rgb(54, 162, 235)',
-				'rgb(255, 205, 86)',
-				'rgb(75, 192, 192)',
-				'rgb(153, 102, 255)'
-			],
+			backgroundColor: categoryColorsI,
 			hoverOffset: 4
 		}]
 	};

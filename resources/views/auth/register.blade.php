@@ -136,11 +136,6 @@
                     @error('plan_type') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
-                    <label for="limit">Limit</label>
-                    <input id="limit" type="number" name="limit" min="0" required>
-                    @error('limit') <span class="error">{{ $message }}</span> @enderror
-                </div>
-                <div class="form-group full-width">
                     <label for="profile_picture">Profile Picture</label>
                     <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture" accept="image/*">
                     @error('profile_picture') <span class="error">{{ $message }}</span> @enderror

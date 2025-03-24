@@ -41,7 +41,6 @@ class RegisteredUserController extends Controller
             'age' => ['required', 'integer', 'min:15'],
             'contact' => ['required', 'digits:10'],
             'plan_type' => ['required', 'in:regular,premium'],
-            'limit' => ['required', 'numeric', 'min:0'],
             'profile_picture' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
         ], [
             'name.regex' => 'The name should only contain letters and spaces.',
@@ -64,7 +63,6 @@ class RegisteredUserController extends Controller
             'age' => $request->age,
             'contact' => $request->contact,
             'plan_type' => $request->plan_type,
-            'limit' => $request->limit,
             'profile_picture' => $profilePicturePath,
         ]);
 
