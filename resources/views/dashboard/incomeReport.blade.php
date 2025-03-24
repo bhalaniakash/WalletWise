@@ -238,39 +238,36 @@
 
 
     // fromt here bar chart is starts
+    const ctxe = document.getElementById('incomeChart');
 
-    const ctxi = document.getElementById('incomeChart');
+    var categoryLabels = @json($categoryLabelsI->values());
+    var categoryIncomes = @json($categoryWiseIncome->values());
+    var categoryColors = @json($categoryColorsI);
 
-      var categoryLabelsI = @json($categoryLabelsI);
-      var categoryIncomes = @json($categoryWiseIncome);
-      var categoryColorsI = @json($categoryColorsI);
+    const datae = {
+      labels: categoryLabels,
+      datasets: [{
+        data: categoryIncomes, // Dynamic incomes per category
+        backgroundColor: categoryColors,
+        hoverOffset: 4
+      }]
+    };
 
-      const datai = {
-          labels: categoryLabelsI, // Corrected variable name
-          datasets: [{
-              label: 'Income by Category',
-              data: categoryIncomes, // Corrected variable
-              backgroundColor: categoryColorsI,
-              borderColor: categoryColorsI,
-              borderWidth: 1
-          }]
-      };
-
-      new Chart(ctxi, {
-          type: 'bar', 
-          data: datai,
-          options: {
-              responsive: true,
-              scales: {
-                  x: { // Ensure proper X-axis labeling
-                      beginAtZero: true
-                  },
-                  y: {
-                      beginAtZero: true
-                  }
-              }
+    new Chart(ctxe, {
+      type: 'bar', 
+      data: datae,
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            beginAtZero: true
           }
-      });
+        }
+      }
+    });
 
 
   </script>
