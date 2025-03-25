@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('expense_controllers', function (Blueprint $table) {
+        Schema::create('expense', function (Blueprint $table) {
             $table->id(); // Auto-increment primary key
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Reference to users table
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Reference to categories table

@@ -24,7 +24,7 @@ class ExpenseController extends Controller
         ]);
         // dd($request->all());
         
-        ModelsExpenseController::create([
+        Expense::create([
             'user_id' => Auth::id(), // ✅ Correct user ID retrieval
             'expense_name' => $request->input('expense_name'), // ✅ Correct field names
             'amount' => $request->input('amount'),

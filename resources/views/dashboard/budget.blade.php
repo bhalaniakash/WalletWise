@@ -277,7 +277,7 @@
                                 <td>Expense</td>
                                 <td>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</td>
                                 @php
-                                    $totalExpenses = \App\Models\ExpenseController::where('user_id', $user->id)->sum('amount');
+                                    $totalExpenses = \App\Models\Expense::where('user_id', $user->id)->sum('amount');
                                 @endphp
                                 <td>₹{{ number_format($totalExpenses, 2) }}</td>
                                 @php
@@ -308,8 +308,8 @@
                                 @endphp
                                 {{-- <td>₹{{ $totalSavings ? number_format($totalSavings, 2) : '0.00' }}</td> --}}
                                 @php
-                                    $totalIncome = \App\Models\IncomeController::where('user_id', $user->id)->sum('amount');
-                                    $totalExpense = \App\Models\ExpenseController::where('user_id', $user->id)->sum('amount');
+                                    $totalIncome = \App\Models\Income::where('user_id', $user->id)->sum('amount');
+                                    $totalExpense = \App\Models\Expense::where('user_id', $user->id)->sum('amount');
                                     $totalAmount = $totalIncome - $totalExpense;
                                 @endphp
                                 {{-- <td>₹{{ number_format($totalAmount, 2) }}</td> --}}
@@ -392,7 +392,7 @@
                                         const ctx = document.getElementById('expenseChart').getContext('2d');
                                         
                                         const categories = @json(\App\Models\Category::where('type', 'expense')->get());
-                                        const expenses = @json(\App\Models\ExpenseController::where('user_id', Auth::id())->get());
+                                        const expenses = @json(\App\Models\Expense::where('user_id', Auth::id())->get());
                                         
                                         const categoryData = categories.map(category => {
                                             const totalExpense = expenses
@@ -447,14 +447,14 @@
                                 <canvas id="incomeChart"></canvas>
                                 <script>
                                   document.addEventListener('DOMContentLoaded', function () {
-                                        const ctx = document.getElementById('incomeChart').getContext('2d');
-                                        
-                                        const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
-                                        const incomes = @json(\App\Models\IncomeController::where('user_id', Auth::id())->get());
-                                        
-                                        // Check if categories and incomes data is available
-                                        console.log(incomeCategories);
-                                        console.log(incomes);
+                                    const ctx = document.getElementById('incomeChart').getContext('2d');
+                                    
+                                    const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
+                                    const incomes = @json(\App\Models\Income::where('user_id', Auth::id())->get());
+                                    
+                                    // Check if categories and incomes data is available
+                                    console.log(incomeCategories);
+                                    console.log(incomes);
 
                                         const incomeCategoryData = incomeCategories.map(category => {
                                             const totalIncome = incomes

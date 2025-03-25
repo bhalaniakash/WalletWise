@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ExpenseController;
-use App\Models\incomeController;
+use App\Models\Expense;
+use App\Models\Income;
 use Illuminate\Http\Request;
 
 class chartController extends Controller
@@ -11,11 +11,11 @@ class chartController extends Controller
 
 public function index()
 {
-    $monthlyIncome = incomeController::selectRaw('SUM(amount) as total, MONTH(created_at) as month')
+    $monthlyIncome = Income::selectRaw('SUM(amount) as total, MONTH(created_at) as month')
         ->groupBy('month')
         ->pluck('total', 'month');
 
-    $monthlyExpense = ExpenseController::selectRaw('SUM(amount) as total, MONTH(created_at) as month')
+    $monthlyExpense = Expense::selectRaw('SUM(amount) as total, MONTH(created_at) as month')
         ->groupBy('month')
         ->pluck('total', 'month');
 

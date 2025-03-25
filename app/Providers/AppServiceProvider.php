@@ -4,9 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
-use App\Models\ExpenseController;
+use App\Models\Expense;
 use App\Models\User;
-use App\Models\incomeController;
+use App\Models\Income;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(){
         $categories = Category::all();
         $users = User::all();
-        $income = incomeController::all();
-        $expense = ExpenseController::all();
+        $income = Income::all();
+        $expense = Expense::all();
         View::share([
             'categories'=>$categories,
             'members'=>$users,

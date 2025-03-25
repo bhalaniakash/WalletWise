@@ -2,22 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class incomeController extends Model
+class Expense extends Model
 {
     use HasFactory;
 
-    protected $table = 'income_controllers'; // Table name
-
+    protected $table = 'expense_controllers'; // Table name
     protected $fillable = [
         'user_id',
         'category_id',
-        'source',
+        'expense_name', // Ensure this matches your database column
         'amount',
         'date',
+        'payment_method',
         'description',
+
     ];
 
     // Define relationships
