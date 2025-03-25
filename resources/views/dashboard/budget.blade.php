@@ -324,7 +324,6 @@
                                     </div>
                                 </td> --}}
                             </tr>
-
                             
                         </tbody>
                     </table>
@@ -448,61 +447,61 @@
                                 <canvas id="incomeChart"></canvas>
                                 <script>
                                   document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('incomeChart').getContext('2d');
-    
-    const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
-    const incomes = @json(\App\Models\IncomeController::where('user_id', Auth::id())->get());
-    
-    // Check if categories and incomes data is available
-    console.log(incomeCategories);
-    console.log(incomes);
+                                        const ctx = document.getElementById('incomeChart').getContext('2d');
+                                        
+                                        const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
+                                        const incomes = @json(\App\Models\IncomeController::where('user_id', Auth::id())->get());
+                                        
+                                        // Check if categories and incomes data is available
+                                        console.log(incomeCategories);
+                                        console.log(incomes);
 
-    const incomeCategoryData = incomeCategories.map(category => {
-        const totalIncome = incomes
-            .filter(income => income.category_id == category.id)
-            .reduce((sum, income) => sum + parseFloat(income.amount || 0), 0);
-        return {
-            name: category.name || 'Unknown',
-            total: totalIncome,
-            color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
-        };
-    });
-    
-    const incomeLabels = incomeCategoryData.map(data => data.name);
-    const incomeData = incomeCategoryData.map(data => data.total);
-    const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
-    
-    // Check if all the data arrays are valid
-    console.log(incomeLabels, incomeData, incomeBackgroundColors);
+                                        const incomeCategoryData = incomeCategories.map(category => {
+                                            const totalIncome = incomes
+                                                .filter(income => income.category_id == category.id)
+                                                .reduce((sum, income) => sum + parseFloat(income.amount || 0), 0);
+                                            return {
+                                                name: category.name || 'Unknown',
+                                                total: totalIncome,
+                                                color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                                            };
+                                        });
+                                        
+                                        const incomeLabels = incomeCategoryData.map(data => data.name);
+                                        const incomeData = incomeCategoryData.map(data => data.total);
+                                        const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
+                                        
+                                        // Check if all the data arrays are valid
+                                        console.log(incomeLabels, incomeData, incomeBackgroundColors);
 
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: incomeLabels,
-            datasets: [{
-                data: incomeData,
-                backgroundColor: incomeBackgroundColors,
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            const label = context.label || '';
-                            const value = context.raw || 0;
-                            return `${label}: ₹${value.toLocaleString()}`;
-                        }
-                    }
-                }
-            }
-        }
-    });
-});
+                                        new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: incomeLabels,
+                                                datasets: [{
+                                                    data: incomeData,
+                                                    backgroundColor: incomeBackgroundColors,
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'top',
+                                                    },
+                                                    tooltip: {
+                                                        callbacks: {
+                                                            label: function (context) {
+                                                                const label = context.label || '';
+                                                                const value = context.raw || 0;
+                                                                return `${label}: ₹${value.toLocaleString()}`;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
 
                                 </script>
                             </div>
