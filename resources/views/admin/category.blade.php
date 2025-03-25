@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-        <title>category</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <base href="/expenseMVC/">
-        <br>
-        @include('shared.header')
-        @include('shared.sidenav_admin')
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
+    <title>category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/expenseMVC/">
+    <br>
+    @include('shared.header')
+    @include('shared.sidenav_admin')
 
     <style type="text/css">
         body {
@@ -58,8 +58,10 @@
 <body>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
     <title>header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,34 +78,43 @@
             <div class="row">
                 <div class="container-fluid col-lg-12">
                     <div class="card shadow p-3" style="background-color: #616b6b; color: white;">
-                            <h5>Add  Catagory</h5>
-                        </div>
-
-                        <div class="card-body">
-                            <form id="addIncomeForm" method="post" action="{{ route('admin.category.store') }}">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="incomeName" class="form-label">Category of Expense/Income</label>
-                                    <input type="text" name="income_name" id="incomeName" class="form-control" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="type" class="form-label">Category Type</label>
-                                    <select name="income_type" id="type" class="form-control" required>
-                                        <option value="">Select Type</option>
-                                        <option value="income">Income</option>
-                                        <option value="expense">Expense</option>
-                                    </select>
-                                </div>
-                                <button type="submit" name="insert" class="btn btn-dark">Add Category</button>
-                            </form>
-                        </div>
-
+                        <h5>Add Catagory</h5>
                     </div>
-                    <br>
+
+                    <div class="card-body">
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+
+                        <form id="addIncomeForm" method="post" action="{{ route('admin.category.store') }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="incomeName" class="form-label">Category of Expense/Income</label>
+                                <input type="text" name="income_name" id="incomeName" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Category Type</label>
+                                <select name="income_type" id="type" class="form-control" required>
+                                    <option value="">Select Type</option>
+                                    <option value="income">Income</option>
+                                    <option value="expense">Expense</option>
+                                </select>
+                            </div>
+                            <button type="submit" name="insert" class="btn btn-dark">Add Category</button>
+                        </form>
+                    </div>
+
                 </div>
+                <br>
             </div>
-        </section>
+    </div>
+    </section>
     </div>
 
 </body>
