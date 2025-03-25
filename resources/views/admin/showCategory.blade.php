@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/expenseMVC/">
 
-    {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
+    {{--
+    <script type="text/javascript" src="lib/js/main.js"></script> --}}
 
     <style type="text/css">
         body {
@@ -93,8 +94,10 @@
     @include('shared.sidenav_admin');
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
     <title>header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,6 +109,14 @@
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
     <div class="page-content" id="content">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
                 <tr>
@@ -122,31 +133,31 @@
             </thead>
             <tbody>
                 @foreach($categories as $category)
-                @if($category->type == 'income')
-                <tr>
-                    <td>{{ $category->name }}</td>
-                    <td>
-                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
-                            @csrf
-                            <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
-                        </form>
-                    </td>
-                </tr>
-                @endif
+                    @if($category->type == 'income')
+                        <tr>
+                            <td>{{ $category->name }}</td>
+                            <td>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
                 <tr>
-                <th colspan="3">
+                    <th colspan="3">
                         <center>
                             <h5>Expense Categories</h5>
                         </center>
@@ -159,24 +170,24 @@
             </thead>
             <tbody>
                 @foreach($categories as $category)
-                @if($category->type == 'expense')
-                <tr>
-                    <td>{{ $category->name }}</td>
-                    <td>
-                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
-                            @csrf
-                            <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
-                        </form>
-                    </td>
-                </tr>
-                @endif
+                    @if($category->type == 'expense')
+                        <tr>
+                            <td>{{ $category->name }}</td>
+                            <td>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
