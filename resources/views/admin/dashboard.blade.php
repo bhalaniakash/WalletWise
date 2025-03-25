@@ -150,11 +150,11 @@
 
                                 // Extract user IDs from both reports
                                 $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
-                                    ->where('updated_at', '<', now()->subHour(1))
+                                    ->where('updated_at', '<', now()->subHours(1))
                                     ->pluck('user_id');
 
                                 $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
-                                    ->where('updated_at', '<', now()->subHour(1))
+                                    ->where('updated_at', '<', now()->subHours(1))
                                     ->pluck('user_id');
 
                                 // Merge, make unique, and count
@@ -215,10 +215,10 @@
     // chart 1
     $inactiveUsers = collect([]);
     $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
-        ->where('updated_at', '<', now()->subHour(1))
+        ->where('updated_at', '<', now()->subHours(1))
         ->pluck('user_id');
     $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
-        ->where('updated_at', '<', now()->subHour(1))
+        ->where('updated_at', '<', now()->subHours(1))
         ->pluck('user_id');
     $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
     $totalUsers = $totalUsers->where('is_Admin', '!=', 'Yes');

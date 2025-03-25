@@ -78,11 +78,19 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="incomedate">Date: </label>
-                            <input type="date" class="form-control" name="idate" id="" placeholder="Income date"
-                                required />
+                            <label for="expensedate">Date: </label>
+                            <input type="date" class="form-control" name="date" id="incomedate" required />
                         </div>
                     </div>
+
+                    <script>
+                        // Get today's date in YYYY-MM-DD format
+                        const today = new Date().toISOString().split("T")[0];
+
+                        // Set the max attribute of the date input field
+                        document.getElementById("incomedate").setAttribute("max", today);
+                    </script>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomecategory">Category:</label>
