@@ -46,13 +46,23 @@
             <header>
                 <h1 class="h3 display">Add Expense</h1>
             </header>
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
             <form class="mt-3" method="POST" action="{{ route('expense.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="expensename">Name: </label>
-                            <input type="text" class="form-control" name="expense_name" placeholder="Expense name" required />
+                            <input type="text" class="form-control" name="expense_name" placeholder="Expense name"
+                                required />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -73,19 +83,19 @@
                         <div class="form-group">
                             <label for="incomecategory">Category:</label>
                             <select class="form-control" name="category_id" id="">
-                            @foreach($categories as $category)
-                            @if($category->type == 'expense')
-                                <option value="{{ $category->id }}">
-                                    <p>{{ $category->name }}</p>
-                                </option>
-                                @endif
+                                @foreach($categories as $category)
+                                    @if($category->type == 'expense')
+                                        <option value="{{ $category->id }}">
+                                            <p>{{ $category->name }}</p>
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-md-6">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="payment_mode">Mode: </label>
                             <select class="form-control" name="payment_method" required>
@@ -112,7 +122,7 @@
             </form>
         </div>
         <br>
-       
+
 
     </div>
 
