@@ -167,7 +167,6 @@
                     @endphp
                     <script>
                       const ctxe = document.getElementById('expenseChart');
-
                       var categoryLabels = @json($categoryLabels -> values());
                       var categoryExpenses = @json($categoryWiseExpenses -> values());
                       var categoryColors = @json($categoryColors);
