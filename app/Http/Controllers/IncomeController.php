@@ -19,7 +19,7 @@ class IncomeController extends Controller
             'icategory' => 'required|exists:categories,id',
             'idescription' => 'nullable|string',
         ]);
-        ModelsIncomeController::create([
+        Income::create([
             'user_id' => Auth::id(), // Get the currently authenticated user ID
             'source' => $request->input('iname'),
             'amount' => $request->input('iamount'),
