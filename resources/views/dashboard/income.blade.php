@@ -48,6 +48,14 @@
             <header>
                 <h1 class="h3 display">Add Income </h1>
             </header>
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <form class="mt-3" method="POST" action="{{ route('income.store') }}">
                 @csrf
                 <input type="hidden" name="IId" value="1" />
@@ -55,15 +63,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomename">Name: </label>
-                            <input type="text" class="form-control" name="iname" id=""
-                                placeholder="Income name" required />
+                            <input type="text" class="form-control" name="iname" id="" placeholder="Income name"
+                                required />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomeamount">Amount:</label>
-                            <input type="number" class="form-control" name="iamount" id=""
-                                placeholder="Amount" required value="" />
+                            <input type="number" class="form-control" name="iamount" id="" placeholder="Amount" required
+                                value="" />
                         </div>
                     </div>
                 </div>
@@ -71,8 +79,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="incomedate">Date: </label>
-                            <input type="date" class="form-control" name="idate" id=""
-                                placeholder="Income date" required />
+                            <input type="date" class="form-control" name="idate" id="" placeholder="Income date"
+                                required />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -80,11 +88,11 @@
                             <label for="incomecategory">Category:</label>
                             <select class="form-control" name="icategory" id="">
                                 @foreach($categories as $category)
-                                @if($category->type == 'income')
-                                <option value="{{ $category->id }}">
-                                    <p>{{ $category->name }}</p>
-                                </option>
-                                @endif
+                                    @if($category->type == 'income')
+                                        <option value="{{ $category->id }}">
+                                            <p>{{ $category->name }}</p>
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -94,7 +102,8 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="comment">Description:</label>
-                            <textarea class="form-control" rows="3" id="comment" name="idescription" placeholder="" value=""></textarea>
+                            <textarea class="form-control" rows="3" id="comment" name="idescription" placeholder=""
+                                value=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -108,7 +117,7 @@
             </form>
         </div>
         <br>
-       
+
 
     </div>
 
