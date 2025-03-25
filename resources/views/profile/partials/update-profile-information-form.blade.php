@@ -29,7 +29,17 @@
         <form id="send-verification" method="post" action="{{ route('verification.send') }}">
             @csrf
         </form>
-
+        @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Whoops! Something went wrong.</strong>
+            <ul class="mt-2">
+                @foreach ($errors->all() as $error)
+                    <li class="text-sm">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    
         <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
             @csrf
             @method('patch')
