@@ -441,6 +441,7 @@
                                 </script>
                             </div>
                         </div>
+                        
                         <div class="col-md-6">
                             <div class="card">
                                 <h6 class="text-center">Income Distribution</h6>
@@ -502,8 +503,6 @@
                     <br>
                 </div>
             </section>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
 </body>
 </html>
