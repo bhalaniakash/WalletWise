@@ -129,12 +129,12 @@
           $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
           return $dateMatch && $categoryMatch;
         });
-      @endphp
+        @endphp
               @foreach ($filteredincomes as $i)
           <tr>
           <td>{{ $i->date }}</td>
           <td>{{ $i->source }}</td>
-          <td>{{ $i->category_id }}</td>
+          {{-- <td>{{ $i->category_id }}</td> --}}
           <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
           <td>{{ $i->description }}</td>
           <td>₹ {{ $i->amount }}</td>
@@ -154,14 +154,16 @@
               <h5>Income chart</h5>
             </div>
             <div class="card-body">
-              <div class="col-md-10">
-                <div id="piechart">
-                  <canvas id="incomeChart"></canvas>
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="piechart">
+                    <canvas id="incomeChart"></canvas>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-10">
-                <div id="piechart">
-                  <canvas id="incomeChartDate"></canvas>
+                <div class="col-md-6">
+                  <div id="piechart">
+                    <canvas id="incomeChartDate"></canvas>
+                  </div>
                 </div>
               </div>
             </div>
@@ -301,6 +303,8 @@
         }
       }
     });
+
+    // chart 2
     const ctx2 = document.getElementById('incomeChartDate');
 
     var dateLabelsI = @json($dateLabelsI->values());
