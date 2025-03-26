@@ -177,10 +177,10 @@
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
 @php
-	function generateRandomColor()
-	{
-		return 'rgb(' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
-	}
+  function generateRandomColor()
+  {
+    return 'rgb(' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ')';
+  }
 
 	$currentMonth = now()->format('Y-m');
 	$user = auth()->user();
