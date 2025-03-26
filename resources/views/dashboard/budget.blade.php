@@ -31,7 +31,7 @@
         border-color: #000;
         padding: 15px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
+        border-radius: 10px; 
     }
 
     .table tbody tr th,
@@ -41,11 +41,8 @@
 
     .btn-dark {
         background-color: #000;
-        border-
-        .table tbody tr th,
-        .table tbody tr td {
-            color: #000;
-        }
+        border-color: #000;
+    }
 
         .btn-dark {
             background-color: #000;
@@ -84,7 +81,7 @@
             height: 500px;
 
 
-        }}
+        }
         .text-center{
             text-align: center;
             background-color: rgb(217, 217, 217);
@@ -389,7 +386,7 @@
             
                         <div class="card" style="width: 33% ;">
                             <h6 class="text-center">Expense Distribution</h6>
-                            <canvas id="expenseChart" style="width: 100%; height: 300px;"></canvas>
+                            <canvas id="expenseChart" style="width: 100%; height: 300px;">
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {
                                     const ctx = document.getElementById('expenseChart').getContext('2d');
@@ -442,11 +439,12 @@
                                     });
                                 });
                             </script>
+                            </canvas>
                         </div>
             
                         <div class="card" style="width: 33% ;">
                             <h6 class="text-center">Income Distribution</h6>
-                            <canvas id="incomeChart" style="width: 100%; height: 300px;"></canvas>
+                            <canvas id="incomeChart" style="width: 100%; height: 300px;">
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {
                                     const ctx = document.getElementById('incomeChart').getContext('2d');
@@ -498,14 +496,14 @@
                                         }
                                     });
                                 });
+
                             </script>
+                            </canvas>
                         </div>
                     </div>
                     <br>
                 </div>
             </section>
-            
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
