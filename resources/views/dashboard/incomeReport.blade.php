@@ -129,13 +129,17 @@
           $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
           return $dateMatch && $categoryMatch;
         });
-      @endphp
+        @endphp
               @foreach ($filteredincomes as $i)
           <tr>
           <td>{{ $i->date }}</td>
           <td>{{ $i->source }}</td>
-          <!-- <td>{{ $i->category_id }}</td> -->
-          <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
+          <td>{{ $i->category_id }}</td>
+          @if (!$i->category_id)
+        <td>Other</td>
+      @else
+      <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
+    @endif
           <td>{{ $i->description }}</td>
           <td>₹ {{ $i->amount }}</td>
           </tr>
@@ -268,7 +272,7 @@
     var categoryLabels = @json($categoryLabelsI->values());
     var categoryIncomes = @json($categoryWiseIncome->values());
     var categoryColors = @json($categoryColorsI);
-    
+
     const data = {
       labels: categoryLabels,
       datasets: [{
@@ -278,7 +282,7 @@
         hoverOffset: 4
       }]
     };
-    
+
     new Chart(ctx, {
       type: 'bar',
       data: data,
@@ -302,14 +306,14 @@
       }
     });
     const ctx2 = document.getElementById('incomeChartDate');
-    
+
     var dateLabelsI = @json($dateLabelsI->values());
     var dateWiseIncome = @json($dateWiseIncome->values());
     var dateColorsI = @json($dateColorsI);
-    
+
 
     const data2 = {
-      labels : dateLabelsI,
+      labels: dateLabelsI,
       datasets: [{
         label: 'Income Distribution [Date]',
         data: dateWiseIncome,
