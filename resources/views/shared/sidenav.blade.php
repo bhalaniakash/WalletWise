@@ -143,53 +143,65 @@
       color: black !important;
       /* Primary - Pure Black */
     }
-
-  </style>
-</head>
+  .span {
+    width: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+</style>
 
 <body>
   <!-- Vertical Sidebar -->
-
-
-  <!--vertical bar-->
   <div class="vertical-nav" id="sidebar">
-    <ul class="nav flex-column bg-dark mb-0">
+    <ul class="nav flex-column bg-dark mb-0 mt-4">
       <li class="nav-item">
-        <a href="{{ url('dashboard') }}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="{{ url('dashboard') }}" class="nav-link">
+          <span class="span"><i class="fas fa-tachometer-alt"></i></span> Dashboard
+        </a>
       </li>
-      {{-- <li class="nav-item">
-        <a href="{{ url('dashboard/category') }}" class="nav-link"> <i class="fas fa-list-alt"></i> Create category</a>
-      </li> --}}
+      
       <li class="nav-item">
-        <a href="{{ url('dashboard/income') }}" class="nav-link"> <i class="fas fa-dollar-sign"></i> Add income</a>
+        <a href="{{ url('dashboard/income') }}" class="nav-link">
+          <span class="span"><i class="fas fa-dollar-sign"></i></span> Add income
+        </a>
       </li>
+      
       <li class="nav-item">
-        <a href="{{ url('dashboard/expense') }}" class="nav-link"> <i class="fas fa-money-bill-wave"></i> Add expense</a>
+        <a href="{{ url('dashboard/expense') }}" class="nav-link">
+          <span class="span"><i class="fas fa-money-bill-wave"></i></span> Add expense
+        </a>
       </li>
+      
       <li class="nav-item">
-        <a href="{{ url('dashboard/incomeReport') }}" class="nav-link"> <i class="fas fa-chart-line"></i> Income report</a>
+        <a href="{{ url('dashboard/incomeReport') }}" class="nav-link">
+          <span class="span"><i class="fas fa-chart-line"></i></span> Income report
+        </a>
       </li>
+      
       <li class="nav-item">
-        <a href="{{ url('dashboard/expenseReport') }}" class="nav-link"> <i class="fas fa-chart-pie"></i> Expense report</a>
+        <a href="{{ url('dashboard/expenseReport') }}" class="nav-link">
+          <span class="span"><i class="fas fa-chart-pie"></i></span> Expense report
+        </a>
       </li>
+      
       <li class="nav-item">
-        <a href="{{ url('dashboard/budget') }}" class="nav-link"> <i class="fas fa-piggy-bank"></i> Budget</a>
+        <a href="{{ url('dashboard/budget') }}" class="nav-link">
+          <span class="span"><i class="fas fa-piggy-bank"></i></span> Budget
+        </a>
       </li>
-     
-          
-       
+      
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-item">
           @csrf
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
-          <i class="fas fa-sign-out-alt"></i>
-            {{ __('Log Out') }}
+            <span class="span"><i class="fas fa-sign-out-alt"></i></span> {{ __('Log Out') }}
           </a>
         </form>
       </li>
     </ul>
   </div>
-
   {{-- this script does not do anything  --}}
 
   {{-- <script type="text/javascript" src="lib/js/main.js"></script>

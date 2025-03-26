@@ -123,25 +123,35 @@
     .nav-item.active .nav-link i {
       color: #121212 !important;
     }
-    
+    .span {
+    width: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
   </style>
 </head>
 <body>
   <!--vertical bar-->
   <div class="vertical-nav" id="sidebar">
-    <ul class="nav flex-column bg-dark mb-0">
+    <ul class="nav flex-column bg-dark mb-0 mt-4">
       <li class="nav-item">
-        <a href=" {{url('admin/dashboard')}}" class="nav-link"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href=" {{url('admin/dashboard')}}" class="nav-link">
+          <span class="span"><i class="fas fa-tachometer-alt"></i></span>Dashboard</a>
       </li>
       <li class="nav-item">
-        <a href="{{url('admin/category')}}" class="nav-link"> <i class="fas fa-list-alt"></i> Category</a>
+        <a href="{{url('admin/category')}}" class="nav-link">
+          <span class="span"><i class="fas fa-list-alt"></i></span> Category</a>
       </li>
       
       <li class="nav-item">
-        <a href="{{url('admin/showCategory')}}" class="nav-link"><i class="fas fa-eye"></i> Show Category</a>
+        <a href="{{url('admin/showCategory')}}" class="nav-link">
+          <span class="span"><i class="fas fa-eye"></i></span> Show Category</a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('admin/members') }}" class="nav-link"><i class="fas fa-user-alt"></i>Member</a>
+        <a href="{{ url('admin/members') }}" class="nav-link">
+          <span class="span"><i class="fas fa-user-alt"></i></span>Member</a>
       </li>
       <li class="nav-item">
        
@@ -150,7 +160,7 @@
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
-          <i class="fas fa-sign-out-alt" ></i>
+          <span class="span"><i class="fas fa-sign-out-alt" ></i></span>
             {{ __('Log Out') }}
           </a>
         </form>

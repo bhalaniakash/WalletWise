@@ -46,7 +46,7 @@
       <section>
         <div class="container-fluid">
           <div class="row">
-            <div style="margin-left: 1rem; margin-bottom: 1rem; font-size: 1rem; font-weight: bold; color: #4A5568; background: #F7FAFC; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block;">
+            <div style="margin-left: 1rem; margin-bottom: 1rem; font-size: 1rem; font-weight: bold; color: #4A5568; background: #F7FAFC; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block; display: inline;">
               <span style="color: #2D3748;">HOME</span> &gt; <span style="color: #3182CE;">EXPENSE REPORT</span>
             </div>
 
@@ -135,7 +135,7 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-start">
-            <button class="btn btn-dark" id="downloadReport">Download Report</button>
+            <button class="btn btn-dark mb-4 mt-2" id="downloadReport">Download Report</button>
           </div>
           <div class="card shadow">
             <div class="card-header d-flex">
