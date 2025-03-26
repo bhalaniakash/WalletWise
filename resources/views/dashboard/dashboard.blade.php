@@ -6,11 +6,13 @@
 	<title>Dashboard</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
+
 	<style type="text/css">
 		body {
 			min-height: 100vh;
 			overflow-x: hidden;
 			margin-top: 0;
+			
 		}
 
 		.page-content {

@@ -179,7 +179,7 @@
 
             <!-- Chart Section -->
             <div class="row mt-4">
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="card">
                         <div class="card-body text-center">
                             <h5 class="card-title">User Statistics</h5>
@@ -187,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="card">
                         <div class="card-body text-center">
                             <h5 class="card-title">Income Statistics</h5>
@@ -195,7 +195,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-12">
                     <div class="card">
                         <div class="card-body text-center">
                             <h5 class="card-title">Expense Statistics</h5>
@@ -204,7 +204,7 @@
                     </div>
                 </div>
             </div>
-
+            
         </div>
     </div>
 </body>
