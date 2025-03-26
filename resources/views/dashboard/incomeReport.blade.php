@@ -129,17 +129,13 @@
           $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
           return $dateMatch && $categoryMatch;
         });
-        @endphp
+      @endphp
               @foreach ($filteredincomes as $i)
           <tr>
           <td>{{ $i->date }}</td>
           <td>{{ $i->source }}</td>
           <td>{{ $i->category_id }}</td>
-          @if (!$i->category_id)
-        <td>Other</td>
-      @else
-      <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
-    @endif
+          <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
           <td>{{ $i->description }}</td>
           <td>₹ {{ $i->amount }}</td>
           </tr>
