@@ -134,7 +134,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Total Users</h5>
-                            {{-- this is an code for get total user count --}}
                             <p>{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
                         </div>
                     </div>
@@ -143,12 +142,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Inactive Users</h5>
-                            {{-- this is an code to get the user data who is not done anything from last 7 days(1 week)
-                            --}}
                             @php
                                 $inactiveUsers = collect([]);
 
-                                // Extract user IDs from both reports
                                 $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
                                     ->where('updated_at', '<', now()->subHours(1))
                                     ->pluck('user_id');
@@ -157,7 +153,6 @@
                                     ->where('updated_at', '<', now()->subHours(1))
                                     ->pluck('user_id');
 
-                                // Merge, make unique, and count
                                 $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
                             @endphp
                             <p>{{ $inactiveUsers->count() }}</p>
@@ -168,7 +163,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Total Income Categories</h5>
-                            {{-- this is an code for get total user count --}}
                             <p>{{$income = $categories->where('type', 'income')->count()}}</p>
                         </div>
                     </div>
@@ -177,39 +171,44 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Total Expense Categories</h5>
-                            {{-- this is an code for get total user count --}}
                             <p>{{$expense = $categories->where('type', 'expense')->count()}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card-body">
-                        <div id="piechart">
+
+            <!-- Chart Section -->
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">User Statistics</h5>
                             <canvas id="user"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card-body">
-                        <div id="piechart">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Income Statistics</h5>
                             <canvas id="income"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card-body">
-                        <div id="piechart">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Expense Statistics</h5>
                             <canvas id="expense"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </body>
+
 @php
 
     // chart 1

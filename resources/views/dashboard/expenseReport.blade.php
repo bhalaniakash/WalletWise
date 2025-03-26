@@ -120,7 +120,7 @@
           $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
           return $dateMatch && $categoryMatch;
         });
-        @endphp
+      @endphp
               @foreach ($filteredExpenses as $e)
           <tr>
           <td>{{ $e->date }}</td>
@@ -170,8 +170,9 @@
   // chart 1
   function generateRandomColor()
   {
-    return 'rgb(' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
+    return 'rgb(' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ')';
   }
+
 
   $currentMonth = now()->format('Y-m');
   $user = auth()->user();
