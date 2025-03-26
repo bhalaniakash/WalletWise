@@ -14,6 +14,8 @@
 
     <title>header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Andada Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ramaraja:wght@400;700&display=swap" rel="stylesheet">
     <base href="/expenseMVC/">
     <link href="{{ asset('link/link.php') }}">
 
@@ -24,6 +26,7 @@
             color: #000;
             background-color: white;
             margin-top: 0;
+            font-family: 'Andada Pro', sans-serif;
 
         }
         
@@ -103,7 +106,7 @@
             <div class="logo m-2">
                 <img src="/img/logo-removebg-preview.png" width="50px" height="50px"  />
             </div>
-            <h2 style="font-family: serif">WalletWise</h2>
+            <h2 style="font-family: 'Andada Pro', sans-serif;">WalletWise</h2>
         </div>
         <div>
         <a href="{{ route('profile.edit') }}" class="nav-link" >
