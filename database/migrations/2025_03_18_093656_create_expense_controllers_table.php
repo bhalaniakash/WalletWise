@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('expense', function (Blueprint $table) {
             $table->id(); // Auto-increment primary key
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Reference to users table
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Reference to categories table
+            $table->foreignId('category_id')->constrained();
             $table->string('expense_name'); // Name of the expense
             $table->decimal('amount', 10, 2); // Amount with 2 decimal places
             $table->date('date'); // Expense date
