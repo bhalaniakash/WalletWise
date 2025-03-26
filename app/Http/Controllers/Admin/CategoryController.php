@@ -35,20 +35,22 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        // Check if there's a default category for this type (income/expense)
-        $defaultCategory = Category::firstOrCreate(
-            ['name' => 'Other', 'type' => $category->type]
-        );
+        // Ensure "Other-Expenses" category exists
+        $otherExpensesCategory = Category::firstOrCreate(['name' => 'Other-Expenses']);
 
-        // Update all related records to use the default category
-        Expense::where('category_id', $id)->update(['category_id' => $defaultCategory->id]);
-        Income::where('category_id', $id)->update(['category_id' => $defaultCategory->id]);
+        // Ensure "Other-Incomes" category exists
+        $otherIncomesCategory = Category::firstOrCreate(['name' => 'Other-Incomes']);
+
+        // Reassign related records based on type
+        Expense::where('category_id', $id)->update(['category_id' => $otherExpensesCategory->id]);
+        Income::where('category_id', $id)->update(['category_id' => $otherIncomesCategory->id]);
 
         // Delete the category
         $category->delete();
 
-        return redirect()->back()->with('success', 'Category deleted. Related records moved to "Other".');
+        return back()->with('success', 'Category deleted. Expenses moved to Other-Expenses, Incomes moved to Other-Incomes.');
     }
+
 
     public function edit($id)
     {
