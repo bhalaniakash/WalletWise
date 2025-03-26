@@ -12,6 +12,7 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .page-content {
@@ -21,17 +22,20 @@
             background-color: white;
             color: black;
             margin-top: 5% !important;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
+            font-family: 'Arial, sans-serif'; 
         }
 
         th,
         td {
             color: #000;
             background-color: white;
+            font-family: 'Arial, sans-serif'; 
         }
     </style>
 </head>

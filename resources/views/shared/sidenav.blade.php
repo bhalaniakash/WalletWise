@@ -20,15 +20,15 @@
   <title>Collapsible sidebar using Bootstrap 4</title>
 
   <base href="/expenseMVC/">
-
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
     body {
       background-color: #121212;
       /* Primary - Pure Black */
       color: #E0E0E0;
       /* Text - Light Gray */
-      
+      font-family: 'Andada Pro', sans-serif; 
     }
     
     .vertical-nav {
@@ -46,7 +46,7 @@
       color: #E0E0E0;
       /* Text - Light Gray */
       text-decoration: none;
-
+      font-family: 'Arial, sans-serif'; 
     }
 
     .text-gray {

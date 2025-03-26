@@ -3,7 +3,7 @@
 <head>
     <style>
         body {
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Arial, sans-serif';
             background-color: #f7fafc;
             color: #000;
         }
@@ -11,6 +11,7 @@
         button {
             background-color: #000;
             border-color: #000;
+            font-family: 'Arial, sans-serif'; 
         }
     </style>
 </head>

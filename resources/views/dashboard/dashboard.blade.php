@@ -12,7 +12,7 @@
 			min-height: 100vh;
 			overflow-x: hidden;
 			margin-top: 0;
-			
+			font-family: 'Arial, sans-serif'; 
 		}
 
 		.page-content {
@@ -20,16 +20,18 @@
 			margin-right: 1rem;
 			transition: all 0.4s;
 			margin-top: 5% !important;
+			font-family: 'Arial, sans-serif'; 
 		}
 
 		.content.active {
 			margin-left: 1rem;
 			margin-right: 1rem;
+			font-family: 'Arial, sans-serif'; 
 		}
 	</style>
 	@include('shared.sidenav');
 	@include('shared.header');
-
+{{-- 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -45,7 +47,7 @@
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
 </head>
 

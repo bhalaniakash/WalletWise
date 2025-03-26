@@ -11,6 +11,7 @@
         overflow-x: hidden;
         color: #000;
         background-color: white;
+        font-family: 'Arial, sans-serif'; 
     }
 
     .page-content {
@@ -20,6 +21,7 @@
         background-color: white;
         color: #000;
         margin-top: 50px;
+        font-family: 'Arial, sans-serif'; 
     }
 
     .content.active {
@@ -32,16 +34,19 @@
         padding: 15px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px; 
+        font-family: 'Arial, sans-serif'; 
     }
 
     .table tbody tr th,
     .table tbody tr td {
         color: #000;
+        font-family: 'Arial, sans-serif'; 
     }
 
     .btn-dark {
         background-color: #000;
         border-color: #000;
+        font-family: 'Arial, sans-serif'; 
     }
 
         .btn-dark {
@@ -52,6 +57,7 @@
         th, td {
             color: #000;
             background-color: white;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .progress {
@@ -68,10 +74,12 @@
         .amount-positive {
             color: green;
             font-weight: bold;
+            font-family: 'Arial, sans-serif'; 
         }
         .amount-negative {
             color: red;
             font-weight: bold;
+            font-family: 'Arial, sans-serif'; 
         }
 
         /* this is for the chart */
@@ -79,14 +87,14 @@
         .categoryChart{
             width: 500px;
             height: 500px;
-
-
+            font-family: 'Arial, sans-serif'; 
         }
         .text-center{
             text-align: center;
             background-color: rgb(217, 217, 217);
             padding: 1%;
             border-radius: 50px;
+            font-family: 'Arial, sans-serif'; 
         }
     </style>
 </head>

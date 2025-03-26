@@ -15,10 +15,8 @@
       min-height: 100vh;
       overflow-x: hidden;
       background-color: white;
-      /* Background color */
-      color: black;
-      /* Text color */
-
+      color: black;  
+      font-family: 'Arial, sans-serif'; 
     }
 
     .page-content {
@@ -28,22 +26,25 @@
       color: #000;
       background-color: white;
       margin-top: 5% !important;
+      font-family: 'Arial, sans-serif'; 
     }
 
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
+      font-family: 'Arial, sans-serif'; 
     }
 
     .table thead {
       background-color: #121212;
-      /* dark color */
+      font-family: 'Arial, sans-serif'; 
     }
 
     th,
     td {
       color: #000;
       background-color: white;
+      font-family: 'Arial, sans-serif'; 
     }
   </style>
 </head>
