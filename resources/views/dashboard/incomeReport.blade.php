@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html> --}}
 <html>
 
 <head>
@@ -34,8 +34,6 @@
       margin-left: 1rem;
       margin-right: 1rem;
     }
-
-
 
     .table thead {
       background-color: #121212;
@@ -129,7 +127,7 @@
           $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
           return $dateMatch && $categoryMatch;
         });
-      @endphp
+        @endphp
               @foreach ($filteredincomes as $i)
           <tr>
           <td>{{ $i->date }}</td>
@@ -154,14 +152,16 @@
               <h5>Income chart</h5>
             </div>
             <div class="card-body">
-              <div class="col-md-10">
-                <div id="piechart">
-                  <canvas id="incomeChart"></canvas>
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="piechart">
+                    <canvas id="incomeChart"></canvas>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-10">
-                <div id="piechart">
-                  <canvas id="incomeChartDate"></canvas>
+                <div class="col-md-6">
+                  <div id="piechart">
+                    <canvas id="incomeChartDate"></canvas>
+                  </div>
                 </div>
               </div>
             </div>
@@ -209,8 +209,6 @@
     ->groupBy('date') // Grouping by date
     ->keys();
   $dateColorsI = collect($dateLabelsI)->map(fn() => generateRandomColor())->toArray();
-
-
 
   @endphp
 
@@ -264,7 +262,6 @@
       win.print();
     }
 
-
     // fromt here bar chart is starts
     const ctx = document.getElementById('incomeChart');
 
@@ -305,9 +302,7 @@
       }
     });
 
-
-    // from here bar chart is starts for the date wise income
-    
+    // chart 2
     const ctx2 = document.getElementById('incomeChartDate');
 
     var dateLabelsI = @json($dateLabelsI->values());
