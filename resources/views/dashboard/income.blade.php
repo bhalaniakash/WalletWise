@@ -79,7 +79,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="expensedate">Date: </label>
-                            <input type="date" class="form-control" name="date" id="incomedate" required />
+                            <input type="date" class="form-control" name="idate" id="incomedate" required />
                         </div>
                     </div>
 

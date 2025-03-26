@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Expense extends Model
 {
 
-    use HasFactory;
-    protected $table = 'expense_controllers'; 
+    protected $table = 'expenses'; // Table name
     protected $fillable = [
         'user_id',
         'category_id',

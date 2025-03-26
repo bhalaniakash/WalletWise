@@ -100,10 +100,10 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark w-100 p-0" id="content" style="display: flex; position: fixed; justify-content: space-between; align-items: center;">
         <div class="navbar-brand" style="display: flex; justify-content: end; align-items: center;">
-            <div class="logo">
+            <div class="logo m-2">
                 <img src="/img/logo-removebg-preview.png" width="50px" height="50px"  />
             </div>
-            <h4>WalletWise</h4>
+            <h2 style="font-family: serif">WalletWise</h2>
         </div>
         <div>
         <a href="{{ route('profile.edit') }}" class="nav-link" >

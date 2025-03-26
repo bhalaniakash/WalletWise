@@ -101,31 +101,31 @@
             <div class="form-container">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input id="name" type="text" name="name" required>
+                    <input id="name" type="text" name="name">
                     @error('name') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" name="email" required>
+                    <input id="email" type="email" name="email"  >
                     @error('email') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input id="password" type="password" name="password" required>
+                    <input id="password" type="password" name="password"  >
                     @error('password') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation" required>
+                    <input id="password_confirmation" type="password" name="password_confirmation"  >
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input id="age" type="number" name="age" min="15" required>
+                    <input id="age" type="number" name="age" min="15"  >
                     @error('age') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="contact">Contact</label>
-                    <input id="contact" type="number" name="contact" required>
+                    <input id="contact" type="number" name="contact"  >
                     @error('contact') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">

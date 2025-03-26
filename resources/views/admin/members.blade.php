@@ -84,7 +84,7 @@
                     // Merge reports and extract unique user IDs
                     $activeUserIds = $expenseReport->concat($incomeReport)
                     ->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '>=', now()->subHour(1))
+                    ->where('updated_at', '>=', now()->subHours(1))
                     ->pluck('user_id')
                     ->unique();
                     // Fetch all inactive users in one query
@@ -132,14 +132,14 @@
                     // Extract unique user IDs from both reports for active users
                     $activeUserIds = $expenseReport->concat($incomeReport)
                     ->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '>=', now()->subHour(1)) // Active users within the last hour
+                    ->where('updated_at', '>=', now()->subHours(1)) // Active users within the last hour
                     ->pluck('user_id')
                     ->unique();
 
                     // Extract inactive user IDs (users who haven't updated in the last hour)
                     $inactiveUserIds = $expenseReport->concat($incomeReport)
                     ->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '<', now()->subHour(1)) // Inactive users
+                    ->where('updated_at', '<', now()->subHours(1)) // Inactive users
                         ->pluck('user_id')
                         ->unique();
 
