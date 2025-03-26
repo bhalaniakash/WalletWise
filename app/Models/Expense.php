@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
-    use HasFactory;
 
-    protected $table = 'expense_controllers'; // Table name
+    use HasFactory;
+    protected $table = 'expense_controllers'; 
     protected $fillable = [
         'user_id',
         'category_id',
-        'expense_name', // Ensure this matches your database column
+        'expense_name', 
         'amount',
         'date',
         'payment_method',
         'description',
-
     ];
 
     // Define relationships
@@ -31,4 +30,5 @@ class Expense extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
 }
