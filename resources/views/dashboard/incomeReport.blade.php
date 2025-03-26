@@ -78,13 +78,13 @@
                         <div class="form-group">
                           <select class="form-control" name="icat" onchange="this.form.submit()">
                             <option value="">All Categories</option>
-                            @foreach ($categories as $category)
-                @if ($category->type == 'income')
-          <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
-            {{ $category->name }}
-          </option>
-        @endif
-              @endforeach
+                              @foreach ($categories as $category)
+                         @if ($category->type == 'income')
+                              <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                              </option>
+                        @endif
+                          @endforeach
                           </select>
                         </div>
                       </div>
@@ -134,7 +134,7 @@
           <tr>
           <td>{{ $i->date }}</td>
           <td>{{ $i->source }}</td>
-          <td>{{ $i->category_id }}</td>
+          {{-- <td>{{ $i->category_id }}</td> --}}
           <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
           <td>{{ $i->description }}</td>
           <td>₹ {{ $i->amount }}</td>
@@ -172,6 +172,9 @@
       </section>
     </div>
   </div>
+
+  {{-- chart 1 --}}
+
   @php
   function generateRandomColor()
   {
@@ -301,6 +304,10 @@
         }
       }
     });
+
+
+    // from here bar chart is starts for the date wise income
+    
     const ctx2 = document.getElementById('incomeChartDate');
 
     var dateLabelsI = @json($dateLabelsI->values());
