@@ -13,7 +13,7 @@
             font-family: 'Roboto', Arial, sans-serif;
             background-color: #f8f9fa;
             color: #343a40;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         .page-content {
@@ -26,14 +26,14 @@
             background-color: #ffffff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         #page-wrapper {
@@ -41,20 +41,20 @@
             border-radius: 8px;
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
             padding: 0.5rem;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         h1 {
             font-size: 2rem;
             font-weight: 600;
             color: white;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         .container {
             margin-top: 2rem;
             /* height:100%; */
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         .row {
@@ -126,27 +126,84 @@
     <script type="text/javascript">
     </script>
 </head>
+<style>
+    /* Admin Dashboard Title */
+    .admin-dashboard-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(to right, #666, #222);
+        /* Matching shade */
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Dashboard Cards */
+    .dashboard-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .dashboard-card:hover {
+        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sidebar */
+    .sidebar-item {
+        color: white;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    .sidebar-item:hover,
+    .sidebar-item.active {
+        background: linear-gradient(to right, #444, #000);
+        font-weight: bold;
+    }
+
+    /* Icons */
+    .card-icon {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .card-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #222;
+    }
+    #row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ensures both cards stay in one row */
+}
+</style>
 
 <body>
     <br>
     <div class="page-content" id="content">
-        <div id="page-wrapper">
-            <h1>Admin Dashboard</h1>
+        <div>
+            <h1 class="admin-dashboard-title">Admin Dashboard</h1>
         </div>
 
         <div class="container">
-            <div class="row">
+            <div class="row mb-2" id="row">
                 <div class="col-md-5">
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="dashboard-card">
+                            <i class="fas fa-users card-icon"></i>
                             <h5 class="card-title">Total Users</h5>
-                            <p>{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
+                            <p class="card-number">{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
                         </div>
-                    </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="dashboard-card">
+                            <i class="fas fa-user-slash"></i>
                             <h5 class="card-title">Inactive Users</h5>
                             @php
                                 $inactiveUsers = collect([]);
@@ -161,51 +218,53 @@
 
                                 $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
                             @endphp
-                            <p>{{ $inactiveUsers->count() }}</p>
+                            <p class="card-number">{{ $inactiveUsers->count() }}</p>
                         </div>
-                    </div>
                 </div>
+            </div>
+            <div class="row mt-2" id="row">
                 <div class="col-md-5">
-                    <div class="card">
-                        <div class="card-body">
+                    
+                        <div class="dashboard-card">
+                            <i class="fas fa-layer-group"></i>
                             <h5 class="card-title">Total Income Categories</h5>
-                            <p>{{$income = $categories->where('type', 'income')->count()}}</p>
+                            <p class="card-number">{{$income = $categories->where('type', 'income')->count()}}</p>
                         </div>
-                    </div>
+                    
                 </div>
                 <div class="col-md-5">
-                    <div class="card">
-                        <div class="card-body">
+                    
+                        <div class="dashboard-card">
+                            <i class="fas fa-wallet"></i>
                             <h5 class="card-title">Total Expense Categories</h5>
-                            <p>{{$expense = $categories->where('type', 'expense')->count()}}</p>
+                            <p class="card-icon">{{$expense = $categories->where('type', 'expense')->count()}}</p>
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <!-- Chart Section -->
+                <div class="d-flex flex-wrap justify-content-between mt-4">
+                    <div class="card flex-fill mx-2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">User Statistics</h5>
+                            <canvas id="user"></canvas>
+                        </div>
+                    </div>
+                    <div class="card flex-fill mx-2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Income Statistics</h5>
+                            <canvas id="income"></canvas>
+                        </div>
+                    </div>
+                    <div class="card flex-fill mx-2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Expense Statistics</h5>
+                            <canvas id="expense"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Chart Section -->
-            <div class="d-flex flex-wrap justify-content-between mt-4">
-                <div class="card flex-fill mx-2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">User Statistics</h5>
-                        <canvas id="user"></canvas>
-                    </div>
-                </div>
-                <div class="card flex-fill mx-2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Income Statistics</h5>
-                        <canvas id="income"></canvas>
-                    </div>
-                </div>
-                <div class="card flex-fill mx-2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Expense Statistics</h5>
-                        <canvas id="expense"></canvas>
-                    </div>
-                </div>
-            </div>
-            
-            
         </div>
     </div>
 </body>
