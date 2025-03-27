@@ -50,7 +50,21 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
 </head>
+<style>
+	    /* Dashboard Cards */
+		.dashboard-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
 
+    .dashboard-card:hover {
+        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+</style>
 <body>
 	<div class="page-content" id="content">
 		<div id="page-wrapper">
@@ -58,7 +72,7 @@
 			<section class="container-fluid">
 				<div class="row">
 					<div class="col-xl-4 ">
-						<div class="card shadow">
+						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase">Income</strong></div>
@@ -81,7 +95,7 @@
 						</div>
 					</div>
 					<div class="col-xl-4 ">
-						<div class="card shadow">
+						<div class="dashboard-card">
 							<div class="card-body ">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase">expense</strong></div>
@@ -104,7 +118,7 @@
 						</div>
 					</div>
 					<div class="col-xl-4 ">
-						<div class="card shadow">
+						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase">saving</strong></div>
@@ -145,9 +159,9 @@
 			<br>
 			<section class="container-fluid">
 				<div class="row d-flex align-items-md-stretch">
-					<div class="col-lg-6 mx-auto">
-						<div class="card shadow">
-							<div class="card-header d-flex justify-content-center">
+					<div class="col-lg-6 ">
+						<div class="dashboard-card">
+							<div class="card-header d-flex">
 								<h5>Income chart [{{ now()->format('F Y') }}]</h5>
 							</div>
 							<div class="card-body">
@@ -157,10 +171,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 mx-auto">
-						<div class="card shadow">
-							<div class="card-header d-flex justify-content-center">
-								<h5>Expense chart [{{ now()->format('F Y') }}]</h5>
+					<div class="col-lg-6 ">
+						<div class="dashboard-card">
+							<div class="card-header d-flex">
+								<h5>Expense chart[{{ now()->format('F Y') }}]</h5>
 							</div>
 							<div class="card-body">
 								<div class="col">
