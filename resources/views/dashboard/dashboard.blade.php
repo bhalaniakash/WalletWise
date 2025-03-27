@@ -145,26 +145,26 @@
 			<br>
 			<section class="container-fluid">
 				<div class="row d-flex align-items-md-stretch">
-					<div class="col-lg-6 ">
+					<div class="col-lg-6 mx-auto">
 						<div class="card shadow">
-							<div class="card-header d-flex">
+							<div class="card-header d-flex justify-content-center">
 								<h5>Income chart [{{ now()->format('F Y') }}]</h5>
 							</div>
 							<div class="card-body">
 								<div class="col">
-										<canvas id="incomeChart"></canvas>
+									<canvas id="incomeChart"></canvas>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 ">
+					<div class="col-lg-6 mx-auto">
 						<div class="card shadow">
-							<div class="card-header d-flex">
-								<h5>Expense chart[{{ now()->format('F Y') }}]</h5>
+							<div class="card-header d-flex justify-content-center">
+								<h5>Expense chart [{{ now()->format('F Y') }}]</h5>
 							</div>
 							<div class="card-body">
 								<div class="col">
-										<canvas id="expenseChart"></canvas>
+									<canvas id="expenseChart"></canvas>
 								</div>
 							</div>
 						</div>
