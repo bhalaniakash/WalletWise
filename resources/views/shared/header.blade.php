@@ -26,7 +26,7 @@
             color: #000;
             background-color: white;
             margin-top: 0;
-            font-family: 'Andada Pro', sans-serif;
+            font-family: 'Arial, sans-serif'; 
 
         }
         
@@ -37,7 +37,7 @@
             transition: all 0.4s;
             background-color: #121212;
             position: fixed;
-                z-index: 1000;
+            z-index: 1000;
         }
 
         #content.active {
@@ -56,10 +56,12 @@
             color: white;
             text-decoration: none;
             gap: 20px;
+            font-family: 'Arial, sans-serif'; 
         }
 
         button i:hover {
             color: white;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .logo {
@@ -97,6 +99,10 @@
                 font-size: 20px;
             }
         }
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+       
+
     </style>
 </head>
 

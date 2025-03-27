@@ -16,9 +16,11 @@
   <base href="/expenseMVC/">
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
+       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
     body {
         margin: 0;
         padding: 0;
+        font-family: 
     }
     .vertical-nav {
       margin-top: 69px;

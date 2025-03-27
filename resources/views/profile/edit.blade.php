@@ -27,12 +27,14 @@
        
         .navbar {
             z-index: 1000;
+            font-family: 'Arial, sans-serif'; 
         }
 
         /* Container Styling */
         .container {
             margin-top: 30px;
             position: relative;
+            font-family: 'Arial, sans-serif'; 
         }
 
         /* Card Styling */
@@ -42,11 +44,13 @@
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0px 6px 15px rgba(255, 0, 0, 0.3);
+            font-family: 'Arial, sans-serif'; 
         }
 
         /* Ensure Cards are Same Height */
@@ -54,6 +58,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            font-family: 'Arial, sans-serif'; 
         }
        
         /* Button Styling */
@@ -64,12 +69,14 @@
             border-radius: 5px;
             padding: 10px 15px;
             transition: 0.3s ease;
+            font-family: 'Arial, sans-serif';
         }
 
         .btn-custom:hover {
             background-color: black;
             color: white;
             border: 1px solid red;
+            font-family: 'Arial, sans-serif';
         }
     </style>
 </head>

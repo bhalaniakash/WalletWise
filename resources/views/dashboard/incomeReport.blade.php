@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html> --}}
 <html>
 
 <head>
@@ -15,10 +15,8 @@
       min-height: 100vh;
       overflow-x: hidden;
       background-color: white;
-      /* Background color */
-      color: black;
-      /* Text color */
-
+      color: black;  
+      font-family: 'Arial, sans-serif'; 
     }
 
     .page-content {
@@ -28,24 +26,25 @@
       color: #000;
       background-color: white;
       margin-top: 5% !important;
+      font-family: 'Arial, sans-serif'; 
     }
 
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
+      font-family: 'Arial, sans-serif'; 
     }
-
-
 
     .table thead {
       background-color: #121212;
-      /* dark color */
+      font-family: 'Arial, sans-serif'; 
     }
 
     th,
     td {
       color: #000;
       background-color: white;
+      font-family: 'Arial, sans-serif'; 
     }
   </style>
 </head>
@@ -78,13 +77,13 @@
                         <div class="form-group">
                           <select class="form-control" name="icat" onchange="this.form.submit()">
                             <option value="">All Categories</option>
-                            @foreach ($categories as $category)
-                @if ($category->type == 'income')
-          <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
-            {{ $category->name }}
-          </option>
-        @endif
-              @endforeach
+                              @foreach ($categories as $category)
+                         @if ($category->type == 'income')
+                              <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                              </option>
+                        @endif
+                          @endforeach
                           </select>
                         </div>
                       </div>
@@ -174,6 +173,9 @@
       </section>
     </div>
   </div>
+
+  {{-- chart 1 --}}
+
   @php
   function generateRandomColor()
   {
@@ -208,8 +210,6 @@
     ->groupBy('date') // Grouping by date
     ->keys();
   $dateColorsI = collect($dateLabelsI)->map(fn() => generateRandomColor())->toArray();
-
-
 
   @endphp
 
@@ -262,7 +262,6 @@
       win.document.close();
       win.print();
     }
-
 
     // fromt here bar chart is starts
     const ctx = document.getElementById('incomeChart');

@@ -16,7 +16,7 @@
             overflow-x: hidden;
             background-color: white;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial, sans-serif'; 
 
         }
 
@@ -27,11 +27,13 @@
             background-color: white;
             color: black;
             margin-top: 5%;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
+            font-family: 'Arial, sans-serif'; 
         }
 
         #add1 input,
@@ -39,50 +41,40 @@
             width: 300px;
             height: 40px;
             padding: 0.5rem;
-            /* Added padding for better usability */
             border: 1px solid #ced4da;
-            /* Added border for better visibility */
             border-radius: 4px;
-            /* Rounded corners */
             box-sizing: border-box;
-            /* Ensures padding doesn't affect width */
+            font-family: 'Arial, sans-serif';
         }
 
         .table {
-            width: 100%;
-            /* Ensures table takes full width */
+            width: 100%;     
             border-collapse: collapse;
-            /* Removes gaps between table cells */
             margin-top: 1rem;
-            /* Added spacing above tables */
+            font-family: 'Arial, sans-serif'; 
         }
 
         .table tr {
             color: #000;
             background-color: #ffffff;
-            /* Ensured consistent white background */
+            font-family: 'Arial, sans-serif'; 
         }
 
         th,
         td {
             color: #000;
             background-color: #ffffff;
-            /* Ensured consistent white background */
             padding: 0.75rem;
-            /* Added padding for better spacing */
-            text-align: left;
-            /* Ensured left alignment for better readability */
             border: 1px solid #dee2e6;
-            /* Added border for better table structure */
+            font-family: 'Arial, sans-serif'; 
         }
 
         th {
             background-color: #616b6b;
-            /* Kept the header background color */
             color: #ffffff;
-            /* Ensured white text for contrast */
             text-transform: uppercase;
-            /* Made header text uppercase for emphasis */
+            align-items: center;
+            font-family: 'Arial, sans-serif'; 
         }
     </style>
 
@@ -135,15 +127,15 @@
                 @foreach($categories as $category)
                     @if($category->type == 'income')
                         <tr>
-                            <td>{{ $category->name }}</td>
-                            <td>
+                            <td style="width: 70%;">{{ $category->name }}</td>
+                            <td style="width: 15%;">
                                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
                                 </form>
                             </td>
-                            <td>
+                            <td style="width: 15%;">
                                 <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
                                     @csrf
                                     <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
@@ -154,6 +146,11 @@
                 @endforeach
             </tbody>
         </table>
+
+        <br>
+        <br>
+        {{-- form here  expense category starts --}}
+
         <table class="table table-striped table-bordered">
             <thead style="background-color: #616b6b;">
                 <tr>
@@ -164,23 +161,23 @@
                     </th>
                 </tr>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th colspan="2">Action</th>
+                    <th scope="col" >Name</th>
+                    <th colspan="2" >Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($categories as $category)
                     @if($category->type == 'expense')
                         <tr>
-                            <td>{{ $category->name }}</td>
-                            <td>
+                            <td style="width: 70%;">{{ $category->name }}</td>
+                            <td style="width: 15%;">
                                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
                                 </form>
                             </td>
-                            <td>
+                            <td style="width: 15%;">
                                 <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
                                     @csrf
                                     <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
@@ -192,6 +189,6 @@
             </tbody>
         </table>
     </div>
-</body>
 
+</body>
 </html>

@@ -11,6 +11,7 @@
         overflow-x: hidden;
         color: #000;
         background-color: white;
+        font-family: 'Arial, sans-serif'; 
     }
 
     .page-content {
@@ -20,6 +21,7 @@
         background-color: white;
         color: #000;
         margin-top: 50px;
+        font-family: 'Arial, sans-serif'; 
     }
 
     .content.active {
@@ -31,21 +33,21 @@
         border-color: #000;
         padding: 15px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
+        border-radius: 10px; 
+        font-family: 'Arial, sans-serif'; 
     }
 
     .table tbody tr th,
     .table tbody tr td {
         color: #000;
+        font-family: 'Arial, sans-serif'; 
     }
 
     .btn-dark {
         background-color: #000;
-        border-
-        .table tbody tr th,
-        .table tbody tr td {
-            color: #000;
-        }
+        border-color: #000;
+        font-family: 'Arial, sans-serif'; 
+    }
 
         .btn-dark {
             background-color: #000;
@@ -55,6 +57,7 @@
         th, td {
             color: #000;
             background-color: white;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .progress {
@@ -71,10 +74,12 @@
         .amount-positive {
             color: green;
             font-weight: bold;
+            font-family: 'Arial, sans-serif'; 
         }
         .amount-negative {
             color: red;
             font-weight: bold;
+            font-family: 'Arial, sans-serif'; 
         }
 
         /* this is for the chart */
@@ -82,9 +87,15 @@
         .categoryChart{
             width: 500px;
             height: 500px;
-
-
-        }}
+            font-family: 'Arial, sans-serif'; 
+        }
+        .text-center{
+            text-align: center;
+            background-color: rgb(217, 217, 217);
+            padding: 1%;
+            border-radius: 50px;
+            font-family: 'Arial, sans-serif'; 
+        }
     </style>
 </head>
 
@@ -337,180 +348,170 @@
             <section>
                 <div class="container-fluid shadow">
                     <h5>Analytics & Reports</h5>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <h6 class="text-center">Budget Chart</h6>
-                                <canvas id="categoryChart"></canvas>
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                        const ctx = document.getElementById('categoryChart').getContext('2d');
-                                        const totalIncome = {{ $totalIncome }};
-                                        const totalExpenses = {{ $totalExpense }};
-                                        const totalSavings = totalIncome - totalExpenses;
-
-                                        new Chart(ctx, {
-                                            type: 'pie',
-                                            data: {
-                                                labels: ['Expenses', 'Savings'],
-                                                datasets: [{
-                                                    data: [totalExpenses, totalSavings],
-                                                    backgroundColor: ['#FF0000', '#00FF00'],    
-                                                }]
-                                            },
-                                            options: {
-                                                responsive: true,
-                                                plugins: {
-                                                    legend: {
-                                                        position: 'top',
-                                                    },
-                                                    tooltip: {
-                                                        callbacks: {
-                                                            label: function (context) {
-                                                                const label = context.label || '';
-                                                                const value = context.raw || 0;
-                                                                const percentage = ((value / totalIncome) * 100).toFixed(2);
-                                                                return `${label}: ₹${value.toLocaleString()} (${percentage}%)`;
-                                                            }
+                    <div class="d-flex justify-content-between">
+                        <div class="card" style="width: 33% ">
+                            <h6 class="text-center">Budget Chart</h6>
+                            <canvas id="categoryChart" style="width: 100%; height: 300px;"></canvas>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const ctx = document.getElementById('categoryChart').getContext('2d');
+                                    const totalIncome = {{ $totalIncome }};
+                                    const totalExpenses = {{ $totalExpense }};
+                                    const totalSavings = totalIncome - totalExpenses;
+            
+                                    new Chart(ctx, {
+                                        type: 'pie',
+                                        data: {
+                                            labels: ['Expenses', 'Savings'],
+                                            datasets: [{
+                                                data: [totalExpenses, totalSavings],
+                                                backgroundColor: ['#FF0000', '#00FF00'],    
+                                            }]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'bottom',
+                                                    align: 'start',
+                                                },
+                                                tooltip: {
+                                                    callbacks: {
+                                                        label: function (context) {
+                                                            const label = context.label || '';
+                                                            const value = context.raw || 0;
+                                                            const percentage = ((value / totalIncome) * 100).toFixed(2);
+                                                            return `${label}: ₹${value.toLocaleString()} (${percentage}%)`;
                                                         }
                                                     }
                                                 }
                                             }
-                                        });
+                                        }
                                     });
-                                </script>
-                            </div>
+                                });
+                            </script>
                         </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <h6 class="text-center">Expense Distribution</h6>
-                                <canvas id="expenseChart"></canvas>
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                        const ctx = document.getElementById('expenseChart').getContext('2d');
-                                        
-                                        const categories = @json(\App\Models\Category::where('type', 'expense')->get());
-                                        const expenses = @json(\App\Models\Expense::where('user_id', Auth::id())->get());
-                                        
-                                        const categoryData = categories.map(category => {
-                                            const totalExpense = expenses
-                                                .filter(expense => expense.category_id == category.id) // Ensure strict equality is not causing issues
-                                                .reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0); // Handle missing or invalid amounts
-                                            return {
-                                                name: category.name || 'Unknown', // Fallback for missing category name
-                                                total: totalExpense,
-                                                color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}` // Generate random color if missing
-                                            };
-                                        });
-                                        
-                                        const labels = categoryData.map(data => data.name);
-                                        const data = categoryData.map(data => data.total);
-                                        const backgroundColors = categoryData.map(data => data.color);
-                                        
-                                        new Chart(ctx, {
-                                            type: 'pie',
-                                            data: {
-                                                labels: labels,
-                                                datasets: [{
-                                                    data: data,
-                                                    backgroundColor: backgroundColors,
-                                                }]
-                                            },
-                                            options: {
-                                                responsive: true,
-                                                plugins: {
-                                                    legend: {
-                                                        position: 'top',
-                                                    },
-                                                    tooltip: {
-                                                        callbacks: {
-                                                            label: function (context) {
-                                                                const label = context.label || '';
-                                                                const value = context.raw || 0;
-                                                                return `${label}: ₹${value.toLocaleString()}`;
-                                                            }
+            
+                        <div class="card" style="width: 33% ;">
+                            <h6 class="text-center">Expense Distribution</h6>
+                            <canvas id="expenseChart" style="width: 100%; height: 300px;">
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const ctx = document.getElementById('expenseChart').getContext('2d');
+                                    
+                                    const categories = @json(\App\Models\Category::where('type', 'expense')->get());
+                                    const expenses = @json(\App\Models\Expense::where('user_id', Auth::id())->get());
+                                    
+                                    const categoryData = categories.map(category => {
+                                        const totalExpense = expenses
+                                            .filter(expense => expense.category_id == category.id)
+                                            .reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0);
+                                        return {
+                                            name: category.name || 'Unknown',
+                                            total: totalExpense,
+                                            color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                                        };
+                                    });
+                                    
+                                    const labels = categoryData.map(data => data.name);
+                                    const data = categoryData.map(data => data.total);
+                                    const backgroundColors = categoryData.map(data => data.color);
+                                    
+                                    new Chart(ctx, {
+                                        type: 'pie',
+                                        data: {
+                                            labels: labels,
+                                            datasets: [{
+                                                data: data,
+                                                backgroundColor: backgroundColors,
+                                            }]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'bottom',
+                                                    align: 'start',
+                                                },
+                                                tooltip: {
+                                                    callbacks: {
+                                                        label: function (context) {
+                                                            const label = context.label || '';
+                                                            const value = context.raw || 0;
+                                                            return `${label}: ₹${value.toLocaleString()}`;
                                                         }
                                                     }
                                                 }
                                             }
-                                        });
+                                        }
                                     });
-                                </script>
-                            </div>
+                                });
+                            </script>
+                            </canvas>
                         </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card">
-                                <h6 class="text-center">Income Distribution</h6>
-                                <canvas id="incomeChart"></canvas>
-                                <script>
-                                  document.addEventListener('DOMContentLoaded', function () {
+            
+                        <div class="card" style="width: 33% ;">
+                            <h6 class="text-center">Income Distribution</h6>
+                            <canvas id="incomeChart" style="width: 100%; height: 300px;">
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
                                     const ctx = document.getElementById('incomeChart').getContext('2d');
                                     
                                     const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
                                     const incomes = @json(\App\Models\Income::where('user_id', Auth::id())->get());
                                     
-                                    // Check if categories and incomes data is available
-                                    console.log(incomeCategories);
-                                    console.log(incomes);
-
-                                        const incomeCategoryData = incomeCategories.map(category => {
-                                            const totalIncome = incomes
-                                                .filter(income => income.category_id == category.id)
-                                                .reduce((sum, income) => sum + parseFloat(income.amount || 0), 0);
-                                            return {
-                                                name: category.name || 'Unknown',
-                                                total: totalIncome,
-                                                color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
-                                            };
-                                        });
-                                        
-                                        const incomeLabels = incomeCategoryData.map(data => data.name);
-                                        const incomeData = incomeCategoryData.map(data => data.total);
-                                        const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
-                                        
-                                        // Check if all the data arrays are valid
-                                        console.log(incomeLabels, incomeData, incomeBackgroundColors);
-
-                                        new Chart(ctx, {
-                                            type: 'pie',
-                                            data: {
-                                                labels: incomeLabels,
-                                                datasets: [{
-                                                    data: incomeData,
-                                                    backgroundColor: incomeBackgroundColors,
-                                                }]
-                                            },
-                                            options: {
-                                                responsive: true,
-                                                plugins: {
-                                                    legend: {
-                                                        position: 'top',
-                                                    },
-                                                    tooltip: {
-                                                        callbacks: {
-                                                            label: function (context) {
-                                                                const label = context.label || '';
-                                                                const value = context.raw || 0;
-                                                                return `${label}: ₹${value.toLocaleString()}`;
-                                                            }
+                                    const incomeCategoryData = incomeCategories.map(category => {
+                                        const totalIncome = incomes
+                                            .filter(income => income.category_id == category.id)
+                                            .reduce((sum, income) => sum + parseFloat(income.amount || 0), 0);
+                                        return {
+                                            name: category.name || 'Unknown',
+                                            total: totalIncome,
+                                            color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                                        };
+                                    });
+                                    
+                                    const incomeLabels = incomeCategoryData.map(data => data.name);
+                                    const incomeData = incomeCategoryData.map(data => data.total);
+                                    const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
+                                    
+                                    new Chart(ctx, {
+                                        type: 'pie',
+                                        data: {
+                                            labels: incomeLabels,
+                                            datasets: [{
+                                                data: incomeData,
+                                                backgroundColor: incomeBackgroundColors,
+                                            }]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'bottom',
+                                                    align: 'start'
+                                                },
+                                                tooltip: {
+                                                    callbacks: {
+                                                        label: function (context) {
+                                                            const label = context.label || '';
+                                                            const value = context.raw || 0;
+                                                            return `${label}: ₹${value.toLocaleString()}`;
                                                         }
                                                     }
                                                 }
                                             }
-                                        });
+                                        }
                                     });
+                                });
 
-                                </script>
-                            </div>
+                            </script>
+                            </canvas>
                         </div>
                     </div>
                     <br>
                 </div>
             </section>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
