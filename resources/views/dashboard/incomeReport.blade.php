@@ -83,9 +83,7 @@
             </div>
             <div class="col-xl-12">
               <div class="container-fluid shadow">
-               
                   <form class="form-inline" id="Report">
-                 
                               <select class="form-control" id="incomeCategory" >
                                 <option value="">All Categories</option>
                                     @foreach ($categories as $category)
@@ -94,22 +92,18 @@
                                       @endif
                                     @endforeach
                                 </select>
-                                &nbsp;&nbsp;
-
-                              
+                                &nbsp;&nbsp;                            
                                <div class="input-group">
                                   <input type="month" class="form-control" id="incomeDate">
                                   <div class="input-group-prepend">
                                     <button class="btn btn-dark " type="submit">
-                                      <i class="fa fa-filter fa-xs" aria-hidden="true"></i>
-                                      Filter</button>
+                                      <i class="fa fa-filter fa-xs" aria-hidden="true"></i>Filter</button>
                                   </div>
                                 </div>
                                 &nbsp;
                                 {{-- <button type="submit" class="btn btn-dark">
                                 Filter
                                 </button> --}}
-
                   </form>
                
               </div>
@@ -410,7 +404,5 @@
       });
     });
   </script>
-
 </body>
-
 </html>

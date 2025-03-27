@@ -8,6 +8,7 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
 
 use App\Models\category;
+use App\Models\Expense;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
@@ -112,5 +113,31 @@ Route::post('/income/filter', function (Request $request) {
             'description' => $income->description
         ];
     });
+    return response()->json($data);
+});
+
+
+Route::post('/expense/filter', function (Request $request) {
+    $filteredexpenses = Expense::where('user_id', auth()->id());
+
+    if ($request->filled('date')) {
+        $filteredexpenses->whereYear('date', substr($request->input('date'), 0, 4))
+            ->whereMonth('date', substr($request->input('date'), 5, 2));
+    }
+
+    if ($request->filled('ecat')) {
+        $filteredexpenses->where('category_id', $request->input('ecat'));
+    }
+    $data = $filteredexpenses->get()->map(function ($expense) {
+        return [
+            'date' => $expense->date,
+            'source' => $expense->expense_name,
+            'category_name' => category::find($expense->category_id)->name ?? 'Unknown',
+            'paymode' => $expense->payment_method,
+            'amount' => $expense->amount,
+            'description' => $expense->description
+        ];
+    });
+    // dd($data);
     return response()->json($data);
 });

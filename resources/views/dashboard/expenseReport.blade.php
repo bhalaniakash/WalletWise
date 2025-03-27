@@ -15,7 +15,7 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      font-family: 'Arial, sans-serif'; 
+      font-family: 'Arial, sans-serif';
     }
 
     .page-content {
@@ -25,7 +25,7 @@
       background-color: white;
       color: black;
       margin-top: 5% !important;
-      font-family: 'Arial, sans-serif'; 
+      font-family: 'Arial, sans-serif';
     }
 
     .content.active {
@@ -38,7 +38,7 @@
     td {
       color: #000;
       background-color: white;
-      font-family: 'Arial, sans-serif'; 
+      font-family: 'Arial, sans-serif';
     }
   </style>
 </head>
@@ -56,36 +56,30 @@
               style="margin-left: 1rem; margin-bottom: 1rem; font-size: 1rem; font-weight: bold; color: #4A5568; background: #F7FAFC; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block; display: inline;">
               <span style="color: #2D3748;">HOME</span> &gt; <span style="color: #3182CE;">EXPENSE REPORT</span>
             </div>
-
             <div class="col-xl-12">
               <div class="card shadow">
                 <div class="card-body">
-                  <form class="form-inline" method="get">
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <input type="month" class="form-control" name="date" placeholder="year"
-                            onchange="this.form.submit()" value="{{ request('data') }}" />
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-group">
-                          <select class="form-control" name="icat" onchange="this.form.submit()">
-                            <option value="">All Categories</option>
-                            @foreach ($categories as $category)
-                @if ($category->type == 'expense')
-          <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
-            {{ $category->name }}
-          </option>
+                  <form class="form-inline" id="Report">
+                    <select class="form-control" id="expenseCategory">
+                      <option value="">All Categories</option>
+                      @foreach ($categories as $category)
+              @if ($category->type == 'expense')
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endif
-              @endforeach
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col">
-
+            @endforeach
+                    </select>
+                    &nbsp;&nbsp;
+                    <div class="input-group">
+                      <input type="month" class="form-control" id="expenseDate">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-dark " type="submit">
+                          <i class="fa fa-filter fa-xs" aria-hidden="true"></i>Filter</button>
                       </div>
                     </div>
+                    &nbsp;
+                    {{-- <button type="submit" class="btn btn-dark">
+                      Filter
+                    </button> --}}
                   </form>
                 </div>
               </div>
@@ -115,30 +109,33 @@
                 <th>Amount</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="expenseTBody">
               @php
         $currentUser = auth()->user(); // Get the currently logged-in user
 
-        $filteredExpenses = $expenseReport->where('user_id', $currentUser->id)->filter(function ($e) {
-          $dateMatch = request('date') ? date('Y-m', strtotime($e->date)) == request('date') : true;
-          $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
-          return $dateMatch && $categoryMatch;
-        });
-      @endphp
-              @foreach ($filteredExpenses as $e)
+        $filteredexpenses =
+          $expenseReport
+          ->where('user_id', $currentUser->id)
+          ->filter(function ($e) {
+            $dateMatch = request('date') ? date('Y-m', strtotime($e->date)) == request('date') : true;
+            $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
+            return $dateMatch && $categoryMatch;
+          });
+        @endphp
+              @foreach ($filteredexpenses as $i)
           <tr>
-          <td>{{ $e->date }}</td>
-          <td>{{ $e->expense_name }}</td>
-          <!-- <td>{{ $e->category_id }}</td> -->
-          <td>{{ $categories->where('id', $e->category_id)->first()?->name }}</td>
-          <td>{{ $e->payment_method }}</td>
-          <td>{{ $e->description }}</td>
-          <td>₹ {{ $e->amount }}</td>
+          <td>{{ $i->date }}</td>
+          <td>{{ $i->expense_name }}</td>
+          {{-- <td>{{ $i->category_id }}</td> --}}
+          <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
+          <td>{{ $i->payment_method }}</td>
+          <td>{{ $i->description }}</td>
+          <td>₹ {{ $i->amount }}</td>
           </tr>
         @endforeach
               <tr>
-                <td colspan="5">Total:</td>
-                <td>₹ {{ number_format(collect($filteredExpenses)->sum('amount'), 2) }}</td>
+                <td colspan="5">Total: </td>
+                <td>₹ {{ number_format(collect($filteredexpenses)->sum('amount'), 2) }}</td>
               </tr>
             </tbody>
           </table>
@@ -322,7 +319,7 @@
       let url = URL.createObjectURL(blob);
       let a = document.createElement("a");
       a.href = url;
-      a.download = "Income_Report.csv";
+      a.download = "Expense_Report.csv";
       a.click();
     }
 
@@ -330,13 +327,57 @@
       let table = document.getElementById('Report').outerHTML;
       let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
       let win = window.open("", "", "width=800,height=800");
-      win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
-      win.document.write("<h2>Income Report</h2>");
+      win.document.write("<html><head><title>Expense Report</title>" + style + "</head><body>");
+      win.document.write("<h2>Expense Report</h2>");
       win.document.write(table);
       win.document.write("</body></html>");
       win.document.close();
       win.print();
     }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#Report').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+          url: "/expense/filter",
+          type: "POST",
+          data: {
+            date: $("#expenseDate").val(),
+            ecat: $("#expenseCategory").val()
+          },
+          headers: {
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+          },
+          success: function (response) {
+            console.log("Response received:", response);
+            let tableBody = $("#expenseTBody");
+            tableBody.empty();
+
+            if (response.length === 0) {
+              tableBody.append("<tr><td colspan='6' class='text-center'>No records found</td></tr>");
+            } else {
+              console.log(tableBody);
+              $.each(response, function (index, expense) {
+                let row = `<tr>
+                        <td>${expense.date}</td>
+                        <td>${expense.source}</td>
+                        <td>${expense.category_name}</td>
+                        <td>${expense.paymode}</td>
+                        <td>${expense.description}</td>
+                        <td>₹ ${expense.amount}</td>
+                    </tr>`;
+                tableBody.append(row);
+              });
+            }
+          },
+          error: function (xhr) {
+            console.log(xhr.responseText);
+          }
+        });
+      });
+    });
   </script>
 
 </body>
