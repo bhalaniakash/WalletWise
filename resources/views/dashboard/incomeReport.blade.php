@@ -40,12 +40,30 @@
       background-color: #121212;
       font-family: 'Arial, sans-serif';
     }
-
+    
+    button["submit"] {
+      background-color: #4CAF50;
+      color: white;
+      /* padding: 14px 20px; */
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    
     th,
     td {
       color: #000;
       background-color: white;
       font-family: 'Arial, sans-serif';
+    }
+    .container-fluid{
+      font-family: 'Arial, sans-serif';
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      justify-content: space-between;
     }
   </style>
 </head>
@@ -65,31 +83,35 @@
             </div>
             <div class="col-xl-12">
               <div class="container-fluid shadow">
-                <div class="card-body ">
+               
                   <form class="form-inline" id="Report">
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <div class="col">
-                            <div class="form-group">
+                 
                               <select class="form-control" id="incomeCategory" >
                                 <option value="">All Categories</option>
-                                @foreach ($categories as $category)
-                  @if ($category->type == 'income')
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
-          @endif
-                @endforeach
-                              </select>
+                                    @foreach ($categories as $category)
+                                      @if ($category->type == 'income')
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                      @endif
+                                    @endforeach
+                                </select>
+                                &nbsp;&nbsp;
 
-                              <input type="month" class="form-control" id="incomeDate" >
+                              
+                               <div class="input-group">
+                                  <input type="month" class="form-control" id="incomeDate">
+                                  <div class="input-group-prepend">
+                                    <button class="btn btn-dark " type="submit">
+                                      <i class="fa fa-filter fa-xs" aria-hidden="true"></i>
+                                      Filter</button>
+                                  </div>
+                                </div>
+                                &nbsp;
+                                {{-- <button type="submit" class="btn btn-dark">
+                                Filter
+                                </button> --}}
 
-                              <button type="submit">Filter</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                   </form>
-                </div>
+               
               </div>
             </div>
           </div>
