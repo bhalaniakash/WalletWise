@@ -1,4 +1,5 @@
-{{-- <!DOCTYPE html> --}}
+{{--
+<!DOCTYPE html> --}}
 <html>
 
 <head>
@@ -15,8 +16,8 @@
       min-height: 100vh;
       overflow-x: hidden;
       background-color: white;
-      color: black;  
-      font-family: 'Arial, sans-serif'; 
+      color: black;
+      font-family: 'Arial, sans-serif';
     }
 
     .page-content {
@@ -26,25 +27,25 @@
       color: #000;
       background-color: white;
       margin-top: 5% !important;
-      font-family: 'Arial, sans-serif'; 
+      font-family: 'Arial, sans-serif';
     }
 
     .content.active {
       margin-left: 1rem;
       margin-right: 1rem;
-      font-family: 'Arial, sans-serif'; 
+      font-family: 'Arial, sans-serif';
     }
 
     .table thead {
       background-color: #121212;
-      font-family: 'Arial, sans-serif'; 
+      font-family: 'Arial, sans-serif';
     }
 
     th,
     td {
       color: #000;
       background-color: white;
-      font-family: 'Arial, sans-serif'; 
+      font-family: 'Arial, sans-serif';
     }
   </style>
 </head>
@@ -65,32 +66,28 @@
             <div class="col-xl-12">
               <div class="container-fluid shadow">
                 <div class="card-body ">
-                  <form class="form-inline" method="get">
+                  <form class="form-inline" id="Report">
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
-                          <input type="month" class="form-control" name="date" placeholder="year"
-                            onchange="this.form.submit()" value="{{ request('data') }}" />
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-group">
-                          <select class="form-control" name="icat" onchange="this.form.submit()">
-                            <option value="">All Categories</option>
-                              @foreach ($categories as $category)
-                         @if ($category->type == 'income')
-                              <option value="{{ $category->id }}" {{ request('icat') == $category->id ? 'selected' : '' }}>
-                                {{ $category->name }}
-                              </option>
-                        @endif
-                          @endforeach
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col">
+                          <div class="col">
+                            <div class="form-group">
+                              <select class="form-control" id="incomeCategory" >
+                                <option value="">All Categories</option>
+                                @foreach ($categories as $category)
+                  @if ($category->type == 'income')
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+          @endif
+                @endforeach
+                              </select>
 
+                              <input type="month" class="form-control" id="incomeDate" >
+
+                              <button type="submit">Filter</button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
                   </form>
                 </div>
               </div>
@@ -102,7 +99,7 @@
       <section>
         <div class="container-fluid shadow">
           <br>
-          <table class="table table-striped table-bordered" id="Report">
+          <table class="table table-striped" id="Report">
             <thead style="background-color: #1E1E2E;">
               <tr>
                 <th colspan="6">
@@ -119,16 +116,19 @@
                 <th>Amount</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="incomeTBody">
               @php
         $currentUser = auth()->user(); // Get the currently logged-in user
 
-        $filteredincomes = $incomeReport->where('user_id', $currentUser->id)->filter(function ($e) {
-          $dateMatch = request('date') ? date('Y-m', strtotime($e->date)) == request('date') : true;
-          $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
-          return $dateMatch && $categoryMatch;
-        });
-        @endphp
+        $filteredincomes =
+          $incomeReport
+          ->where('user_id', $currentUser->id)
+          ->filter(function ($e) {
+            $dateMatch = request('date') ? date('Y-m', strtotime($e->date)) == request('date') : true;
+            $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
+            return $dateMatch && $categoryMatch;
+          });
+      @endphp
               @foreach ($filteredincomes as $i)
           <tr>
           <td>{{ $i->date }}</td>
@@ -344,6 +344,49 @@
       }
     });
 
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#Report').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+          url: "/income/filter",
+          type: "POST",
+          data: {
+            date: $("#incomeDate").val(),
+            icat: $("#incomeCategory").val()
+          },
+          headers: {
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+          },
+          success: function (response) {
+            // console.log("Response received:", response);
+            let tableBody = $("#incomeTBody");
+            tableBody.empty();
+            
+            if (response.length === 0) {
+              tableBody.append("<tr><td colspan='6' class='text-center'>No records found</td></tr>");
+            } else {
+        // console.log(tableBody);
+        $.each(response, function (index, income) {
+            let row = `<tr>
+                          <td>${income.date}</td>
+                          <td>${income.source}</td>
+                          <td>${income.category_name}</td>
+                          <td>${income.description}</td>
+                          <td>₹ ${income.amount}</td>
+                      </tr>`;
+            tableBody.append(row);
+        });
+            }
+          },
+          error: function (xhr) {
+            console.log(xhr.responseText);
+          }
+        });
+      });
+    });
   </script>
 
 </body>
