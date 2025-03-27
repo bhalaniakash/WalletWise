@@ -14,6 +14,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .page-content {
@@ -26,17 +27,20 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
+            font-family: 'Arial, sans-serif'; 
         }
 
         h1,
         h5 {
             color: #333;
+            font-family: 'Arial, sans-serif'; 
         }
 
         */ .btn {
@@ -48,12 +52,11 @@
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition:  0.3s;
+            font-family: 'Arial, sans-serif'; 
         }
 
-        .btn:hover {
-            background-color: #0056b3;
-        }
+        
     </style>
 </head>
 

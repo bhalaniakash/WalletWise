@@ -146,13 +146,13 @@
       color: black !important;
       /* Primary - Pure Black */
     }
-  .span {
-    width: 20px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-  }
+    .span {
+      width: 20px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+    }
 </style>
 
 <body>

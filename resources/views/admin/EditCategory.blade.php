@@ -13,11 +13,12 @@
 
     <style>
         /* General Styles */
-        bbody {
+        body {
             min-height: 100vh;
             overflow-x: hidden;
             background-color: white;
             margin-top: 0%;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .page-content {
@@ -26,33 +27,39 @@
             transition: all 0.4s;
             background-color: white;
             margin-top: 5% !important;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
+            font-family: 'Arial, sans-serif'; 
 
         }
 
         #add1 input {
             width: 300px;
             height: 40px;
+            font-family: 'Arial, sans-serif'; 
         }
 
         #add2 input {
             width: 300px;
-            height: 40px
+            height: 40px;
+            font-family: 'Arial, sans-serif'; 
         }
 
         .table tr {
             color: #000;
             background-color: white;
+          
         }
 
         th,
         td {
             color: #000;
             background-color: white;
+            font-family: 'Arial, sans-serif'; 
         }
     </style>
 </head>
