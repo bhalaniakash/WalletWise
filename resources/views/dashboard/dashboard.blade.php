@@ -12,7 +12,7 @@
 			min-height: 100vh;
 			overflow-x: hidden;
 			margin-top: 0;
-			font-family: 'Arial, sans-serif'; 
+			font-family: 'Arial, sans-serif';
 		}
 
 		.page-content {
@@ -20,18 +20,42 @@
 			margin-right: 1rem;
 			transition: all 0.4s;
 			margin-top: 5% !important;
-			font-family: 'Arial, sans-serif'; 
+			font-family: 'Arial, sans-serif';
 		}
 
 		.content.active {
 			margin-left: 1rem;
 			margin-right: 1rem;
-			font-family: 'Arial, sans-serif'; 
+			font-family: 'Arial, sans-serif';
 		}
+
+		.card-number {
+			font-size: 28px;
+			font-weight: bold;
+			color: #222;
+		}
+
+		.dashboard-card {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease-in-out;
+		}
+
+		.dashboard-card:hover {
+			box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+		}
+		.card-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #343a40;
+        }
 	</style>
 	@include('shared.sidenav');
 	@include('shared.header');
-{{-- 
+	{{--
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -51,20 +75,20 @@
 
 </head>
 <style>
-	    /* Dashboard Cards */
-		.dashboard-card {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease-in-out;
-    }
+	/* Dashboard Cards */
+	.dashboard-card {
+		background: white;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease-in-out;
+	}
 
-    .dashboard-card:hover {
-        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
+	.dashboard-card:hover {
+		box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+	}
 </style>
+
 <body>
 	<div class="page-content" id="content">
 		<div id="page-wrapper">
@@ -75,8 +99,8 @@
 						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
-									<div class="name"><strong class="text-uppercase">Income</strong></div>
-									<div><span>current month</span></div>
+									<div class="name"><strong class="text-uppercase"><h3>Income<h3></strong></div>
+									<h6>current month</h6>
 									<div class="count-number">
 										@php
 											$currentMonth = now()->format('Y-m');
@@ -87,7 +111,7 @@
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
 										@endphp
-										<td>₹ {{ number_format($currentMonthIncome, 2) }}</td>
+										<p class="card-number">₹ {{ number_format($currentMonthIncome, 2) }}</p>
 										</tr>
 									</div>
 								</div>
@@ -98,19 +122,20 @@
 						<div class="dashboard-card">
 							<div class="card-body ">
 								<div class="col mr-4">
-									<div class="name"><strong class="text-uppercase">expense</strong></div>
-									<div><span>current month</span></div>
+									<div class="name"><strong class="text-uppercase"><h3>expense</h3></strong></div>
+									<h6>current month</h6>
 									<div class="count-number">
 										@php
-											$currentMonth = now()->format('Y-m');
+
 											$user = auth()->user();
 
 											$currentMonthExpense = $expenseReport
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
+
 										@endphp
-										<td>₹ {{ number_format($currentMonthExpense, 2) }}</td>
+										<p class="card-number">₹ {{ number_format($currentMonthExpense, 2) }}</p>
 										</tr>
 									</div>
 								</div>
@@ -121,8 +146,8 @@
 						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
-									<div class="name"><strong class="text-uppercase">saving</strong></div>
-									<div><span>current month</span></div>
+									<div class="name"><strong class="text-uppercase"><h3>saving</h3></strong></div>
+									<h6>current month</h6>
 									<div class="count-number">
 										@php
 											$currentMonthIncome = $incomeReport
@@ -139,11 +164,11 @@
 										@endphp
 										@if ($saving < 0)
 											<div class="text-danger">
-												<td>₹ {{ number_format($saving, 2)}}</td>
+												<p class="card-number text-danger">₹ {{ number_format($saving, 2) }}</p>
 											</div>
 										@else
 											<div class="text-success">
-												<td>₹ {{ number_format($saving, 2)}}</td>
+												<p class="card-number text-success">₹{{ number_format($saving, 2) }}</p>
 											</div>
 										@endif
 
@@ -191,10 +216,10 @@
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
 @php
-  function generateRandomColor()
-  {
-    return 'rgb(' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ')';
-  }
+	function generateRandomColor()
+	{
+		return 'rgb(' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ')';
+	}
 
 	$currentMonth = now()->format('Y-m');
 	$user = auth()->user();
