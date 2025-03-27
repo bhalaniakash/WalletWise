@@ -6,7 +6,7 @@
 	<title>Dashboard</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<style type="text/css">
 		body {
 			min-height: 100vh;
@@ -152,9 +152,7 @@
 							</div>
 							<div class="card-body">
 								<div class="col">
-									<div id="piechart">
 										<canvas id="incomeChart"></canvas>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -166,9 +164,7 @@
 							</div>
 							<div class="card-body">
 								<div class="col">
-									<div id="piechart">
 										<canvas id="expenseChart"></canvas>
-									</div>
 								</div>
 							</div>
 						</div>
