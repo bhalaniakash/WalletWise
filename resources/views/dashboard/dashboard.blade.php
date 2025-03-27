@@ -148,7 +148,7 @@
 					<div class="col-lg-6 ">
 						<div class="card shadow">
 							<div class="card-header d-flex">
-								<h5>Income chart [this month]</h5>
+								<h5>Income chart [{{ now()->format('F Y') }}]</h5>
 							</div>
 							<div class="card-body">
 								<div class="col">
@@ -160,7 +160,7 @@
 					<div class="col-lg-6 ">
 						<div class="card shadow">
 							<div class="card-header d-flex">
-								<h5>Expense chart [this month]</h5>
+								<h5>Expense chart[{{ now()->format('F Y') }}]</h5>
 							</div>
 							<div class="card-body">
 								<div class="col">
