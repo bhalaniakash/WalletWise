@@ -178,32 +178,27 @@
             </div>
 
             <!-- Chart Section -->
-            <div class="row mt-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">User Statistics</h5>
-                            <canvas id="user"></canvas>
-                        </div>
+            <div class="d-flex flex-wrap justify-content-between mt-4">
+                <div class="card flex-fill mx-2">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">User Statistics</h5>
+                        <canvas id="user"></canvas>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Income Statistics</h5>
-                            <canvas id="income"></canvas>
-                        </div>
+                <div class="card flex-fill mx-2">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Income Statistics</h5>
+                        <canvas id="income"></canvas>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Expense Statistics</h5>
-                            <canvas id="expense"></canvas>
-                        </div>
+                <div class="card flex-fill mx-2">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Expense Statistics</h5>
+                        <canvas id="expense"></canvas>
                     </div>
                 </div>
             </div>
+            
             
         </div>
     </div>

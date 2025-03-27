@@ -54,6 +54,7 @@
       /* Text - Light Gray */
       text-decoration: none;
       transition: 0.3s;
+      font-family: 'Andada Pro', sans-serif;
     }
     x-dropdown-link{
       color: #E0E0E0;
