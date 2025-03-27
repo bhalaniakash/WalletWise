@@ -59,6 +59,16 @@
             background-color: white;
             font-family: 'Arial, sans-serif'; 
         }
+        .admin-dashboard-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(to right, #666, #222);
+        /* Matching shade */
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }   
     </style>
 </head>
 
@@ -84,8 +94,8 @@
         <section>
             <div class="row">
                 <div class="container-fluid col-lg-12">
-                    <div class="card shadow p-3" style="background-color: #616b6b; color: white;">
-                        <h5>Add Catagory</h5>
+                    <div>
+                        <h1 class="admin-dashboard-title">Add Category</h1>
                     </div>
 
                     <div class="card-body">
