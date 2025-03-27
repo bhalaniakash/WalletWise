@@ -43,9 +43,7 @@
             padding: 0.5rem;
             font-family: 'Arial, sans-serif';
         }
-        .text-center{
-            
-        }
+
         h1 {
             font-size: 2rem;
             font-weight: 600;
@@ -71,16 +69,14 @@
             display: flex;
             gap: 1.5rem;
         }
-        .col-md-5{
-            margin: auto;
-        }
+
         .card {
             background-color: #ffffff;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-           
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .card:hover {
@@ -96,12 +92,7 @@
             font-size: 1.25rem;
             font-weight: 500;
             margin-bottom: 1rem;
-            /* color: #343a40;
-            text-align: center;
-            background-color: rgb(217, 217, 217);
-            padding: 1%;
-            border-radius: 50px;
-            font-family: 'Arial, sans-serif';  */
+            color: #343a40;
         }
 
         .btn {
@@ -124,8 +115,7 @@
 
         p {
             font-size: 1rem;
-            color: #515355;
-            font-weight: 600;
+            color: #6c757d;
         }
     </style>
     <br>

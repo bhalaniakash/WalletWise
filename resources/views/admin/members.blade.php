@@ -145,7 +145,6 @@
                     ->where('updated_at', '<', now()->subHours(1)) // Inactive users
                         ->pluck('user_id')
                         ->unique();
-
                         // Fetch all non-admin users who have no records in reports
                         $allNonAdminUsers = \App\Models\User::where('is_Admin', '!=', 'Yes')->pluck('id');
                         $usersWithoutRecords = $allNonAdminUsers->diff($expenseReport->pluck('user_id')->merge($incomeReport->pluck('user_id')));
