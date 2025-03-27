@@ -28,6 +28,11 @@
 			margin-right: 1rem;
 			font-family: 'Arial, sans-serif'; 
 		}
+		.card-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #222;
+    }
 	</style>
 	@include('shared.sidenav');
 	@include('shared.header');
@@ -76,18 +81,15 @@
 							<div class="card-body">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase">Income</strong></div>
-									<div><span>current month</span></div>
 									<div class="count-number">
 										@php
-											$currentMonth = now()->format('Y-m');
 											$user = auth()->user();
 
 											$currentMonthIncome = $incomeReport
 												->where('user_id', $user->id)
-												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
 										@endphp
-										<td>₹ {{ number_format($currentMonthIncome, 2) }}</td>
+										<p class="card-number">₹ {{ number_format($currentMonthIncome, 2) }}</p>
 										</tr>
 									</div>
 								</div>
@@ -99,18 +101,15 @@
 							<div class="card-body ">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase">expense</strong></div>
-									<div><span>current month</span></div>
 									<div class="count-number">
 										@php
-											$currentMonth = now()->format('Y-m');
 											$user = auth()->user();
 
 											$currentMonthExpense = $expenseReport
 												->where('user_id', $user->id)
-												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
 										@endphp
-										<td>₹ {{ number_format($currentMonthExpense, 2) }}</td>
+										<p class="card-number">₹ {{ number_format($currentMonthExpense, 2) }}</p>
 										</tr>
 									</div>
 								</div>
@@ -122,28 +121,25 @@
 							<div class="card-body">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase">saving</strong></div>
-									<div><span>current month</span></div>
 									<div class="count-number">
 										@php
 											$currentMonthIncome = $incomeReport
 												->where('user_id', $user->id)
-												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
 
 											$currentMonthExpense = $expenseReport
 												->where('user_id', $user->id)
-												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
 
 											$saving = $currentMonthIncome - $currentMonthExpense;
 										@endphp
 										@if ($saving < 0)
 											<div class="text-danger">
-												<td>₹ {{ number_format($saving, 2)}}</td>
+												<p class="card-number text-danger">₹ {{ number_format($saving, 2) }}</p>
 											</div>
 										@else
 											<div class="text-success">
-												<td>₹ {{ number_format($saving, 2)}}</td>
+												<p class="card-number text-success">₹ {{ number_format($saving, 2) }}</p>
 											</div>
 										@endif
 
@@ -162,7 +158,7 @@
 					<div class="col-lg-6 ">
 						<div class="dashboard-card">
 							<div class="card-header d-flex">
-								<h5>Income chart [{{ now()->format('F Y') }}]</h5>
+								<h5>Income chart</h5>
 							</div>
 							<div class="card-body">
 								<div class="col">
@@ -174,7 +170,7 @@
 					<div class="col-lg-6 ">
 						<div class="dashboard-card">
 							<div class="card-header d-flex">
-								<h5>Expense chart[{{ now()->format('F Y') }}]</h5>
+								<h5>Expense chart</h5>
 							</div>
 							<div class="card-body">
 								<div class="col">
@@ -196,13 +192,11 @@
     return 'rgb(' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ',' . mt_rand(50, 255) . ')';
   }
 
-	$currentMonth = now()->format('Y-m');
 	$user = auth()->user();
 
 	// Get category-wise expenses for the current month
 	$categoryWiseExpenses = $expenseReport
 		->where('user_id', $user->id)
-		->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 		->groupBy('category_id')
 		->map(fn($items) => $items->sum('amount'));
 
@@ -214,7 +208,6 @@
 	// Get category-wise income for the current month
 	$categoryWiseIncome = $incomeReport
 		->where('user_id', $user->id)
-		->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 		->groupBy('category_id')
 		->map(fn($items) => $items->sum('amount'));
 
