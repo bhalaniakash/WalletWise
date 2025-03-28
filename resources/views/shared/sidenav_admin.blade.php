@@ -141,7 +141,7 @@
     <ul class="nav flex-column bg-dark mb-0 mt-4">
       <li class="nav-item">
         <a href=" {{url('admin/dashboard')}}" class="nav-link">
-          <span class="span"><i class="fas fa-tachometer-alt"></i></span>Dashboard</a>
+          <span class="span"><i class="fas fa-wallet"></i></span>Dashboard</a>
       </li>
       <li class="nav-item">
         <a href="{{url('admin/category')}}" class="nav-link">
@@ -150,11 +150,11 @@
       
       <li class="nav-item">
         <a href="{{url('admin/showCategory')}}" class="nav-link">
-          <span class="span"><i class="fas fa-eye"></i></span> Show Category</a>
+          <span class="span"><i class="fas fa-folder-open"></i></span> Show Category</a>
       </li>
       <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link">
-          <span class="span"><i class="fas fa-user-alt"></i></span>Member</a>
+          <span class="span"><i class="fas fa-users"></i></span>Users</a>
       </li>
       <li class="nav-item">
        

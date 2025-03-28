@@ -161,7 +161,7 @@
     <ul class="nav flex-column bg-dark mb-0 mt-4">
       <li class="nav-item">
         <a href="{{ url('dashboard') }}" class="nav-link">
-          <span class="span"><i class="fas fa-tachometer-alt"></i></span> Dashboard
+          <span class="span"><i class="fas fa-wallet"></i></span> Dashboard
         </a>
       </li>
       
@@ -185,13 +185,19 @@
       
       <li class="nav-item">
         <a href="{{ url('dashboard/expenseReport') }}" class="nav-link">
-          <span class="span"><i class="fas fa-chart-pie"></i></span> Expense report
+          <span class="span"><i class="fas fa-receipt"></i></span> Expense report
         </a>
       </li>
       
       <li class="nav-item">
         <a href="{{ url('dashboard/budget') }}" class="nav-link">
-          <span class="span"><i class="fas fa-piggy-bank"></i></span> Budget
+          <span class="span"><i class="fas fa-coins"></i></span> Budget
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="{{ url('dashboard/update') }}" class="nav-link">
+          <span class="span"><i class="fas fa-gem"></i></span> Update plan
         </a>
       </li>
       

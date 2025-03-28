@@ -56,6 +56,9 @@ Route::get('/dashboard/expenseReport', function () {
 Route::get('/dashboard/budget', function () {
     return view('dashboard.budget');
 });
+Route::get('/dashboard/update', function () {
+    return view('dashboard.update');
+});
 Route::get('/dashboard/profile', function () {
     return view('dashboard.profile');
 });
@@ -136,6 +139,24 @@ Route::post('/expense/filter', function (Request $request) {
             'paymode' => $expense->payment_method,
             'amount' => $expense->amount,
             'description' => $expense->description
+        ];
+    });
+    // dd($data);
+    return response()->json($data);
+});
+
+
+
+Route::post('/category/filter', function (Request $request) {
+    $category = category::query();
+    if ($request->filled('cat')) {
+        $category->where('type', $request->input('cat'));
+    }
+    $data = $category->get()->map(function ($category) {
+        return [
+            'id' => $category->id,
+            'name' => $category->name,
+            'type' => $category->type,
         ];
     });
     // dd($data);
