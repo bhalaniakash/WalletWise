@@ -53,7 +53,7 @@
                 <p class="m-3 text-sm">
                     {{ __('Once you upgrade, you will gain access to premium features. Proceed carefully before making any payments.') }}
                 </p>
-                <button class="m-3 btn btn-primary">
+                <button class="m-3 btn btn-dark">
                     {{ __('Update plan') }}
                 </button>
             </div>
