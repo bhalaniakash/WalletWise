@@ -181,8 +181,17 @@
     #row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Ensures both cards stay in one row */
+    justify-content: space-between; 
+    /* align-content: center;
+    justify-content: center; */
 }
+    #chart1 {
+      
+        display: flex;
+        gap: 1.5rem;
+        border-radius: 2%;
+        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+    }
 </style>
 
 <body>
@@ -196,15 +205,17 @@
             <div class="row mb-2" id="row">
                 <div class="col-md-5">
                         <div class="dashboard-card">
-                            <i class="fas fa-users card-icon"></i>
-                            <h5 class="card-title">Total Users</h5>
+                            <h5 class="card-title">
+                                <i class="fas fa-users card-icon"></i>
+                                Total Users</h5>
                             <p class="card-number">{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
                         </div>
                 </div>
                 <div class="col-md-5">
                         <div class="dashboard-card">
-                            <i class="fas fa-user-slash"></i>
-                            <h5 class="card-title">Inactive Users</h5>
+                            <h5 class="card-title">
+                                <i class="fas fa-user-slash"></i>
+                                Inactive Users</h5>
                             @php
                                 $inactiveUsers = collect([]);
 
@@ -226,8 +237,9 @@
                 <div class="col-md-5">
                     
                         <div class="dashboard-card">
-                            <i class="fas fa-layer-group"></i>
-                            <h5 class="card-title">Total Income Categories</h5>
+                            <h5 class="card-title">
+                                <i class="fas fa-layer-group"></i>
+                                Total Income Categories</h5>
                             <p class="card-number">{{$income = $categories->where('type', 'income')->count()}}</p>
                         </div>
                     
@@ -235,36 +247,40 @@
                 <div class="col-md-5">
                     
                         <div class="dashboard-card">
-                            <i class="fas fa-wallet"></i>
-                            <h5 class="card-title">Total Expense Categories</h5>
+                            <h5 class="card-title">
+                                <i class="fas fa-wallet"></i>
+                                Total Expense Categories</h5>
                             <p class="card-number">{{$expense = $categories->where('type', 'expense')->count()}}</p>
                         </div>
                     
                 </div>
             </div>
-            <div class="row">
-                <!-- Chart Section -->
-                <div class="d-flex flex-wrap justify-content-between mt-4">
-                    <div class="card flex-fill mx-2">
+            <br>
+
+            <!-- Chart Section -->
+
+            {{-- <div class="row " > --}}
+                <div class="d-flex row ">
+                    <div class="card flex-fill mx-2 " id="chart1">
                         <div class="card-body text-center">
                             <h5 class="card-title">User Statistics</h5>
                             <canvas id="user"></canvas>
                         </div>
                     </div>
-                    <div class="card flex-fill mx-2">
+                    <div class="card flex-fill mx-2" id="chart1">
                         <div class="card-body text-center">
                             <h5 class="card-title">Income Statistics</h5>
                             <canvas id="income"></canvas>
                         </div>
                     </div>
-                    <div class="card flex-fill mx-2">
+                    <div class="card flex-fill mx-2" id="chart1">
                         <div class="card-body text-center">
                             <h5 class="card-title">Expense Statistics</h5>
                             <canvas id="expense"></canvas>
                         </div>
                     </div>
                 </div>
-            </div>
+            {{-- </div> --}}
         </div>
     </div>
 </body>
