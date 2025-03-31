@@ -78,6 +78,10 @@
             align-items: center;
             font-family: 'Arial, sans-serif';
         }
+        
+            .table tbody tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
     </style>
 
 </head>
@@ -144,6 +148,8 @@
                             <td style="width: 70%; color: red;">{{ $category->type }}</td>
                         @elseif($category->type == "income")
                             <td style="width: 70%; color: green;">{{ $category->type }}</td>
+                      
+                          
                         @endif
                         <td style="width: 15%;">
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST">

@@ -3,7 +3,7 @@
 
 <head>
     <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-    <title>Add Income</title>
+    <title>Add Expense</title>
 
     <base href="/expenseMVC/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,17 +26,57 @@
             font-family: 'Arial, sans-serif';
         }
 
+        .page-content {
+            margin-left: 17rem;
+            padding: 2rem;
+            transition: all 0.4s;
+        }
+
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             font-family: 'Arial, sans-serif';
         }
 
-        th,
-        td {
-            color: #000;
-            background-color: white;
-            font-family: 'Arial, sans-serif';
+        .form-control {
+            border-radius: 6px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transition: 0.3s;
+        }
+
+        .live-preview {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .row.mt-3 {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
         }
     </style>
 </head>
@@ -48,7 +88,7 @@
         <div class="container-fluid shadow">
             <br>
             <header>
-                <h1 class="h3 display">Add Income </h1>
+                <h1 class="h3 display">Add Expense </h1>
             </header>
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -60,48 +100,34 @@
             @endif
             <form class="mt-3" method="POST" action="{{ route('income.store') }}">
                 @csrf
-                <input type="hidden" name="IId" value="1" />
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="incomename">Name: </label>
-                            <input type="text" class="form-control" name="iname" id="" placeholder="Income name"
-                                required />
+                            <label>Name:</label>
+                            <input type="text" class="form-control" name="iname" id="iname" placeholder="Income name" required oninput="updatePreview()" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="incomeamount">Amount:</label>
-                            <input type="number" class="form-control" name="iamount" id="" placeholder="Amount" required
-                                value="" />
+                            <label>Amount:</label>
+                            <input type="number" class="form-control" name="iamount" id="iamount" placeholder="Amount" required oninput="updatePreview()" />
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="expensedate">Date: </label>
-                            <input type="date" class="form-control" name="idate" id="incomedate" required />
+                            <label>Date:</label>
+                            <input type="date" class="form-control" name="idate" id="incomedate" required oninput="updatePreview()" />
                         </div>
                     </div>
-
-                    <script>
-                        // Get today's date in YYYY-MM-DD format
-                        const today = new Date().toISOString().split("T")[0];
-
-                        // Set the max attribute of the date input field
-                        document.getElementById("incomedate").setAttribute("max", today);
-                    </script>
-
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="incomecategory">Category:</label>
-                            <select class="form-control" name="icategory" id="">
+                            <label>Category:</label>
+                            <select class="form-control" name="icategory" id="icategory" onchange="updatePreview()">
                                 @foreach($categories as $category)
                                     @if($category->type == 'income')
-                                        <option value="{{ $category->id }}">
-                                            <p>{{ $category->name }}</p>
-                                        </option>
+                                        <option value="{{ $category->id }}">💰 {{ $category->name }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -111,27 +137,35 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label for="comment">Description:</label>
-                            <textarea class="form-control" rows="3" id="comment" name="idescription" placeholder=""
-                                value=""></textarea>
+                            <label>Description:</label>
+                            <textarea class="form-control" rows="3" name="idescription" id="idescription" placeholder="Optional" oninput="updatePreview()"></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="live-preview" id="preview">
+                    <strong>Live Preview:</strong> No income added yet.
+                </div>
+                <div class="row mt-3">
                     <div class="col">
-                        <div class="form-group">
-                            <button type="submit" name="insert" class="btn btn-dark">Insert</button>
-                        </div>
+                        <button type="submit" class="btn btn-primary">Insert <i class="fa fa-plus-circle fa-sm"></i></button>
                     </div>
                 </div>
             </form>
+            <br>
         </div>
         <br>
-
-
     </div>
 
-
+    <script>
+        function updatePreview() {
+            let name = document.getElementById("iname").value || "[Name]";
+            let amount = document.getElementById("iamount").value || "[Amount]";
+            let date = document.getElementById("incomedate").value || "[Date]";
+            let category = document.getElementById("icategory").options[document.getElementById("icategory").selectedIndex].text;
+            let desc = document.getElementById("idescription").value || "[No Description]";
+            document.getElementById("preview").innerHTML = `<strong>Preview:</strong> ${name} - ${amount} on ${date} in ${category}. ${desc}`;
+        }
+    </script>
 </body>
 
 </html>
