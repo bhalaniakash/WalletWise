@@ -32,43 +32,49 @@
             margin-left: 1rem;
             margin-right: 1rem;
             font-family: 'Arial, sans-serif'; 
-
         }
 
-        #add1 input {
-            width: 300px;
-            height: 40px;
-            font-family: 'Arial, sans-serif'; 
-        }
-
-        #add2 input {
-            width: 300px;
-            height: 40px;
-            font-family: 'Arial, sans-serif'; 
-        }
-
-        .table tr {
-            color: #000;
-            background-color: white;
-
-        }
-
-        th,
-        td {
-            color: #000;
-            background-color: white;
-            font-family: 'Arial, sans-serif'; 
-        }
         .admin-dashboard-title {
-        font-size: 28px;
-        font-weight: bold;
-        color: white;
-        background: linear-gradient(to right, #666, #222);
-        /* Matching shade */
-        padding: 12px 20px;
-        border-radius: 8px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    }   
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to right, #666, #222);
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        button.btn {
+            width: 100%;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .page-content {
+                margin-left: 1rem;
+                margin-right: 1rem;
+                padding: 10px;
+            }
+        }
+       
+
+      
+      
     </style>
 </head>
 
@@ -92,12 +98,9 @@
     <div class="page-content" id="content">
         <br>
         <section>
-            <div class="row">
-                <div class="container-fluid col-lg-12">
-                    <div>
-                        <h1 class="admin-dashboard-title">Add Category</h1>
-                    </div>
-
+            <div class="container">
+                <h1 class="admin-dashboard-title">Add Category</h1>
+                <div class="card">
                     <div class="card-body">
                         @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -106,18 +109,18 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                    @endif
-                    
-                    @if(session('error'))
+                        @endif
+
+                        @if(session('error'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('error') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                    @endif
-                    
-                    @if($errors->any())
+                        @endif
+
+                        @if($errors->any())
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             @foreach($errors->all() as $error)
                                 <p>{{ $error }}</p>
@@ -126,14 +129,13 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                    @endif
-                    
-                    
+                        @endif
+
                         <form id="addIncomeForm" method="post" action="{{ route('admin.category.store') }}">
                             @csrf
                             <div class="mb-3">
                                 <label for="incomeName" class="form-label">Category of Expense/Income</label>
-                                <input type="text" name="income_name" id="incomeName" class="form-control" required>
+                                <input type="text" name="income_name" id="incomeName" class="form-control" required autofocus>
                             </div>
 
                             <div class="mb-3">
@@ -147,11 +149,8 @@
                             <button type="submit" name="insert" class="btn btn-dark">Add Category</button>
                         </form>
                     </div>
-
                 </div>
-                <br>
             </div>
-    </div>
     </section>
     </div>
 
