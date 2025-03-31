@@ -105,13 +105,16 @@
                         @include('profile.partials.update-profile-information-form')
                     </div>
                 </div>
-                
-                {{-- <div class="col-md-12">
+
+                {{-- @if (Auth::check() && Auth::user()->is_Admin === 'No')
+                {{ dd(Auth::user()->is_Admin) }}
+                <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg equal-height">
-                        <h4 class="mb-3">Update plan</h4>
-                        @include('profile.partials.update-plan')
+                        <h4 class="mb-3">Verify your contact number</h4>
+                        @include('profile.partials.contact-verify')
                     </div>
-                </div> --}}
+                </div>
+                @endif --}}
 
                 <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg equal-height">

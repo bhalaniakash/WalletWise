@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CharttController;
 use App\Http\Controllers\UpdateCategory;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\Payment;
 use App\Models\Income;
 use Illuminate\Http\Request;
 
@@ -162,3 +163,5 @@ Route::post('/category/filter', function (Request $request) {
     // dd($data);
     return response()->json($data);
 });
+
+Route::post('/razorpay/payment',[Payment::class,'payment'])->name('payment');
