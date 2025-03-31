@@ -16,10 +16,29 @@
             "currency": "INR",
             "name": "Acme Corp", // Business name
             "description": "Test Transaction",
-            "handler": function(response) {
-                var payId = response.razorpay_payment_id;
-                // alert('Payment success: ' + payId);
-                window.location.href='../dashboard';
+            "handler": function (response) {
+                console.log("Handler function triggered", response);
+                fetch('/verify-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify(response)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('Verify Payment Response:', data); // Debug Response
+                        if (data.success) {
+                            alert('Payment Verified! Redirecting...');
+                            window.location.href = "{{ route('dashboard') }}"; // Redirect user
+                        } else {
+                            alert('Payment Failed: ' + data.error);
+                            console.error('Payment Failed:', data.error);
+                        }
+                    })
+                    .catch(err => console.error("Fetch error:", err));
+
             },
             "image": "https://example.com/your_logo",
             "order_id": "{{ $order }}", // Order ID as a string
@@ -32,7 +51,7 @@
                 "address": "Razorpay Corporate Office"
             },
             "theme": {
-                "color": "#3399cc"
+                "color": "#343434"
             }
         };
         var rzp1 = new Razorpay(options);

@@ -128,14 +128,14 @@
                     <input id="contact" type="number" name="contact"  >
                     @error('contact') <span class="error">{{ $message }}</span> @enderror
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="plan_type">Plan Type</label>
                     <select id="plan_type" name="plan_type">
                         <option value="regular">Regular</option>
                         <option value="premium">Premium</option>
                     </select>
                     @error('plan_type') <span class="error">{{ $message }}</span> @enderror
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="profile_picture">Profile Picture</label>
                     <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture" accept="image/*">

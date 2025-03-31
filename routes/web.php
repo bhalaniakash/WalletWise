@@ -165,3 +165,4 @@ Route::post('/category/filter', function (Request $request) {
 });
 
 Route::post('/razorpay/payment',[Payment::class,'payment'])->name('payment');
+Route::post('/verify-payment', [Payment::class, 'verifyPayment'])->name('payment.verify');
