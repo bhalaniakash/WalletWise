@@ -3,7 +3,7 @@
 
 <head>
     <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-    <title>Add Expense</title>
+    <title>Add Income</title>
 
     <base href="/expenseMVC/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,20 +16,13 @@
         }
 
         .page-content {
-            margin-top: 5% !important;
+            margin-top: 5%;
             margin-left: 17rem;
             margin-right: 1rem;
+            padding: 2rem;
             transition: all 0.4s;
             color: #000;
             background-color: white;
-            margin-top: 5% !important;
-            font-family: 'Arial, sans-serif';
-        }
-
-        .page-content {
-            margin-left: 17rem;
-            padding: 2rem;
-            transition: all 0.4s;
         }
 
         .content-card {
@@ -37,12 +30,6 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .content.active {
-            margin-left: 1rem;
-            margin-right: 1rem;
-            font-family: 'Arial, sans-serif';
         }
 
         .form-control {
@@ -76,19 +63,20 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-
         }
+
+     
     </style>
 </head>
 
 <body>
-    @include('shared.sidenav');
-    @include('shared.header');
+    @include('shared.sidenav')
+    @include('shared.header')
     <div class="page-content" id="content">
         <div class="container-fluid shadow">
             <br>
             <header>
-                <h1 class="h3 display">Add Expense </h1>
+                <h1 class="h3 display">Add Income</h1>
             </header>
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -146,8 +134,10 @@
                     <strong>Live Preview:</strong> No income added yet.
                 </div>
                 <div class="row mt-3">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary">Insert <i class="fa fa-plus-circle fa-sm"></i></button>
+                    <div class="col" style="text-align: center;">
+                        <button type="submit" class="btn btn-dark" style="width: 100%;">Insert 
+                            <i class="fa fa-plus-circle fa-sm"></i>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -161,7 +151,7 @@
             let name = document.getElementById("iname").value || "[Name]";
             let amount = document.getElementById("iamount").value || "[Amount]";
             let date = document.getElementById("incomedate").value || "[Date]";
-            let category = document.getElementById("icategory").options[document.getElementById("icategory").selectedIndex].text;
+            let category = document.getElementById("icategory").options[document.getElementById("icategory").selectedIndex]?.text || "[Category]";
             let desc = document.getElementById("idescription").value || "[No Description]";
             document.getElementById("preview").innerHTML = `<strong>Preview:</strong> ${name} - ${amount} on ${date} in ${category}. ${desc}`;
         }

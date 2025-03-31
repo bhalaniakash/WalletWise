@@ -151,7 +151,10 @@
                 <div class="row mt-3">
                     <div class="col">
                         <div class="form-group">
-                            <button type="submit" name="insert" class="btn btn-dark">Insert</button>
+                            <button type="submit" name="insert" class="btn btn-dark" style="width: 100%;">
+                                <i class="fa fa-plus-circle fa-sm"></i>
+                                Insert
+                            </button>
                         </div>
                     </div>
                 </div>

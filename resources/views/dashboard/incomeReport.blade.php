@@ -8,14 +8,13 @@
   <base href="/expenseMVC/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  {{--
-  <link rel="stylesheet" type="text/css" href="link/link.css">
-  <script type="text/javascript" src="lib/js/main.js"></script> --}}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <style type="text/css">
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      background-color: white;
+      background: linear-gradient(to right, #4c51bf, #6b46c1);
       color: black;
       font-family: 'Arial, sans-serif';
     }
@@ -25,7 +24,7 @@
       margin-right: 1rem;
       transition: all 0.4s;
       color: #000;
-      background-color: white;
+      background: linear-gradient(to right, #4c51bf, #6b46c1);
       margin-top: 5% !important;
       font-family: 'Arial, sans-serif';
     }
@@ -36,27 +35,29 @@
       font-family: 'Arial, sans-serif';
     }
 
-    .table thead {
-      background-color: #121212;
-      font-family: 'Arial, sans-serif';
-    }
+    
     
     button["submit"] {
-      background-color: #4CAF50;
-      color: white;
-      /* padding: 14px 20px; */
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
+      background: linear-gradient(to right, #4c51bf, #6b46c1);
+      transform: translateY(-2px);
+      box-shadow: 0px 8px 20px rgba(107, 70, 193, 0.3);
       width: 100%;
     }
     
-    th,
-    td {
-      color: #000;
-      background-color: white;
-      font-family: 'Arial, sans-serif';
+    table {
+        border-collapse: collapse;
+        
+        width: 100%;
     }
+
+        th {
+            background-color: #4c51bf;
+            color: white;
+        }
+
+        td {
+            background-color: white;
+        }
     .container-fluid{
       font-family: 'Arial, sans-serif';
       align-items: center;
@@ -71,18 +72,16 @@
 <body>
   @include('shared.sidenav');
   @include('shared.header');
+  
   <div class="page-content" id="content">
     <div id="page-wrapper">
       <br>
-      <section>
-        <div class="container-fluid">
-          <div class="row">
-            <div
-              style="margin-left: 1rem; margin-bottom: 1rem; font-size: 1rem; font-weight: bold; color: #4A5568; background: #F7FAFC; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block;">
-              <span style="color: #2D3748;">HOME</span> &gt; <span style="color: #3182CE;">INCOME REPORT</span>
-            </div>
+     
+      <div class="card p-4">
+        
+        <h2 class="text-2xl font-bold text-indigo-700 mb-4">Income  Report</h2>
             <div class="col-xl-12">
-              <div class="container-fluid shadow">
+           
                   <form class="form-inline" id="Report">
                               <select class="form-control" id="incomeCategory" >
                                 <option value="">All Categories</option>
@@ -104,16 +103,8 @@
                                 {{-- <button type="submit" class="btn btn-dark">
                                 Filter
                                 </button> --}}
-                  </form>
+                              </form>
                
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <br>
-      <section>
-        <div class="container-fluid shadow">
           <br>
           <table class="table table-striped" id="Report">
             <thead style="background-color: #1E1E2E;">
@@ -161,9 +152,14 @@
               </tr>
             </tbody>
           </table>
-          <div class="d-flex justify-content-start">
-            <button class="btn btn-dark mb-4 mt-2" id="downloadReport">Download Report</button>
-          </div>
+          
+            <button type="submit" class="btn btn-dark mt-4" id="downloadReport">Download Report</button>
+          
+
+        </div>
+      </div>
+      <br>
+        <div class="card p-4">
           <div class="card shadow">
             <div class="card-header d-flex">
               <h5>Income chart</h5>
