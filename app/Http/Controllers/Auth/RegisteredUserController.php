@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             ],
             'age' => ['required', 'integer', 'min:15'],
             'contact' => ['required', 'digits:10'],
-            'plan_type' => ['required', 'in:regular,premium'],
+            // 'plan_type' => ['required', 'in:regular,premium'],
             'profile_picture' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
         ], [
             'name.regex' => 'The name should only contain letters and spaces.',
@@ -62,7 +62,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'age' => $request->age,
             'contact' => $request->contact,
-            'plan_type' => $request->plan_type,
+            // 'plan_type' => $request->plan_type,
             'profile_picture' => $profilePicturePath,
         ]);
 
