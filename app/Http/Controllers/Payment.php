@@ -18,7 +18,7 @@ class Payment extends Controller
     public function payment(Request $request)
     {
         $amount = $request->amount;
-        $api = new Api(env('RZR_KEY'), env('RZR_SECRET')); // Use correct env variables
+        $api = new Api(env('rzr_key'), env('rzr_secret')); // Use correct env variables
 
         $order_data = [
             'receipt' => 'order_' . rand(1000, 9999),
@@ -56,8 +56,6 @@ class Payment extends Controller
                 Log::error('User not authenticated.');
                 return response()->json(['success' => false, 'error' => 'User not found'], 401);
             }
-
-            // Update user's plan to 'premium'
             $user->update([
                 'plan_type' => 'premium'
             ]);
