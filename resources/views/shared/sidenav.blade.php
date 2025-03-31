@@ -192,12 +192,13 @@
           <span class="span"><i class="fas fa-coins"></i></span> Budget
         </a>
       </li>
-
+      @if (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
         <a href="{{ url('dashboard/update') }}" class="nav-link">
           <span class="span"><i class="fas fa-gem"></i></span> Update plan
         </a>
       </li>
+      @endif
       
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-item">

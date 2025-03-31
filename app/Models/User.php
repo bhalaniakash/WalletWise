@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'age',
         'contact',
-        'plan_type',
+        // 'plan_type',
         'profile_picture',
     ];
 
