@@ -4,27 +4,23 @@
 <head>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Ramaraja:wght@400;700&display=swap" rel="stylesheet">
-  {{-- <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
-  <script src="lib/bootstrap/js/jquery.slim.min.js"></script>
-  <script src="lib/bootstrap/js/poper.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script> --}}
-
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Collapsible sidebar using Bootstrap 4</title>
 
   <base href="/expenseMVC/">
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
     body {
-      background-color: #121212;
+     background: linear-gradient(to right, #3b0764, #4338ca);
+
       /* Primary - Pure Black */
       color: #E0E0E0;
       /* Text - Light Gray */
@@ -39,7 +35,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      background: #121212;
+      background: linear-gradient(to right, #3b0764, #4338ca);
+
       /* Primary - Pure Black */
       box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
       transition: all 0.4s;
@@ -76,7 +73,8 @@
       transition: 0.3s;
     }
     .nav-item {
-      background-color: #121212;
+      background: linear-gradient(to right, #3b0764, #4338ca);
+
       /* Primary - Pure Black */
     }
 

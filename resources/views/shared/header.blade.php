@@ -35,9 +35,13 @@
             margin-left: 16rem; */
             margin-top: -25px;
             transition: all 0.4s;
-            background-color: #121212;
+            background: linear-gradient(to right, #3b0764, #4338ca);
+
+            
             position: fixed;
             z-index: 1000;
+            border: #4c51bf 1px solid;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         #content.active {

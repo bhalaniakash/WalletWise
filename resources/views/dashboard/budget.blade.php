@@ -6,22 +6,14 @@
         box-sizing: border-box;
     }
 
-    body {
-        min-height: 100vh;
-        overflow-x: hidden;
-        color: #000;
-        background-color: white;
-        font-family: 'Arial, sans-serif'; 
-    }
 
     .page-content {
         margin-left: 17rem;
         margin-right: 1rem;
         transition: all 0.4s;
-        background-color: white;
-        color: #000;
         margin-top: 50px;
         font-family: 'Arial, sans-serif'; 
+        color: white;
     }
 
     .content.active {
@@ -35,13 +27,24 @@
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px; 
         font-family: 'Arial, sans-serif'; 
+        color: black;
     }
 
-    .table tbody tr th,
-    .table tbody tr td {
-        color: #000;
-        font-family: 'Arial, sans-serif'; 
-    }
+    . table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-family: 'Arial, sans-serif';
+        }
+
+        th {
+            background-color: #4c51bf;
+            color: white;
+        }
+
+        td {
+            background-color: white;
+        }
 
     .btn-dark {
         background-color: #000;
@@ -54,12 +57,7 @@
             border-color: #000;
         }
 
-        th, td {
-            color: #000;
-            background-color: white;
-            font-family: 'Arial, sans-serif'; 
-        }
-
+       
         .progress {
             height: 20px;
             border-radius: 5px;
@@ -96,6 +94,7 @@
             border-radius: 50px;
             font-family: 'Arial, sans-serif'; 
         }
+
     </style>
 </head>
 
@@ -109,7 +108,7 @@
             <br>
 
             <section>
-                <div class="container-fluid">
+                {{-- <div class="container-fluid"> --}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">
@@ -221,14 +220,14 @@
                                 @endif
                             </div>  
                         </div>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </section>
 
             <br>
 
             <section>
-                <div class="container-fluid shadow">
+                <div class="col">
                     <br>
                     <form class="mt-3" method="POST" action="{{ route('budget.store') }}">
                         @csrf
@@ -271,7 +270,7 @@
             {{-- from here budget categorys starts --}}
 
             <section>
-                <div class="container-fluid shadow">
+                {{-- <div class="container-fluid shadow"> --}}
                     <h5>Budget Table</h5>
                     <table class="table">
                         <thead>
@@ -339,17 +338,17 @@
                         </tbody>
                     </table>
                     <br>
-                </div>
+                {{-- </div> --}}
             </section>
 
             <br>
 
             {{-- from here chart section starts --}}
             <section>
-                <div class="container-fluid shadow">
+                {{-- <div class="container-fluid shadow"> --}}
                     <h5>Analytics & Reports</h5>
                     <div class="d-flex justify-content-between">
-                        <div class="card" style="width: 33% ">
+                        <div class="card" style="width: 32% ">  
                             <h6 class="text-center">Budget Chart</h6>
                             <canvas id="categoryChart" style="width: 100%; height: 300px;"></canvas>
                             <script>
@@ -392,7 +391,7 @@
                             </script>
                         </div>
             
-                        <div class="card" style="width: 33% ;">
+                        <div class="card" style="width: 32% ;> ">
                             <h6 class="text-center">Expense Distribution</h6>
                             <canvas id="expenseChart" style="width: 100%; height: 300px;">
                             <script>
@@ -450,7 +449,7 @@
                             </canvas>
                         </div>
             
-                        <div class="card" style="width: 33% ;">
+                        <div class="card" style="width: 32% ;> ">
                             <h6 class="text-center">Income Distribution</h6>
                             <canvas id="incomeChart" style="width: 100%; height: 300px;">
                             <script>
@@ -510,7 +509,7 @@
                         </div>
                     </div>
                     <br>
-                </div>
+                {{-- </div> --}}
             </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>

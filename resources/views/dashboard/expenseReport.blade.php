@@ -12,7 +12,6 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #4c51bf, #6b46c1);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -22,7 +21,7 @@
             margin-left: 17rem;
             padding: 2rem;
             transition: all 0.3s ease-in-out;
-            
+        
         }
 
         .card {
@@ -36,7 +35,7 @@
             font-weight: 600;
             transition: all 0.3s ease-in-out;
         }
-
+        
         .btn-dark:hover {
             background: linear-gradient(to right, #4c51bf, #6b46c1);
             transform: translateY(-2px);

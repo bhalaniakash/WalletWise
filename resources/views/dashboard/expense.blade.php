@@ -8,25 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script type="text/javascript" src="lib/js/main.js"></script>
     <style type="text/css">
-        body {
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: 'Arial, sans-serif';
-            background-color: #f4f4f4;
-        }
-
+       
         .page-content {
             margin-left: 17rem;
+            margin-top: 5% !important;
             margin-right: 1rem;
             transition: all 0.4s;
-            background-color: white;
-            color: black;
-            margin-top: 5% !important;
             font-family: 'Arial, sans-serif';
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+            padding: 2rem;
+            transition: all 0.3s ease-in-out;
+            color: white;
+                }
 
         .content.active {
             margin-left: 1rem;
@@ -75,7 +67,7 @@
     @include('shared.sidenav');
     @include('shared.header');
     <div class="page-content" id="content">
-        <div class="container-fluid shadow">
+        
             <br>
             <header>
                 <h1 class="h3 display">Add Expense</h1>
@@ -151,7 +143,7 @@
                 <div class="row mt-3">
                     <div class="col">
                         <div class="form-group">
-                            <button type="submit" name="insert" class="btn btn-dark" style="width: 100%;">
+                            <button type="submit" name="insert" class="btn btn-primary" style="width: 100%;">
                                 <i class="fa fa-plus-circle fa-sm"></i>
                                 Insert
                             </button>
@@ -159,7 +151,7 @@
                     </div>
                 </div>
             </form>
-        </div>
+      
         <br>
     </div>
 

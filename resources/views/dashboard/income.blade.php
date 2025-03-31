@@ -9,49 +9,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script type="text/javascript" src="lib/js/main.js"></script>
     <style type="text/css">
-        body {
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: 'Arial, sans-serif';
-        }
+      
 
         .page-content {
-            margin-top: 5%;
             margin-left: 17rem;
+            margin-top: 5% !important;
             margin-right: 1rem;
-            padding: 2rem;
             transition: all 0.4s;
-            color: #000;
-            background-color: white;
+            font-family: 'Arial, sans-serif';
+            padding: 2rem;
+            transition: all 0.3s ease-in-out;
+            color:white;
         }
 
-        .content-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+       
 
         .form-control {
             border-radius: 6px;
             padding: 10px;
             border: 1px solid #ccc;
         }
-
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transition: 0.3s;
-        }
-
         .live-preview {
-            background: #e9ecef;
             padding: 15px;
             border-radius: 6px;
             margin-top: 15px;
@@ -70,10 +48,11 @@
 </head>
 
 <body>
+    <br>
     @include('shared.sidenav')
     @include('shared.header')
     <div class="page-content" id="content">
-        <div class="container-fluid shadow">
+       
             <br>
             <header>
                 <h1 class="h3 display">Add Income</h1>
@@ -135,14 +114,14 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col" style="text-align: center;">
-                        <button type="submit" class="btn btn-dark" style="width: 100%;">Insert 
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Insert 
                             <i class="fa fa-plus-circle fa-sm"></i>
                         </button>
                     </div>
                 </div>
             </form>
             <br>
-        </div>
+      
         <br>
     </div>
 

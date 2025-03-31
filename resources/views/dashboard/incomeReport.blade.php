@@ -20,28 +20,19 @@
     }
 
     .page-content {
-      margin-left: 17rem;
-      margin-right: 1rem;
-      transition: all 0.4s;
-      color: #000;
-      background: linear-gradient(to right, #4c51bf, #6b46c1);
-      margin-top: 5% !important;
-      font-family: 'Arial, sans-serif';
-    }
+            margin-top: 5% !important;
+            margin-left: 17rem;
+            padding: 2rem;
+            transition: all 0.3s ease-in-out;
+            
+        }
 
-    .content.active {
-      margin-left: 1rem;
-      margin-right: 1rem;
-      font-family: 'Arial, sans-serif';
-    }
-
-    
-    
     button["submit"] {
       background: linear-gradient(to right, #4c51bf, #6b46c1);
-      transform: translateY(-2px);
+      
       box-shadow: 0px 8px 20px rgba(107, 70, 193, 0.3);
       width: 100%;
+      background: linear-gradient(to right, #6b46c1, #4c51bf);
     }
     
     table {
@@ -58,14 +49,7 @@
         td {
             background-color: white;
         }
-    .container-fluid{
-      font-family: 'Arial, sans-serif';
-      align-items: center;
-      justify-content: center;
-      align-content: center;
-      text-align: center;
-      justify-content: space-between;
-    }
+    
   </style>
 </head>
 
@@ -74,7 +58,7 @@
   @include('shared.header');
   
   <div class="page-content" id="content">
-    <div id="page-wrapper">
+  
       <br>
      
       <div class="card p-4">
@@ -95,12 +79,12 @@
                                <div class="input-group">
                                   <input type="month" class="form-control" id="incomeDate">
                                   <div class="input-group-prepend">
-                                    <button class="btn btn-dark " type="submit">
+                                    <button class="btn btn-primary " type="submit">
                                       <i class="fa fa-filter fa-xs" aria-hidden="true"></i>Filter</button>
                                   </div>
                                 </div>
                                 &nbsp;
-                                {{-- <button type="submit" class="btn btn-dark">
+                                {{-- <button type="submit" class="btn btn-primary">
                                 Filter
                                 </button> --}}
                               </form>
@@ -153,7 +137,7 @@
             </tbody>
           </table>
           
-            <button type="submit" class="btn btn-dark mt-4" id="downloadReport">Download Report</button>
+          <button class="btn btn-dark mt-4"   id="downloadReport">Download Report</button>
           
 
         </div>
@@ -183,7 +167,7 @@
         </div>
         <br>
       </section>
-    </div>
+   
   </div>
 
   {{-- chart 1 --}}
