@@ -35,12 +35,9 @@
             margin-left: 16rem; */
             margin-top: -25px;
             transition: all 0.4s;
-            background: linear-gradient(to right, #3b0764, #4338ca);
-
-            
+            background: #6a6851;
             position: fixed;
             z-index: 1000;
-            border: #4c51bf 1px solid;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -50,27 +47,16 @@
             position: fixed;
         }
 
-        button i {
-            font-size: 30px;
-            color: white;
-        }
 
-        .navbar-brand {
-            font-size: 30px;
-            color: white;
-            text-decoration: none;
-            gap: 20px;
-            font-family: 'Arial, sans-serif'; 
-        }
 
         button i:hover {
-            color: white;
-            font-family: 'Arial, sans-serif'; 
+            background-color: #DBDBDB;
+            color: #706D54;
         }
 
         .logo {
             border-radius: 5pc;
-            background-color: white;
+            background-color: #DBDBDB;
             width: 60px;
             height: 60px;
             margin-left: 10px;

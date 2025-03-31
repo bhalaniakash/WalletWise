@@ -19,11 +19,9 @@
   <style type="text/css">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
     body {
-     background: linear-gradient(to right, #3b0764, #4338ca);
-
-      /* Primary - Pure Black */
-      color: #E0E0E0;
-      /* Text - Light Gray */
+      margin: 0;
+      background-color: #F1EFEC;
+      color: black;
       font-family: 'Andada Pro', sans-serif; 
     }
     
@@ -36,19 +34,16 @@
       top: 0;
       left: 0;
       background: linear-gradient(to right, #3b0764, #4338ca);
-
-      /* Primary - Pure Black */
       box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
       transition: all 0.4s;
-      color: #E0E0E0;
-      /* Text - Light Gray */
+      color: #DBDBDB;
       text-decoration: none;
       font-family: 'Arial, sans-serif'; 
+      background: #706D54 !important;
     }
 
     .text-gray {
-      color: #E0E0E0;
-      /* Text - Light Gray */
+      
       padding: 5px;
       font-size: 25px;
       padding-left: 10px;
@@ -59,21 +54,18 @@
       border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       padding-left: 1px;
       text-decoration: none;
+  
     }
 
-    ul li a {
-      color: #E0E0E0;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+   
     x-dropdown-link{
-      color: #E0E0E0;
+      color: black;
      
       text-decoration: none;
       transition: 0.3s;
     }
     .nav-item {
-      background: linear-gradient(to right, #3b0764, #4338ca);
+      background: #706D54 !important;
 
       /* Primary - Pure Black */
     }
@@ -82,21 +74,12 @@
       margin-left: -16rem;
     }
 
-    ul li a:hover {
-      font-size: 17px;
-      padding-left: 10px;
-      transition: 0.5s;
-      color: black;
-      background-color: white;
-      border-radius: 5px;
-      font-family: 'Andada Pro', sans-serif;
-    }
     x-dropdown-link:hover {
       font-size: 17px;
       padding-left: 10px;
       transition: 0.5s;
       color: black;
-      background-color: white;
+      background-color: #A08963;
       border-radius: 5px;
     }
     @media (max-width: 768px) {
@@ -125,8 +108,8 @@
     }
 
     .nav-link:hover {
-      background-color: white;
-      color: black;
+      background-color: #DBDBDB;
+      color: #706D54;
       /* Primary - Pure Black */
       box-shadow: 0 3px 5px rgb(162, 150, 150);
     }
@@ -139,11 +122,10 @@
     }
 
     .nav-item.active .nav-link {
-      background-color: rgb(177, 177, 177);
-      /* Secondary - Cyan */
-      color: black !important;
-      /* Primary - Pure Black */
+      background-color: #DBDBDB;
+      color: #706D54;
     }
+    
     .span {
       width: 20px;
       display: inline-flex;

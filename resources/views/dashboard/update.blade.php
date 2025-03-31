@@ -15,14 +15,7 @@
 
     <!-- Custom Styles -->
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #4c51bf, #6b46c1); /* Elegant gradient */
-            min-height: 100vh;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
+     
 
         /* Sidebar Offset */
         .main-content {
@@ -35,9 +28,9 @@
         .page-content {
             max-width: 600px;
             margin: 5rem auto; /* Center horizontally */
-            background: white;
+            background: #C9B194;
             border-radius: 12px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 10px 30px #d3d2c5(0, 0, 0, 0.1);
             padding: 2rem;
             text-align: center;
         }
@@ -53,14 +46,14 @@
         }
 
         .form-input:focus {
-            border-color: #6b46c1;
+            border-color: burlywood;
             outline: none;
-            box-shadow: 0 0 8px rgba(107, 70, 193, 0.3);
+            box-shadow: 0 0 8px burlywood;
         }
 
         /* Upgrade Button */
         .btn-upgrade {
-            background: linear-gradient(to right, #6b46c1, #4c51bf);
+            background: #A08963;
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
@@ -71,23 +64,12 @@
         }
 
         .btn-upgrade:hover {
-            background: linear-gradient(to right, #4c51bf, #6b46c1);
+            background: ##c8c6b6;
             transform: translateY(-2px);
-            box-shadow: 0px 8px 20px rgba(107, 70, 193, 0.3);
+            box-shadow: 0px 8px 20px #3a392c;
         }
 
-        /* Footer */
-        footer {
-            margin-left: 17rem; 
-            font-size: 0.875rem;
-            padding: 1rem;
-            text-align: center;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            left: auto; /* Align with sidebar */
-            width: calc(100% - 17rem); /* Adjust width */
-        }
+      
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -133,9 +115,6 @@
     </div>
         
     <!-- Footer -->
-    <footer>
-        &copy; 2025 Super Admin Panel | All Rights Reserved
-    </footer>
-
+    
 </body>
 </html>
