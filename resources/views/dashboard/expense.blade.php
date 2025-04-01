@@ -17,8 +17,8 @@
             font-family: 'Arial, sans-serif';
             padding: 2rem;
             transition: all 0.3s ease-in-out;
-            color: white;
-                }
+            color: #6b4226;;
+            }
 
         .content.active {
             margin-left: 1rem;
@@ -32,21 +32,18 @@
             border: 1px solid #ccc;
         }
 
-        .btn-dark {
-            background-color: #343a40;
+        button[type="submit"] {
+            background: #A08963;
             color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .btn-dark:hover {
-            background-color: #23272b;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
         }
 
         .live-preview {
-            background: #e9ecef;
+            
             padding: 15px;
             border-radius: 6px;
             margin-top: 15px;
@@ -143,7 +140,7 @@
                 <div class="row mt-3">
                     <div class="col">
                         <div class="form-group">
-                            <button type="submit" name="insert" class="btn btn-primary" style="width: 100%;">
+                            <button type="submit" name="insert"  style="width: 100%;">
                                 <i class="fa fa-plus-circle fa-sm"></i>
                                 Insert
                             </button>

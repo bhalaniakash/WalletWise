@@ -13,71 +13,58 @@
 			overflow-x: hidden;
 			margin-top: 0;
 			font-family: 'Arial, sans-serif';
+			background: #E6C7A5;
+            animation: glow 2s infinite alternate;
 		}
-
-		.page-content {
+	.page-content {
 			margin-left: 17rem;
 			margin-right: 1rem;
 			transition: all 0.4s;
 			margin-top: 5% !important;
 			font-family: 'Arial, sans-serif';
-		}
-
-		.content.active {
-			margin-left: 1rem;
-			margin-right: 1rem;
-			font-family: 'Arial, sans-serif';
-		}
-
-		.card-number {
-			font-size: 28px;
-			font-weight: bold;
-			color: #222;
+			
 		}
 
 		.dashboard-card {
-			background: white;
-			padding: 20px;
-			border-radius: 10px;
-			box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-			transition: all 0.3s ease-in-out;
-		}
+			
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 181, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
 
-		.dashboard-card:hover {
-			box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-		}
-		.card-title {
+        .dashboard-card:hover {
+            box-shadow: 0 0 30px rgba(230, 199, 165, 0.8);
+        }
+
+        .card-title {
             font-size: 1.25rem;
             font-weight: 500;
             margin-bottom: 1rem;
-            color: #343a40;
+            color: #6b4226;
+			
         }
+
+		
+		.card-number {
+			font-size: 28px;
+			font-weight: bold;
+			color: white;
+		}
+		h5{
+			color: #6b4226;
+		}
+		
 	</style>
 	@include('shared.sidenav');
 	@include('shared.header');
-	{{--
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
-	<script src="lib/bootstrap/js/jquery.slim.min.js"></script>
-	<script src="lib/bootstrap/js/poper.min.js"></script>
-	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="lib/bootstrap/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
-
+		
 </head>
 <style>
 	/* Dashboard Cards */
 	.dashboard-card {
-		background: white;
+		background: #E6C7A5;
+		color:white;
 		padding: 20px;
 		border-radius: 10px;
 		box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
@@ -86,6 +73,8 @@
 
 	.dashboard-card:hover {
 		box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+		transform: translateY(-2px);
+		color: #6b4226;
 	}
 </style>
 
@@ -100,7 +89,7 @@
 							<div class="card-body">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase"><h3>Income<h3></strong></div>
-									<h6>current month</h6>
+									<h5>current month</h5>
 									<div class="count-number">
 										@php
 											$currentMonth = now()->format('Y-m');
@@ -123,7 +112,7 @@
 							<div class="card-body ">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase"><h3>expense</h3></strong></div>
-									<h6>current month</h6>
+									<h5>current month</h5>
 									<div class="count-number">
 										@php
 
@@ -147,7 +136,7 @@
 							<div class="card-body">
 								<div class="col mr-4">
 									<div class="name"><strong class="text-uppercase"><h3>saving</h3></strong></div>
-									<h6>current month</h6>
+									<h5>current month</h5>
 									<div class="count-number">
 										@php
 											$currentMonthIncome = $incomeReport

@@ -13,7 +13,11 @@
         transition: all 0.4s;
         margin-top: 50px;
         font-family: 'Arial, sans-serif'; 
-        color: white;
+        color: #A08963;
+        background-color: #fff0e2;
+        padding: 20px;
+        border-radius: 10px;
+       
     }
 
     .content.active {
@@ -30,31 +34,29 @@
         color: black;
     }
 
-    . table {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid #ddd;
-            font-family: 'Arial, sans-serif';
-        }
+    table {
+        border-collapse: collapse;
+        
+        width: 100%;
+    }
 
         th {
-            background-color: #4c51bf;
+            background-color: #A08963;
             color: white;
         }
 
         td {
             background-color: white;
         }
-
-    .btn-dark {
-        background-color: #000;
-        border-color: #000;
-        font-family: 'Arial, sans-serif'; 
-    }
-
-        .btn-dark {
-            background-color: #000;
-            border-color: #000;
+    
+        button[type="submit"] {
+            background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
         }
 
        
@@ -258,7 +260,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark">Add Budget</button>
+                        <button type="submit" >Add Budget</button>
                        
                     </form>
                     <br>
