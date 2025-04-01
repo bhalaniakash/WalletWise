@@ -17,7 +17,7 @@
             background: #E6C7A5;
         }
 
-        .main-page{
+        .main-page {
             margin-bottom: -100px;
             background: #E6C7A5;
         }
@@ -120,6 +120,7 @@
             color: #6c757d;
         }
     </style>
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     </script>
@@ -204,19 +205,19 @@
                             <i class="fas fa-user-slash"></i>
                             Inactive Users
                         </h5>
-              @php
-                $inactiveUsers = collect([]);
+                        @php
+                            $inactiveUsers = collect([]);
 
-                $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '<', now()->subHours(1))
-                    ->pluck('user_id');
+                            $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
+                                ->where('updated_at', '<', now()->subHours(1))
+                                ->pluck('user_id');
 
-                $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '<', now()->subHours(1))
-                    ->pluck('user_id');
+                            $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
+                                ->where('updated_at', '<', now()->subHours(1))
+                                ->pluck('user_id');
 
-                $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
-            @endphp
+                            $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
+                        @endphp
                         <p class="card-number">{{ $inactiveUsers->count() }}</p>
                     </div>
                 </div>
@@ -251,30 +252,34 @@
 
             {{-- <div class="row "> --}}
                 <div class="d-flex row ">
-                    <div class="card flex-fill mx-2 " id="chart1">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">User Statistics</h5>
-                            <canvas id="user"></canvas>
+                    <div class="col-md-4">
+                        <div class="card flex-fill mx-2 " id="chart1">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">User Statistics</h5>
+                                <canvas id="user"></canvas>
+                            </div>
                         </div>
                     </div>
-                    <div class="card flex-fill mx-2" id="chart1">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Income Statistics</h5>
-                            <canvas id="income"></canvas>
+                    <div class="col-md-4">
+                        <div class="card flex-fill mx-2" id="chart1">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Income Statistics</h5>
+                                <canvas id="income"></canvas>
+                            </div>
                         </div>
                     </div>
-                    <div class="card flex-fill mx-2" id="chart1">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Expense Statistics</h5>
-                            <canvas id="expense"></canvas>
+                    <div class="col-md-4">
+                        <div class="card flex-fill mx-2" id="chart1">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Expense Statistics</h5>
+                                <canvas id="expense"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {{--
-            </div> --}}
 
+            </div>
         </div>
-    </div>
 </body>
 
 @php
