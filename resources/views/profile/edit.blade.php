@@ -31,17 +31,11 @@
         }
 
         /* Container Styling */
-        .container {
-            margin-top: 30px;
-            position: relative;
-            font-family: 'Arial, sans-serif'; 
-            
-        }
+       
 
         /* Card Styling */
         .card {
-            background: #E6C7A5;/* White cards */
-            color: black;
+           
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -79,6 +73,7 @@
             border: 1px solid red;
             font-family: 'Arial, sans-serif';
         }
+        
     </style>
 </head>
 <body>
@@ -95,10 +90,8 @@
     @include('shared.header');
     
     <x-app-layout>
-        {{-- <div class="container mt-5"> --}}
-            {{-- <h2 class="font-semibold text-xl mb-4">Profile</h2> --}}
-            
-            <div class="row">
+    
+          
                 
                 <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg equal-height">
@@ -120,8 +113,7 @@
                         @include('profile.partials.delete-user-form')
                     </div>
                 </div>
-            </div>
-        {{-- </div> --}}
+          
     </x-app-layout>
 
 </body>
