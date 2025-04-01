@@ -249,7 +249,7 @@
 
             <!-- Chart Section -->
 
-            {{-- <div class="row "> --}}
+            <div class="row ">
                 <div class="d-flex row ">
                     <div class="card flex-fill mx-2 " id="chart1">
                         <div class="card-body text-center">
@@ -270,8 +270,8 @@
                         </div>
                     </div>
                 </div>
-                {{--
-            </div> --}}
+                
+            </div>
 
         </div>
     </div>

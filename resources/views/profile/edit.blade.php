@@ -15,15 +15,7 @@
 
     <style>
     
-        /* body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #000; 
-            color: white;
-            margin: 0;
-            padding-top: 70px; 
-        } */
-
-        /* Navbar Styling */
+      
        
         .navbar {
             z-index: 1000;

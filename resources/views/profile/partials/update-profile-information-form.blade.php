@@ -4,8 +4,7 @@
     <style>
         body {
             font-family: 'Arial, sans-serif';
-            background-color: #f7fafc;
-            color: #000;
+           
         }
 
         button {
@@ -19,9 +18,7 @@
 <body>
     <section>
         <header>
-            <h2 class="text-lg font-medium  ">
-                {{ __('Profile Information') }}
-            </h2>
+       
             <p class="mt-1 text-sm ">
                 {{ __("Update your account's profile information and email address.") }}
             </p>

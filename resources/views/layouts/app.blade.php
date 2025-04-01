@@ -23,19 +23,19 @@
         padding: 0;
     }
 
-/* Layout */
+    /* Layout */
 
-main {
-    margin-left: 17rem;
-    margin-right: 1rem;
-    margin-top: 5%;
-    padding: 2rem;
-    transition: all 0.4s ease-in-out;
-    color: #6b4226;
-   
-    border-radius: 8px;
-   
-}
+    main {
+        margin-left: 17rem;
+        margin-right: 1rem;
+        margin-top: 5%;
+        padding: 2rem;
+        transition: all 0.4s ease-in-out;
+        color: #6b4226;
+    
+        border-radius: 8px;
+    
+    }
 </style>
     </head>
     <body class="font-sans antialiased">
