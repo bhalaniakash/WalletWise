@@ -19,8 +19,6 @@ use Illuminate\Http\Request;
 
 Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
-// Route::get('/dashboard', function () {
-
 Route::get('/dashboard', function () {
     if (Auth::check() && Auth::user()->is_Admin === 'Yes') {
         return redirect()->route('admin.dashboard'); // Redirect to admin dashboard route
@@ -64,7 +62,6 @@ Route::get('/dashboard/profile', function () {
 Route::view('admin/dashboard', 'admin.dashboard');
 Route::view('admin/members', 'admin.members');
 
-
 Route::get('/admin/category', function () {
     return view('admin.category');
 });
@@ -86,8 +83,6 @@ Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name(
 Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destroy');
 // Admin Dashboard Route
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-
-// Route::get('/dashboard',[CharttController::class, 'index'])->name('dashboard');
 
 Route::post('/budget/store', [BudgetController::class, 'store'])->name('budget.store');
 Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
