@@ -25,7 +25,7 @@
             color: #000;   
             margin-top: 0;
             font-family: 'Arial, sans-serif'; 
-            background-color: #fff0e2;
+            background: #E6C7A5;
         }
         /* @keyframes glow {
             0% { box-shadow: 0 0 10px #FFD7B5; }

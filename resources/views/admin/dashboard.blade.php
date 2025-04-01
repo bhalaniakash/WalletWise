@@ -10,10 +10,8 @@
     <style type="text/css">
         body {
             margin: 0;
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
             font-family: 'Arial, sans-serif';
+            background: #E6C7A5;
         }
 
         .page-content {
@@ -23,10 +21,11 @@
             margin-top: 5% !important;
             width: calc(100% - 18rem);
             padding: 2rem;
-            background-color: #ffffff;
+            background: #E6C7A5;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             font-family: 'Arial, sans-serif';
+           
         }
 
         .content.active {
@@ -47,7 +46,7 @@
         h1 {
             font-size: 2rem;
             font-weight: 600;
-            color: white;
+            color: #6b4226;
             font-family: 'Arial, sans-serif';
         }
 
@@ -71,7 +70,7 @@
         }
 
         .card {
-            background-color: #ffffff;
+           
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -92,25 +91,22 @@
             font-size: 1.25rem;
             font-weight: 500;
             margin-bottom: 1rem;
-            color: #343a40;
+            color: #6b4226;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem 0;
-            border: none;
-            border-radius: 4px;
-
-            color: #ffffff;
-            text-align: center;
+        button[type="submit"] {
+            background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        button[type="submit"]:hover {
+            background: #8b6f4e;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #6c7176;
-            transform: scale(1.05);
         }
 
         p {
@@ -125,18 +121,19 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     </script>
-</head>
-<style>
+
+    <style>
+    
     /* Admin Dashboard Title */
     .admin-dashboard-title {
         font-size: 28px;
         font-weight: bold;
-        color: white;
-        background: linear-gradient(to right, #666, #222);
-        /* Matching shade */
+        color: #E6C7A5;
+        background: #6B4226;
         padding: 12px 20px;
         border-radius: 8px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
     }
 
     /* Dashboard Cards */
@@ -152,20 +149,7 @@
         box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
     }
 
-    /* Sidebar */
-    .sidebar-item {
-        color: white;
-        padding: 12px;
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-    }
 
-    .sidebar-item:hover,
-    .sidebar-item.active {
-        background: linear-gradient(to right, #444, #000);
-        font-weight: bold;
-    }
 
     /* Icons */
     .card-icon {
@@ -178,13 +162,14 @@
         font-weight: bold;
         color: #222;
     }
+
+    
     #row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; 
-    /* align-content: center;
-    justify-content: center; */
-}
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; 
+    }
+
     #chart1 {
       
         display: flex;
@@ -192,27 +177,28 @@
         border-radius: 2%;
         box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
     }
-</style>
 
+    
+</style>
+</head>
 <body>
     <br>
     <div class="page-content" id="content">
         <div>
             <h1 class="admin-dashboard-title">Admin Dashboard</h1>
         </div>
-
-        <div class="container">
+        
             <div class="row mb-2" id="row">
                 <div class="col-md-5">
                         <div class="dashboard-card">
                             <h5 class="card-title">
-                                <i class="fas fa-users card-icon"></i>
+                                <i class="fas fa-users "></i>
                                 Total Users</h5>
                             <p class="card-number">{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
                         </div>
                 </div>
                 <div class="col-md-5">
-                        <div class="dashboard-card">
+                        <div class="dashboard-card">    
                             <h5 class="card-title">
                                 <i class="fas fa-user-slash"></i>
                                 Inactive Users</h5>
@@ -281,7 +267,7 @@
                     </div>
                 </div>
             {{-- </div> --}}
-        </div>
+      
     </div>
 </body>
 

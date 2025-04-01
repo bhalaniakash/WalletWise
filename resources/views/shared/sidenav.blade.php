@@ -64,10 +64,9 @@
       text-decoration: none;
       transition: 0.3s;
     }
+
     .nav-item {
       background: #706D54 !important;
-
-      /* Primary - Pure Black */
     }
 
     #sidebar.active {
@@ -82,6 +81,7 @@
       background-color: #A08963;
       border-radius: 5px;
     }
+    
     @media (max-width: 768px) {
       #sidebar {
         margin-left: -17rem;

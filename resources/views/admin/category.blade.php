@@ -14,7 +14,7 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-            background-color: white;
+        	background: #E6C7A5;
             margin-top: 0%;
             font-family: 'Arial, sans-serif'; 
         }
@@ -23,7 +23,6 @@
             margin-left: 17rem;
             margin-right: 1rem;
             transition: all 0.4s;
-            background-color: white;
             margin-top: 5% !important;
             font-family: 'Arial, sans-serif'; 
         }
@@ -37,8 +36,9 @@
         .admin-dashboard-title {
             font-size: 28px;
             font-weight: bold;
-            color: white;
-            background: linear-gradient(to right, #666, #222);
+            color: #E6C7A5;
+
+            background: #6B4226;
             padding: 12px 20px;
             border-radius: 8px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -57,13 +57,20 @@
             border-radius: 5px;
         }
 
-        button.btn {
+        button[type="submit"] {
+            background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
             width: 100%;
-            font-size: 16px;
-            padding: 10px;
-            border-radius: 5px;
         }
-
+        button[type="submit"]:hover {
+            background: #8b6f4e;
+            cursor: pointer;
+        }
         @media (max-width: 768px) {
             .page-content {
                 margin-left: 1rem;
@@ -72,28 +79,12 @@
             }
         }
        
-
-      
-      
     </style>
 </head>
 
 <body>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
-    <title>header</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/expenseMVC/">
-    <link href="{{ asset('link/link.php') }}">
-
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
     <div class="page-content" id="content">
         <br>

@@ -48,35 +48,23 @@
             box-sizing: border-box;
             font-family: 'Arial, sans-serif';
         }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            font-family: 'Arial, sans-serif';
-        }
-
-        .table tr {
-            color: #000;
-            background-color: #ffffff;
-            font-family: 'Arial, sans-serif';
-        }
-
-        th,
-        td {
-            color: #000;
-            background-color: #ffffff;
-            padding: 0.75rem;
-            border: 1px solid #dee2e6;
-            font-family: 'Arial, sans-serif';
-        }
+        table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
         th {
-            background-color: #616b6b;
-            color: #ffffff;
-            text-transform: uppercase;
-            align-items: center;
-            font-family: 'Arial, sans-serif';
+            background-color: #A08963;
+            color: white;
+        }
+
+        td {
+          color: #A08963;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
         
             .table tbody tr:nth-child(even) {
@@ -92,19 +80,7 @@
     @include('shared.sidenav_admin');
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
-    <title>header</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/expenseMVC/">
-    <link href="{{ asset('link/link.php') }}">
-
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+   
 
     <div class="page-content" id="content">
         @if(session('success'))
