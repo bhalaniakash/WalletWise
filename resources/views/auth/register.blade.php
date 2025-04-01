@@ -15,9 +15,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background:#6b4226;
         }
         .container {
-            background: white;
+            color: #6b4226;
+            background: #E6C7A5;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
@@ -71,17 +73,18 @@
             color: #555;
             text-decoration: none;
         }
-        .btn {
-            background: #333;
+        button[type="submit"] {
+            background: #A08963;
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
         }
-        .btn:hover {
-            background: black;
-            color: #fff;
+        button[type="submit"]:hover {
+            background: #8b6f4e;
+            cursor: pointer;
         }
         .error {
             color: red;

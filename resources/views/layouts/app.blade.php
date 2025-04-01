@@ -16,10 +16,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
               
-    body {
+    .antialiased{
         font-family: 'Figtree', sans-serif;
-        background-color: #f9fafb;
-        color: #333;
+        background: #E6C7A5;
         margin: 0;
         padding: 0;
     }
@@ -32,11 +31,10 @@ main {
     margin-top: 5%;
     padding: 2rem;
     transition: all 0.4s ease-in-out;
-    background-color: #fff;
-    color: #333;
-    /* color: #000; */
+    color: #6b4226;
+   
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
 }
 </style>
     </head>
