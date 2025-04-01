@@ -35,11 +35,12 @@
             margin-top: 30px;
             position: relative;
             font-family: 'Arial, sans-serif'; 
+            
         }
 
         /* Card Styling */
         .card {
-            background-color: #fff; /* White cards */
+            background: #E6C7A5;/* White cards */
             color: black;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.2);
