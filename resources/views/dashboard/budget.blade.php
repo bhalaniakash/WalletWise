@@ -132,18 +132,18 @@
             <br>
 
             <section>
-                {{-- <div class="container-fluid"> --}}
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="dashboard-card">
-                                <div class="card">
+                                {{-- <div class="card"> --}}
                                     <h5>Total Budget</h5>
                                     @php
                                         $user = Auth::user();
                                         $budget = \App\Models\Budget::where('user_id', $user->id)->first();
                                     @endphp
                                     <p><strong>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</strong></p>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                         </div>
 
@@ -177,7 +177,7 @@
 
                         <div class="col-md-6">
                             <div class="dashboard-card">
-                                <div class="card">
+                                {{-- <div class="card"> --}}
                                     <h5>Saving Goal</h5>
                                     @php
                                         $currentMonthSaving = \App\Models\Budget::where('user_id', $user->id)
@@ -187,14 +187,15 @@
                                     @endphp
                                     <p><strong>₹{{ $currentMonthSaving ? number_format($currentMonthSaving, 2) : '0.00' }}</strong>
                                     </p>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="row m-4">
-                        <div style="width: 100%;">
+                    <br>
+                    
+                        <div style="width: 100%">
                             <div class="dashboard-card">
-                                <div class="card">
+                                {{-- <div class="card"> --}}
                                     <h5>Remaining Amount</h5>
                                     @php
                                         use Illuminate\Support\Facades\Auth;
@@ -257,8 +258,7 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                    {{-- </div> --}}
+                      
                 </section>
             </div>
     {{-- </div>
