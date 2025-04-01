@@ -69,13 +69,9 @@
     }
 
     .nav-item {
-<<<<<<< HEAD
       background: #E6C7A5; !important;
 
       /* Primary - Pure Black */
-=======
-      background: #706D54 !important;
->>>>>>> aa1d92fc7c0f0bb60efeb7f224dd78dac6bc28c5
     }
 
     #sidebar.active {
@@ -90,11 +86,7 @@
       background: #E6C7A5;
       border-radius: 5px;
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> aa1d92fc7c0f0bb60efeb7f224dd78dac6bc28c5
     @media (max-width: 768px) {
       #sidebar {
         margin-left: -17rem;
