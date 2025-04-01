@@ -138,9 +138,9 @@
             text-align: center;
         }
 
-        /* Dashboard Cards */
         .dashboard-card {
             background: white;
+            color: #6b4226;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
@@ -149,6 +149,8 @@
 
         .dashboard-card:hover {
             box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            color: #6b4226;
         }
 
 

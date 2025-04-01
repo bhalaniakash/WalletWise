@@ -25,18 +25,6 @@
 			
 		}
 
-		.dashboard-card {
-			
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 215, 181, 0.5);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .dashboard-card:hover {
-            box-shadow: 0 0 30px rgba(230, 199, 165, 0.8);
-        }
-
         .card-title {
             font-size: 1.25rem;
             font-weight: 500;
