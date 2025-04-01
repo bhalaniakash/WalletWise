@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<br>
+@include('shared.header')
+@include('shared.sidenav_admin')
 <html lang="en">
 
 <head>
@@ -14,18 +17,21 @@
             background: #E6C7A5;
         }
 
+        .main-page{
+            margin-bottom: -100px;
+            background: #E6C7A5;
+        }
+
         .page-content {
             margin-left: 17rem;
-            margin-right: 1rem;
             transition: all 0.4s;
             margin-top: 5% !important;
             width: calc(100% - 18rem);
             padding: 2rem;
             background: #E6C7A5;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             font-family: 'Arial, sans-serif';
-           
+
         }
 
         .content.active {
@@ -70,7 +76,7 @@
         }
 
         .card {
-           
+
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -103,7 +109,7 @@
             font-size: 1rem;
             transition: all 0.3s ease-in-out;
         }
-        
+
         button[type="submit"]:hover {
             background: #8b6f4e;
             cursor: pointer;
@@ -114,138 +120,136 @@
             color: #6c757d;
         }
     </style>
-    <br>
-    @include('shared.header')
-    @include('shared.sidenav_admin')
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     </script>
 
     <style>
-    
-    /* Admin Dashboard Title */
-    .admin-dashboard-title {
-        font-size: 28px;
-        font-weight: bold;
-        color: #E6C7A5;
-        background: #6B4226;
-        padding: 12px 20px;
-        border-radius: 8px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-        text-align: center;
-    }
+        /* Admin Dashboard Title */
+        .admin-dashboard-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #E6C7A5;
+            background: #6B4226;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
 
-    /* Dashboard Cards */
-    .dashboard-card {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease-in-out;
-    }
+        /* Dashboard Cards */
+        .dashboard-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
 
-    .dashboard-card:hover {
-        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
+        .dashboard-card:hover {
+            box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+        }
 
 
-    /* Icons */
-    .card-icon {
-        font-size: 24px;
-        color: #333;
-    }
 
-    .card-number {
-        font-size: 28px;
-        font-weight: bold;
-        color: #222;
-    }
+        /* Icons */
+        .card-icon {
+            font-size: 24px;
+            color: #333;
+        }
 
-    
-    #row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between; 
-    }
+        .card-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #222;
+        }
 
-    #chart1 {
-      
-        display: flex;
-        gap: 1.5rem;
-        border-radius: 2%;
-        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-    }
 
-    
-</style>
+        #row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #chart1 {
+
+            display: flex;
+            gap: 1.5rem;
+            border-radius: 2%;
+            box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
+
 <body>
-    <br>
-    <div class="page-content" id="content">
-        <div>
-            <h1 class="admin-dashboard-title">Admin Dashboard</h1>
-        </div>
-        
+    <div class="main-page">
+        <div class="page-content" id="content">
+            <div>
+                <h1 class="admin-dashboard-title">Admin Dashboard</h1>
+            </div>
+
             <div class="row mb-2" id="row">
                 <div class="col-md-5">
-                        <div class="dashboard-card">
-                            <h5 class="card-title">
-                                <i class="fas fa-users "></i>
-                                Total Users</h5>
-                            <p class="card-number">{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
-                        </div>
+                    <div class="dashboard-card">
+                        <h5 class="card-title">
+                            <i class="fas fa-users "></i>
+                            Total Users
+                        </h5>
+                        <p class="card-number">{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
+                    </div>
                 </div>
                 <div class="col-md-5">
-                        <div class="dashboard-card">    
-                            <h5 class="card-title">
-                                <i class="fas fa-user-slash"></i>
-                                Inactive Users</h5>
-                            @php
-                                $inactiveUsers = collect([]);
+                    <div class="dashboard-card">
+                        <h5 class="card-title">
+                            <i class="fas fa-user-slash"></i>
+                            Inactive Users
+                        </h5>
+              @php
+                $inactiveUsers = collect([]);
 
-                                $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
-                                    ->where('updated_at', '<', now()->subHours(1))
-                                    ->pluck('user_id');
+                $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
+                    ->where('updated_at', '<', now()->subHours(1))
+                    ->pluck('user_id');
 
-                                $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
-                                    ->where('updated_at', '<', now()->subHours(1))
-                                    ->pluck('user_id');
+                $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
+                    ->where('updated_at', '<', now()->subHours(1))
+                    ->pluck('user_id');
 
-                                $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
-                            @endphp
-                            <p class="card-number">{{ $inactiveUsers->count() }}</p>
-                        </div>
+                $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
+            @endphp
+                        <p class="card-number">{{ $inactiveUsers->count() }}</p>
+                    </div>
                 </div>
             </div>
             <div class="row mt-2" id="row">
                 <div class="col-md-5">
-                    
-                        <div class="dashboard-card">
-                            <h5 class="card-title">
-                                <i class="fas fa-layer-group"></i>
-                                Total Income Categories</h5>
-                            <p class="card-number">{{$income = $categories->where('type', 'income')->count()}}</p>
-                        </div>
-                    
+
+                    <div class="dashboard-card">
+                        <h5 class="card-title">
+                            <i class="fas fa-layer-group"></i>
+                            Total Income Categories
+                        </h5>
+                        <p class="card-number">{{$income = $categories->where('type', 'income')->count()}}</p>
+                    </div>
+
                 </div>
                 <div class="col-md-5">
-                    
-                        <div class="dashboard-card">
-                            <h5 class="card-title">
-                                <i class="fas fa-wallet"></i>
-                                Total Expense Categories</h5>
-                            <p class="card-number">{{$expense = $categories->where('type', 'expense')->count()}}</p>
-                        </div>
-                    
+
+                    <div class="dashboard-card">
+                        <h5 class="card-title">
+                            <i class="fas fa-wallet"></i>
+                            Total Expense Categories
+                        </h5>
+                        <p class="card-number">{{$expense = $categories->where('type', 'expense')->count()}}</p>
+                    </div>
+
                 </div>
             </div>
             <br>
 
             <!-- Chart Section -->
 
-            {{-- <div class="row " > --}}
+            {{-- <div class="row "> --}}
                 <div class="d-flex row ">
                     <div class="card flex-fill mx-2 " id="chart1">
                         <div class="card-body text-center">
@@ -266,8 +270,10 @@
                         </div>
                     </div>
                 </div>
-            {{-- </div> --}}
-      
+                {{--
+            </div> --}}
+
+        </div>
     </div>
 </body>
 
