@@ -22,15 +22,17 @@
     <style type="text/css">
 
         body {
-           
-            color: #000;
-            background-color: white;
+            color: #000;   
             margin-top: 0;
             font-family: 'Arial, sans-serif'; 
-
+            background-color: #fff0e2;
         }
-        
-        .sb-topnav {
+        /* @keyframes glow {
+            0% { box-shadow: 0 0 10px #FFD7B5; }
+            50% { box-shadow: 0 0 20px #E6C7A5; }
+            100% { box-shadow: 0 0 10px #FFD7B5; }
+        } */
+      .sb-topnav {
             /* width: calc(100% - 16rem);
             margin-left: 16rem; */
             margin-top: -25px;
@@ -39,6 +41,7 @@
             position: fixed;
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: glow 2s infinite alternate;
         }
 
         #content.active {

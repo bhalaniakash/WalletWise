@@ -19,7 +19,7 @@
             font-family: 'Arial, sans-serif';
             padding: 2rem;
             transition: all 0.3s ease-in-out;
-            color:white;
+            color: #6b4226;;
         }
 
        
@@ -42,7 +42,15 @@
             justify-content: center;
             align-items: center;
         }
-
+        button[type="submit"] {
+            background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
      
     </style>
 </head>
@@ -114,7 +122,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col" style="text-align: center;">
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Insert 
+                        <button type="submit" class="btn " style="width: 100%;">Insert 
                             <i class="fa fa-plus-circle fa-sm"></i>
                         </button>
                     </div>

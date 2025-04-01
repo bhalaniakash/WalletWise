@@ -14,40 +14,41 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      background: linear-gradient(to right, #4c51bf, #6b46c1);
-      color: black;
       font-family: 'Arial, sans-serif';
     }
 
-    .page-content {
+      .page-content {
             margin-top: 5% !important;
             margin-left: 17rem;
             padding: 2rem;
             transition: all 0.3s ease-in-out;
-            
-        }
 
-    button["submit"] {
-      background: linear-gradient(to right, #4c51bf, #6b46c1);
-      
-      box-shadow: 0px 8px 20px rgba(107, 70, 193, 0.3);
-      width: 100%;
-      background: linear-gradient(to right, #6b46c1, #4c51bf);
+          }
+          button[type="submit"] {
+            background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+    .text-2xl{
+      color: #A08963;
+      font-family: 'Andada Pro', sans-serif;
     }
-    
     table {
         border-collapse: collapse;
-        
         width: 100%;
     }
 
         th {
-            background-color: #4c51bf;
+            background-color: #A08963;
             color: white;
         }
 
         td {
-            background-color: white;
+          color: #A08963;
         }
     
   </style>
@@ -63,7 +64,7 @@
      
       <div class="card p-4">
         
-        <h2 class="text-2xl font-bold text-indigo-700 mb-4">Income  Report</h2>
+        <h2 class="text-2xl font-bold  mb-4">Income  Report</h2>
             <div class="col-xl-12">
            
                   <form class="form-inline" id="Report">
@@ -79,7 +80,7 @@
                                <div class="input-group">
                                   <input type="month" class="form-control" id="incomeDate">
                                   <div class="input-group-prepend">
-                                    <button class="btn btn-primary " type="submit">
+                                    <button type="submit">
                                       <i class="fa fa-filter fa-xs" aria-hidden="true"></i>Filter</button>
                                   </div>
                                 </div>
@@ -137,13 +138,13 @@
             </tbody>
           </table>
           
-          <button class="btn btn-dark mt-4"   id="downloadReport">Download Report</button>
+          <button type="submit"   id="downloadReport">Download Report</button>
           
 
         </div>
       </div>
       <br>
-        <div class="card p-4">
+        
           <div class="card shadow">
             <div class="card-header d-flex">
               <h5>Income chart</h5>
@@ -164,7 +165,7 @@
             </div>
           </div>
           <br>
-        </div>
+       
         <br>
       </section>
    

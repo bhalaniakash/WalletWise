@@ -29,31 +29,36 @@
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-dark {
-            background: linear-gradient(to right, #6b46c1, #4c51bf);
+        button[type="submit"] {
+            background: #A08963;
             color: white;
-            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
             transition: all 0.3s ease-in-out;
         }
-        
-        .btn-dark:hover {
-            background: linear-gradient(to right, #4c51bf, #6b46c1);
-            transform: translateY(-2px);
-            box-shadow: 0px 8px 20px rgba(107, 70, 193, 0.3);
+        .text-2xl{
+        color: #A08963;
+        font-family: 'Andada Pro', sans-serif;
         }
-
         table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+        border-collapse: collapse;
+        width: 100%;
+    }
 
         th {
-            background-color: #4c51bf;
+            background-color: #A08963;
             color: white;
         }
 
         td {
-            background-color: white;
+          color: #A08963;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
     </style>
 </head>
@@ -65,7 +70,7 @@
 
     <div class="page-content">
             <div class="card p-4">
-                <h2 class="text-2xl font-bold text-indigo-700 mb-4">Expense Report</h2>
+                <h2 class="text-2xl  mb-4">Expense Report</h2>
                 <form class="form-inline mb-4">
                     <select class="form-control mr-2" id="expenseCategory">
                         <option value="">All Categories</option>
@@ -120,11 +125,11 @@
                     </tbody>
                 </table>
 
-                <button class="btn btn-dark mt-4" id="downloadReport">Download Report</button>
+                <button type="submit" id="downloadReport">Download Report</button>
             </div>
 
             <div class="card mt-5 p-4">
-                <h3 class="text-xl font-bold text-indigo-700 mb-4">Expense Chart</h3>
+                <h3 class="text-2xl  mb-4">Expense Chart</h3>
                 <div class="row">
                   <div class="col-md-6">
                     <canvas id="expenseChart" width="400" height="300"></canvas>

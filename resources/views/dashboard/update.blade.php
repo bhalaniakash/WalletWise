@@ -15,7 +15,11 @@
 
     <!-- Custom Styles -->
     <style>
-     
+        /* @keyframes glow {
+            0% { box-shadow: 0 0 10px #FFD7B5; }
+            50% { box-shadow: 0 0 20px #E6C7A5; }
+            100% { box-shadow: 0 0 10px #FFD7B5; }
+        } */
 
         /* Sidebar Offset */
         .main-content {
@@ -28,11 +32,11 @@
         .page-content {
             max-width: 600px;
             margin: 5rem auto; /* Center horizontally */
-            background: #C9B194;
+            background: #E6C7A5;
             border-radius: 12px;
-            box-shadow: 0px 10px 30px #d3d2c5(0, 0, 0, 0.1);
             padding: 2rem;
             text-align: center;
+            animation: glow 2s infinite alternate;
         }
 
         /* Form Input */
@@ -64,12 +68,10 @@
         }
 
         .btn-upgrade:hover {
-            background: ##c8c6b6;
+            background: #c8c6b6;
             transform: translateY(-2px);
             box-shadow: 0px 8px 20px #3a392c;
         }
-
-      
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -89,14 +91,14 @@
     </style>
 </head>
 
-<body>
+<body class="bg-[#F3E5D8]">
     <br>
     @include('shared.sidenav')
     @include('shared.header')
 
     <!-- Main Content with Sidebar Offset -->
     <div class="main-content">
-        <div class="page-content">
+        <div class="page-content shadow-lg shadow-orange-300 backdrop-blur-md">
             <h2 class="text-2xl font-bold text-indigo-700">Upgrade Your Plan</h2>
             <p class="mt-2 text-gray-600 text-sm">
                 Get access to premium features. Proceed carefully before making any payments.
@@ -113,8 +115,5 @@
             </form>
         </div>
     </div>
-        
-    <!-- Footer -->
-    
 </body>
 </html>

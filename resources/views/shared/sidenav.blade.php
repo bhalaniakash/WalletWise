@@ -20,7 +20,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
     body {
       margin: 0;
-      background-color: #F1EFEC;
+      
       color: black;
       font-family: 'Andada Pro', sans-serif; 
     }
@@ -33,7 +33,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      background: linear-gradient(to right, #3b0764, #4338ca);
+      background: #E6C7A5;
       box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
       transition: all 0.4s;
       color: #DBDBDB;
@@ -60,7 +60,7 @@
    
     x-dropdown-link{
       color: black;
-     
+    
       text-decoration: none;
       transition: 0.3s;
     }
@@ -125,7 +125,7 @@
       background-color: #DBDBDB;
       color: #706D54;
     }
-    
+
     .span {
       width: 20px;
       display: inline-flex;
