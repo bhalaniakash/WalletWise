@@ -113,20 +113,27 @@
 }
 
 .nav-link:hover {
-  background-color: #e6c7a5;  /* Lightened background */
-  color: #6B4226; /* Keep the same text color */
+ 
+  color: #6B4226; 
   font-weight: 600;
-  font-size: 20px;  /* Slight increase in font size */
-  transform: translateY(-3px);  /* Slightly lift the element on hover */
+  font-size: 20px; 
+  transform: translateY(-3px);
 }
 
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
+      color: #6B4226; 
+      transition: color 0.3s;
     }
-    .nav-item.active .nav-link {
-      color: #6B4226;
-    }
+
+  /* Highlight the active file name */
+  .nav-item.active .nav-link {
+    color: #6B4226; 
+    font-weight: 700;
+    font-size: 20px; 
+    border-radius: 5px;
+  }
 
     .span {
       width: 20px;
@@ -196,25 +203,21 @@
     </ul>
   </div>
 </body>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Get current URL path
     let currentPath = window.location.pathname;
-
     // Select all sidebar links
     let navLinks = document.querySelectorAll(".nav-item a");
-
     navLinks.forEach(link => {
-      let linkPath = new URL(link.href).pathname; // Get the path from href
-
-      // Exact match check
-      if (currentPath === linkPath) {
-        link.parentElement.classList.add("active");
-      }
+        let linkPath = new URL(link.href).pathname; // Get the path from href
+        // Exact match check
+        if (currentPath === linkPath) {
+            link.parentElement.classList.add("active");
+        }
     });
   });
-
-</script>
 </script>
 
 </html>

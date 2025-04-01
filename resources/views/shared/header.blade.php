@@ -29,13 +29,9 @@
         body {
             color: #000;
             margin-top: 0;
-<<<<<<< HEAD
-            font-family: 'Arial, sans-serif';
-            background-color: #fff0e2;
-=======
             font-family: 'Arial, sans-serif'; 
-            background: #E6C7A5;
->>>>>>> aa1d92fc7c0f0bb60efeb7f224dd78dac6bc28c5
+            background: #F3E5D8;
+           
         }
 
         /* @keyframes glow {
@@ -62,7 +58,7 @@
             position: fixed;
         }
 
-        h2 {
+        .title {
             color: #6B4226;
             background: #E6C7A5 !important;
             font-weight: 700;
@@ -139,7 +135,7 @@
             <div class="logo m-2">
                 <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
             </div>
-            <h2>WalletWise</h2>
+            <h2 class="title">WalletWise</h2>
         </div>
         <div>
             <a href="{{ route('profile.edit') }}" class="nav-link">

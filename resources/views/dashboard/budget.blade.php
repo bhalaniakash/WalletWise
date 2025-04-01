@@ -8,13 +8,14 @@
 
 
     .page-content {
+    
         margin-left: 17rem;
         margin-right: 1rem;
         transition: all 0.4s;
         margin-top: 50px;
         font-family: 'Arial, sans-serif'; 
-        color: #A08963;
-        background-color: #fff0e2;
+        color: #6B4226;
+        background: #F3E5D8;
         padding: 20px;
         border-radius: 10px;
        
@@ -223,9 +224,11 @@
                             </div>  
                         </div>
                     {{-- </div> --}}
-                </div>
-            </section>
+                </section>
+            </div>
+    {{-- </div>
 
+    <div class="page-content" id="content"> --}}
             <br>
 
             <section>
@@ -267,6 +270,9 @@
                 </div>
             </section>
 
+    {{-- </div>
+
+    <div class="page-content" id="content"> --}}
             <br>
 
             {{-- from here budget categorys starts --}}
@@ -342,7 +348,9 @@
                     <br>
                 {{-- </div> --}}
             </section>
+    {{-- </div>
 
+    <div class="page-content" id="content"> --}}
             <br>
 
             {{-- from here chart section starts --}}
@@ -513,6 +521,8 @@
                     <br>
                 {{-- </div> --}}
             </section>
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
