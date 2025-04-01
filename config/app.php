@@ -65,7 +65,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Kolkata', // Change to your server's timezone
+
 
     /*
     |--------------------------------------------------------------------------

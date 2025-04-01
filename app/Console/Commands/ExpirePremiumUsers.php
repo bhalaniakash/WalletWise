@@ -10,7 +10,7 @@ class ExpirePremiumUsers extends Command
 {
 
     protected $signature = 'expire:premium-users';
-    protected $description = 'Changed plan type of user with more than 30 days of primum';
+    protected $description = 'Changed plan type of user with more than 30 days of premium';
 
     public function __construct(){
         parent::__construct();
@@ -19,7 +19,7 @@ class ExpirePremiumUsers extends Command
     {
         $expiredUsers = User::where('plan_type','premium')->
                         where('updated_at','<=',Carbon::now()->subDays(30))->
-                        where('role', '!=', 'admin')->
+                        where('is_Admin', '!=', 'admin')->
                         update(['plan_type'=>'regular']);
                         
         $this->info('Revert premium users to regular if their plan has expired');
