@@ -106,16 +106,6 @@
                     </div>
                 </div>
 
-                {{-- @if (Auth::check() && Auth::user()->is_Admin === 'No')
-                {{ dd(Auth::user()->is_Admin) }}
-                <div class="col-md-12">
-                    <div class="card p-4 mb-4 shadow-lg equal-height">
-                        <h4 class="mb-3">Verify your contact number</h4>
-                        @include('profile.partials.contact-verify')
-                    </div>
-                </div>
-                @endif --}}
-
                 <div class="col-md-12">
                     <div class="card p-4 mb-4 shadow-lg equal-height">
                         <h4 class="mb-3">Change Password</h4>

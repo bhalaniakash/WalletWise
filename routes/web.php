@@ -6,14 +6,11 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
-
 use App\Models\category;
 use App\Models\Expense;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\CharttController;
-use App\Http\Controllers\UpdateCategory;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\Payment;
 use App\Models\Income;

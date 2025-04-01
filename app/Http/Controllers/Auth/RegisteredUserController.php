@@ -66,10 +66,15 @@ class RegisteredUserController extends Controller
             'profile_picture' => $profilePicturePath,
         ]);
 
-        event(new Registered($user));
-
         Auth::login($user);
 
+        event(new Registered($user));
+
         return redirect(route('dashboard', absolute: false));
+    }
+    public function verifyEmail()
+    {
+        // dd('hello');
+        return view('auth.verify-email');
     }
 }
