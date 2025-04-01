@@ -63,8 +63,8 @@
 <style>
 	/* Dashboard Cards */
 	.dashboard-card {
-		background: #E6C7A5;
-		color:white;
+		background: white;
+		color: #6b4226;
 		padding: 20px;
 		border-radius: 10px;
 		box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
