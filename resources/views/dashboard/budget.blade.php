@@ -15,10 +15,8 @@
         margin-top: 50px;
         font-family: 'Arial, sans-serif'; 
         color: #6B4226;
-        background: #F3E5D8;
         font-family: 'Arial, sans-serif';
-        color: #A08963;
-        background-color: #fff0e2;
+        background: #F3E5D8;
         padding: 20px;
         border-radius: 10px;
 
@@ -38,7 +36,7 @@
 
     table {
         border-collapse: collapse;
-
+        border-radius: 10px;
         width: 100%;
     }
 
@@ -147,32 +145,7 @@
                             </div>
                         </div>
 
-                        {{-- here we are going to show amount
-                        reaming amount = budget - total amount spent in current month
-                        --}}
-
-                        {{-- <div class="col-md-4">
-                            <div class="card">
-                                <h5>Remaining Budget</h5>
-                                @php
-                                $user = Auth::user();
-                                $budget = \App\Models\Budget::where('user_id', $user->id)->first();
-                                $currentMonth = now()->format('Y-m');
-
-                                $totalSpent = $expenseReport
-                                ->where('user_id', $user->id)
-                                ->filter(fn($expense) => date('Y-m', strtotime($expense->date)) === $currentMonth)
-                                ->sum('amount');
-
-                                $remainingBudget = $budget ? $budget->limit - $totalSpent : 0;
-                                @endphp
-                                <p><strong>₹{{ $remainingBudget > 0 ? number_format($remainingBudget, 2) : '0.00'
-                                        }}</strong></p>
-                                @if($remainingBudget <= 0) <div class="alert alert-danger">
-                                    Warning: You have exceeded your budget limit!
-                            </div>
-                            @endif
-                        </div> --}}
+                     
 
 
                         <div class="col-md-6">
@@ -309,15 +282,12 @@
                 </div>
             </section>
 
-    {{-- </div>
-
-    <div class="page-content" id="content"> --}}
             <br>
 
             {{-- from here budget categorys starts --}}
 
             <section>
-                {{-- <div class="container-fluid shadow"> --}}
+              
                     <h5>Budget Table</h5>
                     <table class="table">
                         <thead>
@@ -384,12 +354,9 @@
                         </tbody>
                     </table>
                     <br>
-                    {{--
-                </div> --}}
+                
             </section>
-    {{-- </div>
-
-    <div class="page-content" id="content"> --}}
+  
             <br>
 
             {{-- from here chart section starts --}}
