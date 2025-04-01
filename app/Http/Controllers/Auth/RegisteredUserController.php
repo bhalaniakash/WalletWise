@@ -73,17 +73,19 @@ class RegisteredUserController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
-    public function verifyNotice(){
+    public function verifyNotice()
+    {
         return view('auth.verify-email');
     }
-    public function verifyEmail(EmailVerificationRequest $request){
-        $request->fulfill();
-        return redirect()->route('dashboard');
-    }
 
-    public function verifyHandler (Request $request) {
+    public function verifyHandler(Request $request)
+    {
         $request->user()->sendEmailVerificationNotification();
         return back()->with('message', 'Verification link sent!');
     }
+    public function verifyEmail(EmailVerificationRequest $request)
+    {
+        $request->fulfill();
+        return redirect()->route('dashboard');
+    }
 }
-
