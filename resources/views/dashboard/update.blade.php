@@ -99,7 +99,7 @@
     <!-- Main Content with Sidebar Offset -->
     <div class="main-content">
         <div class="page-content shadow-lg shadow-orange-300 backdrop-blur-md">
-            <h2 class="text-2xl font-bold text-indigo-700">Upgrade Your Plan</h2>
+            <h2 class="text-2xl font-bold text-[#6b4226]">Upgrade Your Plan</h2>
             <p class="mt-2 text-gray-600 text-sm">
                 Get access to premium features. Proceed carefully before making any payments.
             </p>
