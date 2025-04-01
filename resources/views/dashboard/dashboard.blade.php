@@ -165,14 +165,14 @@
 					<div class="col-xl-12 mt-4"> 
 						<div class="dashboard-card">
 							<div class="card-body">	
+
 								<div class="d-flex justify-content-between align-items-center mb-3">
-									
 										<div>
 											<h4>Last Week's Expense Report</h4>
 											<p class="text-muted">Expenses this week</p>
 										</div>
 										<div>
-											<i class="fas fa-ellipsis-v"></i> 
+											<i class="fas fa-ellipsis-v"></i>
 										</div>
 									</div>
 									
@@ -181,14 +181,14 @@
 											@php
 												$user = auth()->user();
 												$last7Days = collect();
+												
 												for ($i = 6; $i >= 0; $i--) {
-													$date = now()->subDays($i)->format('Y-m-d');
-													$dayAbbreviation = now()->subDays($i)->format('D'); // Day abbreviation (e.g., Mon)
+													$date = now()->subDays($i)->toDateString(); // Ensure correct date format
+													$dayAbbreviation = now()->subDays($i)->format('D');
 													
-													$expenseAmount = $expenseReport
-														->where('user_id', $user->id)
-														->where('date', $date) // Use 'date' directly for exact match
-														->sum('amount');
+													$expenseAmount = $expenseReport->where('user_id', $user->id)
+																				  ->where('date', $date)
+																				  ->sum('amount');
 													
 													$last7Days->put($dayAbbreviation, $expenseAmount);
 												}
@@ -197,64 +197,50 @@
 											<p class="text-muted">Total expenses for the last 7 days</p>
 										</div>
 										<div style="width: 100%;">
-											<canvas id="lastWeekExpenseChart" width="400" height="150"></canvas> 
+											<canvas id="lastWeekExpenseChart" width="200" height="50"></canvas>
 										</div>
 									</div>
 									
-									<script>
-										document.addEventListener('DOMContentLoaded', function() {
-											const ctx = document.getElementById('lastWeekExpenseChart').getContext('2d');
-											const lastWeekExpenseChart = new Chart(ctx, {
-												type: 'bar',
-												data: {
-													labels: @json($last7Days->keys()), // Day abbreviations
-													datasets: [{
-														label: 'Expenses',
-														data: @json($last7Days->values()), // Expense amounts
-														backgroundColor: [
-															'rgba(255, 99, 132, 0.2)',
-															'rgba(54, 162, 235, 0.2)',
-															'rgba(255, 206, 86, 0.2)',
-															'rgba(75, 192, 192, 0.2)',
-															'rgba(153, 102, 255, 0.2)',
-															'rgba(255, 159, 64, 0.2)',
-															'rgba(199, 199, 199, 0.2)'
-														],
-														borderColor: [
-															'rgba(255, 99, 132, 1)',
-															'rgba(54, 162, 235, 1)',
-															'rgba(255, 206, 86, 1)',
-															'rgba(75, 192, 192, 1)',
-															'rgba(153, 102, 255, 1)',
-															'rgba(255, 159, 64, 1)',
-															'rgba(199, 199, 199, 1)'
-														],
-														borderWidth: 1
-													}]
+									
+								<script>
+									document.addEventListener('DOMContentLoaded', function() {
+										const ctx = document.getElementById('lastWeekExpenseChart').getContext('2d');
+										const lastWeekExpenseChart = new Chart(ctx, {
+											type: 'bar',
+											data: {
+												labels: @json($last7Days->keys()),
+												datasets: [{
+													label: 'Expenses',
+													data: @json($last7Days->values()),
+													backgroundColor: 'rgba(54, 162, 235, 0.5)',
+													borderColor: 'rgba(54, 162, 235, 1)',
+													borderWidth: 1
+												}]
+											},
+											options: {
+												responsive: true,
+												scales: {
+													y: {
+														beginAtZero: true
+													}
 												},
-												options: {
-													scales: {
-														y: {
-															beginAtZero: true
-														}
-													},
-													plugins: {
-														legend: {
-															display: true
-														}
+												plugins: {
+													legend: {
+														display: false
 													}
 												}
-											});
+											}
 										});
-									</script>
-						
+									});
+								</script>
+
 								<div class="d-flex justify-content-around">
 									<div>
 										<h5 class="mb-1">Earnings</h5>
 										
 										<h2 class="mb-0">₹  {{ number_format($currentMonthIncome, 2) }}</h2>
 										<div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar" style="width:  {{ number_format($currentMonthIncome, 2) }}%; background-color: purple;" aria-valuenow=" {{ number_format($currentMonthIncome, 2) }}" aria-valuemin="0" aria-valuemax="100"></div>
+											<div class="progress-bar" role="progressbar" style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;" aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 									</div>
 
@@ -263,7 +249,7 @@
 										
 										<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
 										<div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar" style="width:{{ number_format($saving, 2) }}%; background-color: teal;" aria-valuenow="{{ number_format($saving, 2) }}" aria-valuemin="0" aria-valuemax="100"></div>
+											<div class="progress-bar" role="progressbar" style="width:100%; background-color: teal;" aria-valuenow="{{ $saving }}" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 									</div>
 
@@ -281,55 +267,7 @@
 				</div>
 			</section>
 			
-			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-			{{-- <script>
-				document.addEventListener('DOMContentLoaded', function() {
-					const ctx = document.getElementById('weeklyEarningsChart').getContext('2d');
-					const myChart = new Chart(ctx, {
-						type: 'bar',
-						data: {
-							labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-							datasets: [{
-								label: 'Weekly Earnings',
-								data: [12, 19, 3, 5, 20, 3, 7], // Replace with your actual data
-								backgroundColor: [
-									'rgba(153, 102, 255, 0.2)',
-									'rgba(153, 102, 255, 0.2)',
-									'rgba(153, 102, 255, 0.2)',
-									'rgba(153, 102, 255, 0.2)',
-									'rgba(153, 102, 255, 1)', // Highlighted bar
-									'rgba(153, 102, 255, 0.2)',
-									'rgba(153, 102, 255, 0.2)'
-								],
-								borderColor: [
-									'rgba(153, 102, 255, 1)',
-									'rgba(153, 102, 255, 1)',
-									'rgba(153, 102, 255, 1)',
-									'rgba(153, 102, 255, 1)',
-									'rgba(153, 102, 255, 1)',
-									'rgba(153, 102, 255, 1)',
-									'rgba(153, 102, 255, 1)'
-								],
-								borderWidth: 1
-							}]
-						},
-						options: {
-							scales: {
-								y: {
-									beginAtZero: true
-								}
-							},
-							plugins: {
-								legend: {
-									display: false
-								}
-							}
-						}
-					});
-				});
-			</script>> --}}
-			<br>
-			<br>
+		<br>
 			<section class="container-fluid">
 				<div class="row d-flex align-items-md-stretch">
 					<div class="col-lg-6 ">
