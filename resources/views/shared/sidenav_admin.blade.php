@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  {{-- <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  {{--
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
   <script src="lib/bootstrap/js/jquery.slim.min.js"></script>
   <script src="lib/bootstrap/js/poper.min.js"></script>
   <script type="text/javascript" src="lib/bootst    rap/js/bootstrap.min.js"></script>
@@ -16,12 +23,14 @@
   <base href="/expenseMVC/">
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
-       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
     body {
-        margin: 0;
-        padding: 0;
-        background-color:;
+      margin: 0;
+      padding: 0;
+      background-color: ;
     }
+
     .vertical-nav {
       margin-top: 69px;
       min-width: 16rem;
@@ -30,17 +39,17 @@
       position: fixed;
       top: 0;
       left: 0;
-      background: #E6C7A5;
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Soft and subtle shadow */
       transition: all 0.4s;
-      color: #DBDBDB;
+      color: #6B4226;
+      background: #E6C7A5 !important;
       text-decoration: none;
-      font-family: 'Arial, sans-serif'; 
-      background: #706D54 !important;
+      font-family: 'Arial, sans-serif';
     }
 
     .text-gray {
-      
+
       padding: 5px;
       font-size: 25px;
       padding-left: 10px;
@@ -51,19 +60,19 @@
       border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       padding-left: 1px;
       text-decoration: none;
-  
+      
     }
 
-   
-    x-dropdown-link{
+
+    x-dropdown-link {
       color: black;
-    
+
       text-decoration: none;
       transition: 0.3s;
     }
 
     .nav-item {
-      background: #706D54 !important;
+      background-color: #e6c7a5;  !important;
     }
 
     #sidebar.active {
@@ -78,7 +87,7 @@
       background-color: #A08963;
       border-radius: 5px;
     }
-    
+
     @media (max-width: 768px) {
       #sidebar {
         margin-left: -17rem;
@@ -88,41 +97,38 @@
         margin-left: 0;
       }
     }
-   
+
     li {
       list-style: none;
     }
 
     .nav-link {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-      font-size: 18px;
-      font-weight: 500;
-      transition: background-color 0.3s, color 0.3s;
-      color: #E0E0E0;
-      border-radius: 5px;
-    }
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
+  color: #6B4226;
+  border-radius: 5px;
+  
+}
 
-    .nav-link:hover {
-      background-color: #DBDBDB;
-      color: #706D54;
-      /* Primary - Pure Black */
-      box-shadow: 0 3px 5px rgb(162, 150, 150);
-    }
+.nav-link:hover {
+  background-color: #e6c7a5;  /* Lightened background */
+  color: #6B4226; /* Keep the same text color */
+  font-weight: 600;
+  font-size: 20px;  /* Slight increase in font size */
+  transform: translateY(-3px);  /* Slightly lift the element on hover */
+}
 
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
-      
-
     }
-
     .nav-item.active .nav-link {
-      background-color: #DBDBDB;
-      color: #706D54;
+      color: #6B4226;
     }
-
     .span {
       width: 20px;
       display: inline-flex;
@@ -130,13 +136,13 @@
       align-items: center;
       margin: 10px;
     }
-     
   </style>
 </head>
+
 <body>
   <!--vertical bar-->
   <div class="vertical-nav" id="sidebar">
-    <ul class="nav flex-column bg-dark mb-0 mt-4">
+    <ul class="nav flex-column  mb-0 mt-4">
       <li class="nav-item">
         <a href=" {{url('admin/dashboard')}}" class="nav-link">
           <span class="span"><i class="fas fa-wallet"></i></span>Dashboard</a>
@@ -145,7 +151,7 @@
         <a href="{{url('admin/category')}}" class="nav-link">
           <span class="span"><i class="fas fa-list-alt"></i></span> Category</a>
       </li>
-      
+
       <li class="nav-item">
         <a href="{{url('admin/showCategory')}}" class="nav-link">
           <span class="span"><i class="fas fa-folder-open"></i></span> Show Category</a>
@@ -155,13 +161,14 @@
           <span class="span"><i class="fas fa-users"></i></span>Users</a>
       </li>
       <li class="nav-item">
-       
+
       </li>
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
-          <span class="span"><i class="fas fa-sign-out-alt" ></i></span>
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
+            class="nav-link">
+            <span class="span"><i class="fas fa-sign-out-alt"></i></span>
             {{ __('Log Out') }}
           </a>
         </form>
@@ -169,20 +176,21 @@
     </ul>
   </div>
 </body>
-  <script>
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     // Get current URL path
     let currentPath = window.location.pathname;
     // Select all sidebar links
     let navLinks = document.querySelectorAll(".nav-item a");
     navLinks.forEach(link => {
-        let linkPath = new URL(link.href).pathname; // Get the path from href
-        // Exact match check
-        if (currentPath === linkPath) {
-            link.parentElement.classList.add("active");
-        }
+      let linkPath = new URL(link.href).pathname; // Get the path from href
+      // Exact match check
+      if (currentPath === linkPath) {
+        link.parentElement.classList.add("active");
+      }
     });
-});
-    </script>
-  </script>
+  });
+</script>
+</script>
+
 </html>

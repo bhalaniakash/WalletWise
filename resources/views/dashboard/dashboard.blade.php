@@ -72,21 +72,43 @@
 			<br>
 			<section class="container-fluid">
 				<div class="row">
+					<style>
+						.icon-box {
+							display: inline-flex;
+							align-items: center;
+							justify-content: center;
+							width: 50px;
+							height: 50px;
+							border-radius: 10px;
+							background: rgba(255, 255, 255, 0.2); /* Transparent background */
+							box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+						}
+					
+						.icon-box i {
+							font-size: 24px;
+							color: #6b4226; /* Icon color */
+						}
+					</style>
+					
 					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
 									<div class="name">
 										<strong class="text-uppercase">
-											<h5><i class="fas fa-wallet"></i> Income</h5>
+											<h5>
+												<div class="icon-box">
+													<i class="fas fa-wallet"></i>
+												</div>
+												Income
+											</h5>
 										</strong>
 									</div>
-									<h5>current month</h5>
+									<h5>Current Month</h5>
 									<div class="count-number">
 										@php
 											$currentMonth = now()->format('Y-m');
 											$user = auth()->user();
-					
 											$currentMonthIncome = $incomeReport
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
@@ -105,14 +127,18 @@
 								<div class="col mr-4">
 									<div class="name">
 										<strong class="text-uppercase">
-											<h5><i class="fas fa-money-bill-wave"></i> Expense</h5>
+											<h5>
+												<div class="icon-box">
+													<i class="fas fa-money-bill-wave"></i>
+												</div>
+												Expense
+											</h5>
 										</strong>
 									</div>
-									<h5>current month</h5>
+									<h5>Current Month</h5>
 									<div class="count-number">
 										@php
 											$user = auth()->user();
-					
 											$currentMonthExpense = $expenseReport
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
@@ -131,10 +157,15 @@
 								<div class="col mr-4">
 									<div class="name">
 										<strong class="text-uppercase">
-											<h5><i class="fas fa-piggy-bank"></i> Saving</h5>
+											<h5>
+												<div class="icon-box">
+													<i class="fas fa-piggy-bank"></i>
+												</div>
+												Saving
+											</h5>
 										</strong>
 									</div>
-									<h5>current month</h5>
+									<h5>Current Month</h5>
 									<div class="count-number">
 										@php
 											$currentMonthIncome = $incomeReport
@@ -164,7 +195,6 @@
 						</div>
 					</div>
 					
-			
 					<div class="col-xl-12 mt-4"> 
 						<div class="dashboard-card">
 							<div class="card-body">	

@@ -12,12 +12,12 @@
         margin-right: 1rem;
         transition: all 0.4s;
         margin-top: 50px;
-        font-family: 'Arial, sans-serif'; 
+        font-family: 'Arial, sans-serif';
         color: #A08963;
         background-color: #fff0e2;
         padding: 20px;
         border-radius: 10px;
-       
+
     }
 
     .content.active {
@@ -26,82 +26,100 @@
     }
 
     .card {
-        border-color: #000;
         padding: 15px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px; 
-        font-family: 'Arial, sans-serif'; 
-        color: black;
+        border-radius: 10px;
+        font-family: 'Arial, sans-serif';
     }
 
     table {
         border-collapse: collapse;
-        
+
         width: 100%;
     }
 
-        th {
-            background-color: #A08963;
-            color: white;
-        }
+    th {
+        background-color: #A08963;
+        color: white;
+    }
 
-        td {
-            background-color: white;
-        }
-    
-        button[type="submit"] {
-            background: #A08963;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bolder;
-            font-size: 1rem;
-            transition: all 0.3s ease-in-out;
-        }
+    td {
+        background-color: white;
+    }
 
-       
-        .progress {
-            height: 20px;
-            border-radius: 5px;
-        }
+    button[type="submit"] {
+        background: #A08963;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bolder;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+    }
 
-        .progress-bar {
-            background-color: #000;
-        }
 
-        /* this css is for an Spend amount  */
+    .progress {
+        height: 20px;
+        border-radius: 5px;
+    }
 
-        .amount-positive {
-            color: green;
-            font-weight: bold;
-            font-family: 'Arial, sans-serif'; 
-        }
-        .amount-negative {
-            color: red;
-            font-weight: bold;
-            font-family: 'Arial, sans-serif'; 
-        }
+    .progress-bar {
+        background-color: #000;
+    }
 
-        /* this is for the chart */
+    /* this css is for an Spend amount  */
 
-        .categoryChart{
-            width: 500px;
-            height: 500px;
-            font-family: 'Arial, sans-serif'; 
-        }
-        .text-center{
-            text-align: center;
-            background-color: rgb(217, 217, 217);
-            padding: 1%;
-            border-radius: 50px;
-            font-family: 'Arial, sans-serif'; 
-        }
+    .amount-positive {
+        color: green;
+        font-weight: bold;
+        font-family: 'Arial, sans-serif';
+    }
 
-    </style>
+    .amount-negative {
+        color: red;
+        font-weight: bold;
+        font-family: 'Arial, sans-serif';
+    }
+
+    /* this is for the chart */
+
+    .categoryChart {
+        width: 500px;
+        height: 500px;
+        font-family: 'Arial, sans-serif';
+    }
+
+    .text-center {
+        text-align: center;
+        background-color: rgb(217, 217, 217);
+        padding: 1%;
+        border-radius: 50px;
+        font-family: 'Arial, sans-serif';
+    }
+
+    .dashboard-card {
+        background: white;
+        color: #6b4226;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .dashboard-card:hover {
+        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+        color: #6b4226;
+    }
+
+    .card {
+        border: none !important
+    }
+</style>
 </head>
 
 <body>
-    
+
     @include('shared.sidenav');
     @include('shared.header');
 
@@ -112,118 +130,131 @@
             <section>
                 {{-- <div class="container-fluid"> --}}
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <h5>Total Budget</h5>
-                                @php
-                                    $user = Auth::user();
-                                    $budget = \App\Models\Budget::where('user_id', $user->id)->first();
-                                @endphp
-                                <p><strong>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</strong></p>
+                        <div class="col-md-6">
+                            <div class="dashboard-card">
+                                <div class="card">
+                                    <h5>Total Budget</h5>
+                                    @php
+                                        $user = Auth::user();
+                                        $budget = \App\Models\Budget::where('user_id', $user->id)->first();
+                                    @endphp
+                                    <p><strong>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</strong></p>
+                                </div>
                             </div>
                         </div>
 
-                        {{-- here we are going to show amount 
-                           reaming amount = budget - total amount spent in current month
+                        {{-- here we are going to show amount
+                        reaming amount = budget - total amount spent in current month
                         --}}
 
                         {{-- <div class="col-md-4">
                             <div class="card">
                                 <h5>Remaining Budget</h5>
                                 @php
-                                    $user = Auth::user();
-                                    $budget = \App\Models\Budget::where('user_id', $user->id)->first();
-                                    $currentMonth = now()->format('Y-m');
+                                $user = Auth::user();
+                                $budget = \App\Models\Budget::where('user_id', $user->id)->first();
+                                $currentMonth = now()->format('Y-m');
 
-                                    $totalSpent = $expenseReport
-                                        ->where('user_id', $user->id)
-                                        ->filter(fn($expense) => date('Y-m', strtotime($expense->date)) === $currentMonth)
-                                        ->sum('amount');
+                                $totalSpent = $expenseReport
+                                ->where('user_id', $user->id)
+                                ->filter(fn($expense) => date('Y-m', strtotime($expense->date)) === $currentMonth)
+                                ->sum('amount');
 
-                                    $remainingBudget = $budget ? $budget->limit - $totalSpent : 0;
+                                $remainingBudget = $budget ? $budget->limit - $totalSpent : 0;
                                 @endphp
-                                <p><strong>₹{{ $remainingBudget > 0 ? number_format($remainingBudget, 2) : '0.00' }}</strong></p>
-                                @if($remainingBudget <= 0)
-                                    <div class="alert alert-danger">
-                                        Warning: You have exceeded your budget limit!
-                                    </div>
-                                @endif
-                            </div> --}}
-                      
-                      
-                        <div class="col-md-4">
-                            <div class="card">
-                                <h5>Saving Goal</h5>
-                                @php
-                                    $currentMonthSaving = \App\Models\Budget::where('user_id', $user->id)
-                                        ->whereYear('created_at', now()->year)
-                                        ->whereMonth('created_at', now()->month)
-                                        ->value('saving');
-                                @endphp
-                                <p><strong>₹{{ $currentMonthSaving ? number_format($currentMonthSaving, 2) : '0.00' }}</strong></p>
+                                <p><strong>₹{{ $remainingBudget > 0 ? number_format($remainingBudget, 2) : '0.00'
+                                        }}</strong></p>
+                                @if($remainingBudget <= 0) <div class="alert alert-danger">
+                                    Warning: You have exceeded your budget limit!
+                            </div>
+                            @endif
+                        </div> --}}
+
+
+                        <div class="col-md-6">
+                            <div class="dashboard-card">
+                                <div class="card">
+                                    <h5>Saving Goal</h5>
+                                    @php
+                                        $currentMonthSaving = \App\Models\Budget::where('user_id', $user->id)
+                                            ->whereYear('created_at', now()->year)
+                                            ->whereMonth('created_at', now()->month)
+                                            ->value('saving');
+                                    @endphp
+                                    <p><strong>₹{{ $currentMonthSaving ? number_format($currentMonthSaving, 2) : '0.00' }}</strong>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4"> 
-                            <div class="card">
-                                <h5>Remaining Amount</h5>
-                                @php
-                                    use Illuminate\Support\Facades\Auth;
-                                    use App\Models\Budget;
+                    </div>
+                    <div class="row m-4">
+                        <div style="width: 100%;">
+                            <div class="dashboard-card">
+                                <div class="card">
+                                    <h5>Remaining Amount</h5>
+                                    @php
+                                        use Illuminate\Support\Facades\Auth;
+                                        use App\Models\Budget;
 
-                                    $user = Auth::user();
-                                    $currentMonth = now()->format('Y-m');
+                                        $user = Auth::user();
+                                        $currentMonth = now()->format('Y-m');
 
-                                   
-                                    $currentMonthExpense = $expenseReport
-                                        ->where('user_id', $user->id)
-                                        ->filter(function ($expense) use ($currentMonth) {
-                                            return date('Y-m', strtotime($expense->date)) === $currentMonth;
-                                        })
-                                        ->sum('amount');
 
-                                   
-                                    $currentMonthIncome = $incomeReport
-                                        ->where('user_id', $user->id)
-                                        ->filter(function ($income) use ($currentMonth) {
-                                            return date('Y-m', strtotime($income->date)) === $currentMonth;
-                                        })
-                                        ->sum('amount');
+                                        $currentMonthExpense = $expenseReport
+                                            ->where('user_id', $user->id)
+                                            ->filter(function ($expense) use ($currentMonth) {
+                                                return date('Y-m', strtotime($expense->date)) === $currentMonth;
+                                            })
+                                            ->sum('amount');
 
-                                    
-                                    $netAmount = $currentMonthIncome - $currentMonthExpense;
 
-                                  
-                                    $budget = Budget::where('user_id', $user->id)
-                                                    ->whereYear('created_at', now()->year)
-                                                    ->whereMonth('created_at', now()->month)
-                                                    ->first();
+                                        $currentMonthIncome = $incomeReport
+                                            ->where('user_id', $user->id)
+                                            ->filter(function ($income) use ($currentMonth) {
+                                                return date('Y-m', strtotime($income->date)) === $currentMonth;
+                                            })
+                                            ->sum('amount');
 
-                                    $savingGoal = $budget ? $budget->saving : 0; 
-                                  
-                                    $remainingAmount = $netAmount - $savingGoal;
 
-                                 
-                                    $amountClass = $remainingAmount >= 0 ? 'amount-positive' : 'amount-negative';
-                                @endphp
-                                <p>
-                                    <strong class="{{ $amountClass }}" style="color: {{ $remainingAmount >= 0 ? 'green' : 'red' }};">
-                                        ₹ {{ number_format($remainingAmount, 2) }}
-                                    </strong>
-                                </p>
+                                        $netAmount = $currentMonthIncome - $currentMonthExpense;
 
-                                @if($remainingAmount < 0)
-                                    <div class="alert alert-danger" style="color: red;">
-                                        Warning: You are ₹{{ number_format(abs($remainingAmount), 2) }} below your saving goal for this month!
-                                    </div>
-                                @else
-                                    <div class="alert alert-success" style="color: green;">
-                                        Great! You have ₹{{ number_format($remainingAmount, 2) }} remaining after meeting your saving goal.
-                                    </div>
-                                @endif
-                            </div>  
+
+                                        $budget = Budget::where('user_id', $user->id)
+                                            ->whereYear('created_at', now()->year)
+                                            ->whereMonth('created_at', now()->month)
+                                            ->first();
+
+                                        $savingGoal = $budget ? $budget->saving : 0;
+
+                                        $remainingAmount = $netAmount - $savingGoal;
+
+
+                                        $amountClass = $remainingAmount >= 0 ? 'amount-positive' : 'amount-negative';
+                                    @endphp
+                                    <p>
+                                        <strong class="{{ $amountClass }}"
+                                            style="color: {{ $remainingAmount >= 0 ? 'green' : 'red' }};">
+                                            ₹ {{ number_format($remainingAmount, 2) }}
+                                        </strong>
+                                    </p>
+
+                                    @if($remainingAmount < 0)
+                                        <div class="alert alert-danger" style="color: red;">
+                                            Warning: You are ₹{{ number_format(abs($remainingAmount), 2) }} below your
+                                            saving
+                                            goal for this month!
+                                        </div>
+                                    @else
+                                        <div class="alert alert-success" style="color: green;">
+                                            Great! You have ₹{{ number_format($remainingAmount, 2) }} remaining after
+                                            meeting
+                                            your saving goal.
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    {{-- </div> --}}
-                </div>
+                    </div>
             </section>
 
             <br>
@@ -234,34 +265,36 @@
                     <form class="mt-3" method="POST" action="{{ route('budget.store') }}">
                         @csrf
                         @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
 
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Expense Limit:</label>
-                                    <input type="number" class="form-control" name="limit" placeholder="Enter Expense Limit" required />
-                                   
-                                    
+                                    <input type="number" class="form-control" name="limit"
+                                        placeholder="Enter Expense Limit" required />
+
+
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Saving Goal:</label>
-                                    <input type="number" class="form-control" name="saving" placeholder="Enter Saving Goal" required />
+                                    <input type="number" class="form-control" name="saving"
+                                        placeholder="Enter Saving Goal" required />
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" >Add Budget</button>
-                       
+                        <button type="submit">Add Budget</button>
+
                     </form>
                     <br>
                 </div>
@@ -303,8 +336,7 @@
                                 </td>
                                 <td>
                                     <div class="progress">
-                                        <div class="progress-bar" 
-                                             style="width: {{ $progressPercentage }}%; 
+                                        <div class="progress-bar" style="width: {{ $progressPercentage }}%; 
                                                     background-color: {{ $remainingExpense < 0 ? 'red' : 'green' }};">
                                         </div>
                                     </div>
@@ -336,11 +368,12 @@
                                     </div>
                                 </td> --}}
                             </tr>
-                            
+
                         </tbody>
                     </table>
                     <br>
-                {{-- </div> --}}
+                    {{--
+                </div> --}}
             </section>
 
             <br>
@@ -350,7 +383,7 @@
                 {{-- <div class="container-fluid shadow"> --}}
                     <h5>Analytics & Reports</h5>
                     <div class="d-flex justify-content-between">
-                        <div class="card" style="width: 32% ">  
+                        <div class="card" style="width: 32% ">
                             <h6 class="text-center">Budget Chart</h6>
                             <canvas id="categoryChart" style="width: 100%; height: 300px;"></canvas>
                             <script>
@@ -359,14 +392,14 @@
                                     const totalIncome = {{ $totalIncome }};
                                     const totalExpenses = {{ $totalExpense }};
                                     const totalSavings = totalIncome - totalExpenses;
-            
+
                                     new Chart(ctx, {
                                         type: 'pie',
                                         data: {
                                             labels: ['Expenses', 'Savings'],
                                             datasets: [{
                                                 data: [totalExpenses, totalSavings],
-                                                backgroundColor: ['#FF0000', '#00FF00'],    
+                                                backgroundColor: ['#FF0000', '#00FF00'],
                                             }]
                                         },
                                         options: {
@@ -392,127 +425,129 @@
                                 });
                             </script>
                         </div>
-            
+
                         <div class="card" style="width: 32% ;> ">
                             <h6 class="text-center">Expense Distribution</h6>
                             <canvas id="expenseChart" style="width: 100%; height: 300px;">
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    const ctx = document.getElementById('expenseChart').getContext('2d');
-                                    
-                                    const categories = @json(\App\Models\Category::where('type', 'expense')->get());
-                                    const expenses = @json(\App\Models\Expense::where('user_id', Auth::id())->get());
-                                    
-                                    const categoryData = categories.map(category => {
-                                        const totalExpense = expenses
-                                            .filter(expense => expense.category_id == category.id)
-                                            .reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0);
-                                        return {
-                                            name: category.name || 'Unknown',
-                                            total: totalExpense,
-                                            color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
-                                        };
-                                    });
-                                    
-                                    const labels = categoryData.map(data => data.name);
-                                    const data = categoryData.map(data => data.total);
-                                    const backgroundColors = categoryData.map(data => data.color);
-                                    
-                                    new Chart(ctx, {
-                                        type: 'pie',
-                                        data: {
-                                            labels: labels,
-                                            datasets: [{
-                                                data: data,
-                                                backgroundColor: backgroundColors,
-                                            }]
-                                        },
-                                        options: {
-                                            responsive: true,
-                                            plugins: {
-                                                legend: {
-                                                    position: 'bottom',
-                                                    align: 'start',
-                                                },
-                                                tooltip: {
-                                                    callbacks: {
-                                                        label: function (context) {
-                                                            const label = context.label || '';
-                                                            const value = context.raw || 0;
-                                                            return `${label}: ₹${value.toLocaleString()}`;
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const ctx = document.getElementById('expenseChart').getContext('2d');
+
+                                        const categories = @json(\App\Models\Category::where('type', 'expense')->get());
+                                        const expenses = @json(\App\Models\Expense::where('user_id', Auth::id())->get());
+
+                                        const categoryData = categories.map(category => {
+                                            const totalExpense = expenses
+                                                .filter(expense => expense.category_id == category.id)
+                                                .reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0);
+                                            return {
+                                                name: category.name || 'Unknown',
+                                                total: totalExpense,
+                                                color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                                            };
+                                        });
+
+                                        const labels = categoryData.map(data => data.name);
+                                        const data = categoryData.map(data => data.total);
+                                        const backgroundColors = categoryData.map(data => data.color);
+
+                                        new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: labels,
+                                                datasets: [{
+                                                    data: data,
+                                                    backgroundColor: backgroundColors,
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        align: 'start',
+                                                    },
+                                                    tooltip: {
+                                                        callbacks: {
+                                                            label: function (context) {
+                                                                const label = context.label || '';
+                                                                const value = context.raw || 0;
+                                                                return `${label}: ₹${value.toLocaleString()}`;
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
+                                        });
                                     });
-                                });
-                            </script>
+                                </script>
                             </canvas>
                         </div>
-            
+
                         <div class="card" style="width: 32% ;> ">
                             <h6 class="text-center">Income Distribution</h6>
                             <canvas id="incomeChart" style="width: 100%; height: 300px;">
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    const ctx = document.getElementById('incomeChart').getContext('2d');
-                                    
-                                    const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
-                                    const incomes = @json(\App\Models\Income::where('user_id', Auth::id())->get());
-                                    
-                                    const incomeCategoryData = incomeCategories.map(category => {
-                                        const totalIncome = incomes
-                                            .filter(income => income.category_id == category.id)
-                                            .reduce((sum, income) => sum + parseFloat(income.amount || 0), 0);
-                                        return {
-                                            name: category.name || 'Unknown',
-                                            total: totalIncome,
-                                            color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
-                                        };
-                                    });
-                                    
-                                    const incomeLabels = incomeCategoryData.map(data => data.name);
-                                    const incomeData = incomeCategoryData.map(data => data.total);
-                                    const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
-                                    
-                                    new Chart(ctx, {
-                                        type: 'pie',
-                                        data: {
-                                            labels: incomeLabels,
-                                            datasets: [{
-                                                data: incomeData,
-                                                backgroundColor: incomeBackgroundColors,
-                                            }]
-                                        },
-                                        options: {
-                                            responsive: true,
-                                            plugins: {
-                                                legend: {
-                                                    position: 'bottom',
-                                                    align: 'start'
-                                                },
-                                                tooltip: {
-                                                    callbacks: {
-                                                        label: function (context) {
-                                                            const label = context.label || '';
-                                                            const value = context.raw || 0;
-                                                            return `${label}: ₹${value.toLocaleString()}`;
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const ctx = document.getElementById('incomeChart').getContext('2d');
+
+                                        const incomeCategories = @json(\App\Models\Category::where('type', 'income')->get());
+                                        const incomes = @json(\App\Models\Income::where('user_id', Auth::id())->get());
+
+                                        const incomeCategoryData = incomeCategories.map(category => {
+                                            const totalIncome = incomes
+                                                .filter(income => income.category_id == category.id)
+                                                .reduce((sum, income) => sum + parseFloat(income.amount || 0), 0);
+                                            return {
+                                                name: category.name || 'Unknown',
+                                                total: totalIncome,
+                                                color: category.color || `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                                            };
+                                        });
+
+                                        const incomeLabels = incomeCategoryData.map(data => data.name);
+                                        const incomeData = incomeCategoryData.map(data => data.total);
+                                        const incomeBackgroundColors = incomeCategoryData.map(data => data.color);
+
+                                        new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: incomeLabels,
+                                                datasets: [{
+                                                    data: incomeData,
+                                                    backgroundColor: incomeBackgroundColors,
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        align: 'start'
+                                                    },
+                                                    tooltip: {
+                                                        callbacks: {
+                                                            label: function (context) {
+                                                                const label = context.label || '';
+                                                                const value = context.raw || 0;
+                                                                return `${label}: ₹${value.toLocaleString()}`;
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
+                                        });
                                     });
-                                });
 
-                            </script>
+                                </script>
                             </canvas>
                         </div>
                     </div>
                     <br>
-                {{-- </div> --}}
+                    {{--
+                </div> --}}
             </section>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
+
 </html>
