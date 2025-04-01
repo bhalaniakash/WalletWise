@@ -55,7 +55,24 @@
             transition:  0.3s;
             font-family: 'Arial, sans-serif'; 
         }
+        table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+        th {
+            background-color: #A08963;
+            color: white;
+        }
+
+        td {
+          color: #A08963;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
         
     </style>
 </head>

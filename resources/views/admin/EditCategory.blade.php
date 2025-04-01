@@ -16,7 +16,7 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-            background-color: white;
+            background: #E6C7A5;
             margin-top: 0%;
             font-family: 'Arial, sans-serif'; 
         }
@@ -28,39 +28,37 @@
             background-color: white;
             margin-top: 5% !important;
             font-family: 'Arial, sans-serif'; 
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            color: #6B4226;
         }
 
-        .content.active {
-            margin-left: 1rem;
-            margin-right: 1rem;
-            font-family: 'Arial, sans-serif'; 
-
+        .container-fluid {
+            margin-top: 20px;
+        }
+        h5{
+            color: #E6C7A5;
+            background: #6B4226;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        button[type="submit"] {
+            background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background: #8b6f4e;
+            cursor: pointer;
         }
 
-        #add1 input {
-            width: 300px;
-            height: 40px;
-            font-family: 'Arial, sans-serif'; 
-        }
-
-        #add2 input {
-            width: 300px;
-            height: 40px;
-            font-family: 'Arial, sans-serif'; 
-        }
-
-        .table tr {
-            color: #000;
-            background-color: white;
-          
-        }
-
-        th,
-        td {
-            color: #000;
-            background-color: white;
-            font-family: 'Arial, sans-serif'; 
-        }
     </style>
 </head>
 
@@ -70,9 +68,9 @@
         <section>
             <div class="row">
                 <div class="container-fluid col-lg-12">
-                    <div class="card shadow p-3" style="background-color: #616b6b; color: white;">
+                  
                         <h5>Update Catagory</h5>
-                    </div>
+                 
 
                     <div class="card-body">
                         <form action="{{ route('admin.category.update', $category->id) }}" method="POST">

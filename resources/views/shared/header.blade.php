@@ -29,8 +29,13 @@
         body {
             color: #000;
             margin-top: 0;
+<<<<<<< HEAD
             font-family: 'Arial, sans-serif';
             background-color: #fff0e2;
+=======
+            font-family: 'Arial, sans-serif'; 
+            background: #E6C7A5;
+>>>>>>> aa1d92fc7c0f0bb60efeb7f224dd78dac6bc28c5
         }
 
         /* @keyframes glow {
