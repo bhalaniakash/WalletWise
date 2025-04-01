@@ -102,7 +102,7 @@
                             <select class="form-control" name="icategory" id="icategory" onchange="updatePreview()">
                                 @foreach($categories as $category)
                                     @if($category->type == 'income')
-                                        <option value="{{ $category->id }}">💰 {{ $category->name }}</option>
+                                        <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -117,13 +117,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="live-preview" id="preview">
-                    <strong>Live Preview:</strong> No income added yet.
-                </div>
                 <div class="row mt-3">
-                    <div class="col" style="text-align: center;">
-                        <button type="submit" class="btn " style="width: 100%;">Insert 
-                            <i class="fa fa-plus-circle fa-sm"></i>
+                    <div class="col" style="text-align: left;">
+                        <button type="submit" name="insert" style="width: 25%; font-size: x-large;">Insert 
                         </button>
                     </div>
                 </div>
@@ -133,16 +129,7 @@
         <br>
     </div>
 
-    <script>
-        function updatePreview() {
-            let name = document.getElementById("iname").value || "[Name]";
-            let amount = document.getElementById("iamount").value || "[Amount]";
-            let date = document.getElementById("incomedate").value || "[Date]";
-            let category = document.getElementById("icategory").options[document.getElementById("icategory").selectedIndex]?.text || "[Category]";
-            let desc = document.getElementById("idescription").value || "[No Description]";
-            document.getElementById("preview").innerHTML = `<strong>Preview:</strong> ${name} - ${amount} on ${date} in ${category}. ${desc}`;
-        }
-    </script>
+    
 </body>
 
 </html>

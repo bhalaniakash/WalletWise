@@ -3,9 +3,12 @@
 
 <head>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Ramaraja:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -18,32 +21,33 @@
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
     body {
       margin: 0;
-      
+
       color: black;
-      font-family: 'Andada Pro', sans-serif; 
-    }
-    
-    .vertical-nav {
-      margin-top: 69px;
-      min-width: 16rem;
-      width: 16rem;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #E6C7A5;
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s;
-      color: #DBDBDB;
-      text-decoration: none;
-      font-family: 'Arial, sans-serif'; 
-      background: #706D54 !important;
+      font-family: 'Andada Pro', sans-serif;
     }
 
+    .vertical-nav {
+  margin-top: 69px;
+  min-width: 16rem;
+  width: 16rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft and subtle shadow */
+  transition: all 0.4s;
+  color: #6B4226;
+  background: #E6C7A5 !important;
+  text-decoration: none;
+  font-family: 'Arial, sans-serif';
+}
+
+
     .text-gray {
-      
+
       padding: 5px;
       font-size: 25px;
       padding-left: 10px;
@@ -51,21 +55,21 @@
 
     ul li {
       line-height: 40px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       padding-left: 1px;
       text-decoration: none;
-  
+
     }
 
-   
-    x-dropdown-link{
+
+    x-dropdown-link {
       color: black;
-    
+
       text-decoration: none;
       transition: 0.3s;
     }
+
     .nav-item {
-      background: #706D54 !important;
+      background: #E6C7A5; !important;
 
       /* Primary - Pure Black */
     }
@@ -78,10 +82,11 @@
       font-size: 17px;
       padding-left: 10px;
       transition: 0.5s;
-      color: black;
-      background-color: #A08963;
+      color: #6B4226;
+      background: #E6C7A5;
       border-radius: 5px;
     }
+
     @media (max-width: 768px) {
       #sidebar {
         margin-left: -17rem;
@@ -91,39 +96,36 @@
         margin-left: 0;
       }
     }
-   
+
     li {
       list-style: none;
     }
 
     .nav-link {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-      font-size: 18px;
-      font-weight: 500;
-      transition: background-color 0.3s, color 0.3s;
-      color: #E0E0E0;
-      border-radius: 5px;
-    }
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
+  color: #6B4226;
+  border-radius: 5px;
+}
 
-    .nav-link:hover {
-      background-color: #DBDBDB;
-      color: #706D54;
-      /* Primary - Pure Black */
-      box-shadow: 0 3px 5px rgb(162, 150, 150);
-    }
+.nav-link:hover {
+  background-color: #e6c7a5;  /* Lightened background */
+  color: #6B4226; /* Keep the same text color */
+  font-weight: 600;
+  font-size: 20px;  /* Slight increase in font size */
+  transform: translateY(-3px);  /* Slightly lift the element on hover */
+}
 
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
-      
-
     }
-
     .nav-item.active .nav-link {
-      background-color: #DBDBDB;
-      color: #706D54;
+      color: #6B4226;
     }
 
     .span {
@@ -133,7 +135,7 @@
       align-items: center;
       margin: 10px;
     }
-</style>
+  </style>
 
 <body>
   <!-- Vertical Sidebar -->
@@ -144,31 +146,31 @@
           <span class="span"><i class="fas fa-wallet"></i></span> Dashboard
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a href="{{ url('dashboard/income') }}" class="nav-link">
           <span class="span"><i class="fas fa-dollar-sign"></i></span> Add income
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a href="{{ url('dashboard/expense') }}" class="nav-link">
           <span class="span"><i class="fas fa-money-bill-wave"></i></span> Add expense
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a href="{{ url('dashboard/incomeReport') }}" class="nav-link">
           <span class="span"><i class="fas fa-chart-line"></i></span> Income report
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a href="{{ url('dashboard/expenseReport') }}" class="nav-link">
           <span class="span"><i class="fas fa-receipt"></i></span> Expense report
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a href="{{ url('dashboard/budget') }}" class="nav-link">
           <span class="span"><i class="fas fa-coins"></i></span> Budget
@@ -176,39 +178,25 @@
       </li>
       @if (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
-        <a href="{{ url('dashboard/update') }}" class="nav-link">
-          <span class="span"><i class="fas fa-gem"></i></span> Update plan
-        </a>
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-gem"></i></span> Update plan
+      </a>
       </li>
-      @endif
-      
+    @endif
+
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-item">
           @csrf
-          <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
+            class="nav-link">
             <span class="span"><i class="fas fa-sign-out-alt"></i></span> {{ __('Log Out') }}
           </a>
         </form>
       </li>
     </ul>
   </div>
-  {{-- this script does not do anything  --}}
-
-  {{-- <script type="text/javascript" src="lib/js/main.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var currentUrl = window.location.href;
-      var sidebarLinks = document.querySelectorAll(".nav-link");
-
-      sidebarLinks.forEach(function (link) {
-        if (link.href === currentUrl) {
-          link.classList.add("active");
-        }
-      });
-    });
-  </script> --}}
 </body>
-  <script>
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     // Get current URL path
     let currentPath = window.location.pathname;
@@ -217,15 +205,16 @@
     let navLinks = document.querySelectorAll(".nav-item a");
 
     navLinks.forEach(link => {
-        let linkPath = new URL(link.href).pathname; // Get the path from href
+      let linkPath = new URL(link.href).pathname; // Get the path from href
 
-        // Exact match check
-        if (currentPath === linkPath) {
-            link.parentElement.classList.add("active");
-        }
+      // Exact match check
+      if (currentPath === linkPath) {
+        link.parentElement.classList.add("active");
+      }
     });
-});
+  });
 
 </script>
 </script>
+
 </html>

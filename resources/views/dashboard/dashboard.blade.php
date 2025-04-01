@@ -88,50 +88,64 @@
 						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
-									<div class="name"><strong class="text-uppercase"><h3>Income</h3></strong></div>
+									<div class="name">
+										<strong class="text-uppercase">
+											<h5><i class="fas fa-wallet"></i> Income</h5>
+										</strong>
+									</div>
 									<h5>current month</h5>
 									<div class="count-number">
 										@php
 											$currentMonth = now()->format('Y-m');
 											$user = auth()->user();
-			
+					
 											$currentMonthIncome = $incomeReport
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
 										@endphp
-										<p class="card-number">₹ {{ number_format($currentMonthIncome, 2) }}</p>
+										<p class="card-number text-3xl text-[#6b4226]">₹ {{ number_format($currentMonthIncome, 2) }}</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
-									<div class="name"><strong class="text-uppercase"><h3>Expense</h3></strong></div>
+									<div class="name">
+										<strong class="text-uppercase">
+											<h5><i class="fas fa-money-bill-wave"></i> Expense</h5>
+										</strong>
+									</div>
 									<h5>current month</h5>
 									<div class="count-number">
 										@php
 											$user = auth()->user();
-			
+					
 											$currentMonthExpense = $expenseReport
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
 										@endphp
-										<p class="card-number">₹ {{ number_format($currentMonthExpense, 2) }}</p>
+										<p class="card-number text-3xl text-[#6b4226]">₹ {{ number_format($currentMonthExpense, 2) }}</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
 								<div class="col mr-4">
-									<div class="name"><strong class="text-uppercase"><h3>Saving</h3></strong></div>
+									<div class="name">
+										<strong class="text-uppercase">
+											<h5><i class="fas fa-piggy-bank"></i> Saving</h5>
+										</strong>
+									</div>
 									<h5>current month</h5>
 									<div class="count-number">
 										@php
@@ -139,21 +153,21 @@
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
-			
+					
 											$currentMonthExpense = $expenseReport
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
-			
+					
 											$saving = $currentMonthIncome - $currentMonthExpense;
 										@endphp
 										@if ($saving < 0)
 											<div class="text-danger">
-												<p class="card-number text-danger">₹ {{ number_format($saving, 2) }}</p>
+												<p class="card-number text-3xl text-danger">₹ {{ number_format($saving, 2) }}</p>
 											</div>
 										@else
 											<div class="text-success">
-												<p class="card-number text-success">₹ {{ number_format($saving, 2) }}</p>
+												<p class="card-number text-3xl text-success">₹ {{ number_format($saving, 2) }}</p>
 											</div>
 										@endif
 									</div>
@@ -161,6 +175,7 @@
 							</div>
 						</div>
 					</div>
+					
 			
 					<div class="col-xl-12 mt-4"> 
 						<div class="dashboard-card">
@@ -170,9 +185,6 @@
 										<div>
 											<h4>Last Week's Expense Report</h4>
 											<p class="text-muted">Expenses this week</p>
-										</div>
-										<div>
-											<i class="fas fa-ellipsis-v"></i>
 										</div>
 									</div>
 									
@@ -193,7 +205,7 @@
 													$last7Days->put($dayAbbreviation, $expenseAmount);
 												}
 											@endphp
-											<h2 class="mb-0">₹ {{ number_format($last7Days->sum(), 2) }}</h2>
+											<h2 class="mb-0 rounded-sm">₹ {{ number_format($last7Days->sum(), 2) }}</h2>
 											<p class="text-muted">Total expenses for the last 7 days</p>
 										</div>
 										<div style="width: 100%;">
@@ -238,7 +250,7 @@
 									<div>
 										<h5 class="mb-1">Earnings</h5>
 										
-										<h2 class="mb-0">₹  {{ number_format($currentMonthIncome, 2) }}</h2>
+										<h4 class="mb-0">₹  {{ number_format($currentMonthIncome, 2) }}</h4>
 										<div class="progress" style="height: 5px;">
 											<div class="progress-bar" role="progressbar" style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;" aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
