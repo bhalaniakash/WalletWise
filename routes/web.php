@@ -81,8 +81,8 @@ Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('a
 // user income and expense routes
 
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
+Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
-Route::post('/reminder/store', [ReminderController::class, 'store'])->name('reminder.store');
 
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destroy');
@@ -90,7 +90,7 @@ Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destr
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::post('/budget/store', [BudgetController::class, 'store'])->name('budget.store');
-Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
+Route::post('/reminder/store', [ReminderController::class, 'store'])->name('reminder.store');
 
 
 Route::post('/income/filter', function (Request $request) {
@@ -116,8 +116,6 @@ Route::post('/income/filter', function (Request $request) {
     });
     return response()->json($data);
 });
-
-
 Route::post('/expense/filter', function (Request $request) {
     $filteredexpenses = Expense::where('user_id', auth()->id());
 
@@ -142,9 +140,6 @@ Route::post('/expense/filter', function (Request $request) {
     // dd($data);
     return response()->json($data);
 });
-
-
-
 Route::post('/category/filter', function (Request $request) {
     $category = category::query();
     if ($request->filled('cat')) {
@@ -160,6 +155,5 @@ Route::post('/category/filter', function (Request $request) {
     // dd($data);
     return response()->json($data);
 });
-
 Route::post('/razorpay/payment',[Payment::class,'payment'])->name('payment');
 Route::post('/verify-payment', [Payment::class, 'verifyPayment'])->name('payment.verify');
