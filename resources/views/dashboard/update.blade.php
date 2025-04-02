@@ -19,16 +19,10 @@
             align-items: center;
             gap: 1rem;
             margin-top: 1.5rem;
-            padding: 1rem;
-            background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
             margin: 2rem auto;
-            flex-wrap: wrap;
-            border: 1px solid #ccc;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          
         }
 
         .plan-option {
@@ -113,8 +107,9 @@
                 <button type="submit" class="w-full mt-5 bg-[#A08963] text-white py-3 rounded-lg font-semibold hover:bg-[#c8c6b6] hover:shadow-lg transition">
                     Upgrade Now
                 </button>
+            </form>
         </div>
     </div>
+       
 </body>
-
 </html>
