@@ -100,7 +100,7 @@
                 @csrf
                 <div class="payment-summary">
                     <p class="text-gray-700">You Pay</p>
-                    <p class="text-2xl font-bold text-[#6b4226]">&#8377;2000</p>
+                    <p class="text-2xl font-bold text-[#6B4226]">&#8377;2000</p>
                     <p class="text-sm text-gray-500">
                         Premium 3 Month Plan Price &#8377;2000 <br>
                         Remaining amount in your current plan -&#8377;2000 <br>
@@ -113,7 +113,6 @@
                 <button type="submit" class="w-full mt-5 bg-[#A08963] text-white py-3 rounded-lg font-semibold hover:bg-[#c8c6b6] hover:shadow-lg transition">
                     Upgrade Now
                 </button>
-            </form>
         </div>
     </div>
 </body>
