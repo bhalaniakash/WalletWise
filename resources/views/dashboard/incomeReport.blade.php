@@ -24,8 +24,22 @@
             transition: all 0.3s ease-in-out;
 
           }
-          button[type="submit"] {
+          button[type="button"] {
             background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+        button[type="button"]:hover {
+            background: #A08963;
+            color: white;
+            transform: scale(1.05);
+        }
+        button[type="submit"]{
+          background: #A08963;
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
@@ -77,21 +91,19 @@
                                     @endforeach
                                 </select>
                                 &nbsp;&nbsp;                            
-                               <div class="input-group">
-                                  <input type="month" class="form-control" id="incomeDate">
-                                  <div class="input-group-prepend">
-                                    <button type="submit">
-                                      <i class="fa fa-filter fa-xs" aria-hidden="true"></i>Filter</button>
-                                  </div>
-                                </div>
-                                &nbsp;
-                                {{-- <button type="submit" class="btn btn-primary">
-                                Filter
-                                </button> --}}
+                             
+                                  <input type="month" class="form-control mr-2" id="incomeDate">
+                                  
+                                    <button class="btn btn-dark" type="submit">
+                                        
+                                      <i class="fa fa-filter fa-xs"></i> Filter
+                                    </button>
+                              
                               </form>
                
           <br>
-          <table class="table table-striped" id="Report">
+          <table class="table table-striped" id="incomeReportTable">
+
             <thead style="background-color: #1E1E2E;">
               <tr>
                 <th colspan="6">
@@ -138,7 +150,8 @@
             </tbody>
           </table>
           
-          <button type="submit"   id="downloadReport">Download Report</button>
+          <button type="button" id="downloadReport">Download Report</button>
+
           
 
         </div>
@@ -153,12 +166,12 @@
               <div class="row">
                 <div class="col-md-6">
                   <div id="piechart">
-                    <canvas id="incomeChart"></canvas>
+                    <canvas id="incomeChart" id="incomeReportTable"></canvas>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div id="piechart">
-                    <canvas id="incomeChartDate"></canvas>
+                    <canvas id="incomeChartDate" id="incomeReportTable"></canvas>
                   </div>
                 </div>
               </div>
@@ -212,53 +225,67 @@
 
   <script type="text/javascript">
     document.getElementById('downloadReport').addEventListener('click', function () {
-      let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
+  console.log("Download button clicked"); // Debugging
+  let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
 
-      if (choice && choice.toLowerCase() === 'csv') {
-        downloadCSV();
-      } else if (choice && choice.toLowerCase() === 'pdf') {
-        downloadPDF();
-      } else {
-        alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
-      }
-    });
+  if (choice && choice.toLowerCase() === 'csv') {
+    console.log("Downloading CSV");
+    downloadCSV();
+  } else if (choice && choice.toLowerCase() === 'pdf') {
+    console.log("Downloading PDF");
+    downloadPDF();
+  } else {
+    alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
+  }
+});
 
-    function downloadCSV() {
-      let table = document.getElementById('Report');
-      let rows = table.querySelectorAll('tr');
-      let csvContent = "";
+function downloadCSV() {
+  let table = document.getElementById('incomeReportTable');
+  if (!table) {
+    alert("Report table not found!");
+    return;
+  }
+  let rows = table.querySelectorAll('tr');
+  let csvContent = "";
 
-      rows.forEach(row => {
-        let cols = row.querySelectorAll('th, td');
-        let rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
-        csvContent += rowData + "\n";
-      });
+  rows.forEach(row => {
+    let cols = row.querySelectorAll('th, td');
+    let rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
+    csvContent += rowData + "\n";
+  });
 
-      let blob = new Blob([csvContent], {
-        type: "text/csv"
-      });
-      let url = URL.createObjectURL(blob);
-      let a = document.createElement("a");
-      a.href = url;
-      a.download = "Income_Report.csv";
-      a.click();
-    }
+  let blob = new Blob([csvContent], { type: "text/csv" });
+  let url = URL.createObjectURL(blob);
+  let a = document.createElement("a");
+  a.href = url;
+  a.download = "Income_Report.csv";
+  a.click();
+}
 
-    function downloadPDF() {
-      let table = document.getElementById('Report').outerHTML;
-      let chartCanvas = document.getElementById('incomeChart');
-      let chartImage = chartCanvas.toDataURL("image/png");
-      let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
-      let win = window.open("", "", "width=800,height=800");
-      win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
-      win.document.write("<h2>Income Report</h2>");
-      win.document.write(table);
-      win.document.write("<h3>Income Chart</h3>");
-      win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
-      win.document.write("</body></html>");
-      win.document.close();
-      win.print();
-    }
+function downloadPDF() {
+  let table = document.getElementById('incomeReportTable');
+  if (!table) {
+    alert("Report table not found!");
+    return;
+  }
+  let chartCanvas = document.getElementById('incomeChart');
+  let chartImage = chartCanvas ? chartCanvas.toDataURL("image/png") : "";
+
+  let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
+  let win = window.open("", "", "width=800,height=800");
+  win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
+  win.document.write("<h2>Income Report</h2>");
+  win.document.write(table.outerHTML);
+  
+  if (chartImage) {
+    win.document.write("<h3>Income Chart</h3>");
+    win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
+  }
+
+  win.document.write("</body></html>");
+  win.document.close();
+  win.print();
+}
 
     // fromt here bar chart is starts
     const ctx = document.getElementById('incomeChart');

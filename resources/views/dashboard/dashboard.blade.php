@@ -97,9 +97,9 @@
 									<div class="name">
 										<strong class="text-uppercase">
 											<h5>
-												<div class="icon-box">
+											
 													<i class="fas fa-wallet"></i>
-												</div>
+												
 												Income
 											</h5>
 										</strong>
@@ -128,9 +128,9 @@
 									<div class="name">
 										<strong class="text-uppercase">
 											<h5>
-												<div class="icon-box">
+											
 													<i class="fas fa-money-bill-wave"></i>
-												</div>
+												
 												Expense
 											</h5>
 										</strong>
@@ -158,9 +158,9 @@
 									<div class="name">
 										<strong class="text-uppercase">
 											<h5>
-												<div class="icon-box">
+											
 													<i class="fas fa-piggy-bank"></i>
-												</div>
+												
 												Saving
 											</h5>
 										</strong>

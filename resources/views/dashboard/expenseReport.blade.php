@@ -29,8 +29,22 @@
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        button[type="submit"] {
+        button[type="button"] {
             background: #A08963;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bolder;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+        button[type="button"]:hover {
+            background: #A08963;
+            color: white;
+            transform: scale(1.05);
+        }
+        button[type="submit"]{
+          background: #A08963;
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
@@ -45,7 +59,7 @@
         table {
         border-collapse: collapse;
         width: 100%;
-    }
+        }
 
         th {
             background-color: #A08963;
@@ -71,6 +85,7 @@
     <div class="page-content">
             <div class="card p-4">
                 <h2 class="text-2xl  mb-4">Expense Report</h2>
+                <div class="col-xl-12">
                 <form class="form-inline mb-4">
                     <select class="form-control mr-2" id="expenseCategory">
                         <option value="">All Categories</option>
@@ -86,7 +101,7 @@
                     </button>
                 </form>
 
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered" id="Report">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -125,9 +140,9 @@
                     </tbody>
                 </table>
 
-                <button type="submit" id="downloadReport">Download Report</button>
+                <button type="button" id="downloadReport">Download Report</button>
             </div>
-
+            </div>
             <div class="card mt-5 p-4">
                 <h3 class="text-2xl  mb-4">Expense Chart</h3>
                 <div class="row">

@@ -74,14 +74,11 @@
             /* Smooth transition on hover */
         }
 
-        h2:hover {
+        /* h2:hover {
             background: #D1A95D;
-            /* Slightly darker background on hover */
             color: #4f311d;
-            /* Change text color to white on hover */
             transform: translateY(-3px);
-            /* Slight upward movement on hover */
-        }
+        } */
 
         button i:hover {
             color: #6B4226;
