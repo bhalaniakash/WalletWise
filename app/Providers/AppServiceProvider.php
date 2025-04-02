@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Expense;
 use App\Models\User;
 use App\Models\Income;
+use App\Models\Reminder;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,11 +28,13 @@ class AppServiceProvider extends ServiceProvider
         $users = User::all();
         $income = Income::all();
         $expense = Expense::all();
+        $reminder = Reminder::all();
         View::share([
             'categories'=>$categories,
             'members'=>$users,
             'incomeReport'=>$income,
-            'expenseReport'=>$expense
+            'expenseReport'=>$expense,
+            'reminder'=>$reminder
         ]);
     }
      

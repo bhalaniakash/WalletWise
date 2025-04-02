@@ -190,21 +190,34 @@
     @endif
       @if (Auth::user()->plan_type === 'premium')
       <li class="nav-item">
-      <a href="{{ url('dashboard/reminder') }}" class="nav-link">
-        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
-      </a>
+        <a href="{{ url('dashboard/reminder') }}" class="nav-link">
+          <span class="span"><i class="fas fa-bell"></i></span> Add reminders
+        </a>
       </li>
+      
+      <li class="nav-item">
+        <a href="{{ url('dashboard/show_reminder') }}" class="nav-link">
+          <span class="span"><i class="fas fa-eye"></i></span> Show reminders
+        </a>
+        </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/budget') }}" class="nav-link">
           <span class="span"><i class="fas fa-coins"></i></span> Budget
         </a>
       </li>
+
+
     @elseif (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
         <span class="span"><i class="fas fa-bell"></i></span> Add reminders
       </a>
       </li>
+      <li class="nav-item">
+        <a href="{{ url('dashboard/show_reminder') }}" class="nav-link">
+          <span class="span"><i class="fas fa-eye"></i></span> Show reminders
+        </a>
+        </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/update') }}" class="nav-link">
           <span class="span"><i class="fas fa-coins"></i></span> Budget
