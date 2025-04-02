@@ -147,20 +147,57 @@
                 Get access to premium features. Proceed carefully before making any payments.
             </p>
 
+            <style>
+                .plan-box {
+                    display: flex;
+                    gap: 20px;
+                    justify-content: center;
+                }
+            
+                .plan-option {
+                    width: 220px;
+                    padding: 20px;
+                    border-radius: 12px;
+                    text-align: center;
+                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s, box-shadow 0.3s;
+                }
+            
+                .current-plan {
+                    background-color: #f8f8f8;
+                    color: #6B4226;
+                    opacity: 0.5; /* Disabled effect */
+                    pointer-events: none; /* Disable clicks */
+                }
+            
+                .upgrade-plan {
+                    background-color: #fffbe6;
+                    border: 2px solid #6B4226;
+                    cursor: pointer;
+                }
+            
+                .upgrade-plan:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+                }
+            </style>
+            
             <div class="plan-box">
+                <!-- Current Plan (Disabled) -->
                 <div class="plan-option current-plan">
                     <p class="text-gray-600 text-sm">CURRENT PLAN</p>
-                    <p class="text-lg font-semibold text-[#6b4226]">SingleDevice</p>
+                    <p class="text-lg font-semibold text-[#6B4226]">Single Device</p>
                     <p class="text-xl font-bold">&#8377;0<span class="text-sm">/Month</span></p>
                 </div>
-
-                <div class="plan-option upgrade-plan selected">
+            
+                <!-- Upgrade Plan -->
+                <div class="plan-option upgrade-plan">
                     <p class="text-sm text-blue-600 font-semibold">UPGRADE TO</p>
-                    <p class="text-lg font-bold text-[#6b4226]">Premium</p>
-                    <p class="text-xl font-bold">&#8377;2000<span class="text-sm">/3Months</span></p>
+                    <p class="text-lg font-bold text-[#6B4226]">Premium</p>
+                    <p class="text-xl font-bold">&#8377;499<span class="text-sm">/- Month</span></p>
                 </div>
             </div>
-
+            
             <form method="POST" action="{{ route('payment') }}" class="mt-6">
                 @csrf
                 <div class="payment-summary">
