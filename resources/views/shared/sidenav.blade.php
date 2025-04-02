@@ -30,20 +30,21 @@
     }
 
     .vertical-nav {
-  margin-top: 69px;
-  min-width: 16rem;
-  width: 16rem;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft and subtle shadow */
-  transition: all 0.4s;
-  color: #6B4226;
-  background: #E6C7A5 !important;
-  text-decoration: none;
-  font-family: 'Arial, sans-serif';
-}
+      margin-top: 69px;
+      min-width: 16rem;
+      width: 16rem;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Soft and subtle shadow */
+      transition: all 0.4s;
+      color: #6B4226;
+      background: #E6C7A5 !important;
+      text-decoration: none;
+      font-family: 'Arial, sans-serif';
+    }
 
 
     .text-gray {
@@ -69,7 +70,8 @@
     }
 
     .nav-item {
-      background: #E6C7A5; !important;
+      background: #E6C7A5;
+      !important;
 
       /* Primary - Pure Black */
     }
@@ -86,7 +88,7 @@
       background: #E6C7A5;
       border-radius: 5px;
     }
-    
+
     @media (max-width: 768px) {
       #sidebar {
         margin-left: -17rem;
@@ -102,38 +104,38 @@
     }
 
     .nav-link {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  font-size: 18px;
-  font-weight: 500;
-  transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
-  color: #6B4226;
-  border-radius: 5px;
-}
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      font-size: 18px;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
+      color: #6B4226;
+      border-radius: 5px;
+    }
 
-.nav-link:hover {
- 
-  color: #6B4226; 
-  font-weight: 600;
-  font-size: 20px; 
-  transform: translateY(-3px);
-}
+    .nav-link:hover {
+
+      color: #6B4226;
+      font-weight: 600;
+      font-size: 20px;
+      transform: translateY(-3px);
+    }
 
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
-      color: #6B4226; 
+      color: #6B4226;
       transition: color 0.3s;
     }
 
-  /* Highlight the active file name */
-  .nav-item.active .nav-link {
-    color: #6B4226; 
-    font-weight: 700;
-    font-size: 20px; 
-    border-radius: 5px;
-  }
+    /* Highlight the active file name */
+    .nav-item.active .nav-link {
+      color: #6B4226;
+      font-weight: 700;
+      font-size: 20px;
+      border-radius: 5px;
+    }
 
     .span {
       width: 20px;
@@ -177,17 +179,36 @@
           <span class="span"><i class="fas fa-receipt"></i></span> Expense report
         </a>
       </li>
-
+      
+      @if (Auth::user()->plan_type === 'regular')
+      <li class="nav-item">
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        {{-- 5267 3181 8797 5449 --}}
+        <span class="span"><i class="fas fa-gem"></i></span> Update plan
+      </a>
+      </li>
+    @endif
+      @if (Auth::user()->plan_type === 'premium')
+      <li class="nav-item">
+      <a href="{{ url('dashboard/reminder') }}" class="nav-link">
+        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
+      </a>
+      </li>
       <li class="nav-item">
         <a href="{{ url('dashboard/budget') }}" class="nav-link">
           <span class="span"><i class="fas fa-coins"></i></span> Budget
         </a>
       </li>
-      @if (Auth::user()->plan_type === 'regular')
+    @elseif (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
-        <span class="span"><i class="fas fa-gem"></i></span> Update plan
+        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
       </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ url('dashboard/update') }}" class="nav-link">
+          <span class="span"><i class="fas fa-coins"></i></span> Budget
+        </a>
       </li>
     @endif
 
@@ -211,11 +232,11 @@
     // Select all sidebar links
     let navLinks = document.querySelectorAll(".nav-item a");
     navLinks.forEach(link => {
-        let linkPath = new URL(link.href).pathname; // Get the path from href
-        // Exact match check
-        if (currentPath === linkPath) {
-            link.parentElement.classList.add("active");
-        }
+      let linkPath = new URL(link.href).pathname; // Get the path from href
+      // Exact match check
+      if (currentPath === linkPath) {
+        link.parentElement.classList.add("active");
+      }
     });
   });
 </script>

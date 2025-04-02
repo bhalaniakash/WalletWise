@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Date:</label>
-                        <input type="date" class="form-control" name="date" required>
+                        <input type="date" class="form-control" name="date" max="{{ date('Y-m-d') }}" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Category:</label>

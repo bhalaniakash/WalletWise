@@ -12,17 +12,15 @@ class ExpenseController extends Controller
 {
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'expense_name' => 'required|string|max:255', // ✅ Match form input
             'amount' => 'required|numeric|min:0',
             'date' => 'required|date',
             'category_id' => 'required|exists:categories,id', // ✅ Match DB column
             'payment_method' => 'required|string|max:50',
-            'description' => 'nullable|string',        
+            'description' => 'nullable|string',
         ]);
-        // dd($request->all());
-        
         Expense::create([
             'user_id' => Auth::id(), // ✅ Correct user ID retrieval
             'expense_name' => $request->input('expense_name'), // ✅ Correct field names
@@ -36,7 +34,4 @@ class ExpenseController extends Controller
         // ✅ Redirect back with success message
         return redirect()->back()->with('success', 'Expense added successfully!');
     }
-
-    
 }
-

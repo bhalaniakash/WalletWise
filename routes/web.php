@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\Payment;
+use App\Http\Controllers\ReminderController;
 use App\Models\Income;
 use Illuminate\Http\Request;
 
@@ -55,6 +56,9 @@ Route::get('/dashboard/budget', function () {
 Route::get('/dashboard/update', function () {
     return view('dashboard.update');
 });
+Route::get('/dashboard/reminder',function(){
+    return view('dashboard.reminder');
+});
 Route::get('/dashboard/profile', function () {
     return view('dashboard.profile');
 });
@@ -78,6 +82,7 @@ Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('a
 
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
+Route::post('/reminder/store', [ReminderController::class, 'store'])->name('reminder.store');
 
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destroy');
