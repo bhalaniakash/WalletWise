@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Income;
-
 use Illuminate\Support\Facades\Auth;
 
 class IncomeController extends Controller
@@ -18,10 +16,6 @@ class IncomeController extends Controller
             'icategory' => 'required|exists:categories,id',
             'idescription' => 'nullable|string',
         ]);
-        
-    // dd("Validation passed!", $validatedData);
-        
-        // dd('before',$request->all()); 
         Income::create([
             'user_id' => Auth::id(), // Get the currently authenticated user ID
             'source' => $request->input('iname'),
@@ -30,9 +24,6 @@ class IncomeController extends Controller
             'category_id' => $request->input('icategory'),
             'description' => $request->input('idescription'),
         ]);
-        // dd('after'); 
-        
-        // Redirect back with success message
         return redirect()->back()->with('success', 'Income added successfully!');
     }
 }
