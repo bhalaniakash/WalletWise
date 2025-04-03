@@ -122,10 +122,21 @@
   transform: translateY(-3px);  /* Slightly lift the element on hover */
 }
 
-    .nav-link i {
+.nav-link i {
       margin-right: 10px;
       font-size: 20px;
+      color: #6B4226;
+      transition: color 0.3s;
     }
+
+    /* Highlight the active file name */
+    .nav-item.active .nav-link {
+      color: #6B4226;
+      font-weight: 700;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
     .nav-item.active .nav-link {
       color: #6B4226;
     }
