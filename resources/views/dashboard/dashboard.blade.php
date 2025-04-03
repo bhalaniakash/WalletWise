@@ -238,7 +238,7 @@
 										<p class="text-muted">Total expenses for the last 7 days</p>
 									</div>
 									<div style="width: 100%;">
-										<canvas id="lastWeekExpenseChart" width="200" height="50"></canvas>
+										<canvas id="lastWeekExpenseChart" width="50" height="10"></canvas>
 									</div>
 								</div>
 
@@ -253,9 +253,9 @@
 												datasets: [{
 													label: 'Expenses',
 													data: @json($last7Days->values()),
-													backgroundColor: 'rgba(54, 162, 235, 0.5)',
-													borderColor: 'rgba(54, 162, 235, 1)',
-													borderWidth: 1
+													backgroundColor: '#E6C7A5',
+													borderColor: '#6b4226',
+													borderWidth: 2
 												}]
 											},
 											options: {
@@ -280,35 +280,35 @@
 										<h5 class="mb-1">Earnings</h5>
 
 										<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
-										<div class="progress" style="height: 5px;">
+										{{-- <div class="progress" style="height: 5px;">
 											<div class="progress-bar" role="progressbar"
 												style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;"
 												aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0"
 												aria-valuemax="100"></div>
-										</div>
+										</div> --}}
 									</div>
 
 									<div>
 										<h5 class="mb-1">Profit</h5>
 
 										<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
-										<div class="progress" style="height: 5px;">
+										{{-- <div class="progress" style="height: 5px;">
 											<div class="progress-bar" role="progressbar"
 												style="width:100%; background-color: teal;"
 												aria-valuenow="{{ $saving }}" aria-valuemin="0" aria-valuemax="100">
 											</div>
-										</div>
+										</div> --}}
 									</div>
 
 									<div>
 										<h5 class="mb-1">Expense</h5>
 										<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
-										<div class="progress" style="height: 5px;">
+										{{-- <div class="progress" style="height: 5px;">
 											<div class="progress-bar" role="progressbar"
 												style="width: {{ number_format($currentMonthExpense, 2) }}%; background-color: red;"
 												aria-valuenow="{{ number_format($currentMonthExpense, 2) }}"
 												aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
+										</div> --}}
 									</div>
 								</div>
 							</div>

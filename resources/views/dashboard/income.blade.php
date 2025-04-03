@@ -16,6 +16,7 @@
         .page-content {
             margin-left: 17rem;
             margin-top: 10% !important;
+            margin-bottom: 5% !important;
             margin-right: 1rem;
             transition: all 0.4s;
             font-family: 'Arial, sans-serif';
