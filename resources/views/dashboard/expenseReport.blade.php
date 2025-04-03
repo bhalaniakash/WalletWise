@@ -21,7 +21,7 @@
             margin-left: 17rem;
             padding: 2rem;
             transition: all 0.3s ease-in-out;
-        
+
         }
 
         .card {
@@ -30,59 +30,77 @@
         }
 
         button[type="button"] {
-            background: #E6C7A5 ;
-            color: #6B4226;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bolder;
-            font-size: 1rem;
-            transition: all 0.3s ease-in-out;
-        }
-        button[type="button"]:hover {
             background: #6B4226;
             color: white;
-            transform: scale(1.05);
-        }
-        button[type="submit"]{
-            background: #E6C7A5 ;
-            color: #6B4226;
-            padding: 12px 24px;
+            padding: 8px;
             border-radius: 8px;
-            font-weight: bolder;
-            font-size: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
             transition: all 0.3s ease-in-out;
+            width: 20%;
+            border: none;
         }
-        .text-2xl{
-        color: #A08963;
-        font-family: 'Andada Pro', sans-serif;
+
+        button[type="button"]:hover {
+            background: #4E2F1E;
+            cursor: pointer;
         }
+
+        button[type="submit"] {
+            background: #6B4226;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease-in-out;
+            width: 10%;
+            border: none;
+        }
+
+        button[type="submit"]:hover {
+            background: #4E2F1E;
+            cursor: pointer;
+        }
+
+        .text-2xl {
+            color: #A08963;
+            font-family: 'Andada Pro', sans-serif;
+        }
+
         table {
-                border-collapse: collapse;
-                width: 100%;
+            border-collapse: collapse;
+            width: 100%;
         }
+
         th {
             /* background-color: #A08963; */
             background: #E6C7A5 !important;
-              color: #6B4226;
+            color: #6B4226;
         }
+
         td {
-              color: #6B4226;
+            color: #6B4226;
             font-family: 'Roboto Slab';
             font-size: 1rem;
         }
-    
+
+        h2 {
+            color: #6B4226;
+            padding: 20px;
+        }
     </style>
 </head>
 
 <body>
-  <br>
+    <br>
     @include('shared.sidenav')
     @include('shared.header')
 
     <div class="page-content">
-            <div class="card p-4">
-                <h2 class="text-2xl  mb-4">Expense Report</h2>
-                <div class="col-xl-12">
+        <div class="card p-4">
+            <h2>Expense Report</h2>
+            <div class="col-xl-12">
                 <form class="form-inline mb-4">
                     <select class="form-control mr-2" id="expenseCategory">
                         <option value="">All Categories</option>
@@ -93,7 +111,7 @@
                         @endforeach
                     </select>
                     <input type="month" class="form-control mr-2" id="expenseDate">
-                    <button  type="submit">
+                    <button type="submit">
                         <i class="fa fa-filter fa-xs"></i> Filter
                     </button>
                 </form>
@@ -139,19 +157,19 @@
 
                 <button type="button" id="downloadReport">Download Report</button>
             </div>
-            </div>
-            <div class="card mt-5 p-4">
-                <h3 class="text-2xl  mb-4">Expense Chart</h3>
-                <div class="row">
-                  <div class="col-md-6">
+        </div>
+        <div class="card mt-5 p-4">
+            <h3 class="text-2xl  mb-4">Expense Chart</h3>
+            <div class="row">
+                <div class="col-md-6">
                     <canvas id="expenseChart" width="400" height="300"></canvas>
-                  </div>
-                  <div class="col-md-6">
-                    <canvas id="expenseChartDate" width="400" height="300"></canvas>
-                  </div>
                 </div>
-                
+                <div class="col-md-6">
+                    <canvas id="expenseChartDate" width="400" height="300"></canvas>
+                </div>
             </div>
+
+        </div>
     </div>
 
     @php

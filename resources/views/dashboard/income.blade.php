@@ -19,7 +19,8 @@
             margin-right: 1rem;
             transition: all 0.4s;
             font-family: 'Arial, sans-serif';
-            color: #6b4226;;
+            color: #6b4226;
+            ;
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -32,16 +33,21 @@
             font-size: 1rem;
         }
 
-        
         button[type="submit"] {
-            background: #A08963;
+            background: #6B4226;
             color: white;
-            padding: 12px 24px;
+            padding: 8px;
             border-radius: 8px;
-            font-weight: bolder;
-            font-size: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
             transition: all 0.3s ease-in-out;
-          
+            width: 20%;
+            border: none;
+        }
+
+        button[type="submit"]:hover {
+            background: #4E2F1E;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -53,7 +59,7 @@
 
     <div class="container">
         <div class="page-content">
-            <h2 class="text-center mb-4">Add Income</h2>
+            <h2 class="text-left mb-4">Add Income</h2>
 
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -92,8 +98,8 @@
                     <label class="form-label">Description:</label>
                     <textarea class="form-control" name="idescription" rows="3" placeholder="Optional"></textarea>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-custom w-50">Insert</button>
+                <div class="text-left">
+                    <button type="submit" class="btn btn-custom">Insert</button>
                 </div>
             </form>
         </div>

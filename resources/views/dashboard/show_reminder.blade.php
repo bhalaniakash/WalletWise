@@ -68,8 +68,10 @@
                             <td>{{ $reminder->due_date }}</td>
                             <td>{{ $reminder->frequency }}</td>
                             <td>{{ $reminder->description }}</td>
-                            <td>{{ \Carbon\Carbon::now()->diffInDays($reminder->due_date) }}</td>
                             <td>{{ $reminder->reminder_amount }}</td>
+                            <td class="text-center">
+                                {{ ceil(\Carbon\Carbon::now()->diffInDays($reminder->due_date, false)) }}
+                            </td>
                             <td>
                                 {{-- <a href="{{ route('reminder.edit', $reminder->id) }}">Edit</a> --}}
                                 <form action="{{ route('reminder.destroy', $reminder->id) }}" method="POST"
@@ -88,11 +90,10 @@
                     @endforelse
                     @php
                         $totalAmount = $reminder->sum('reminder_amount');
-
                     @endphp
 
                     <tr>
-                        <td colspan="5"><strong>Total:</strong></td>
+                        <td colspan="4"><strong>Total:</strong></td>
                         <td colspan="3"><strong>{{ number_format($totalAmount, 2) }}</strong></td>
                     </tr>
                 </tbody>
