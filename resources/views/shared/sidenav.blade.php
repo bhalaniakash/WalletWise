@@ -187,14 +187,27 @@
         <span class="span"><i class="fas fa-gem"></i></span> Update plan
       </a>
       </li>
-    @endif
-      @if (Auth::user()->plan_type === 'premium')
+      <li class="nav-item">
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
+      </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-coins"></i></span> Budget
+      </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-eye"></i></span> Show reminders
+      </a>
+      </li>
+    @elseif (Auth::user()->plan_type === 'premium')
       <li class="nav-item">
       <a href="{{ url('dashboard/reminder') }}" class="nav-link">
         <span class="span"><i class="fas fa-bell"></i></span> Add reminders
       </a>
       </li>
-
       <li class="nav-item">
       <a href="{{ url('dashboard/show_reminder') }}" class="nav-link">
         <span class="span"><i class="fas fa-eye"></i></span> Show reminders
@@ -205,24 +218,7 @@
         <span class="span"><i class="fas fa-coins"></i></span> Budget
       </a>
       </li>
-      @endif
-
-      
-{{-- 
-
-    @elseif (Auth::user()->plan_type === 'regular')
-      <li class="nav-item">
-      <a href="{{ url('dashboard/update') }}" class="nav-link">
-        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
-      </a>
-      </li>
-      <li class="nav-item">
-      <a href="{{ url('dashboard/update') }}" class="nav-link">
-        <span class="span"><i class="fas fa-coins"></i></span> Budget
-      </a>
-      </li>
-    @endif --}}
-
+    @endif
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-item">
           @csrf

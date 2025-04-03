@@ -39,7 +39,8 @@
 
         h1,
         h5 {
-            color: #333;
+            color: #6B4226;
+            font-weight: 900;
             font-family: 'Arial, sans-serif';
         }
 
@@ -61,13 +62,15 @@
             width: 100%;
 
         }
+
         th {
             /* background-color: #A08963; */
             background: #E6C7A5 !important;
-              color: #6B4226;
+            color: #6B4226;
         }
+
         td {
-              color: #6B4226;
+            color: #6B4226;
             font-family: 'Roboto Slab';
             font-size: 1rem;
         }
