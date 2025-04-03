@@ -18,21 +18,21 @@
               
     .antialiased{
         font-family: 'Figtree', sans-serif;
-        background: #E6C7A5;
+        background: #F3E5D8;
         margin: 0;
         padding: 0;
     }
-
+    
     /* Layout */
-
+    
     main {
+        background: #F3E5D8 !important;
         margin-left: 17rem;
         margin-right: 1rem;
         margin-top: 5%;
         padding: 2rem;
         transition: all 0.4s ease-in-out;
-        color: #6b4226;
-    
+        color: #6b4226; 
         border-radius: 8px;
     
     }

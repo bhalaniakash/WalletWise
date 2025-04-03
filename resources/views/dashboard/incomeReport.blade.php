@@ -25,8 +25,8 @@
 
           }
           button[type="button"] {
-            background: #A08963;
-            color: white;
+            background: #E6C7A5 ;
+            color: #6B4226;
             padding: 12px 24px;
             border-radius: 8px;
             font-weight: bolder;
@@ -39,8 +39,8 @@
             transform: scale(1.05);
         }
         button[type="submit"]{
-          background: #A08963;
-            color: white;
+            background: #E6C7A5 ;
+            color: #6B4226;
             padding: 12px 24px;
             border-radius: 8px;
             font-weight: bolder;
@@ -52,17 +52,19 @@
       font-family: 'Andada Pro', sans-serif;
     }
     table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+            border-collapse: collapse;
+            width: 100%;
 
-        th {
-            background-color: #A08963;
-            color: white;
         }
-
+        th {
+            /* background-color: #A08963; */
+            background: #E6C7A5 !important;
+              color: #6B4226;
+        }
         td {
-          color: #A08963;
+              color: #6B4226;
+            font-family: 'Roboto Slab';
+            font-size: 1rem;
         }
     
   </style>

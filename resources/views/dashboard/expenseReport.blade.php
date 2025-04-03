@@ -30,8 +30,8 @@
         }
 
         button[type="button"] {
-            background: #A08963;
-            color: white;
+            background: #E6C7A5 ;
+            color: #6B4226;
             padding: 12px 24px;
             border-radius: 8px;
             font-weight: bolder;
@@ -39,13 +39,13 @@
             transition: all 0.3s ease-in-out;
         }
         button[type="button"]:hover {
-            background: #A08963;
+            background: #6B4226;
             color: white;
             transform: scale(1.05);
         }
         button[type="submit"]{
-          background: #A08963;
-            color: white;
+            background: #E6C7A5 ;
+            color: #6B4226;
             padding: 12px 24px;
             border-radius: 8px;
             font-weight: bolder;
@@ -57,23 +57,20 @@
         font-family: 'Andada Pro', sans-serif;
         }
         table {
-        border-collapse: collapse;
-        width: 100%;
+                border-collapse: collapse;
+                width: 100%;
         }
-
         th {
-            background-color: #A08963;
-            color: white;
+            /* background-color: #A08963; */
+            background: #E6C7A5 !important;
+              color: #6B4226;
         }
-
         td {
-          color: #A08963;
+              color: #6B4226;
+            font-family: 'Roboto Slab';
+            font-size: 1rem;
         }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    
     </style>
 </head>
 
@@ -96,7 +93,7 @@
                         @endforeach
                     </select>
                     <input type="month" class="form-control mr-2" id="expenseDate">
-                    <button class="btn btn-dark" type="submit">
+                    <button  type="submit">
                         <i class="fa fa-filter fa-xs"></i> Filter
                     </button>
                 </form>

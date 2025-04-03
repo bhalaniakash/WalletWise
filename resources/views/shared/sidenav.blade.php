@@ -205,7 +205,10 @@
         <span class="span"><i class="fas fa-coins"></i></span> Budget
       </a>
       </li>
+      @endif
 
+      
+{{-- 
 
     @elseif (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
@@ -218,7 +221,7 @@
         <span class="span"><i class="fas fa-coins"></i></span> Budget
       </a>
       </li>
-    @endif
+    @endif --}}
 
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-item">

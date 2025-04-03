@@ -59,22 +59,17 @@
         table {
             border-collapse: collapse;
             width: 100%;
-        }
 
+        }
         th {
-            background-color: #A08963;
-            color: white;
+            /* background-color: #A08963; */
+            background: #E6C7A5 !important;
+              color: #6B4226;
         }
-
         td {
-            color: #A08963;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+              color: #6B4226;
+            font-family: 'Roboto Slab';
+            font-size: 1rem;
         }
     </style>
 </head>
