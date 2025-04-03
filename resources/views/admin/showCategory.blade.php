@@ -8,9 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <base href="/expenseMVC/">
-
-    {{--
-    <script type="text/javascript" src="lib/js/main.js"></script> --}}
+    <script type="text/javascript" src="lib/js/main.js"></script>
 
     <style type="text/css">
         body {
@@ -127,10 +125,7 @@
         transition: 0.3s;
         width: 100%;
         cursor: pointer;
-
     }
-
-  
 
     .filter-section {
         display: flex;
@@ -149,7 +144,7 @@
         transition: all 0.3s ease-in-out;
         height: 100%;
         border: none;
-        
+
     }
 
     #filter:hover {
@@ -184,7 +179,7 @@
 
         <div class="filter-section">
             <form id="categoryForm" class="d-flex align-items-righht" style="gap: 10px;">
-                <select class="form-control" id="category" >
+                <select class="form-control" id="category">
                     <option value="">All Categories</option>
                     <option value="income">Income</option>
                     <option value="expense">Expense</option>
@@ -198,26 +193,27 @@
                 <tr class="text-center">
                     <th>Name</th>
                     <th>Type</th>
-                    <th colspan="2" >Actions</th>
+                    <th colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody id="catTbody">
                 @foreach($categories as $category)
                     <tr>
-                        <td width="40%" >{{ $category->name }}</td>
-                        <td style="color: {{ $category->type == 'expense' ? 'red' : 'green' }}; width: 40%; text-align: center;" >
+                        <td width="40%">{{ $category->name }}</td>
+                        <td
+                            style="color: {{ $category->type == 'expense' ? 'red' : 'green' }}; width: 40%; text-align: center;">
                             {{ ucfirst($category->type) }}
                         </td>
                         <td width="10%" style="text-align: center;">
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" >Delete</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                         <td width="10%" style="text-align: center;">
                             <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
-                                <button type="submit" class="btn btn-primary" >Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </td>
                     </tr>
@@ -250,7 +246,7 @@
                                     <td width="40%"  style="color: ${category.type === 'expense' ? 'red' : 'green'}; style="text-align: center;" >
                                         ${category.type.charAt(0).toUpperCase() + category.type.slice(1)}
                                     </td>
-                                    
+
                                     <td  width="10%" style="text-align:center;">
                                         <form action="/categories/${category.id}" method="POST">
                                             @csrf

@@ -153,10 +153,10 @@
                                 {{-- <div class="card"> --}}
                                     <h5>Total Budget</h5>
                                     @php
-                                        $user = Auth::user();
-                                        $budget = \App\Models\Budget::where('user_id', $user->id)->first();
-                                    @endphp
-                                    <p><strong>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</strong></p>
+                                    $user = Auth::user();
+                                    $budget = \App\Models\Budget::where('user_id', $user->id)->first();
+                                @endphp
+                                      <p><strong>₹{{ $budget ? number_format($budget->limit, 2) : '0.00' }}</strong></p>
                                 {{-- </div> --}}
                             </div>
                         </div>

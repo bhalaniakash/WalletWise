@@ -15,11 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key to users table
             $table->decimal('limit', 10, 2); // User's saving limit
-<<<<<<< HEAD
-            $table->decimal('Saving', 10, 2); // Actual savings
-=======
             $table->decimal('saving', 10, 2); // Actual savings
->>>>>>> 936f57d7ecc95318b59b7097ee245bc94d7ae8f4
             $table->timestamps();
         });
     }

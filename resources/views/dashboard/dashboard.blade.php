@@ -97,29 +97,29 @@
 						<a href="{{ url('dashboard/incomeReport') }}" style="text-decoration: none">
 							<div class="dashboard-card">
 								<div class="card-body">
-								
-										<div class="name">
-											<strong class="text-uppercase">
-												<h5>
-													<i class="fas fa-dollar-sign"></i> &nbsp; Income
-												</h5>
-											</strong>
-										</div>
-										<h5>Current Month</h5>
-										<div class="count-number">
-											@php
-												$currentMonth = now()->format('Y-m');
-												$user = auth()->user();
-												$currentMonthIncome = $incomeReport
-													->where('user_id', $user->id)
-													->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-													->sum('amount');
-											@endphp
-											<p class="card-number text-3xl text-[#6b4226]">₹
-												{{ number_format($currentMonthIncome, 2) }}
-											</p>
-										</div>
-								
+
+									<div class="name">
+										<strong class="text-uppercase">
+											<h5>
+												<i class="fas fa-dollar-sign"></i> &nbsp; Income
+											</h5>
+										</strong>
+									</div>
+									<h5>Current Month</h5>
+									<div class="count-number">
+										@php
+											$currentMonth = now()->format('Y-m');
+											$user = auth()->user();
+											$currentMonthIncome = $incomeReport
+												->where('user_id', $user->id)
+												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+												->sum('amount');
+										@endphp
+										<p class="card-number text-3xl text-[#6b4226]">₹
+											{{ number_format($currentMonthIncome, 2) }}
+										</p>
+									</div>
+
 								</div>
 							</div>
 						</a>
@@ -129,30 +129,30 @@
 							<div class="dashboard-card">
 								<div class="card-body">
 
-										<div class="name">
-											<strong class="text-uppercase">
-												<h5>
+									<div class="name">
+										<strong class="text-uppercase">
+											<h5>
 
-													<i class="fas fa-money-bill-wave"></i>
-													&nbsp;
-													Expense
-												</h5>
-											</strong>
-										</div>
-										<h5>Current Month</h5>
-										<div class="count-number">
-											@php
-												$user = auth()->user();
-												$currentMonthExpense = $expenseReport
-													->where('user_id', $user->id)
-													->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-													->sum('amount');
-											@endphp
-											<p class="card-number text-3xl text-[#6b4226]">₹
-												{{ number_format($currentMonthExpense, 2) }}
-											</p>
-										</div>
-									
+												<i class="fas fa-money-bill-wave"></i>
+												&nbsp;
+												Expense
+											</h5>
+										</strong>
+									</div>
+									<h5>Current Month</h5>
+									<div class="count-number">
+										@php
+											$user = auth()->user();
+											$currentMonthExpense = $expenseReport
+												->where('user_id', $user->id)
+												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+												->sum('amount');
+										@endphp
+										<p class="card-number text-3xl text-[#6b4226]">₹
+											{{ number_format($currentMonthExpense, 2) }}
+										</p>
+									</div>
+
 								</div>
 							</div>
 						</a>
@@ -161,46 +161,46 @@
 					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
-							
-									<div class="name">
-										<strong class="text-uppercase">
-											<h5>
 
-												<i class="fas fa-piggy-bank"></i>
-												&nbsp;
-												Saving
-											</h5>
-										</strong>
-									</div>
-									<h5>Current Month</h5>
-									<div class="count-number">
-										@php
-											$currentMonthIncome = $incomeReport
-												->where('user_id', $user->id)
-												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-												->sum('amount');
+								<div class="name">
+									<strong class="text-uppercase">
+										<h5>
 
-											$currentMonthExpense = $expenseReport
-												->where('user_id', $user->id)
-												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-												->sum('amount');
+											<i class="fas fa-piggy-bank"></i>
+											&nbsp;
+											Saving
+										</h5>
+									</strong>
+								</div>
+								<h5>Current Month</h5>
+								<div class="count-number">
+									@php
+										$currentMonthIncome = $incomeReport
+											->where('user_id', $user->id)
+											->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+											->sum('amount');
 
-											$saving = $currentMonthIncome - $currentMonthExpense;
-										@endphp
-										@if ($saving < 0)
-											<div class="text-danger">
-												<p class="card-number text-3xl text-danger">₹
-													{{ number_format($saving, 2) }}
-												</p>
-											</div>
-										@else
-											<div class="text-success">
-												<p class="card-number text-3xl text-success">₹
-													{{ number_format($saving, 2) }}
-												</p>
-											</div>
-										@endif
-								
+										$currentMonthExpense = $expenseReport
+											->where('user_id', $user->id)
+											->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+											->sum('amount');
+
+										$saving = $currentMonthIncome - $currentMonthExpense;
+									@endphp
+									@if ($saving < 0)
+										<div class="text-danger">
+											<p class="card-number text-3xl text-danger">₹
+												{{ number_format($saving, 2) }}
+											</p>
+										</div>
+									@else
+										<div class="text-success">
+											<p class="card-number text-3xl text-success">₹
+												{{ number_format($saving, 2) }}
+											</p>
+										</div>
+									@endif
+
 								</div>
 							</div>
 						</div>
