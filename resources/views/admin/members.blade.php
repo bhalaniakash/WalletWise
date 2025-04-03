@@ -14,65 +14,60 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background: #F3E5D8;
-            font-family: 'Arial, sans-serif';
         }
 
         .page-content {
             margin-left: 17rem;
             margin-right: 1rem;
-            transition: all 0.4s;
-            margin-top: 5% !important;
+            margin-top: 5%;
             width: calc(100% - 18rem);
             padding: 2rem;
-            background-color: #fff;
+            background: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            font-family: 'Arial, sans-serif';
         }
 
-        .content.active {
-            margin-left: 1rem;
-            margin-right: 1rem;
-            width: calc(100% - 2rem);
-            font-family: 'Arial, sans-serif';
-        }
-
-        h1,
         h5 {
             color: #6B4226;
-            font-weight: 900;
-            font-family: 'Arial, sans-serif';
-        }
-
-        */ .btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem 0;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Arial, sans-serif';
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
         table {
-            border-collapse: collapse;
             width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
 
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #fff;
+            text-align: left;
         }
 
         th {
-            /* background-color: #A08963; */
             background: #E6C7A5 !important;
             color: #6B4226;
         }
 
-        td {
-            color: #6B4226;
-            font-family: 'Roboto Slab';
-            font-size: 1rem;
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+        }
+
+        h5 {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .btn-danger {
+            background: red;
         }
     </style>
 </head>
@@ -83,15 +78,9 @@
         <div id="page-content">
             <!-- Regular Members Table -->
 
+            <h5>Active Members</h5>
             <table class="table table-striped table-bordered">
-                <thead style="background-color: #616b6b;">
-                    <tr>
-                        <th colspan="4">
-                            <center>
-                                <h5>Active Members</h5>
-                            </center>
-                        </th>
-                    </tr>
+                <thead>
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
@@ -126,15 +115,9 @@
             </table>
 
             <!-- Premium Members Table -->
+            <h5>Inactive Members</h5>
             <table class="table table-striped table-bordered">
                 <thead style="background-color: #616b6b;">
-                    <tr>
-                        <th colspan="5">
-                            <center>
-                                <h5>Inactive Members</h5>
-                            </center>
-                        </th>
-                    </tr>
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
