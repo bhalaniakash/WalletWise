@@ -51,8 +51,8 @@
                     <th>Due Date</th>
                     <th>Frequency</th>
                     <th>Description</th>
-                    <th>Amount</th>
                     <th>Remaining days</th>
+                    <th>Amount</th>
                     <th>Actions</th>
                 </tr>
             </thead>

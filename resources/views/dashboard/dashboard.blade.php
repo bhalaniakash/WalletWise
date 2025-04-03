@@ -54,7 +54,7 @@
 	.dashboard-card {
 		background: white;
 		color: #6b4226;
-		padding: 20px;
+		padding: 10px;
 		border-radius: 10px;
 		box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 		transition: all 0.3s ease-in-out;
@@ -97,11 +97,11 @@
 						<a href="{{ url('dashboard/incomeReport') }}" style="text-decoration: none">
 							<div class="dashboard-card">
 								<div class="card-body">
-									<div class="col mr-4">
+								
 										<div class="name">
 											<strong class="text-uppercase">
 												<h5>
-													<i class="fas fa-dollar-sign"></i>Income
+													<i class="fas fa-dollar-sign"></i> &nbsp; Income
 												</h5>
 											</strong>
 										</div>
@@ -119,7 +119,7 @@
 												{{ number_format($currentMonthIncome, 2) }}
 											</p>
 										</div>
-									</div>
+								
 								</div>
 							</div>
 						</a>
@@ -128,13 +128,13 @@
 						<a href="{{ url('dashboard/expenseReport') }}" style="text-decoration: none">
 							<div class="dashboard-card">
 								<div class="card-body">
-									<div class="col mr-4">
+
 										<div class="name">
 											<strong class="text-uppercase">
 												<h5>
 
 													<i class="fas fa-money-bill-wave"></i>
-
+													&nbsp;
 													Expense
 												</h5>
 											</strong>
@@ -152,7 +152,7 @@
 												{{ number_format($currentMonthExpense, 2) }}
 											</p>
 										</div>
-									</div>
+									
 								</div>
 							</div>
 						</a>
@@ -161,13 +161,13 @@
 					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
-								<div class="col mr-4">
+							
 									<div class="name">
 										<strong class="text-uppercase">
 											<h5>
 
 												<i class="fas fa-piggy-bank"></i>
-
+												&nbsp;
 												Saving
 											</h5>
 										</strong>
@@ -200,7 +200,7 @@
 												</p>
 											</div>
 										@endif
-									</div>
+								
 								</div>
 							</div>
 						</div>

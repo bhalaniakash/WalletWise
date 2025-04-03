@@ -109,7 +109,7 @@
       padding: 10px 15px;
       font-size: 18px;
       font-weight: 500;
-      transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
+      
       color: #6B4226;
       border-radius: 5px;
     }

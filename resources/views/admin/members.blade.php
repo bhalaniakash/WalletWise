@@ -81,12 +81,11 @@
             <!-- Regular Members Table -->
 
             <table class="table table-striped table-bordered">
-                <thead style="background-color: #616b6b;">
-                    <tr>
-                        <th colspan="4">
-                            <center>
-                                <h5>Active Members</h5>
-                            </center>
+                <thead>
+                    <tr align="center">
+                        <th colspan="4" >
+                          
+                                Active Members
                         </th>
                     </tr>
                     <tr>
@@ -101,7 +100,7 @@
                         // Merge reports and extract unique user IDs
                         $activeUserIds = $expenseReport->concat($incomeReport)
                             ->where('is_Admin', '!=', 'Yes')
-                            ->where('updated_at', '>=', now()->subHours(1))
+                            ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek())
                             ->pluck('user_id')
                             ->unique();
                         // Fetch all inactive users in one query
@@ -125,11 +124,10 @@
             <!-- Premium Members Table -->
             <table class="table table-striped table-bordered">
                 <thead style="background-color: #616b6b;">
-                    <tr>
-                        <th colspan="5">
-                            <center>
-                                <h5>Inactive Members</h5>
-                            </center>
+                    <tr align="center">
+                        <th colspan="5" >
+                         
+                           Inactive Members
                         </th>
                     </tr>
                     <tr>
@@ -149,14 +147,14 @@
                         // Extract unique user IDs from both reports for active users
                         $activeUserIds = $expenseReport->concat($incomeReport)
                             ->where('is_Admin', '!=', 'Yes')
-                            ->where('updated_at', '>=', now()->subHours(1)) // Active users within the last hour
+                            ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek()) // Active users within the last week
                             ->pluck('user_id')
                             ->unique();
 
-                        // Extract inactive user IDs (users who haven't updated in the last hour)
+                        // Extract inactive user IDs (users who haven't updated in the last week)
                         $inactiveUserIds = $expenseReport->concat($incomeReport)
                             ->where('is_Admin', '!=', 'Yes')
-                            ->where('updated_at', '<', now()->subHours(1)) // Inactive users
+                            ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek()) // Inactive users
                             ->pluck('user_id')
                             ->unique();
                         // Fetch all non-admin users who have no records in reports
