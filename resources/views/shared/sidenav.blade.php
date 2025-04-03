@@ -152,31 +152,31 @@
     <ul class="nav flex-column bg-dark mb-0 mt-4">
       <li class="nav-item">
         <a href="{{ url('dashboard') }}" class="nav-link">
-          <span class="span"><i class="fas fa-wallet"></i></span> Dashboard
+          <span class="span"><i class="fas fa-home"></i></span> Home
         </a>
       </li>
 
       <li class="nav-item">
         <a href="{{ url('dashboard/income') }}" class="nav-link">
-          <span class="span"><i class="fas fa-dollar-sign"></i></span> Add income
+          <span class="span"><i class="fas fa-dollar-sign"></i></span> Income
         </a>
       </li>
 
       <li class="nav-item">
         <a href="{{ url('dashboard/expense') }}" class="nav-link">
-          <span class="span"><i class="fas fa-money-bill-wave"></i></span> Add expense
+          <span class="span"><i class="fas fa-money-bill-wave"></i></span> Expense
         </a>
       </li>
 
       <li class="nav-item">
         <a href="{{ url('dashboard/incomeReport') }}" class="nav-link">
-          <span class="span"><i class="fas fa-chart-line"></i></span> Income report
+          <span class="span"><i class="fas fa-chart-line"></i></span> Income Log
         </a>
       </li>
 
       <li class="nav-item">
         <a href="{{ url('dashboard/expenseReport') }}" class="nav-link">
-          <span class="span"><i class="fas fa-receipt"></i></span> Expense report
+          <span class="span"><i class="fas fa-receipt"></i></span> Expense Log
         </a>
       </li>
 
@@ -184,12 +184,12 @@
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
         {{-- 5267 3181 8797 5449 --}}
-        <span class="span"><i class="fas fa-gem"></i></span> Update plan
+        <span class="span"><i class="fas fa-gem"></i></span> Upgrade
       </a>
       </li>
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
-        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
+        <span class="span"><i class="fas fa-bell"></i></span> New Reminders
       </a>
       </li>
       <li class="nav-item">
@@ -199,18 +199,18 @@
       </li>
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
-        <span class="span"><i class="fas fa-eye"></i></span> Show reminders
+        <span class="span"><i class="fas fa-clipboard-list"></i></span> Reminders
       </a>
       </li>
     @elseif (Auth::user()->plan_type === 'premium')
       <li class="nav-item">
       <a href="{{ url('dashboard/reminder') }}" class="nav-link">
-        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
+        <span class="span"><i class="fas fa-bell"></i></span> New Reminders
       </a>
       </li>
       <li class="nav-item">
       <a href="{{ url('dashboard/show_reminder') }}" class="nav-link">
-        <span class="span"><i class="fas fa-eye"></i></span> Show reminders
+        <span class="span"><i class="fas fa-clipboard-list"></i></span>Reminders
       </a>
       </li>
       <li class="nav-item">
@@ -224,7 +224,7 @@
           @csrf
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
             class="nav-link">
-            <span class="span"><i class="fas fa-sign-out-alt"></i></span> {{ __('Log Out') }}
+            <span class="span"><i class="fas fa-sign-out-alt"></i></span> {{ __('Sign Out') }}
           </a>
         </form>
       </li>
