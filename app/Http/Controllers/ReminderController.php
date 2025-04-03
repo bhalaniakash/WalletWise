@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\reminder;
+use App\Models\Reminder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReminderController extends Controller
 {
     public function store(request $request){
-        $validateData = $request->validate([
+        $request->validate([
             'reminder_name'=>'required|string|max:255',
             'reminder_amount'=>'required|numeric|min:0',
             'due_date'=>'required|date',
@@ -25,5 +25,21 @@ class ReminderController extends Controller
             'description'=>$request->input('reminder_description'),
         ]);
         return redirect()->back()->with('success', 'Reminder added successfully!');
-    }   
-}
+        }   
+
+        public function index()
+        {
+            $reminders = reminder::all(); 
+            return view('dashboard.Show_reminder', compact('reminders')); 
+            dd($reminders);
+        }
+        public function destroy($id)
+        {
+            $reminder = Reminder::findOrFail($id);
+
+            $reminder->delete();
+
+            return redirect()->back()->with('success', 'Reminder deleted successfully.');
+        }
+
+}   

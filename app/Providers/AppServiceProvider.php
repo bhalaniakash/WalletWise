@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
             'members' => $users,
             'incomeReport' => $income,
             'expenseReport' => $expense,
-            'reminder' => $reminder,
+            'reminder' => $reminder
         ]);
     }
 }

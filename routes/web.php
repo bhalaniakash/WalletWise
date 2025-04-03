@@ -1,23 +1,22 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\admin\members;
+use App\Http\Controllers\Admin\Members;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
-use App\Models\category;
-use App\Models\Expense;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\Payment;
 use App\Http\Controllers\ReminderController;
+use App\Models\Category;
+use App\Models\Expense;
 use App\Models\Income;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
 
 Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
@@ -36,66 +35,43 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/dashboard/category', function () {
-    return view('dashboard.category');
-});
-Route::get('/dashboard/income', function () {
-    return view('dashboard.income');
-});
-Route::get('/dashboard/expense', function () {
-    return view('dashboard.expense');
-});
-Route::get('/dashboard/incomeReport', function () {
-    return view('dashboard.incomeReport');
-});
-Route::get('/dashboard/expenseReport', function () {
-    return view('dashboard.expenseReport');
-});
-Route::get('/dashboard/budget', function () {
-    return view('dashboard.budget');
-});
-Route::get('/dashboard/update', function () {
-    return view('dashboard.update');
-});
-Route::get('/dashboard/reminder', function () {
-    return view('dashboard.reminder');
-});
-Route::get('/dashboard/profile', function () {
-    return view('dashboard.profile');
-});
+Route::view('/dashboard/category', 'dashboard.category');
+Route::view('/dashboard/income', 'dashboard.income');
+Route::view('/dashboard/expense', 'dashboard.expense');
+Route::view('/dashboard/incomeReport', 'dashboard.incomeReport');
+Route::view('/dashboard/expenseReport', 'dashboard.expenseReport');
+Route::view('/dashboard/budget', 'dashboard.budget');
+Route::view('/dashboard/update', 'dashboard.update');
+Route::view('/dashboard/reminder', 'dashboard.reminder');
+Route::view('/dashboard/profile', 'dashboard.profile');
+Route::view('/dashboard/show_reminder', 'dashboard.show_reminder');
 
-Route::view('admin/dashboard', 'admin.dashboard');
-Route::view('admin/members', 'admin.members');
-
-Route::get('/admin/category', function () {
-    return view('admin.category');
-});
+Route::view('/admin/dashboard', 'admin.dashboard');
+Route::view('/admin/members', 'admin.members');
+Route::view('/admin/category', 'admin.category');
 
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
-Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit'); //passing id to edit category
-Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update'); //passing id to update category
+Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
-
-
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
 
-// user income and expense routes
-
+// User income and expense routes
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
 Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
 
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
-Route::delete('/members/{id}', [members::class, 'destroy'])->name('members.destroy');
+Route::delete('/members/{id}', [Members::class, 'destroy'])->name('members.destroy');
+
 // Admin Dashboard Route
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::post('/budget/store', [BudgetController::class, 'store'])->name('budget.store');
-Route::post('/reminder/store', [ReminderController::class, 'store'])->name('reminder.store');
 
 
 Route::post('/income/filter', function (Request $request) {
-    $filteredIncomes = Income::where('user_id', auth()->id());
+    $filteredIncomes = Income::where('user_id', Auth::id());
 
     if ($request->filled('date')) {
         $filteredIncomes->whereYear('date', substr($request->input('date'), 0, 4))
@@ -110,53 +86,65 @@ Route::post('/income/filter', function (Request $request) {
         return [
             'date' => $income->date,
             'source' => $income->source,
-            'category_name' => category::find($income->category_id)->name ?? 'Unknown',
+            'category_name' => Category::find($income->category_id)->name ?? 'Unknown',
             'amount' => $income->amount,
-            'description' => $income->description
+            'description' => $income->description,
         ];
     });
+
     return response()->json($data);
 });
+
 Route::post('/expense/filter', function (Request $request) {
-    $filteredexpenses = Expense::where('user_id', auth()->id());
+    $filteredExpenses = Expense::where('user_id', Auth::id());
 
     if ($request->filled('date')) {
-        $filteredexpenses->whereYear('date', substr($request->input('date'), 0, 4))
+        $filteredExpenses->whereYear('date', substr($request->input('date'), 0, 4))
             ->whereMonth('date', substr($request->input('date'), 5, 2));
     }
 
     if ($request->filled('ecat')) {
-        $filteredexpenses->where('category_id', $request->input('ecat'));
+        $filteredExpenses->where('category_id', $request->input('ecat'));
     }
-    $data = $filteredexpenses->get()->map(function ($expense) {
+
+    $data = $filteredExpenses->get()->map(function ($expense) {
         return [
             'date' => $expense->date,
             'source' => $expense->expense_name,
-            'category_name' => category::find($expense->category_id)->name ?? 'Unknown',
+            'category_name' => Category::find($expense->category_id)->name ?? 'Unknown',
             'paymode' => $expense->payment_method,
             'amount' => $expense->amount,
-            'description' => $expense->description
+            'description' => $expense->description,
         ];
     });
-    // dd($data);
+
     return response()->json($data);
 });
+
 Route::post('/category/filter', function (Request $request) {
-    $category = category::query();
+    $categories = Category::query();
+
     if ($request->filled('cat')) {
-        $category->where('type', $request->input('cat'));
+        $categories->where('type', $request->input('cat'));
     }
-    $data = $category->get()->map(function ($category) {
+
+    $data = $categories->get()->map(function ($category) {
         return [
             'id' => $category->id,
             'name' => $category->name,
             'type' => $category->type,
         ];
     });
-    // dd($data);
+
     return response()->json($data);
 });
 Route::post('/razorpay/payment', [Payment::class, 'payment'])->name('payment');
 Route::post('/verify-payment', [Payment::class, 'verifyPayment'])->name('payment.verify');
 
 Route::get('/send-email', [MailController::class, 'sendEmail']);
+
+// Routes for Reminder
+Route::post('/reminder/store', [ReminderController::class, 'store'])->name('reminder.store');
+Route::get('/reminders', [ReminderController::class, 'index']);
+// Route::get('/reminder/edit/{id}', [ReminderController::class, 'edit'])->name('reminder.edit');
+Route::delete('/reminder/{id}', [ReminderController::class, 'destroy'])->name('reminder.destroy');
