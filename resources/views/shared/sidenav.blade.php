@@ -180,7 +180,7 @@
         </a>
       </li>
 
-     
+      @if (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
         {{-- 5267 3181 8797 5449 --}}
@@ -234,11 +234,13 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-   
+    // Get current URL path
     let currentPath = window.location.pathname;
+    // Select all sidebar links
     let navLinks = document.querySelectorAll(".nav-item a");
     navLinks.forEach(link => {
       let linkPath = new URL(link.href).pathname; // Get the path from href
+      // Exact match check
       if (currentPath === linkPath) {
         link.parentElement.classList.add("active");
       }

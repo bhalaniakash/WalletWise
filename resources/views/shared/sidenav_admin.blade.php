@@ -136,6 +136,9 @@
 
     .nav-item.active .nav-link {
       color: #6B4226;
+      font-weight: 700;
+      font-size: 20px;
+      border-radius: 5px;
     }
 
     .span {

@@ -116,6 +116,7 @@
         color: #6B4226;
         padding: 10px;
         font-size: 1rem;
+
     }
 
     button {
@@ -124,25 +125,12 @@
         border-radius: 5px;
         font-weight: bold;
         transition: 0.3s;
+        width: 100%;
+        cursor: pointer;
+
     }
 
-    .btn-danger {
-        background: #d9534f;
-        color: white;
-    }
-
-    .btn-danger:hover {
-        background: #c9302c;
-    }
-
-    .btn-primary {
-        background: #0275d8;
-        color: white;
-    }
-
-    .btn-primary:hover {
-        background: #025aa5;
-    }
+  
 
     .filter-section {
         display: flex;
@@ -161,6 +149,7 @@
         transition: all 0.3s ease-in-out;
         height: 100%;
         border: none;
+        
     }
 
     #filter:hover {
@@ -195,7 +184,7 @@
 
         <div class="filter-section">
             <form id="categoryForm" class="d-flex align-items-righht" style="gap: 10px;">
-                <select class="form-control" id="category">
+                <select class="form-control" id="category" >
                     <option value="">All Categories</option>
                     <option value="income">Income</option>
                     <option value="expense">Expense</option>
@@ -206,29 +195,29 @@
 
         <table class="table table-striped table-bordered">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>Name</th>
                     <th>Type</th>
-                    <th colspan="2">Actions</th>
+                    <th colspan="2" >Actions</th>
                 </tr>
             </thead>
             <tbody id="catTbody">
                 @foreach($categories as $category)
                     <tr>
-                        <td>{{ $category->name }}</td>
-                        <td style="color: {{ $category->type == 'expense' ? 'red' : 'green' }};">
+                        <td width="40%" >{{ $category->name }}</td>
+                        <td style="color: {{ $category->type == 'expense' ? 'red' : 'green' }}; width: 40%; text-align: center;" >
                             {{ ucfirst($category->type) }}
                         </td>
-                        <td>
+                        <td width="10%" style="text-align: center;">
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" >Delete</button>
                             </form>
                         </td>
-                        <td>
+                        <td width="10%" style="text-align: center;">
                             <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary" >Update</button>
                             </form>
                         </td>
                     </tr>
@@ -257,18 +246,20 @@
                         } else {
                             $.each(response, function (index, category) {
                                 let row = `<tr>
-                                    <td>${category.name}</td>
-                                    <td style="color: ${category.type === 'expense' ? 'red' : 'green'};">
+                                    <td width="40%">${category.name}</td>
+                                    <td width="40%"  style="color: ${category.type === 'expense' ? 'red' : 'green'}; style="text-align: center;" >
                                         ${category.type.charAt(0).toUpperCase() + category.type.slice(1)}
                                     </td>
-                                    <td>
+                                    
+                                    <td  width="10%" style="text-align:center;">
                                         <form action="/categories/${category.id}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </td>
-                                    <td>
+
+                                    <td width="10%">
                                         <form action="/admin/category/${category.id}/edit" method="GET">
                                             <button type="submit" class="btn btn-primary">Update</button>
                                         </form>
