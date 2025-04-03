@@ -17,113 +17,119 @@
       font-family: 'Arial, sans-serif';
     }
 
-      .page-content {
-            margin-top: 5% !important;
-            margin-left: 17rem;
-            padding: 2rem;
-            transition: all 0.3s ease-in-out;
+    .page-content {
+      margin-top: 5% !important;
+      margin-left: 17rem;
+      padding: 2rem;
+      transition: all 0.3s ease-in-out;
 
-          }
-          button[type="button"] {
-            background: #E6C7A5 ;
-            color: #6B4226;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bolder;
-            font-size: 1rem;
-            transition: all 0.3s ease-in-out;
-        }
-        button[type="button"]:hover {
-            background: #A08963;
-            color: white;
-            transform: scale(1.05);
-        }
-        button[type="submit"]{
-            background: #E6C7A5 ;
-            color: #6B4226;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bolder;
-            font-size: 1rem;
-            transition: all 0.3s ease-in-out;
-        }
-    .text-2xl{
+    }
+
+    button[type="button"] {
+      background: #E6C7A5;
+      color: #6B4226;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bolder;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button[type="button"]:hover {
+      background: #A08963;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    button[type="submit"] {
+      background: #E6C7A5;
+      color: #6B4226;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bolder;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .text-2xl {
       color: #A08963;
       font-family: 'Andada Pro', sans-serif;
     }
-    table {
-            border-collapse: collapse;
-            width: 100%;
 
-        }
-        th {
-            /* background-color: #A08963; */
-            background: #E6C7A5 !important;
-              color: #6B4226;
-        }
-        td {
-              color: #6B4226;
-            font-family: 'Roboto Slab';
-            font-size: 1rem;
-        }
-    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+
+    }
+
+    th {
+      /* background-color: #A08963; */
+      background: #E6C7A5 !important;
+      color: #6B4226;
+    }
+
+    td {
+      color: #6B4226;
+      font-family: 'Roboto Slab';
+      font-size: 1rem;
+    }
   </style>
 </head>
 
 <body>
   @include('shared.sidenav');
   @include('shared.header');
-  
-  <div class="page-content" id="content">
-  
-      <br>
-     
-      <div class="card p-4">
-        
-        <h2 class="text-2xl font-bold  mb-4">Income  Report</h2>
-            <div class="col-xl-12">
-           
-                  <form class="form-inline" id="Report">
-                              <select class="form-control" id="incomeCategory" >
-                                <option value="">All Categories</option>
-                                    @foreach ($categories as $category)
-                                      @if ($category->type == 'income')
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                      @endif
-                                    @endforeach
-                                </select>
-                                &nbsp;&nbsp;                            
-                             
-                                  <input type="month" class="form-control mr-2" id="incomeDate">
-                                  
-                                    <button class="btn btn-dark" type="submit">
-                                        
-                                      <i class="fa fa-filter fa-xs"></i> Filter
-                                    </button>
-                              
-                              </form>
-               
-          <br>
-          <table class="table table-striped" id="incomeReportTable">
 
-            <thead style="background-color: #1E1E2E;">
-              <tr>
-                <th colspan="6">
-                  <center>
-                    <h5>Income details</h5>
-                  </center>
-                </th>
-              </tr>
-              <tr>
-                <th>Date</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody id="incomeTBody">
-              @php
+  <div class="page-content" id="content">
+
+    <br>
+
+    <div class="card p-4">
+
+      <h2 class="text-2xl font-bold  mb-4">Income Report</h2>
+      <div class="col-xl-12">
+
+        <form class="form-inline" id="Report">
+          <select class="form-control" id="incomeCategory">
+            <option value="">All Categories</option>
+            @foreach ($categories as $category)
+        @if ($category->type == 'income')
+      <option value="{{ $category->id }}">{{ $category->name }}</option>
+    @endif
+      @endforeach
+          </select>
+          &nbsp;&nbsp;
+
+          <input type="month" class="form-control mr-2" id="incomeDate">
+
+          <button class="btn btn-dark" type="submit">
+
+            <i class="fa fa-filter fa-xs"></i> Filter
+          </button>
+
+        </form>
+
+        <br>
+        <table class="table table-striped" id="incomeReportTable">
+
+          <thead style="background-color: #1E1E2E;">
+            <tr>
+              <th colspan="6">
+                <center>
+                  <h5>Income details</h5>
+                </center>
+              </th>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="incomeTBody">
+            @php
         $currentUser = auth()->user(); // Get the currently logged-in user
 
         $filteredincomes =
@@ -134,56 +140,56 @@
             $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
             return $dateMatch && $categoryMatch;
           });
-      @endphp
-              @foreach ($filteredincomes as $i)
-          <tr>
+        @endphp
+            @foreach ($filteredincomes as $i)
+        <tr>
           <td>{{ $i->date }}</td>
           <td>{{ $i->source }}</td>
           {{-- <td>{{ $i->category_id }}</td> --}}
           <td>{{ $categories->where('id', $i->category_id)->first()?->name }}</td>
           <td>{{ $i->description }}</td>
           <td>₹ {{ $i->amount }}</td>
-          </tr>
-        @endforeach
-              <tr>
-                <td colspan="4">Total: </td>
-                <td>₹ {{ number_format(collect($filteredincomes)->sum('amount'), 2) }}</td>
-              </tr>
-            </tbody>
-          </table>
-          
-          <button type="button" id="downloadReport">Download Report</button>
+        </tr>
+      @endforeach
+            <tr>
+              <td colspan="4">Total: </td>
+              <td>₹ {{ number_format(collect($filteredincomes)->sum('amount'), 2) }}</td>
+            </tr>
+          </tbody>
+        </table>
 
-          
+        <button type="button" id="downloadReport">Download Report</button>
 
-        </div>
+
+
       </div>
-      <br>
-        
-          <div class="card shadow">
-            <div class="card-header d-flex">
-              <h5>Income chart</h5>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="piechart">
-                    <canvas id="incomeChart" id="incomeReportTable"></canvas>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div id="piechart">
-                    <canvas id="incomeChartDate" id="incomeReportTable"></canvas>
-                  </div>
-                </div>
-              </div>
+    </div>
+    <br>
+
+    <div class="card shadow">
+      <div class="card-header d-flex">
+        <h5>Income chart</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div id="piechart">
+              <canvas id="incomeChart" id="incomeReportTable"></canvas>
             </div>
           </div>
-          <br>
-       
-        <br>
-      </section>
-   
+          <div class="col-md-6">
+            <div id="piechart">
+              <canvas id="incomeChartDate" id="incomeReportTable"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <br>
+    </section>
+
   </div>
 
   {{-- chart 1 --}}
@@ -227,67 +233,67 @@
 
   <script type="text/javascript">
     document.getElementById('downloadReport').addEventListener('click', function () {
-  console.log("Download button clicked"); // Debugging
-  let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
+      console.log("Download button clicked"); // Debugging
+      let choice = prompt("Enter 'CSV' to download as CSV or 'PDF' to download as PDF:");
 
-  if (choice && choice.toLowerCase() === 'csv') {
-    console.log("Downloading CSV");
-    downloadCSV();
-  } else if (choice && choice.toLowerCase() === 'pdf') {
-    console.log("Downloading PDF");
-    downloadPDF();
-  } else {
-    alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
-  }
-});
+      if (choice && choice.toLowerCase() === 'csv') {
+        console.log("Downloading CSV");
+        downloadCSV();
+      } else if (choice && choice.toLowerCase() === 'pdf') {
+        console.log("Downloading PDF");
+        downloadPDF();
+      } else {
+        alert("Invalid choice! Please enter 'CSV' or 'PDF'.");
+      }
+    });
 
-function downloadCSV() {
-  let table = document.getElementById('incomeReportTable');
-  if (!table) {
-    alert("Report table not found!");
-    return;
-  }
-  let rows = table.querySelectorAll('tr');
-  let csvContent = "";
+    function downloadCSV() {
+      let table = document.getElementById('incomeReportTable');
+      if (!table) {
+        alert("Report table not found!");
+        return;
+      }
+      let rows = table.querySelectorAll('tr');
+      let csvContent = "";
 
-  rows.forEach(row => {
-    let cols = row.querySelectorAll('th, td');
-    let rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
-    csvContent += rowData + "\n";
-  });
+      rows.forEach(row => {
+        let cols = row.querySelectorAll('th, td');
+        let rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
+        csvContent += rowData + "\n";
+      });
 
-  let blob = new Blob([csvContent], { type: "text/csv" });
-  let url = URL.createObjectURL(blob);
-  let a = document.createElement("a");
-  a.href = url;
-  a.download = "Income_Report.csv";
-  a.click();
-}
+      let blob = new Blob([csvContent], { type: "text/csv" });
+      let url = URL.createObjectURL(blob);
+      let a = document.createElement("a");
+      a.href = url;
+      a.download = "Income_Report.csv";
+      a.click();
+    }
 
-function downloadPDF() {
-  let table = document.getElementById('incomeReportTable');
-  if (!table) {
-    alert("Report table not found!");
-    return;
-  }
-  let chartCanvas = document.getElementById('incomeChart');
-  let chartImage = chartCanvas ? chartCanvas.toDataURL("image/png") : "";
+    function downloadPDF() {
+      let table = document.getElementById('incomeReportTable');
+      if (!table) {
+        alert("Report table not found!");
+        return;
+      }
+      let chartCanvas = document.getElementById('incomeChart');
+      let chartImage = chartCanvas ? chartCanvas.toDataURL("image/png") : "";
 
-  let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
-  let win = window.open("", "", "width=800,height=800");
-  win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
-  win.document.write("<h2>Income Report</h2>");
-  win.document.write(table.outerHTML);
-  
-  if (chartImage) {
-    win.document.write("<h3>Income Chart</h3>");
-    win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
-  }
+      let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
+      let win = window.open("", "", "width=800,height=800");
+      win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
+      win.document.write("<h2>Income Report</h2>");
+      win.document.write(table.outerHTML);
 
-  win.document.write("</body></html>");
-  win.document.close();
-  win.print();
-}
+      // if (chartImage) {
+      //   win.document.write("<h3>Income Chart</h3>");
+      //   win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
+      // }
+
+      win.document.write("</body></html>");
+      win.document.close();
+      win.print();
+    }
 
     // fromt here bar chart is starts
     const ctx = document.getElementById('incomeChart');
@@ -390,21 +396,21 @@ function downloadPDF() {
             // console.log("Response received:", response);
             let tableBody = $("#incomeTBody");
             tableBody.empty();
-            
+
             if (response.length === 0) {
               tableBody.append("<tr><td colspan='6' class='text-center'>No records found</td></tr>");
             } else {
-        // console.log(tableBody);
-        $.each(response, function (index, income) {
-            let row = `<tr>
+              // console.log(tableBody);
+              $.each(response, function (index, income) {
+                let row = `<tr>
                           <td>${income.date}</td>
                           <td>${income.source}</td>
                           <td>${income.category_name}</td>
                           <td>${income.description}</td>
                           <td>₹ ${income.amount}</td>
                       </tr>`;
-            tableBody.append(row);
-        });
+                tableBody.append(row);
+              });
             }
           },
           error: function (xhr) {
@@ -415,4 +421,5 @@ function downloadPDF() {
     });
   </script>
 </body>
+
 </html>

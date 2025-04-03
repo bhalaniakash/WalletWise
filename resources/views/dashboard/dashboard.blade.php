@@ -101,7 +101,7 @@
 										<div class="name">
 											<strong class="text-uppercase">
 												<h5>
-													<i class="fas fa-dollar-sign"></i>Income
+													<i class="fas fa-dollar-sign"></i> Income
 												</h5>
 											</strong>
 										</div>
@@ -132,10 +132,7 @@
 										<div class="name">
 											<strong class="text-uppercase">
 												<h5>
-
-													<i class="fas fa-money-bill-wave"></i>
-
-													Expense
+													<i class="fas fa-money-bill-wave"></i> Expense
 												</h5>
 											</strong>
 										</div>
@@ -166,9 +163,7 @@
 										<strong class="text-uppercase">
 											<h5>
 
-												<i class="fas fa-piggy-bank"></i>
-
-												Saving
+												<i class="fas fa-piggy-bank"></i> Saving
 											</h5>
 										</strong>
 									</div>
