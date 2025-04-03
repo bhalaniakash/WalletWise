@@ -60,7 +60,7 @@
       border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       padding-left: 1px;
       text-decoration: none;
-      
+
     }
 
 
@@ -72,7 +72,8 @@
     }
 
     .nav-item {
-      background-color: #e6c7a5;  !important;
+      background-color: #e6c7a5;
+      !important;
     }
 
     #sidebar.active {
@@ -103,32 +104,38 @@
     }
 
     .nav-link {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  font-size: 18px;
-  font-weight: 500;
-  transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
-  color: #6B4226;
-  border-radius: 5px;
-  
-}
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      font-size: 18px;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
+      color: #6B4226;
+      border-radius: 5px;
 
-.nav-link:hover {
-  background-color: #e6c7a5;  /* Lightened background */
-  color: #6B4226; /* Keep the same text color */
-  font-weight: 600;
-  font-size: 20px;  /* Slight increase in font size */
-  transform: translateY(-3px);  /* Slightly lift the element on hover */
-}
+    }
+
+    .nav-link:hover {
+      background-color: #e6c7a5;
+      /* Lightened background */
+      color: #6B4226;
+      /* Keep the same text color */
+      font-weight: 600;
+      font-size: 20px;
+      /* Slight increase in font size */
+      transform: translateY(-3px);
+      /* Slightly lift the element on hover */
+    }
 
     .nav-link i {
       margin-right: 10px;
       font-size: 20px;
     }
+
     .nav-item.active .nav-link {
       color: #6B4226;
     }
+
     .span {
       width: 20px;
       display: inline-flex;
@@ -145,16 +152,16 @@
     <ul class="nav flex-column  mb-0 mt-4">
       <li class="nav-item">
         <a href=" {{url('admin/dashboard')}}" class="nav-link">
-          <span class="span"><i class="fas fa-wallet"></i></span>Dashboard</a>
+          <span class="span"><i class="fas fa-home"></i></span>Home</a>
       </li>
       <li class="nav-item">
         <a href="{{url('admin/category')}}" class="nav-link">
-          <span class="span"><i class="fas fa-list-alt"></i></span> Category</a>
+          <span class="span"><i class="fas fa-list-alt"></i></span>New Category</a>
       </li>
 
       <li class="nav-item">
         <a href="{{url('admin/showCategory')}}" class="nav-link">
-          <span class="span"><i class="fas fa-folder-open"></i></span> Show Category</a>
+          <span class="span"><i class="fas fa-folder-open"></i></span>Category</a>
       </li>
       <li class="nav-item">
         <a href="{{ url('admin/members') }}" class="nav-link">
