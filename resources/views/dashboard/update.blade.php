@@ -19,10 +19,24 @@
             align-items: center;
             gap: 1rem;
             margin-top: 1.5rem;
-            border-radius: 8px;
             margin: 2rem auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          
+        }
+
+        button[type="submit"] {
+            background: #6B4226;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+            border: none;
+        }
+
+        button[type="submit"]:hover {
+            background: #4E2F1E;
+            cursor: pointer;
         }
 
         .plan-option {
@@ -61,12 +75,6 @@
         .main-content {
             margin-top: 5rem;
             margin-left: 17rem;
-        }
-
-        .plan-box {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
         }
 
         .plan-option {
@@ -131,7 +139,7 @@
 
             <form method="POST" action="{{ route('payment') }}" class="mt-6">
                 @csrf
-                <div class="bg-white shadow-lg rounded-lg p-6 w-80 mx-auto">
+                <div class="bg-white shadow-lg rounded-lg p-6 w-100 mx-auto">
                     <h2 class="text-lg font-semibold text-gray-700">You Pay</h2>
                     <p class="text-3xl font-bold text-[#6B4226] mt-2">&#8377;499</p>
                     <div class="mt-4 text-sm text-gray-600 space-y-1">
@@ -150,17 +158,15 @@
                         </p>
                     </div>
                 </div>
-
-
                 <input type="hidden" name="amount" value="499">
-
                 <button type="submit"
-                    class="w-full mt-5 bg-[#A08963] text-white py-3 rounded-lg font-semibold hover:bg-[#c8c6b6] hover:shadow-lg transition">
+                    class="w-full mt-4 bg-[#A08963] text-white py-3 rounded-lg font-semibold hover:bg-[#c8c6b6] hover:shadow-lg transition">
                     Upgrade Now
                 </button>
             </form>
         </div>
     </div>
-       
+
 </body>
+
 </html>

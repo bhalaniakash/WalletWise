@@ -26,29 +26,37 @@
     }
 
     button[type="button"] {
-      background: #E6C7A5;
-      color: #6B4226;
-      padding: 12px 24px;
+      background: #6B4226;
+      color: white;
+      padding: 8px;
       border-radius: 8px;
-      font-weight: bolder;
-      font-size: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
       transition: all 0.3s ease-in-out;
+      width: 20%;
+      border: none;
     }
 
     button[type="button"]:hover {
-      background: #A08963;
-      color: white;
-      transform: scale(1.05);
+      background: #4E2F1E;
+      cursor: pointer;
     }
 
     button[type="submit"] {
-      background: #E6C7A5;
-      color: #6B4226;
-      padding: 12px 24px;
+      background: #6B4226;
+      color: white;
+      padding: 8px;
       border-radius: 8px;
-      font-weight: bolder;
-      font-size: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
       transition: all 0.3s ease-in-out;
+      width: 10%;
+      border: none;
+    }
+
+    button[type="submit"]:hover {
+      background: #4E2F1E;
+      cursor: pointer;
     }
 
     .text-2xl {
@@ -73,6 +81,11 @@
       font-family: 'Roboto Slab';
       font-size: 1rem;
     }
+
+    h2 {
+      color: #6B4226;
+      padding: 20px;
+    }
   </style>
 </head>
 
@@ -86,7 +99,7 @@
 
     <div class="card p-4">
 
-      <h2 class="text-2xl font-bold  mb-4">Income Report</h2>
+      <h2>Income Report</h2>
       <div class="col-xl-12">
 
         <form class="form-inline" id="Report">
@@ -114,13 +127,6 @@
 
           <thead style="background-color: #1E1E2E;">
             <tr>
-              <th colspan="6">
-                <center>
-                  <h5>Income details</h5>
-                </center>
-              </th>
-            </tr>
-            <tr>
               <th>Date</th>
               <th>Name</th>
               <th>Category</th>
@@ -140,7 +146,7 @@
             $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
             return $dateMatch && $categoryMatch;
           });
-        @endphp
+      @endphp
             @foreach ($filteredincomes as $i)
         <tr>
           <td>{{ $i->date }}</td>

@@ -118,6 +118,22 @@
     .card {
         border: none !important
     }
+    button[type="submit"] {
+            background: #6B4226;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease-in-out;
+            width: 10%;
+            border: none;
+        }
+
+        button[type="submit"]:hover {
+            background: #4E2F1E;
+            cursor: pointer;
+        }
 </style>
 </head>
 
@@ -145,10 +161,6 @@
                                 {{-- </div> --}}
                             </div>
                         </div>
-
-                     
-
-
                         <div class="col-md-6">
                             <div class="dashboard-card">
                                 {{-- <div class="card"> --}}
@@ -166,7 +178,6 @@
                         </div>
                     </div>
                     <br>
-                    
                         <div style="width: 100%">
                             <div class="dashboard-card">
                                 {{-- <div class="card"> --}}
@@ -277,7 +288,6 @@
                             </div>
                         </div>
                         <button type="submit">Add Budget</button>
-
                     </form>
                     <br>
                 </div>
