@@ -45,6 +45,7 @@
             padding: 10px;
             border-bottom: 1px solid #fff;
             text-align: left;
+            color: #6B4226;
         }
 
         th {
