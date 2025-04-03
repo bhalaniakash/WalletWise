@@ -182,33 +182,43 @@
 
      
       <li class="nav-item">
-        <a href="{{ url('dashboard/update') }}" class="nav-link">
-            <span class="span"><i class="fas fa-gem"></i></span> Update plan
-        </a>
-    </li>
-    
-    @php
-        $user = Auth::user();
-    @endphp
-    
-    <li class="nav-item">
-        <a href="{{ $user->plan_type == 'premium' ? url('dashboard/reminder') : url('dashboard/update') }}" class="nav-link">
-            <span class="span"><i class="fas fa-bell"></i></span> Add reminders
-        </a>
-    </li>
-    
-    <li class="nav-item">
-        <a href="{{ $user->plan_type == 'premium' ? url('dashboard/show_reminder') : url('dashboard/update') }}" class="nav-link">
-            <span class="span"><i class="fas fa-eye"></i></span> Show reminders
-        </a>
-    </li>
-    
-    <li class="nav-item">
-        <a href="{{ $user->plan_type == 'premium' ? url('dashboard/budget') : url('dashboard/update') }}" class="nav-link">
-            <span class="span"><i class="fas fa-coins"></i></span> Budget
-        </a>
-    </li>
-   
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        {{-- 5267 3181 8797 5449 --}}
+        <span class="span"><i class="fas fa-gem"></i></span> Update plan
+      </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
+      </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-coins"></i></span> Budget
+      </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-eye"></i></span> Show reminders
+      </a>
+      </li>
+    @elseif (Auth::user()->plan_type === 'premium')
+      <li class="nav-item">
+      <a href="{{ url('dashboard/reminder') }}" class="nav-link">
+        <span class="span"><i class="fas fa-bell"></i></span> Add reminders
+      </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{ url('dashboard/show_reminder') }}" class="nav-link">
+        <span class="span"><i class="fas fa-eye"></i></span> Show reminders
+      </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{ url('dashboard/budget') }}" class="nav-link">
+        <span class="span"><i class="fas fa-coins"></i></span> Budget
+      </a>
+      </li>
+    @endif
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-item">
           @csrf

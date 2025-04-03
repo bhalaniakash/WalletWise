@@ -36,13 +36,10 @@
         .admin-dashboard-title {
             font-size: 28px;
             font-weight: bold;
-            color: #E6C7A5;
-
-            background: #6B4226;
+            color: #6B4226;
             padding: 12px 20px;
             border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
+            text-align: left;
             margin-bottom: 20px;
         }
 
@@ -58,18 +55,19 @@
         }
 
         button[type="submit"] {
-            background: #A08963;
+            background: #6B4226;
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
-            font-weight: bolder;
-            font-size: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
             transition: all 0.3s ease-in-out;
-            width: 100%;
+            width: 25%;
+            border: none;
         }
 
         button[type="submit"]:hover {
-            background: #8b6f4e;
+            background: #4E2F1E;
             cursor: pointer;
         }
 
@@ -81,6 +79,7 @@
             }
         }
     </style>
+
 </head>
 
 <body>

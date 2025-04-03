@@ -130,12 +130,11 @@
         .admin-dashboard-title {
             font-size: 28px;
             font-weight: bold;
-            color: #E6C7A5;
-            background: #6B4226;
-            padding: 12px 20px;
+            color: #6B4226;
+            /* padding: 12px 20px; */
+            margin: 0px 0px 15px 2px;
             border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
+            text-align: left;
         }
 
         .dashboard-card {
@@ -145,6 +144,7 @@
             border-radius: 10px;
             box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
+            width: 48%;
         }
 
         .dashboard-card:hover {
@@ -168,14 +168,14 @@
         }
 
 
-        #row {
+        .row {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
         }
 
-        #chart1 {
-
+        .chart1 {
             display: flex;
             gap: 1.5rem;
             border-radius: 2%;
@@ -191,18 +191,18 @@
                 <h1 class="admin-dashboard-title">Admin Dashboard</h1>
             </div>
 
-            <div class="row mb-2" id="row">
-                <div class="col-md-5">
-                    <div class="dashboard-card">
+            <div class="row mb-2" class="row">
+                <div class="dashboard-card">
+                    <a href="{{ url('/admin/members') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-users "></i>
                             Total Users
                         </h5>
                         <p class="card-number">{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-md-5">
-                    <div class="dashboard-card">
+                <div class="dashboard-card">
+                    <a href="{{ url('/admin/members') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-user-slash"></i>
                             Inactive Users
@@ -221,41 +221,37 @@
                             $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
                         @endphp
                         <p class="card-number">{{ $inactiveUsers->count() }}</p>
-                    </div>
+                    </a>
                 </div>
             </div>
-            <div class="row mt-2" id="row">
-                <div class="col-md-5">
-
-                    <div class="dashboard-card">
+            <div class="row mt-2" class="row">
+                <div class="dashboard-card">
+                    <a href="{{ url('/admin/showCategory') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-layer-group"></i>
                             Total Income Categories
                         </h5>
                         <p class="card-number">{{$income = $categories->where('type', 'income')->count()}}</p>
-                    </div>
-
+                    </a>
                 </div>
-                <div class="col-md-5">
-
-                    <div class="dashboard-card">
+                <div class="dashboard-card">
+                    <a href="{{ url('/admin/showCategory') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-wallet"></i>
                             Total Expense Categories
                         </h5>
                         <p class="card-number">{{$expense = $categories->where('type', 'expense')->count()}}</p>
-                    </div>
-
+                    </a>
                 </div>
             </div>
             <br>
 
             <!-- Chart Section -->
 
-            <div class="row ">
+            <div class="row">
                 <div class="d-flex row ">
                     <div class="col-md-4">
-                        <div class="card flex-fill mx-2 " id="chart1">
+                        <div class="card flex-fill mx-2 " class="chart1">
                             <div class="card-body text-center">
                                 <h5 class="card-title">User Statistics</h5>
                                 <canvas id="user"></canvas>
@@ -263,7 +259,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card flex-fill mx-2" id="chart1">
+                        <div class="card flex-fill mx-2" class="chart1">
                             <div class="card-body text-center">
                                 <h5 class="card-title">Income Statistics</h5>
                                 <canvas id="income"></canvas>
@@ -271,7 +267,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card flex-fill mx-2" id="chart1">
+                        <div class="card flex-fill mx-2" class="chart1">
                             <div class="card-body text-center">
                                 <h5 class="card-title">Expense Statistics</h5>
                                 <canvas id="expense"></canvas>

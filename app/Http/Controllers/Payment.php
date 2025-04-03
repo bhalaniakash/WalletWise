@@ -14,11 +14,10 @@ class Payment extends Controller
     {
         return view('razorpay');
     }
-
     public function payment(Request $request)
     {
         $amount = $request->amount;
-        $api = new Api(env('rzr_key'), env('rzr_secret')); // Use correct env variables
+        $api = new Api(env('RZR_KEY'), env('RZR_SECRET')); // Use correct env variables
 
         $order_data = [
             'receipt' => 'order_' . rand(1000, 9999),

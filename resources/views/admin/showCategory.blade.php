@@ -54,13 +54,15 @@
             width: 100%;
 
         }
+
         th {
             /* background-color: #A08963; */
             background: #E6C7A5 !important;
-              color: #6B4226;
+            color: #6B4226;
         }
+
         td {
-              color: #6B4226;
+            color: #6B4226;
             font-family: 'Roboto Slab';
             font-size: 1rem;
         }
@@ -68,118 +70,173 @@
 
 </head>
 
+<style>
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        background: #F3E5D8;
+        margin: 0;
+        font-family: 'Arial, sans-serif';
+    }
+
+    .page-content {
+        margin-left: 17rem;
+        margin-right: 1rem;
+        transition: all 0.4s;
+        background: #F3E5D8;
+        margin-top: 5%;
+    }
+
+    .admin-dashboard-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #6B4226;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        padding: 10px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+        background: #E6C7A5 !important;
+        color: #6B4226;
+        padding: 10px;
+    }
+
+    td {
+        color: #6B4226;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn-danger {
+        background: #d9534f;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background: #c9302c;
+    }
+
+    .btn-primary {
+        background: #0275d8;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #025aa5;
+    }
+
+    .filter-section {
+        display: flex;
+        justify-content: flex-end;
+        align-self: right;
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+
+    #filter {
+        background: #6B4226;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: all 0.3s ease-in-out;
+        height: 100%;
+        border: none;
+    }
+
+    #filter:hover {
+        background: #4E2F1E;
+        cursor: pointer;
+    }
+
+
+    @media (max-width: 768px) {
+        .page-content {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+</style>
+
 <body>
     <br>
-    @include('shared.header');
-    @include('shared.sidenav_admin');
-
-
-
+    @include('shared.header')
+    @include('shared.sidenav_admin')
 
     <div class="page-content" id="content">
+        <h1 class="admin-dashboard-title">Category List</h1>
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
                 </button>
             </div>
         @endif
-        <table class="table table-striped table-bordered">
-            <thead style="background-color: #616b6b;">
-                <tr>
-                    <th colspan="4">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Category List</h5>
-                            <form class="d-flex align-items-center" style="gap: 10px;" id="categoryForm">
-                                <select class="form-control" id="category">
-                                    <option value="">All Categories</option>
-                                    <option value="income">Income</option>
-                                    <option value="expense">Expense</option>
-                                </select>
-                                <button class="btn btn-dark" type="submit">Show</button>
-                            </form>
-                        </div>
 
-                    </th>
-                </tr>
+        <div class="filter-section">
+            <form id="categoryForm" class="d-flex align-items-righht" style="gap: 10px;">
+                <select class="form-control" id="category">
+                    <option value="">All Categories</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+                <button class="btn btn-dark" type="submit" id="filter">Show</button>
+            </form>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Type</th>
-                    <th colspan="32">Action</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody id="catTbody">
                 @foreach($categories as $category)
-                    {{-- @if($category->type == 'income') --}}
                     <tr>
-                        <td style="width: 70%;">{{ $category->name }}</td>
-                        @if($category->type == "expense")
-                            <td style="width: 70%; color: red;">{{ $category->type }}</td>
-                        @elseif($category->type == "income")
-                            <td style="width: 70%; color: green;">{{ $category->type }}</td>
-
-
-                        @endif
-                        <td style="width: 15%;">
+                        <td>{{ $category->name }}</td>
+                        <td style="color: {{ $category->type == 'expense' ? 'red' : 'green' }};">
+                            {{ ucfirst($category->type) }}
+                        </td>
+                        <td>
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
-                        <td style="width: 15%;">
+                        <td>
                             <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
-                                @csrf
-                                <button type="submit" class="btn btn-primary" style="color: white;">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </td>
                     </tr>
-                    {{-- @endif --}}
                 @endforeach
             </tbody>
         </table>
-
-        {{-- form here expense category starts --}}
-        {{--
-        <table class="table table-striped table-bordered">
-            <thead style="background-color: #616b6b;">
-                <tr>
-                    <th colspan="3">
-                        <center>
-                            <h5>Expense Categories</h5>
-                        </center>
-                    </th>
-                </tr>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th colspan="2">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($categories as $category)
-                @if($category->type == 'expense')
-                <tr>
-                    <td style="width: 70%;">{{ $category->name }}</td>
-                    <td style="width: 15%;">
-                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
-                        </form>
-                    </td>
-                    <td style="width: 15%;">
-                        <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
-                            @csrf
-                            <button type="submit" class="btn btn-danger" style="color: white;">Update</button>
-                        </form>
-                    </td>
-                </tr>
-                @endif
-                @endforeach
-            </tbody>
-        </table> --}}
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -189,38 +246,34 @@
                 $.ajax({
                     url: "/category/filter",
                     type: "POST",
-                    data: {
-                        cat: $("#category").val()
-                    },
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-                    },
+                    data: { cat: $("#category").val() },
+                    headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
                     success: function (response) {
                         let tableBody = $("#catTbody");
                         tableBody.empty();
 
                         if (response.length === 0) {
-                            tableBody.append("<tr><td colspan='6' class='text-center'>No records found</td></tr>");
+                            tableBody.append("<tr><td colspan='4' class='text-center'>No records found</td></tr>");
                         } else {
                             $.each(response, function (index, category) {
-                                let row =
-                                    `<tr>
-                                <td>${category.name}</td>
-                                <td>${category.type}</td>
-                                <td style="width: 15%;">
-                                    <form action="/categories/${category.id}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" style="color: white;">Delete</button>
-                                    </form>
-                                </td>
-                                <td style="width: 15%;">
-                                    <form action="/admin/category/${category.id}/edit" method="GET">
-                                        @csrf
-                                        <button type="submit" class="btn btn-primary" style="color: white;">Update</button>
-                                    </form>
-                                </td>
-                            </tr>`;
+                                let row = `<tr>
+                                    <td>${category.name}</td>
+                                    <td style="color: ${category.type === 'expense' ? 'red' : 'green'};">
+                                        ${category.type.charAt(0).toUpperCase() + category.type.slice(1)}
+                                    </td>
+                                    <td>
+                                        <form action="/categories/${category.id}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/category/${category.id}/edit" method="GET">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </form>
+                                    </td>
+                                </tr>`;
                                 tableBody.append(row);
                             });
                         }
@@ -231,8 +284,8 @@
                 });
             });
         });
-
     </script>
 </body>
+
 
 </html>

@@ -138,10 +138,13 @@ Route::post('/category/filter', function (Request $request) {
 
     return response()->json($data);
 });
+
+//payment
 Route::post('/razorpay/payment', [Payment::class, 'payment'])->name('payment');
 Route::post('/verify-payment', [Payment::class, 'verifyPayment'])->name('payment.verify');
 
-Route::get('/send-email', [MailController::class, 'sendEmail']);
+//email
+// Route::get('/send-email', [MailController::class, 'sendEmail']);
 
 // Routes for Reminder
 Route::post('/reminder/store', [ReminderController::class, 'store'])->name('reminder.store');
