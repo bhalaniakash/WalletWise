@@ -50,12 +50,12 @@
     button[type="submit"] {
         background: #6B4226;
         color: white;
-        padding: 12px 24px;
+        padding: 8px;
         border-radius: 8px;
         font-weight: bold;
         font-size: 1.2rem;
         transition: all 0.3s ease-in-out;
-        width: 25%;
+        width: 20%;
         border: none;
     }
 
