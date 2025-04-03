@@ -10,6 +10,10 @@
 <body>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
+        console.log("Razorpay Key:", "{{ config('services.razorpay.key') }}");
+    </script>
+
+    <script>
         var options = {
             "key": "{{ config('services.razorpay.key') }}", // Use config() instead of env()
             "amount": {{ $amount }}, // Amount in paise
@@ -38,7 +42,6 @@
                         }
                     })
                     .catch(err => console.error("Fetch error:", err));
-
             },
             "image": "https://example.com/your_logo",
             "order_id": "{{ $order }}", // Order ID as a string
