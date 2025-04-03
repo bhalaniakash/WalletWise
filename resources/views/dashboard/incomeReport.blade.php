@@ -67,7 +67,7 @@
     table {
       border-collapse: collapse;
       width: 100%;
-
+      /* border-radius: 20px; */
     }
 
     th {
@@ -112,19 +112,13 @@
       @endforeach
           </select>
           &nbsp;&nbsp;
-
           <input type="month" class="form-control mr-2" id="incomeDate">
-
           <button class="btn btn-dark" type="submit">
-
             <i class="fa fa-filter fa-xs"></i> Filter
           </button>
-
         </form>
-
         <br>
-        <table class="table table-striped" id="incomeReportTable">
-
+        <table class="table table-striped" id="incomeReportTable" style="border-radius: 10px; overflow: hidden;">
           <thead style="background-color: #1E1E2E;">
             <tr>
               <th>Date</th>
@@ -137,7 +131,6 @@
           <tbody id="incomeTBody">
             @php
         $currentUser = auth()->user(); // Get the currently logged-in user
-
         $filteredincomes =
           $incomeReport
           ->where('user_id', $currentUser->id)
@@ -163,18 +156,14 @@
             </tr>
           </tbody>
         </table>
-
         <button type="button" id="downloadReport">Download Report</button>
-
-
-
       </div>
     </div>
     <br>
 
     <div class="card shadow">
       <div class="card-header d-flex">
-        <h5>Income chart</h5>
+        <h5>Income chart [Total]</h5>
       </div>
       <div class="card-body">
         <div class="row">
@@ -207,7 +196,6 @@
   }
 
   //chart 1
-  $currentMonth = now()->format('Y-m');
   $user = auth()->user();
   // Get category-wise income for the current month
   $categoryWiseIncome = $incomeReport
@@ -215,13 +203,11 @@
     ->groupBy('category_id')
     ->map(fn($items) => $items->sum('amount'));
 
-
   // Fetch category names for labels
   $categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
   $categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())->toArray();
 
   //chart 2
-  $currentMonth = now()->format('Y-m');
   $user = auth()->user();
 
   $dateWiseIncome = $incomeReport
@@ -338,7 +324,6 @@
     var dateLabelsI = @json($dateLabelsI->values());
     var dateWiseIncome = @json($dateWiseIncome->values());
     var dateColorsI = @json($dateColorsI);
-
 
     const data2 = {
       labels: dateLabelsI,

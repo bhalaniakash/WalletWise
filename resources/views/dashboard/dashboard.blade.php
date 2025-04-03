@@ -92,7 +92,6 @@
 							/* Icon color */
 						}
 					</style>
-
 					<div class="col-xl-4">
 						<a href="{{ url('dashboard/incomeReport') }}" style="text-decoration: none">
 							<div class="dashboard-card">
@@ -157,7 +156,6 @@
 							</div>
 						</a>
 					</div>
-
 					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
@@ -205,118 +203,113 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</section>
+			<div class="col-xl-12 mt-4">
+				<div class="dashboard-card">
+					<div class="card-body">
 
-					<div class="col-xl-12 mt-4">
-						<div class="dashboard-card">
-							<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<div>
+								<h4>Last Week's Expense Report</h4>
+								<p class="text-muted">Expenses this week</p>
+							</div>
+						</div>
+						<div class="d-flex align-items-center mb-4">
+							<div class="mr-3">
+								@php
+									$user = auth()->user();
+									$last7Days = collect();
 
-								<div class="d-flex justify-content-between align-items-center mb-3">
-									<div>
-										<h4>Last Week's Expense Report</h4>
-										<p class="text-muted">Expenses this week</p>
-									</div>
-								</div>
+									for ($i = 6; $i >= 0; $i--) {
+										$date = now()->subDays($i)->toDateString(); // Ensure correct date format
+										$dayAbbreviation = now()->subDays($i)->format('D');
 
-								<div class="d-flex align-items-center mb-4">
-									<div class="mr-3">
-										@php
-											$user = auth()->user();
-											$last7Days = collect();
+										$expenseAmount = $expenseReport->where('user_id', $user->id)
+											->where('date', $date)
+											->sum('amount');
 
-											for ($i = 6; $i >= 0; $i--) {
-												$date = now()->subDays($i)->toDateString(); // Ensure correct date format
-												$dayAbbreviation = now()->subDays($i)->format('D');
-
-												$expenseAmount = $expenseReport->where('user_id', $user->id)
-													->where('date', $date)
-													->sum('amount');
-
-												$last7Days->put($dayAbbreviation, $expenseAmount);
+										$last7Days->put($dayAbbreviation, $expenseAmount);
+									}
+								@endphp
+								<h2 class="mb-0 rounded-sm">₹ {{ number_format($last7Days->sum(), 2) }}</h2>
+								<p class="text-muted">Total expenses for the last 7 days</p>
+							</div>
+							<div style="width: 100%;">
+								<canvas id="lastWeekExpenseChart" width="50" height="10"></canvas>
+							</div>
+						</div>
+						<script>
+							document.addEventListener('DOMContentLoaded', function () {
+								const ctx = document.getElementById('lastWeekExpenseChart').getContext('2d');
+								const lastWeekExpenseChart = new Chart(ctx, {
+									type: 'bar',
+									data: {
+										labels: @json($last7Days->keys()),
+										datasets: [{
+											label: 'Expenses',
+											data: @json($last7Days->values()),
+											backgroundColor: '#E6C7A5',
+											borderColor: '#6b4226',
+											borderWidth: 2
+										}]
+									},
+									options: {
+										responsive: true,
+										scales: {
+											y: {
+												beginAtZero: true
 											}
-										@endphp
-										<h2 class="mb-0 rounded-sm">₹ {{ number_format($last7Days->sum(), 2) }}</h2>
-										<p class="text-muted">Total expenses for the last 7 days</p>
-									</div>
-									<div style="width: 100%;">
-										<canvas id="lastWeekExpenseChart" width="50" height="10"></canvas>
-									</div>
-								</div>
-
-
-								<script>
-									document.addEventListener('DOMContentLoaded', function () {
-										const ctx = document.getElementById('lastWeekExpenseChart').getContext('2d');
-										const lastWeekExpenseChart = new Chart(ctx, {
-											type: 'bar',
-											data: {
-												labels: @json($last7Days->keys()),
-												datasets: [{
-													label: 'Expenses',
-													data: @json($last7Days->values()),
-													backgroundColor: '#E6C7A5',
-													borderColor: '#6b4226',
-													borderWidth: 2
-												}]
-											},
-											options: {
-												responsive: true,
-												scales: {
-													y: {
-														beginAtZero: true
-													}
-												},
-												plugins: {
-													legend: {
-														display: false
-													}
-												}
+										},
+										plugins: {
+											legend: {
+												display: false
 											}
-										});
-									});
-								</script>
+										}
+									}
+								});
+							});
+						</script>
 
-								<div class="d-flex justify-content-around">
-									<div>
-										<h5 class="mb-1">Earnings</h5>
+						<div class="d-flex justify-content-around">
+							<div>
+								<h5 class="mb-1">Earnings</h5>
 
-										<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
-										{{-- <div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar"
-												style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;"
-												aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div> --}}
+								<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
+								{{-- <div class="progress" style="height: 5px;">
+									<div class="progress-bar" role="progressbar"
+										style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;"
+										aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0" aria-valuemax="100">
 									</div>
+								</div> --}}
+							</div>
 
-									<div>
-										<h5 class="mb-1">Profit</h5>
+							<div>
+								<h5 class="mb-1">Profit</h5>
 
-										<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
-										{{-- <div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar"
-												style="width:100%; background-color: teal;"
-												aria-valuenow="{{ $saving }}" aria-valuemin="0" aria-valuemax="100">
-											</div>
-										</div> --}}
+								<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
+								{{-- <div class="progress" style="height: 5px;">
+									<div class="progress-bar" role="progressbar"
+										style="width:100%; background-color: teal;" aria-valuenow="{{ $saving }}"
+										aria-valuemin="0" aria-valuemax="100">
 									</div>
+								</div> --}}
+							</div>
 
-									<div>
-										<h5 class="mb-1">Expense</h5>
-										<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
-										{{-- <div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar"
-												style="width: {{ number_format($currentMonthExpense, 2) }}%; background-color: red;"
-												aria-valuenow="{{ number_format($currentMonthExpense, 2) }}"
-												aria-valuemin="0" aria-valuemax="100"></div>
-										</div> --}}
-									</div>
-								</div>
+							<div>
+								<h5 class="mb-1">Expense</h5>
+								<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
+								{{-- <div class="progress" style="height: 5px;">
+									<div class="progress-bar" role="progressbar"
+										style="width: {{ number_format($currentMonthExpense, 2) }}%; background-color: red;"
+										aria-valuenow="{{ number_format($currentMonthExpense, 2) }}" aria-valuemin="0"
+										aria-valuemax="100"></div>
+								</div> --}}
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-
+			</div>
 			<br>
 			<section class="container-fluid">
 				<div class="row d-flex align-items-md-stretch">

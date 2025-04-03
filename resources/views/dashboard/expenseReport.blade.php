@@ -116,7 +116,8 @@
                     </button>
                 </form>
 
-                <table class="table table-striped table-bordered" id="Report">
+                <table class="table table-striped table-bordered" id="Report"
+                    style="border-radius: 10px; overflow: hidden;">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -159,7 +160,7 @@
             </div>
         </div>
         <div class="card mt-5 p-4">
-            <h3 class="text-2xl  mb-4">Expense Chart</h3>
+            <h3 class="text-2xl  mb-4">Expense Chart [Total]</h3>
             <div class="row">
                 <div class="col-md-6">
                     <canvas id="expenseChart" width="400" height="300"></canvas>
