@@ -57,12 +57,12 @@
         button[type="submit"] {
             background: #6B4226;
             color: white;
-            padding: 12px 24px;
+            padding: 8px;
             border-radius: 8px;
             font-weight: bold;
             font-size: 1.2rem;
             transition: all 0.3s ease-in-out;
-            width: 25%;
+            width: 20%;
             border: none;
         }
 
@@ -139,8 +139,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" name="insert"
-                                    style="width: 25%; font-size: x-large; border: none;">
+                                <button type="submit" name="insert" style="font-size: x-large; border: none;">
                                     Add Category
                                 </button>
                             </div>
