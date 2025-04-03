@@ -15,7 +15,6 @@ use Mockery\Expectation;
 
 use function Termwind\parse;
 
-$users = User::where('plan_type', 'premium')->get();
 class MailController extends Controller
 {
     public function sendEmail()

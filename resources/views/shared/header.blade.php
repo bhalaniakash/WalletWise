@@ -18,7 +18,6 @@
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/bootstrap/js/jquery-3.5.1.min.js"></script> --}}
 
-    <title>header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Andada Pro:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ramaraja:wght@400;700&display=swap" rel="stylesheet">
@@ -29,9 +28,9 @@
         body {
             color: #000;
             margin-top: 0;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
             background: #F3E5D8;
-           
+
         }
 
         /* @keyframes glow {
