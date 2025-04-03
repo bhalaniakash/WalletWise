@@ -14,7 +14,7 @@
       overflow-x: hidden;
       background-color:white;
       margin-top: 0%;
-      font-family: 'Arial, sans-serif'; 
+      font-family:'Lato', sans-serif; 
     }
 
     .page-content {

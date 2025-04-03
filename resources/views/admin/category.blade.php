@@ -16,7 +16,7 @@
             overflow-x: hidden;
             background: #F3E5D8;
             margin-top: 0%;
-            font-family: 'Arial, sans-serif';
+             font-family:'Lato', sans-serif;
         }
 
         .page-content {
@@ -24,13 +24,13 @@
             margin-right: 1rem;
             transition: all 0.4s;
             margin-top: 5% !important;
-            font-family: 'Arial, sans-serif';
+             font-family:'Lato', sans-serif;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
-            font-family: 'Arial, sans-serif';
+             font-family:'Lato', sans-serif;
         }
 
         .admin-dashboard-title {

@@ -9,17 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>Admin Dashboard</title>
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&family=Lato:wght@300;400;700&display=swap');
         body {
             margin: 0;
-            font-family: 'Arial, sans-serif';
+            font-family:'Lato', sans-serif;
             background: #F3E5D8;
         }
 
         .main-page {
             margin-bottom: -100px;
             background: #F3E5D8;
+        
+            
         }
 
         .page-content {
@@ -29,37 +33,37 @@
             width: calc(100% - 18rem);
             padding: 2rem;
             background: #F3E5D8;
+            
             border-radius: 8px;
-            font-family: 'Arial, sans-serif';
-
+            font-family:'Lato', sans-serif;
         }
-
+        
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
-            font-family: 'Arial, sans-serif';
+            font-family:'Lato', sans-serif;
         }
-
+        
         #page-wrapper {
             background-color: #616b6b;
             border-radius: 8px;
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
             padding: 0.5rem;
-            font-family: 'Arial, sans-serif';
+            font-family: 'Inter', sans-serif;
         }
 
         h1 {
             font-size: 2rem;
             font-weight: 600;
             color: #6b4226;
-            font-family: 'Arial, sans-serif';
+            /* font-family: 'Inter', sans-serif; */
         }
 
         .container {
             margin-top: 2rem;
             /* height:100%; */
-            font-family: 'Arial, sans-serif';
+        
         }
 
         .row {
@@ -76,7 +80,7 @@
         }
 
         .card {
-
+            font-family:'Lato', sans-serif;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -87,6 +91,7 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        
         }
 
         .card-body {

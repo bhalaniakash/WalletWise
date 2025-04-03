@@ -38,6 +38,8 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 1.5rem;
+            border-radius: 10px; 
+            overflow: hidden;
         }
 
         th,
@@ -70,6 +72,8 @@
         .btn-danger {
             background: red;
         }
+
+       
     </style>
 </head>
 

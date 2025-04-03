@@ -27,7 +27,7 @@
 
     button[type="button"] {
       background: #6B4226;
-      color: white;
+      color: #E6C7A5;
       padding: 8px;
       border-radius: 8px;
       font-weight: bold;
@@ -43,21 +43,23 @@
     }
 
     button[type="submit"] {
-      background: #6B4226;
-      color: white;
-      padding: 8px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1.2rem;
-      transition: all 0.3s ease-in-out;
-      width: 10%;
-      border: none;
-    }
+            background: #E6C7A5;
+            color: #4E2F1E;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease-in-out;
+            width: 10%;
+            border: none;
+        }
 
-    button[type="submit"]:hover {
-      background: #4E2F1E;
-      cursor: pointer;
-    }
+        button[type="submit"]:hover {
+            background: #4E2F1E;
+            color: #E6C7A5;
+            cursor: pointer;
+        }
+
 
     .text-2xl {
       color: #A08963;
@@ -115,11 +117,9 @@
 
           <input type="month" class="form-control mr-2" id="incomeDate">
 
-          <button class="btn btn-dark" type="submit">
-
+          <button  type="submit">
             <i class="fa fa-filter fa-xs"></i> Filter
           </button>
-
         </form>
 
         <br>

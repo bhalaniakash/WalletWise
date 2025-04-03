@@ -12,13 +12,12 @@
         margin-left: 17rem;
         margin-right: 1rem;
         transition: all 0.4s;
-        margin-top: 50px;
-        font-family: 'Arial, sans-serif'; 
+        margin-top: 50px; 
         color: #6B4226;
-        font-family: 'Arial, sans-serif';
         background: #F3E5D8;
         padding: 20px;
         border-radius: 10px;
+        font-family:'Lato', sans-serif;
 
     }
 
@@ -126,7 +125,7 @@
             font-weight: bold;
             font-size: 1.2rem;
             transition: all 0.3s ease-in-out;
-            width: 10%;
+            width: auto;
             border: none;
         }
 

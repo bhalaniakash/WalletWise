@@ -58,6 +58,7 @@
 		border-radius: 10px;
 		box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 		transition: all 0.3s ease-in-out;
+		font-family: "Love Ya Like A Sister", cursive;
 	}
 
 	.dashboard-card:hover {
