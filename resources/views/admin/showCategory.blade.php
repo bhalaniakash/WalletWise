@@ -9,8 +9,8 @@
 
     <base href="/expenseMVC/">
 
-    {{--
-    <script type="text/javascript" src="lib/js/main.js"></script> --}}
+    
+    <script type="text/javascript" src="lib/js/main.js"></script>
 
     <style type="text/css">
         body {
@@ -127,10 +127,7 @@
         transition: 0.3s;
         width: 100%;
         cursor: pointer;
-
     }
-
-  
 
     .filter-section {
         display: flex;
@@ -186,7 +183,7 @@
             <form id="categoryForm" class="d-flex align-items-righht" style="gap: 10px;">
                 <select class="form-control" id="category" >
                     <option value="">All Categories</option>
-                    <option value="income">Income</option>
+                        <option value="income">Income</option>
                     <option value="expense">Expense</option>
                 </select>
                 <button class="btn btn-dark" type="submit" id="filter">Show</button>
@@ -205,13 +202,13 @@
                 @foreach($categories as $category)
                     <tr>
                         <td width="40%" >{{ $category->name }}</td>
-                        <td style="color: {{ $category->type == 'expense' ? 'red' : 'green' }}; width: 40%; text-align: center;" >
+                            <td style="color: {{ $category->type == 'expense' ? 'red' : 'green' }}; width: 40%; text-align: center;" >
                             {{ ucfirst($category->type) }}
                         </td>
                         <td width="10%" style="text-align: center;">
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                 @csrf
-                                @method('DELETE')
+                                    @method('DELETE')
                                 <button type="submit" class="btn btn-danger" >Delete</button>
                             </form>
                         </td>
@@ -250,7 +247,7 @@
                                     <td width="40%"  style="color: ${category.type === 'expense' ? 'red' : 'green'}; style="text-align: center;" >
                                         ${category.type.charAt(0).toUpperCase() + category.type.slice(1)}
                                     </td>
-                                    
+
                                     <td  width="10%" style="text-align:center;">
                                         <form action="/categories/${category.id}" method="POST">
                                             @csrf

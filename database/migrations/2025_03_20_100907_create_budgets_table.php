@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('budget', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key to users table
-            $table->decimal('Limit', 10, 2); // User's saving limit
-            $table->decimal('Saving', 10, 2); // Actual savings
+            $table->decimal('limit', 10, 2); // User's saving limit
+            $table->decimal('saving', 10, 2); // Actual savings
             $table->timestamps();
         });
     }
