@@ -16,7 +16,7 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-            background-color: white;
+            background: #F3E5D8;
             margin: 0;
             font-family: 'Arial, sans-serif';
 
@@ -26,7 +26,7 @@
             margin-left: 17rem;
             margin-right: 1rem;
             transition: all 0.4s;
-            background-color: white;
+            background: #F3E5D8;
             color: black;
             margin-top: 5%;
             font-family: 'Arial, sans-serif';
@@ -48,10 +48,11 @@
             box-sizing: border-box;
             font-family: 'Arial, sans-serif';
         }
+
         table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+            border-collapse: collapse;
+            width: 100%;
+        }
 
         th {
             background-color: #A08963;
@@ -59,17 +60,19 @@
         }
 
         td {
-          color: #A08963;
+            color: #A08963;
         }
-        th, td {
+
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        
-            .table tbody tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
     </style>
 
 </head>
@@ -80,7 +83,7 @@
     @include('shared.sidenav_admin');
 
 
-   
+
 
     <div class="page-content" id="content">
         @if(session('success'))
@@ -124,8 +127,8 @@
                             <td style="width: 70%; color: red;">{{ $category->type }}</td>
                         @elseif($category->type == "income")
                             <td style="width: 70%; color: green;">{{ $category->type }}</td>
-                      
-                          
+
+
                         @endif
                         <td style="width: 15%;">
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST">

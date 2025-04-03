@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Expense;
 use App\Models\User;
 use App\Models\Income;
+use App\Models\reminder;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,17 +23,19 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(){
+    public function boot()
+    {
         $categories = Category::all();
         $users = User::all();
         $income = Income::all();
         $expense = Expense::all();
+        $reminder = reminder::all();
         View::share([
-            'categories'=>$categories,
-            'members'=>$users,
-            'incomeReport'=>$income,
-            'expenseReport'=>$expense
+            'categories' => $categories,
+            'members' => $users,
+            'incomeReport' => $income,
+            'expenseReport' => $expense,
+            'reminder' => $reminder,
         ]);
     }
-     
 }

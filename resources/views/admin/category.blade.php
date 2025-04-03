@@ -14,7 +14,7 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-            background: #E6C7A5;
+            background: #F3E5D8;
             margin-top: 0%;
             font-family: 'Arial, sans-serif';
         }
@@ -140,7 +140,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" name="insert" style="width: 25%; font-size: x-large; border: none;">
+                                <button type="submit" name="insert"
+                                    style="width: 25%; font-size: x-large; border: none;">
                                     Add Category
                                 </button>
                             </div>

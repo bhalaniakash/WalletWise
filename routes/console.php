@@ -1,6 +1,8 @@
 <?php
 
 use App\Console\Commands\ExpirePremiumUsers;
+use App\Console\Commands\SendReminder;
+use App\Console\Commands\sendReminderEmails;
 use Illuminate\Foundation\Console\ClosureCommand;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
@@ -12,3 +14,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command(ExpirePremiumUsers::class)->daily();
+Schedule::command(SendReminder::class)->daily();

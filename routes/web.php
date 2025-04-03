@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\Payment;
 use App\Http\Controllers\ReminderController;
 use App\Models\Income;
@@ -56,7 +57,7 @@ Route::get('/dashboard/budget', function () {
 Route::get('/dashboard/update', function () {
     return view('dashboard.update');
 });
-Route::get('/dashboard/reminder',function(){
+Route::get('/dashboard/reminder', function () {
     return view('dashboard.reminder');
 });
 Route::get('/dashboard/profile', function () {
@@ -155,5 +156,7 @@ Route::post('/category/filter', function (Request $request) {
     // dd($data);
     return response()->json($data);
 });
-Route::post('/razorpay/payment',[Payment::class,'payment'])->name('payment');
+Route::post('/razorpay/payment', [Payment::class, 'payment'])->name('payment');
 Route::post('/verify-payment', [Payment::class, 'verifyPayment'])->name('payment.verify');
+
+Route::get('/send-email', [MailController::class, 'sendEmail']);

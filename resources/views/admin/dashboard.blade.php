@@ -14,12 +14,12 @@
         body {
             margin: 0;
             font-family: 'Arial, sans-serif';
-            background: #E6C7A5;
+            background: #F3E5D8;
         }
 
         .main-page {
             margin-bottom: -100px;
-            background: #E6C7A5;
+            background: #F3E5D8;
         }
 
         .page-content {
@@ -28,7 +28,7 @@
             margin-top: 5% !important;
             width: calc(100% - 18rem);
             padding: 2rem;
-            background: #E6C7A5;
+            background: #F3E5D8;
             border-radius: 8px;
             font-family: 'Arial, sans-serif';
 

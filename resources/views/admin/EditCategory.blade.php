@@ -16,9 +16,9 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-            background: #E6C7A5;
+            background: #F3E5D8;
             margin-top: 0%;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         .page-content {
@@ -27,7 +27,7 @@
             transition: all 0.4s;
             background-color: white;
             margin-top: 5% !important;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -37,13 +37,15 @@
         .container-fluid {
             margin-top: 20px;
         }
-        h5{
+
+        h5 {
             color: #E6C7A5;
             background: #6B4226;
             padding: 12px 20px;
             border-radius: 8px;
             text-align: center;
         }
+
         button[type="submit"] {
             background: #A08963;
             color: white;
@@ -54,11 +56,11 @@
             transition: all 0.3s ease-in-out;
             width: 100%;
         }
+
         button[type="submit"]:hover {
             background: #8b6f4e;
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -68,9 +70,9 @@
         <section>
             <div class="row">
                 <div class="container-fluid col-lg-12">
-                  
-                        <h5>Update Catagory</h5>
-                 
+
+                    <h5>Update Catagory</h5>
+
 
                     <div class="card-body">
                         <form action="{{ route('admin.category.update', $category->id) }}" method="POST">

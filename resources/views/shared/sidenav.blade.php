@@ -179,7 +179,7 @@
           <span class="span"><i class="fas fa-receipt"></i></span> Expense report
         </a>
       </li>
-      
+
       @if (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
@@ -195,9 +195,9 @@
       </a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('dashboard/budget') }}" class="nav-link">
-          <span class="span"><i class="fas fa-coins"></i></span> Budget
-        </a>
+      <a href="{{ url('dashboard/budget') }}" class="nav-link">
+        <span class="span"><i class="fas fa-coins"></i></span> Budget
+      </a>
       </li>
     @elseif (Auth::user()->plan_type === 'regular')
       <li class="nav-item">
@@ -206,9 +206,9 @@
       </a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('dashboard/update') }}" class="nav-link">
-          <span class="span"><i class="fas fa-coins"></i></span> Budget
-        </a>
+      <a href="{{ url('dashboard/update') }}" class="nav-link">
+        <span class="span"><i class="fas fa-coins"></i></span> Budget
+      </a>
       </li>
     @endif
 

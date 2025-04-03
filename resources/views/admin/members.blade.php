@@ -1,20 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-        <title>Admin Dashboard</title>
-        <br>
-        @include('shared.header')
-        @include('shared.sidenav_admin')
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
+    <title>Admin Dashboard</title>
+    <br>
+    @include('shared.header')
+    @include('shared.sidenav_admin')
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            font-family: 'Arial, sans-serif'; 
+            background: #F3E5D8;
+            font-family: 'Arial, sans-serif';
         }
 
         .page-content {
@@ -27,20 +27,20 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         h1,
         h5 {
             color: #333;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
 
         */ .btn {
@@ -52,13 +52,14 @@
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
-            transition:  0.3s;
-            font-family: 'Arial, sans-serif'; 
+            transition: 0.3s;
+            font-family: 'Arial, sans-serif';
         }
+
         table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+            border-collapse: collapse;
+            width: 100%;
+        }
 
         th {
             background-color: #A08963;
@@ -66,14 +67,15 @@
         }
 
         td {
-          color: #A08963;
+            color: #A08963;
         }
-        th, td {
+
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        
     </style>
 </head>
 
@@ -101,26 +103,26 @@
                 </thead>
                 <tbody>
                     @php
-                    // Merge reports and extract unique user IDs
-                    $activeUserIds = $expenseReport->concat($incomeReport)
-                    ->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '>=', now()->subHours(1))
-                    ->pluck('user_id')
-                    ->unique();
-                    // Fetch all inactive users in one query
-                    $activeUsers = \App\Models\User::whereIn('id', $activeUserIds)->get();
+                        // Merge reports and extract unique user IDs
+                        $activeUserIds = $expenseReport->concat($incomeReport)
+                            ->where('is_Admin', '!=', 'Yes')
+                            ->where('updated_at', '>=', now()->subHours(1))
+                            ->pluck('user_id')
+                            ->unique();
+                        // Fetch all inactive users in one query
+                        $activeUsers = \App\Models\User::whereIn('id', $activeUserIds)->get();
                     @endphp
 
                     @foreach($activeUsers as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->age }}</td>
-                        <td>
-                            <img src="{{ asset('storage/' . $user->profile_picture) }}"
-                                width="100" height="100" style="border-radius: 10%; object-fit: cover;">
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->age }}</td>
+                            <td>
+                                <img src="{{ asset('storage/' . $user->profile_picture) }}" width="100" height="100"
+                                    style="border-radius: 10%; object-fit: cover;">
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -145,23 +147,23 @@
                 </thead>
                 <tbody>
                     @php
-                    // Ensure both reports are collections before merging
-                    $expenseReport = collect($expenseReport);
-                    $incomeReport = collect($incomeReport);
+                        // Ensure both reports are collections before merging
+                        $expenseReport = collect($expenseReport);
+                        $incomeReport = collect($incomeReport);
 
-                    // Extract unique user IDs from both reports for active users
-                    $activeUserIds = $expenseReport->concat($incomeReport)
-                    ->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '>=', now()->subHours(1)) // Active users within the last hour
-                    ->pluck('user_id')
-                    ->unique();
+                        // Extract unique user IDs from both reports for active users
+                        $activeUserIds = $expenseReport->concat($incomeReport)
+                            ->where('is_Admin', '!=', 'Yes')
+                            ->where('updated_at', '>=', now()->subHours(1)) // Active users within the last hour
+                            ->pluck('user_id')
+                            ->unique();
 
-                    // Extract inactive user IDs (users who haven't updated in the last hour)
-                    $inactiveUserIds = $expenseReport->concat($incomeReport)
-                    ->where('is_Admin', '!=', 'Yes')
-                    ->where('updated_at', '<', now()->subHours(1)) // Inactive users
-                        ->pluck('user_id')
-                        ->unique();
+                        // Extract inactive user IDs (users who haven't updated in the last hour)
+                        $inactiveUserIds = $expenseReport->concat($incomeReport)
+                            ->where('is_Admin', '!=', 'Yes')
+                            ->where('updated_at', '<', now()->subHours(1)) // Inactive users
+                            ->pluck('user_id')
+                            ->unique();
                         // Fetch all non-admin users who have no records in reports
                         $allNonAdminUsers = \App\Models\User::where('is_Admin', '!=', 'Yes')->pluck('id');
                         $usersWithoutRecords = $allNonAdminUsers->diff($expenseReport->pluck('user_id')->merge($incomeReport->pluck('user_id')));
@@ -171,9 +173,9 @@
 
                         // Fetch inactive users
                         $inactiveUsers = \App\Models\User::whereIn('id', $finalInactiveUserIds)->get();
-                        @endphp
+                    @endphp
 
-                        @foreach($inactiveUsers as $user)
+                    @foreach($inactiveUsers as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
@@ -190,7 +192,7 @@
                                 </form>
                             </td>
                         </tr>
-                        @endforeach
+                    @endforeach
                 </tbody>
 
             </table>
