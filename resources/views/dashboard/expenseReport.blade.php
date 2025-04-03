@@ -183,7 +183,6 @@
 
         $categoryWiseExpenses = $expenseReport
             ->where('user_id', $user->id)
-            ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
             ->groupBy('category_id')
             ->map(fn($items) => $items->sum('amount'));
 
@@ -192,7 +191,6 @@
 
         $dateWiseExpense = $expenseReport
             ->where('user_id', $user->id)
-            ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
             ->groupBy('date')
             ->map(fn($items) => $items->sum('amount'));
         $dateLabelsI = $expenseReport

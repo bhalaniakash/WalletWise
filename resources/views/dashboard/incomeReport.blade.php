@@ -180,12 +180,12 @@
         <div class="row">
           <div class="col-md-6">
             <div id="piechart">
-              <canvas id="incomeChart" id="incomeReportTable"></canvas>
+              <canvas id="incomeChart"></canvas>
             </div>
           </div>
           <div class="col-md-6">
             <div id="piechart">
-              <canvas id="incomeChartDate" id="incomeReportTable"></canvas>
+              <canvas id="incomeChartDate"></canvas>
             </div>
           </div>
         </div>
@@ -212,9 +212,9 @@
   // Get category-wise income for the current month
   $categoryWiseIncome = $incomeReport
     ->where('user_id', $user->id)
-    ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
     ->groupBy('category_id')
     ->map(fn($items) => $items->sum('amount'));
+
 
   // Fetch category names for labels
   $categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
@@ -226,7 +226,6 @@
 
   $dateWiseIncome = $incomeReport
     ->where('user_id', $user->id)
-    ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
     ->groupBy('date')
     ->map(fn($items) => $items->sum('amount'));
   $dateLabelsI = $incomeReport
@@ -282,19 +281,12 @@
         alert("Report table not found!");
         return;
       }
-      let chartCanvas = document.getElementById('incomeChart');
-      let chartImage = chartCanvas ? chartCanvas.toDataURL("image/png") : "";
 
       let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
       let win = window.open("", "", "width=800,height=800");
       win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
       win.document.write("<h2>Income Report</h2>");
       win.document.write(table.outerHTML);
-
-      // if (chartImage) {
-      //   win.document.write("<h3>Income Chart</h3>");
-      //   win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
-      // }
 
       win.document.write("</body></html>");
       win.document.close();
@@ -303,7 +295,6 @@
 
     // fromt here bar chart is starts
     const ctx = document.getElementById('incomeChart');
-
     var categoryLabels = @json($categoryLabelsI->values());
     var categoryIncomes = @json($categoryWiseIncome->values());
     var categoryColors = @json($categoryColorsI);
@@ -317,7 +308,7 @@
         hoverOffset: 4
       }]
     };
-
+    console.log(categoryLabels);
     new Chart(ctx, {
       type: 'bar',
       data: data,

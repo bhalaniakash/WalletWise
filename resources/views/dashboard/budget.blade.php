@@ -114,7 +114,6 @@
         transform: translateY(-2px);
         color: #6b4226;
     }
-
     .card {
         border: none !important
     }
@@ -243,7 +242,6 @@
                                     @endif
                                 </div>
                             </div>
-                      
                 </section>
             </div>
     {{-- </div>
