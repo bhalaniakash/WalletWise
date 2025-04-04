@@ -8,8 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <base href="/expenseMVC/">
-
-    
     <script type="text/javascript" src="lib/js/main.js"></script>
 
     <style type="text/css">
@@ -79,22 +77,29 @@
         font-family: 'Arial, sans-serif';
     }
 
+    .forBg {
+        background: #F3E5D8;
+        padding: 50px;
+    }
+
     .page-content {
         margin-left: 17rem;
         margin-right: 1rem;
         transition: all 0.4s;
-        background: #F3E5D8;
+        background: #fff;
         margin-top: 5%;
+        padding: 3%;
     }
 
     .admin-dashboard-title {
         font-size: 32px;
         font-weight: bold;
         color: #6B4226;
-        text-align: center;
+        text-align: left;
         margin-bottom: 20px;
         text-transform: uppercase;
         padding: 10px;
+        width: 100%;
     }
 
     table {
@@ -132,9 +137,16 @@
     .filter-section {
         display: flex;
         justify-content: flex-end;
-        align-self: right;
         margin-bottom: 10px;
-        margin-right: 10px;
+        width: 100%;
+        margin-right: 8px;
+    }
+
+    #category {
+        width: auto;
+        padding: 6px 12px;
+        border-radius: 6px;
+        margin-right: 8px;
     }
 
     #filter {
@@ -142,16 +154,14 @@
         color: white;
         border-radius: 8px;
         font-weight: bold;
-        font-size: 1.2rem;
-        transition: all 0.3s ease-in-out;
-        height: 100%;
+        font-size: 1rem;
+        transition: 0.3s ease-in-out;
         border: none;
-        
+        padding: 8px 16px;
     }
 
     #filter:hover {
-        background: #4E2F1E;
-        cursor: pointer;
+        background: #8A5A3D;
     }
 
 
@@ -167,62 +177,65 @@
     <br>
     @include('shared.header')
     @include('shared.sidenav_admin')
+    <div class="forBg">
+        <div class="page-content" id="content" style="border-radius: 10px; overflow: hidden;">
+            <div style="display: flex; justify-content: space-between;">
+                <h1 class="admin-dashboard-title">Category List</h1>
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                @endif
 
-    <div class="page-content" id="content">
-        <h1 class="admin-dashboard-title">Category List</h1>
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
+                <div class="filter-section">
+                    <form id="categoryForm" class="d-flex align-items-center justify-content-end gap-2">
+                        <select class="form-control" id="category">
+                            <option value="">All Categories</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                        <button class="btn btn-dark" type="submit" id="filter">Show</button>
+                    </form>
+                </div>
+
             </div>
-        @endif
-
-        <div class="filter-section">
-            <form id="categoryForm" class="d-flex align-items-righht" style="gap: 10px;">
-                <select class="form-control" id="category" >
-                    <option value="">All Categories</option>
-                        <option value="income">Income</option>
-                    <option value="expense">Expense</option>
-                </select>
-                <button class="btn btn-dark" type="submit" id="filter">Show</button>
-            </form>
-        </div>
-
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr class="text-center">
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th colspan="2" >Actions</th>
-                </tr>
-            </thead>
-            <tbody id="catTbody">
-                @foreach($categories as $category)
-                    <tr>
-                        <td width="40%" >{{ $category->name }}</td>
-                            <td style="color: {{ $category->type == 'expense' ? 'red' : 'green' }}; width: 40%; text-align: center;" >
-                            {{ ucfirst($category->type) }}
-                        </td>
-                        <td width="10%" style="text-align: center;">
-                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                                @csrf
-                                    @method('DELETE')
-                                <button type="submit" class="btn btn-danger" >Delete</button>
-                            </form>
-                        </td>
-                        <td width="10%" style="text-align: center;">
-                            <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
-                                <button type="submit" class="btn btn-primary" >Update</button>
-                            </form>
-                        </td>
+            <table class="table table-striped table-bordered" style="border-radius: 10px; overflow: hidden;">
+                <thead>
+                    <tr class="text-center">
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th colspan="2">Actions</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody id="catTbody">
+                    @foreach($categories as $category)
+                        <tr>
+                            <td width="40%">{{ $category->name }}</td>
+                            <td
+                                style="color: {{ $category->type == 'expense' ? 'red' : 'green' }}; width: 40%; text-align: center;">
+                                {{ ucfirst($category->type) }}
+                            </td>
+                            <td width="10%" style="text-align: center;">
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                            <td width="10%" style="text-align: center;">
+                                <form action="{{ route('admin.category.edit', $category->id) }}" method="GET">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {

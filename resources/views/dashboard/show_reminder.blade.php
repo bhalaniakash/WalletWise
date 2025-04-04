@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reminders</title>
@@ -28,8 +29,9 @@
         }
 
         th {
-            background-color: #A08963;
-            color: white;
+            /* background-color: #A08963; */
+            background: #E6C7A5 !important;
+            color: #6B4226;
         }
 
         td {
@@ -47,10 +49,9 @@
         <h2 class="text-2xl font-bold mb-4">Reminders</h2>
         <div class="card-body">
 
-            <table border="1" class="table table-striped ">
+            <table border="1" class="table table-striped table-bordered" style="border-radius: 10px; overflow: hidden;">
                 <thead>
                     <tr>
-
                         <th>Reminder Name</th>
                         <th>Due Date</th>
                         <th>Frequency</th>

@@ -60,7 +60,6 @@
             cursor: pointer;
         }
 
-
     .text-2xl {
       color: #A08963;
       font-family: 'Andada Pro', sans-serif;
@@ -69,7 +68,7 @@
     table {
       border-collapse: collapse;
       width: 100%;
-
+      /* border-radius: 20px; */
     }
 
     th {
@@ -88,6 +87,7 @@
       color: #6B4226;
       padding: 20px;
     }
+
   </style>
 </head>
 
@@ -114,17 +114,14 @@
       @endforeach
           </select>
           &nbsp;&nbsp;
-
           <input type="month" class="form-control mr-2" id="incomeDate">
 
           <button  type="submit">
             <i class="fa fa-filter fa-xs"></i> Filter
           </button>
         </form>
-
         <br>
-        <table class="table table-striped" id="incomeReportTable">
-
+        <table class="table table-striped" id="incomeReportTable" style="border-radius: 10px; overflow: hidden;">
           <thead style="background-color: #1E1E2E;">
             <tr>
               <th>Date</th>
@@ -137,7 +134,6 @@
           <tbody id="incomeTBody">
             @php
         $currentUser = auth()->user(); // Get the currently logged-in user
-
         $filteredincomes =
           $incomeReport
           ->where('user_id', $currentUser->id)
@@ -163,29 +159,25 @@
             </tr>
           </tbody>
         </table>
-
         <button type="button" id="downloadReport">Download Report</button>
-
-
-
       </div>
     </div>
     <br>
 
     <div class="card shadow">
       <div class="card-header d-flex">
-        <h5>Income chart</h5>
+        <h5>Income chart [Total]</h5>
       </div>
       <div class="card-body">
         <div class="row">
           <div class="col-md-6">
             <div id="piechart">
-              <canvas id="incomeChart" id="incomeReportTable"></canvas>
+              <canvas id="incomeChart"></canvas>
             </div>
           </div>
           <div class="col-md-6">
             <div id="piechart">
-              <canvas id="incomeChartDate" id="incomeReportTable"></canvas>
+              <canvas id="incomeChartDate"></canvas>
             </div>
           </div>
         </div>
@@ -207,12 +199,10 @@
   }
 
   //chart 1
-  $currentMonth = now()->format('Y-m');
   $user = auth()->user();
   // Get category-wise income for the current month
   $categoryWiseIncome = $incomeReport
     ->where('user_id', $user->id)
-    ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
     ->groupBy('category_id')
     ->map(fn($items) => $items->sum('amount'));
 
@@ -221,12 +211,10 @@
   $categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())->toArray();
 
   //chart 2
-  $currentMonth = now()->format('Y-m');
   $user = auth()->user();
 
   $dateWiseIncome = $incomeReport
     ->where('user_id', $user->id)
-    ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
     ->groupBy('date')
     ->map(fn($items) => $items->sum('amount'));
   $dateLabelsI = $incomeReport
@@ -282,19 +270,12 @@
         alert("Report table not found!");
         return;
       }
-      let chartCanvas = document.getElementById('incomeChart');
-      let chartImage = chartCanvas ? chartCanvas.toDataURL("image/png") : "";
 
       let style = "<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; text-align: left; }</style>";
       let win = window.open("", "", "width=800,height=800");
       win.document.write("<html><head><title>Income Report</title>" + style + "</head><body>");
       win.document.write("<h2>Income Report</h2>");
       win.document.write(table.outerHTML);
-
-      // if (chartImage) {
-      //   win.document.write("<h3>Income Chart</h3>");
-      //   win.document.write("<img src='" + chartImage + "' style='width:100%;' />");
-      // }
 
       win.document.write("</body></html>");
       win.document.close();
@@ -303,7 +284,6 @@
 
     // fromt here bar chart is starts
     const ctx = document.getElementById('incomeChart');
-
     var categoryLabels = @json($categoryLabelsI->values());
     var categoryIncomes = @json($categoryWiseIncome->values());
     var categoryColors = @json($categoryColorsI);
@@ -317,7 +297,7 @@
         hoverOffset: 4
       }]
     };
-
+    console.log(categoryLabels);
     new Chart(ctx, {
       type: 'bar',
       data: data,
@@ -347,7 +327,6 @@
     var dateLabelsI = @json($dateLabelsI->values());
     var dateWiseIncome = @json($dateWiseIncome->values());
     var dateColorsI = @json($dateColorsI);
-
 
     const data2 = {
       labels: dateLabelsI,

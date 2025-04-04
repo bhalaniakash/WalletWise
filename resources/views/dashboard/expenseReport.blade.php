@@ -101,8 +101,8 @@
         <div class="card p-4">
             <h2>Expense Report</h2>
             <div class="col-xl-12">
-                <form class="form-inline mb-4">
-                    <select class="form-control mr-2" id="expenseCategory">
+                <form class="form-inline mb-4" method="GET" action="{{ url()->current() }}">
+                    <select class="form-control mr-2" id="expenseCategory" name="icat">
                         <option value="">All Categories</option>
                         @foreach ($categories as $category)
                             @if ($category->type == 'expense')
@@ -110,13 +110,14 @@
                             @endif
                         @endforeach
                     </select>
-                    <input type="month" class="form-control mr-2" id="expenseDate">
+                    <input type="month" class="form-control mr-2" id="expenseDate" name="date" value="{{ request('date') }}">
                     <button type="submit">
                         <i class="fa fa-filter fa-xs"></i> Filter
                     </button>
                 </form>
 
-                <table class="table table-striped table-bordered" id="Report">
+                <table class="table table-striped table-bordered" id="Report"
+                    style="border-radius: 10px; overflow: hidden;">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -159,7 +160,7 @@
             </div>
         </div>
         <div class="card mt-5 p-4">
-            <h3 class="text-2xl  mb-4">Expense Chart</h3>
+            <h3 class="text-2xl  mb-4">Expense Chart [Total]</h3>
             <div class="row">
                 <div class="col-md-6">
                     <canvas id="expenseChart" width="400" height="300"></canvas>
@@ -183,7 +184,6 @@
 
         $categoryWiseExpenses = $expenseReport
             ->where('user_id', $user->id)
-            ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
             ->groupBy('category_id')
             ->map(fn($items) => $items->sum('amount'));
 
@@ -192,7 +192,6 @@
 
         $dateWiseExpense = $expenseReport
             ->where('user_id', $user->id)
-            ->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
             ->groupBy('date')
             ->map(fn($items) => $items->sum('amount'));
         $dateLabelsI = $expenseReport

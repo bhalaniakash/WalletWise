@@ -24,8 +24,7 @@
 
     body {
       margin: 0;
-
-      color: black;
+      color: #6B4226;
       font-family: 'Andada Pro', sans-serif;
     }
 
@@ -71,7 +70,6 @@
 
     .nav-item {
       background: #E6C7A5;
-      !important;
 
       /* Primary - Pure Black */
     }
@@ -148,8 +146,10 @@
 
 <body>
   <!-- Vertical Sidebar -->
-  <div class="vertical-nav" id="sidebar">
-    <ul class="nav flex-column bg-dark mb-0 mt-4">
+  <div class="vertical-nav" id="sidebar"> 
+    
+    
+    <ul class="nav flex-column bg-light mb-0 mt-4" id="navbarNav">
       <li class="nav-item">
         <a href="{{ url('dashboard') }}" class="nav-link">
           <span class="span"><i class="fas fa-home"></i></span> Home

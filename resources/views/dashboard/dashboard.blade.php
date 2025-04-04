@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<base href="/expenseMVC/">
 	<title>Dashboard</title>
@@ -14,7 +13,7 @@
 			margin-top: 0;
 			font-family: 'Arial, sans-serif';
 			background: #E6C7A5;
-			animation: glow 2s infinite alternate;
+			
 		}
 
 		.page-content {
@@ -58,7 +57,7 @@
 		border-radius: 10px;
 		box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 		transition: all 0.3s ease-in-out;
-		font-family: "Love Ya Like A Sister", cursive;
+		font-family: "Lato", sans-serif
 	}
 
 	.dashboard-card:hover {
@@ -93,34 +92,33 @@
 							/* Icon color */
 						}
 					</style>
-
 					<div class="col-xl-4">
 						<a href="{{ url('dashboard/incomeReport') }}" style="text-decoration: none">
 							<div class="dashboard-card">
 								<div class="card-body">
-								
-										<div class="name">
-											<strong class="text-uppercase">
-												<h5>
-													<i class="fas fa-dollar-sign"></i> &nbsp; Income
-												</h5>
-											</strong>
-										</div>
-										<h5>Current Month</h5>
-										<div class="count-number">
-											@php
-												$currentMonth = now()->format('Y-m');
-												$user = auth()->user();
-												$currentMonthIncome = $incomeReport
-													->where('user_id', $user->id)
-													->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-													->sum('amount');
-											@endphp
-											<p class="card-number text-3xl text-[#6b4226]">₹
-												{{ number_format($currentMonthIncome, 2) }}
-											</p>
-										</div>
-								
+
+									<div class="name">
+										<strong class="text-uppercase">
+											<h5>
+												<i class="fas fa-dollar-sign"></i> &nbsp; Income
+											</h5>
+										</strong>
+									</div>
+									<h5>{{ now()->format('F Y') }}</h5>
+									<div class="count-number">
+										@php
+											$currentMonth = now()->format('Y-m');
+											$user = auth()->user();
+											$currentMonthIncome = $incomeReport
+												->where('user_id', $user->id)
+												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+												->sum('amount');
+										@endphp
+										<p class="card-number text-3xl text-[#6b4226]">₹
+											{{ number_format($currentMonthIncome, 2) }}
+										</p>
+									</div>
+
 								</div>
 							</div>
 						</a>
@@ -130,194 +128,187 @@
 							<div class="dashboard-card">
 								<div class="card-body">
 
-										<div class="name">
-											<strong class="text-uppercase">
-												<h5>
-
-													<i class="fas fa-money-bill-wave"></i>
-													&nbsp;
-													Expense
-												</h5>
-											</strong>
-										</div>
-										<h5>Current Month</h5>
-										<div class="count-number">
-											@php
-												$user = auth()->user();
-												$currentMonthExpense = $expenseReport
-													->where('user_id', $user->id)
-													->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-													->sum('amount');
-											@endphp
-											<p class="card-number text-3xl text-[#6b4226]">₹
-												{{ number_format($currentMonthExpense, 2) }}
-											</p>
-										</div>
-									
-								</div>
-							</div>
-						</a>
-					</div>
-
-					<div class="col-xl-4">
-						<div class="dashboard-card">
-							<div class="card-body">
-							
 									<div class="name">
 										<strong class="text-uppercase">
 											<h5>
 
-												<i class="fas fa-piggy-bank"></i>
+												<i class="fas fa-money-bill-wave"></i>
 												&nbsp;
-												Saving
+												Expense
 											</h5>
 										</strong>
 									</div>
-									<h5>Current Month</h5>
+									<h5>{{ now()->format('F Y') }}</h5>
 									<div class="count-number">
 										@php
-											$currentMonthIncome = $incomeReport
-												->where('user_id', $user->id)
-												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
-												->sum('amount');
-
+											$user = auth()->user();
 											$currentMonthExpense = $expenseReport
 												->where('user_id', $user->id)
 												->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 												->sum('amount');
-
-											$saving = $currentMonthIncome - $currentMonthExpense;
 										@endphp
-										@if ($saving < 0)
-											<div class="text-danger">
-												<p class="card-number text-3xl text-danger">₹
-													{{ number_format($saving, 2) }}
-												</p>
-											</div>
-										@else
-											<div class="text-success">
-												<p class="card-number text-3xl text-success">₹
-													{{ number_format($saving, 2) }}
-												</p>
-											</div>
-										@endif
-								
+										<p class="card-number text-3xl text-[#6b4226]">₹
+											{{ number_format($currentMonthExpense, 2) }}
+										</p>
+									</div>
+
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
-
-					<div class="col-xl-12 mt-4">
+					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
 
-								<div class="d-flex justify-content-between align-items-center mb-3">
-									<div>
-										<h4>Last Week's Expense Report</h4>
-										<p class="text-muted">Expenses this week</p>
-									</div>
+								<div class="name">
+									<strong class="text-uppercase">
+										<h5>
+											<i class="fas fa-piggy-bank"></i>
+											&nbsp;
+											Saving
+										</h5>
+									</strong>
 								</div>
+								<h5>{{ now()->format('F Y') }}	</h5>
+								<div class="count-number">
+									@php
+										$currentMonthIncome = $incomeReport
+											->where('user_id', $user->id)
+											->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+											->sum('amount');
 
-								<div class="d-flex align-items-center mb-4">
-									<div class="mr-3">
-										@php
-											$user = auth()->user();
-											$last7Days = collect();
+										$currentMonthExpense = $expenseReport
+											->where('user_id', $user->id)
+											->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
+											->sum('amount');
 
-											for ($i = 6; $i >= 0; $i--) {
-												$date = now()->subDays($i)->toDateString(); // Ensure correct date format
-												$dayAbbreviation = now()->subDays($i)->format('D');
+										$saving = $currentMonthIncome - $currentMonthExpense;
+									@endphp
+									@if ($saving < 0)
+										<div class="text-danger">
+											<p class="card-number text-3xl text-danger">₹
+												{{ number_format($saving, 2) }}
+											</p>
+										</div>
+									@else
+										<div class="text-success">
+											<p class="card-number text-3xl text-success">₹
+												{{ number_format($saving, 2) }}
+											</p>
+										</div>
+									@endif
 
-												$expenseAmount = $expenseReport->where('user_id', $user->id)
-													->where('date', $date)
-													->sum('amount');
-
-												$last7Days->put($dayAbbreviation, $expenseAmount);
-											}
-										@endphp
-										<h2 class="mb-0 rounded-sm">₹ {{ number_format($last7Days->sum(), 2) }}</h2>
-										<p class="text-muted">Total expenses for the last 7 days</p>
-									</div>
-									<div style="width: 100%;">
-										<canvas id="lastWeekExpenseChart" width="50" height="10"></canvas>
-									</div>
-								</div>
-
-
-								<script>
-									document.addEventListener('DOMContentLoaded', function () {
-										const ctx = document.getElementById('lastWeekExpenseChart').getContext('2d');
-										const lastWeekExpenseChart = new Chart(ctx, {
-											type: 'bar',
-											data: {
-												labels: @json($last7Days->keys()),
-												datasets: [{
-													label: 'Expenses',
-													data: @json($last7Days->values()),
-													backgroundColor: '#E6C7A5',
-													borderColor: '#6b4226',
-													borderWidth: 2
-												}]
-											},
-											options: {
-												responsive: true,
-												scales: {
-													y: {
-														beginAtZero: true
-													}
-												},
-												plugins: {
-													legend: {
-														display: false
-													}
-												}
-											}
-										});
-									});
-								</script>
-
-								<div class="d-flex justify-content-around">
-									<div>
-										<h5 class="mb-1">Earnings</h5>
-
-										<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
-										{{-- <div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar"
-												style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;"
-												aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div> --}}
-									</div>
-
-									<div>
-										<h5 class="mb-1">Profit</h5>
-
-										<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
-										{{-- <div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar"
-												style="width:100%; background-color: teal;"
-												aria-valuenow="{{ $saving }}" aria-valuemin="0" aria-valuemax="100">
-											</div>
-										</div> --}}
-									</div>
-
-									<div>
-										<h5 class="mb-1">Expense</h5>
-										<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
-										{{-- <div class="progress" style="height: 5px;">
-											<div class="progress-bar" role="progressbar"
-												style="width: {{ number_format($currentMonthExpense, 2) }}%; background-color: red;"
-												aria-valuenow="{{ number_format($currentMonthExpense, 2) }}"
-												aria-valuemin="0" aria-valuemax="100"></div>
-										</div> --}}
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
+			<div class="col-xl-12 mt-4">
+				<div class="dashboard-card">
+					<div class="card-body">
 
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<div>
+								<h4>Last Week's Expense Report</h4>
+								<p class="text-muted">Expenses this week</p>
+							</div>
+						</div>
+						<div class="d-flex align-items-center mb-4">
+							<div class="mr-3">
+								@php
+									$user = auth()->user();
+									$last7Days = collect();
+
+									for ($i = 6; $i >= 0; $i--) {
+										$date = now()->subDays($i)->toDateString(); 
+										$dayAbbreviation = now()->subDays($i)->format('D');
+
+										$expenseAmount = $expenseReport->where('user_id', $user->id)
+											->where('date', $date)
+											->sum('amount');
+
+										$last7Days->put($dayAbbreviation, $expenseAmount);
+									}
+								@endphp
+								<h2 class="mb-0 rounded-sm">₹ {{ number_format($last7Days->sum(), 2) }}</h2>
+								<p class="text-muted">Total expenses for the last 7 days</p>
+							</div>
+							<div style="width: 100%;">
+								<canvas id="lastWeekExpenseChart" width="500" height="100"></canvas>
+							</div>
+						</div>
+						<script>
+							document.addEventListener('DOMContentLoaded', function () {
+								const ctx = document.getElementById('lastWeekExpenseChart').getContext('2d');
+								const lastWeekExpenseChart = new Chart(ctx, {
+									type: 'bar',
+									data: {
+										labels: @json($last7Days->keys()),
+										datasets: [{
+											label: 'Expenses',
+											data: @json($last7Days->values()),
+											backgroundColor: '#E6C7A5',
+											borderColor: '#6b4226',
+											borderWidth: 2
+										}]
+									},
+									options: {
+										responsive: true,
+										scales: {
+											y: {
+												beginAtZero: true
+											}
+										},
+										plugins: {
+											legend: {
+												display: false
+											}
+										}
+									}
+								});
+							});
+						</script>
+
+						<div class="d-flex justify-content-around">
+							<div>
+								<h5 class="mb-1">Earnings</h5>
+
+								<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
+								{{-- <div class="progress" style="height: 5px;">
+									<div class="progress-bar" role="progressbar"
+										style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;"
+										aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0" aria-valuemax="100">
+									</div>
+								</div> --}}
+							</div>
+
+							<div>
+								<h5 class="mb-1">Profit</h5>
+
+								<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
+								{{-- <div class="progress" style="height: 5px;">
+									<div class="progress-bar" role="progressbar"
+										style="width:100%; background-color: teal;" aria-valuenow="{{ $saving }}"
+										aria-valuemin="0" aria-valuemax="100">
+									</div>
+								</div> --}}
+							</div>
+
+							<div>
+								<h5 class="mb-1">Expense</h5>
+								<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
+								{{-- <div class="progress" style="height: 5px;">
+									<div class="progress-bar" role="progressbar"
+										style="width: {{ number_format($currentMonthExpense, 2) }}%; background-color: red;"
+										aria-valuenow="{{ number_format($currentMonthExpense, 2) }}" aria-valuemin="0"
+										aria-valuemax="100"></div>
+								</div> --}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<br>
 			<section class="container-fluid">
 				<div class="row d-flex align-items-md-stretch">
@@ -396,17 +387,17 @@
 	var categoryColors = @json($categoryColors);
 
 	const datae = {
-		labels: categoryLabels, // Dynamic category names
+		labels: categoryLabels,
 		datasets: [{
 			label: 'Expense Distribution',
-			data: categoryExpenses, // Dynamic expenses per category
+			data: categoryExpenses, 
 			backgroundColor: categoryColors,
 			hoverOffset: 4
 		}]
 	};
 
 	new Chart(ctxe, {
-		type: 'pie', // Change chart type if needed
+		type: 'pie', 
 		data: datae,
 		options: {
 			animation: false
@@ -420,16 +411,16 @@
 	var categoryColorsI = @json($categoryColorsI);
 
 	const datai = {
-		labels: categoryLabelsI, // Dynamic category names
+		labels: categoryLabelsI, 
 		datasets: [{
 			label: 'Income Distribution',
-			data: categoryIncomes, // Dynamic expenses per category
+			data: categoryIncomes,
 			backgroundColor: categoryColorsI,
 			hoverOffset: 4
 		}]
 	};
 	new Chart(ctxi, {
-		type: 'pie', // Change chart type if needed
+		type: 'pie', 
 		data: datai,
 		options: {
 			animation: false

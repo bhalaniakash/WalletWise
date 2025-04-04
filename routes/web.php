@@ -22,9 +22,9 @@ Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
 Route::get('/dashboard', function () {
     if (Auth::check() && Auth::user()->is_Admin === 'Yes') {
-        return redirect()->route('admin.dashboard'); // Redirect to admin dashboard route
+        return redirect()->route('admin.dashboard'); 
     }
-    return view('dashboard.dashboard'); // Redirect to normal user dashboard
+    return view('dashboard.dashboard'); 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -35,6 +35,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+// This is for Super Admin
+Route::view('/', 'Superadmin.Home');
+
+// this is for user
 Route::view('/dashboard/category', 'dashboard.category');
 Route::view('/dashboard/income', 'dashboard.income');
 Route::view('/dashboard/expense', 'dashboard.expense');
@@ -46,10 +50,10 @@ Route::view('/dashboard/reminder', 'dashboard.reminder');
 Route::view('/dashboard/profile', 'dashboard.profile');
 Route::view('/dashboard/show_reminder', 'dashboard.show_reminder');
 
+// This is for Admin
 Route::view('/admin/dashboard', 'admin.dashboard');
 Route::view('/admin/members', 'admin.members');
 Route::view('/admin/category', 'admin.category');
-
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
 Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
 Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
@@ -60,15 +64,13 @@ Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('a
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
 Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
-
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 Route::delete('/members/{id}', [Members::class, 'destroy'])->name('members.destroy');
 
+
 // Admin Dashboard Route
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-
 Route::post('/budget/store', [BudgetController::class, 'store'])->name('budget.store');
-
 
 Route::post('/income/filter', function (Request $request) {
     $filteredIncomes = Income::where('user_id', Auth::id());
@@ -86,56 +88,53 @@ Route::post('/income/filter', function (Request $request) {
         return [
             'date' => $income->date,
             'source' => $income->source,
-            'category_name' => Category::find($income->category_id)->name ?? 'Unknown',
+            'category_name' => category::find($income->category_id)->name ?? 'Unknown',
             'amount' => $income->amount,
-            'description' => $income->description,
+            'description' => $income->description
         ];
     });
-
     return response()->json($data);
 });
 
-Route::post('/expense/filter', function (Request $request) {
-    $filteredExpenses = Expense::where('user_id', Auth::id());
+
+Route::post('/expenses/filter', function (Request $request) {
+    $filteredexpenses = Expense::where('user_id', Auth::id());
 
     if ($request->filled('date')) {
-        $filteredExpenses->whereYear('date', substr($request->input('date'), 0, 4))
+        $filteredexpenses->whereYear('date', substr($request->input('date'), 0, 4))
             ->whereMonth('date', substr($request->input('date'), 5, 2));
     }
 
     if ($request->filled('ecat')) {
-        $filteredExpenses->where('category_id', $request->input('ecat'));
+        $filteredexpenses->where('category_id', $request->input('ecat'));
     }
-
-    $data = $filteredExpenses->get()->map(function ($expense) {
+    $data = $filteredexpenses->get()->map(function ($expense) {
         return [
             'date' => $expense->date,
-            'source' => $expense->expense_name,
+            'source' => $expense->source,
             'category_name' => Category::find($expense->category_id)->name ?? 'Unknown',
             'paymode' => $expense->payment_method,
             'amount' => $expense->amount,
-            'description' => $expense->description,
+            'description' => $expense->description
         ];
     });
-
+    dd($data);
     return response()->json($data);
 });
 
 Route::post('/category/filter', function (Request $request) {
-    $categories = Category::query();
-
+    $category = category::query();
     if ($request->filled('cat')) {
-        $categories->where('type', $request->input('cat'));
+        $category->where('type', $request->input('cat'));
     }
-
-    $data = $categories->get()->map(function ($category) {
+    $data = $category->get()->map(function ($category) {
         return [
             'id' => $category->id,
             'name' => $category->name,
             'type' => $category->type,
         ];
     });
-
+    // dd($data);
     return response()->json($data);
 });
 
