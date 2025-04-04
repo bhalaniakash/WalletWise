@@ -18,9 +18,7 @@
              background-attachment:scroll;
              background-size:1550px;
              background-blend-mode: darken;
-             
-
-
+          
 	         }
         
         .box nav{
@@ -98,9 +96,7 @@
                    padding: 3px 0;
                    text-align: center;
                   }
-
         }
-         
         
 	 </style>
 </head>

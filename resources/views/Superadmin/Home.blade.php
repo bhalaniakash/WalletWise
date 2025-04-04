@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WalletWise - Smart Budget Tracking</title>
+  <title>WalletWise </title>
   <script src="https://cdn.tailwindcss.com"></script>
   {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
   <style>
@@ -15,12 +15,16 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
-    .logo {
+        .logo {
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
         }
+        a:hover {
+          text-decoration: none;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
@@ -30,7 +34,7 @@
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <div class="logo m-2">
       <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
-      <a href="#" class="text-2xl font-bold text-gray-800">WalletWise</a>
+      <a href="" class="text-2xl font-bold text-gray-800">WalletWise</a>
     </div>
    
     <div class="hidden lg:flex space-x-6">
@@ -38,7 +42,7 @@
       <a href="#" class="text-gray-600 hover:text-gray-800">Reminders</a>
       <a href="#" class="text-gray-600 hover:text-gray-800">Pricing</a>
       <a href="{{ url('login') }}" class="text-gray-600 hover:text-gray-800">Log In</a>
-      <a href="{{ url('register') }}" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Sign Up</a>
+      <a href="{{ url('register') }}" class="text-gray-600 hover:text-gray-800">Sign Up</a>
     </div>
   </div>
 </nav>
