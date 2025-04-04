@@ -120,6 +120,7 @@
             </p>
 
             <div class="plan-box flex justify-center gap-6 mt-6">
+                
                 <!-- Current Plan (Disabled) -->
                 <div
                     class="plan-option current-plan flex flex-col items-center rounded-lg shadow-md bg-gray-200 opacity-60">
@@ -136,7 +137,6 @@
                     <p class="text-xl font-bold">&#8377;499<span class="text-sm">/- Month</span></p>
                 </div>
             </div>
-
 
             <form method="POST" action="{{ route('payment') }}" class="mt-6">
                 @csrf
@@ -167,7 +167,5 @@
             </form>
         </div>
     </div>
-
 </body>
-
 </html>

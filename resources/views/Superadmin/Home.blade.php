@@ -8,6 +8,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
   <style>
+     .rounded-lg {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .rounded-lg:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
     .logo {
           display: flex;
           align-items: center;
@@ -27,7 +34,7 @@
     </div>
    
     <div class="hidden lg:flex space-x-6">
-      <a href="#" class="text-gray-600 hover:text-gray-800">Features</a>
+      <a href="{{ url('/Superadmin/Feature') }}" class="text-gray-600 hover:text-gray-800">Features</a>
       <a href="#" class="text-gray-600 hover:text-gray-800">Reminders</a>
       <a href="#" class="text-gray-600 hover:text-gray-800">Pricing</a>
       <a href="{{ url('login') }}" class="text-gray-600 hover:text-gray-800">Log In</a>
@@ -76,7 +83,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- How It Works Section -->
 <div class="bg-gray-800 text-white py-16">

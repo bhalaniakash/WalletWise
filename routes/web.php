@@ -37,6 +37,9 @@ require __DIR__ . '/auth.php';
 
 // This is for Super Admin
 Route::view('/', 'Superadmin.Home');
+Route::view('/Superadmin/Feature', 'Superadmin.feature');
+Route::view('/Superadmin/pricing', 'Superadmin.pricing');
+
 
 // this is for user
 Route::view('/dashboard/category', 'dashboard.category');

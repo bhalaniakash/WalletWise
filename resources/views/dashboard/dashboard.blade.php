@@ -43,60 +43,54 @@
 		h5 {
 			color: #6b4226;
 		}
+		/* Dashboard Cards */
+		.dashboard-card {
+			background: white;
+			color: #6b4226;
+			padding: 10px;
+			border-radius: 10px;
+			box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease-in-out;
+			font-family: "Lato", sans-serif
+		}
+		
+		.dashboard-card:hover {
+			box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+			transform: translateY(-2px);
+			color: #6b4226;
+		}
+		.icon-box {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 50px;
+			height: 50px;
+			border-radius: 10px;
+			background: rgba(255, 255, 255, 0.2);
+			/* Transparent background */
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+		
+		.icon-box i {
+			font-size: 24px;
+			color: #6b4226;
+			/* Icon color */
+		}
 	</style>
 	@include('shared.sidenav');
 	@include('shared.header');
 
 </head>
-<style>
-	/* Dashboard Cards */
-	.dashboard-card {
-		background: white;
-		color: #6b4226;
-		padding: 10px;
-		border-radius: 10px;
-		box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-		transition: all 0.3s ease-in-out;
-		font-family: "Lato", sans-serif
-	}
-
-	.dashboard-card:hover {
-		box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-		transform: translateY(-2px);
-		color: #6b4226;
-	}
-</style>
-
 <body>
 	<div class="page-content" id="content">
 		<div id="page-wrapper">
 			<br>
 			<section class="container-fluid">
 				<div class="row">
-					<style>
-						.icon-box {
-							display: inline-flex;
-							align-items: center;
-							justify-content: center;
-							width: 50px;
-							height: 50px;
-							border-radius: 10px;
-							background: rgba(255, 255, 255, 0.2);
-							/* Transparent background */
-							box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-						}
-
-						.icon-box i {
-							font-size: 24px;
-							color: #6b4226;
-							/* Icon color */
-						}
-					</style>
 					<div class="col-xl-4">
 						<a href="{{ url('dashboard/incomeReport') }}" style="text-decoration: none">
 							<div class="dashboard-card">
 								<div class="card-body">
-
 									<div class="name">
 										<strong class="text-uppercase">
 											<h5>
@@ -118,7 +112,6 @@
 											{{ number_format($currentMonthIncome, 2) }}
 										</p>
 									</div>
-
 								</div>
 							</div>
 						</a>
@@ -127,11 +120,9 @@
 						<a href="{{ url('dashboard/expenseReport') }}" style="text-decoration: none">
 							<div class="dashboard-card">
 								<div class="card-body">
-
 									<div class="name">
 										<strong class="text-uppercase">
 											<h5>
-
 												<i class="fas fa-money-bill-wave"></i>
 												&nbsp;
 												Expense
@@ -151,7 +142,6 @@
 											{{ number_format($currentMonthExpense, 2) }}
 										</p>
 									</div>
-
 								</div>
 							</div>
 						</a>
@@ -159,7 +149,6 @@
 					<div class="col-xl-4">
 						<div class="dashboard-card">
 							<div class="card-body">
-
 								<div class="name">
 									<strong class="text-uppercase">
 										<h5>
