@@ -167,7 +167,6 @@
                             // Fetch inactive users
                             $inactiveUsers = \App\Models\User::whereIn('id', $finalInactiveUserIds)->get();
                         @endphp
-
                         @foreach($inactiveUsers as $user)
                             <tr>
                                 <td>{{ $user->name }}</td>
@@ -187,7 +186,6 @@
                             </tr>
                         @endforeach
                     </tbody>
-
                 </table>
             </div>
         </div>

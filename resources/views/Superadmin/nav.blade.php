@@ -1,33 +1,33 @@
 <style>
-     .rounded-lg {
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
+    .rounded-lg {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
 
-    .rounded-lg:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    }
+  .rounded-lg:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
 
-    a:hover {
-      text-decoration: none;
-      text-shadow: 1px 1px 2px rgba(107, 66, 38, 0.4);
-    }
+  a:hover {
+    text-decoration: none;
+    text-shadow: 1px 1px 2px rgba(107, 66, 38, 0.4);
+  }
 
-    .btn-elegant {
-      background-color: #6B4226;
-      color: white;
-    }
+  .btn-elegant {
+    background-color: #6B4226;
+    color: white;
+  }
 
-    .btn-elegant:hover {
-      background-color: #5A3821;
-    } 
+  .btn-elegant:hover {
+    background-color: #5A3821;
+  } 
     </style>
 <!-- Navbar -->
  <nav class="shadow-md" style="background: #f5e8db;">

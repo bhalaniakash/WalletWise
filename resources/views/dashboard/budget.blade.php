@@ -1,43 +1,40 @@
 <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
 <style type="text/css">
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-
-    .page-content {
-    
-        margin-left: 17rem;
-        margin-right: 1rem;
-        transition: all 0.4s;
-        margin-top: 50px; 
-        color: #6B4226;
-        background: #F3E5D8;
-        padding: 20px;
-        border-radius: 10px;
-        font-family:'Lato', sans-serif;
-
-    }
-
-    .content.active {
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-
-    .card {
-        padding: 15px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        font-family: 'Arial, sans-serif';
-    }
-
-    table {
-            border-collapse: collapse;
-            width: 100%;
-
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        .page-content {
+            margin-left: 17rem;
+            margin-right: 1rem;
+            transition: all 0.4s;
+            margin-top: 50px; 
+            color: #6B4226;
+            background: #F3E5D8;
+            padding: 20px;
+            border-radius: 10px;
+            font-family:'Lato', sans-serif;
+        }
+
+        .content.active {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .card {
+            padding: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-family: 'Arial, sans-serif';
+        }
+
+        table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
         th {
             /* background-color: #A08963; */
             background: #E6C7A5 !important;
@@ -49,84 +46,84 @@
             font-size: 1rem;
         }
 
-    button[type="submit"] {
-        background: #A08963;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: bolder;
-        font-size: 1rem;
-        transition: all 0.3s ease-in-out;
-    }
-
-
-    .progress {
-        height: 20px;
-        border-radius: 5px;
-    }
-
-    .progress-bar {
-        background-color: #000;
-    }
-
-    /* this css is for an Spend amount  */
-
-    .amount-positive {
-        color: green;
-        font-weight: bold;
-        font-family: 'Arial, sans-serif';
-    }
-
-    .amount-negative {
-        color: red;
-        font-weight: bold;
-        font-family: 'Arial, sans-serif';
-    }
-
-    /* this is for the chart */
-
-    .categoryChart {
-        width: 500px;
-        height: 500px;
-        font-family: 'Arial, sans-serif';
-    }
-
-    .text-center {
-        text-align: center;
-        background-color: rgb(217, 217, 217);
-        padding: 1%;
-        border-radius: 50px;
-        font-family: 'Arial, sans-serif';
-    }
-
-    .dashboard-card {
-        background: white;
-        color: #6b4226;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease-in-out;
-    }
-
-    .dashboard-card:hover {
-        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-        transform: translateY(-2px);
-        color: #6b4226;
-    }
-    .card {
-        border: none !important
-    }
-    button[type="submit"] {
-            background: #6B4226;
+        button[type="submit"] {
+            background: #A08963;
             color: white;
-            padding: 8px;
+            padding: 12px 24px;
             border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: bolder;
+            font-size: 1rem;
             transition: all 0.3s ease-in-out;
-            width: auto;
-            border: none;
         }
+
+
+        .progress {
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            background-color: #000;
+        }
+
+        /* this css is for an Spend amount  */
+
+        .amount-positive {
+            color: green;
+            font-weight: bold;
+            font-family: 'Arial, sans-serif';
+        }
+
+        .amount-negative {
+            color: red;
+            font-weight: bold;
+            font-family: 'Arial, sans-serif';
+        }
+
+        /* this is for the chart */
+
+        .categoryChart {
+            width: 500px;
+            height: 500px;
+            font-family: 'Arial, sans-serif';
+        }
+
+        .text-center {
+            text-align: center;
+            background-color: rgb(217, 217, 217);
+            padding: 1%;
+            border-radius: 50px;
+            font-family: 'Arial, sans-serif';
+        }
+
+        .dashboard-card {
+            background: white;
+            color: #6b4226;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .dashboard-card:hover {
+            box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            color: #6b4226;
+        }
+        .card {
+            border: none !important
+        }
+        button[type="submit"] {
+                background: #6B4226;
+                color: white;
+                padding: 8px;
+                border-radius: 8px;
+                font-weight: bold;
+                font-size: 1.2rem;
+                transition: all 0.3s ease-in-out;
+                width: auto;
+                border: none;
+            }
 
         button[type="submit"]:hover {
             background: #4E2F1E;
@@ -539,7 +536,7 @@
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
