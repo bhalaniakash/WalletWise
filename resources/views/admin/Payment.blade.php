@@ -90,9 +90,11 @@
                 </thead>
                 <tbody>
                     @php
-                    use App\Models\User;
-                  
+                        use App\Models\User;
+                        // Fetch all users with plan_type = premium
+                        $premiumUsers = User::where('plan_type', 'premium')->get();
 
+<<<<<<< HEAD
                     // Fetch all users with plan_type = premium
                     $premiumUsers = User::where('plan_type', 'premium')->get();
                 
@@ -102,17 +104,34 @@
                 
                 
                 @foreach($premiumUsers as $user)
+=======
+                        // Calculate total payment
+                        $totalPremiumPayment = $premiumUsers->count() * 499; // Assuming each premium user pays 499
+                    @endphp
+
+
+
+                    @foreach($premiumUsers as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->age }}</td>
+                            <td>499</td>
+                        </tr>
+                    @endforeach
+>>>>>>> 49541150be16d157813bf78ecb06da0dfcc1ae09
                     <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->age }}</td>
-                        <td>{{ $user->payment_amount }}</td>
+                        <td colspan="3" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
+                        <td>{{ $totalPremiumPayment }}</td>
                     </tr>
+<<<<<<< HEAD
                 @endforeach
                 <tr>
                     <td colspan="3" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
                     <td>{{ $totalPremiumPayment }}</td>
                 </tr>
+=======
+>>>>>>> 49541150be16d157813bf78ecb06da0dfcc1ae09
                 </tbody>
             </table>
         </div>
