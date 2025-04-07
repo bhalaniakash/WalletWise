@@ -127,7 +127,7 @@
       /* Slightly lift the element on hover */
     }
 
-.nav-link i {
+    .nav-link i {
       margin-right: 10px;
       font-size: 20px;
       color: #6B4226;
@@ -173,7 +173,8 @@
           <span class="span"><i class="fas fa-users"></i></span>Users</a>
       </li>
       <li class="nav-item">
-
+        <a href="{{ url('admin/payment') }}" class="nav-link">
+          <span class="span"><i class="fas fa-receipt"></i></span>Payment</a>
       </li>
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}">

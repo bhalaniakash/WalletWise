@@ -63,6 +63,7 @@ Route::view('/dashboard/show_reminder', 'dashboard.show_reminder');
 // This is for Admin
 Route::view('/admin/dashboard', 'admin.dashboard');
 Route::view('/admin/members', 'admin.members');
+// Route::view('/admin/payment', 'admin.payment');
 Route::view('/admin/category', 'admin.category');
 Route::view('/admin/payment', 'admin.payment');
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');

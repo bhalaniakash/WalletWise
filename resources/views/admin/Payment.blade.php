@@ -93,26 +93,22 @@
                     @php
                         use App\Models\User;
                         // Fetch all users with plan_type = premium
-                        $premiumUsers = User::where('plan_type', 'premium')->get();
-
+                        $premiumUsers = User::where('plan_type', 'premium')->where('is_Admin', 'No')->get();
                         // Calculate total payment
-                        $totalPremiumPayment = $premiumUsers->sum('premium_amount');
+                        $totalPremiumPayment = number_format($premiumUsers->sum('premium_amount'), 2, '.', '');
                     @endphp
-
-
-
                     @foreach($premiumUsers as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->age }}</td>
                             <td>{{ $user->premium_started_at }}</td>
-                            <td>{{$user->premium_amount}}</td>
+                            <td>&#8377;{{ $user->premium_amount}}</td>
                         </tr>
                     @endforeach
                     <tr>
                         <td colspan="4" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
-                        <td style="text-align:center ; font-weight: bold;">{{ $totalPremiumPayment }}</td>
+                        <td style="text-align:left ; font-weight: bold;">&#8377; {{ $totalPremiumPayment }}</td>
                     </tr>
                 </tbody>
             </table>
