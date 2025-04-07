@@ -21,6 +21,7 @@
             "name": "Acme Corp", // Business name
             "description": "Test Transaction",
             "handler": function (response) {
+                response.amount = {{ $amount }};
                 console.log("Handler function triggered", response);
                 fetch('/verify-payment', {
                     method: 'POST',

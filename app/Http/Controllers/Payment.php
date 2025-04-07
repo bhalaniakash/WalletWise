@@ -39,6 +39,8 @@ class Payment extends Controller
         Log::info('Verify Payment Data:', $request->all());
 
         try {
+            $data = $request->all();
+
             $api = new Api(env('RZR_KEY'), env('RZR_SECRET'));
 
             $attributes = [
@@ -56,7 +58,9 @@ class Payment extends Controller
                 return response()->json(['success' => false, 'error' => 'User not found'], 401);
             }
             $user->update([
-                'plan_type' => 'premium'
+                'plan_type' => 'premium',
+                'premium_started_at' => now(),
+                'premium_amount' => $data['amount'] / 100
             ]);
 
             Log::info('User plan updated to premium!', ['user_id' => $user->id]);

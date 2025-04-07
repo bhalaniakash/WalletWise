@@ -26,6 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'contact',
         'plan_type',
         'profile_picture',
+        'premium_started_at',
+        'premium_amount',
     ];
 
     /**
