@@ -266,28 +266,31 @@
 							});
 						</script>
 
-<div class="d-flex " style="justify-content: space-between;">
-	<div>
-		<h5 class="mb-1">Earnings</h5>
-		<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
-	</div>
+							<div class="d-flex " style="justify-content: space-between;">
+								<div>
+									<h5 class="mb-1">Earnings</h5>
+									<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
+								</div>
 
-	<div>
-		<h5 class="mb-1">Profit</h5>
-		<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
-	</div>
+								<div>
+									<h5 class="mb-1">Profit</h5>
+									<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
+								</div>
 
-	<div>
-		<h5 class="mb-1">Expense</h5>
-		<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
-	</div>
-</div>
+								<div>
+									<h5 class="mb-1">Expense</h5>
+									<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
+								</div>
+							</div>
 
 						
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			{{-- Div for day wise expense tracking start from here --}}
+
 			<div class="col-xl-12 mt-4">
 				<div class="dashboard-card">
 					<div class="card-body">
@@ -337,7 +340,8 @@
 				</div>
 			</div>
 			<br>
-			<section class="container-fluid">
+
+			
 				<div class="row d-flex align-items-md-stretch">
 					<div class="col-lg-6 ">
 						<div class="dashboard-card">
@@ -364,10 +368,9 @@
 						</div>
 					</div>
 				</div>
-			</section>
-			<br>
+			
 		</div>
-	</div>
+	
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
 @php
