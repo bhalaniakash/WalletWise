@@ -8,10 +8,13 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\contactUs as ControllersContactUs;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\Payment;
 use App\Http\Controllers\ReminderController;
 use App\Models\Category;
+use App\Models\contactUs;
 use App\Models\Expense;
 use App\Models\Income;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +25,9 @@ Route::get('/', [RegisteredUserController::class, 'create'])->name('register');
 
 Route::get('/dashboard', function () {
     if (Auth::check() && Auth::user()->is_Admin === 'Yes') {
-        return redirect()->route('admin.dashboard'); 
+        return redirect()->route('admin.dashboard');
     }
-    return view('dashboard.dashboard'); 
+    return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -38,7 +41,13 @@ require __DIR__ . '/auth.php';
 // This is for Super Admin
 Route::view('/', 'Superadmin.Home');
 Route::view('/Superadmin/Feature', 'Superadmin.feature');
+<<<<<<< HEAD
 Route::view('/Superadmin/pricing', 'Superadmin.prici');
+=======
+Route::view('/Superadmin/pricing', 'Superadmin.pricing');
+Route::view('/Superadmin/contactus', 'Superadmin.contactus');
+Route::post('/contact/store', [ContactUsController::class, 'store'])->name('contact.store');
+>>>>>>> 9fc715c40db870f265f6db651a913b3cf300bf99
 
 
 // this is for user
