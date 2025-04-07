@@ -57,6 +57,9 @@
             background: linear-gradient(to right, #E6C7A5, #d7b693);
             color: #6B4226;
         }
+        .container{
+            background: #f5e8db;
+        }
     </style>
 </head>
 

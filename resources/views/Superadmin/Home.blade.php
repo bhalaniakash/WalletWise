@@ -61,6 +61,7 @@
     .text-elegant {
       color: #6B4226;
     }
+    
   </style>
 </head>
 

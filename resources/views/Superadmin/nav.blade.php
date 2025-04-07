@@ -27,10 +27,10 @@
 
     .btn-elegant:hover {
       background-color: #5A3821;
-    }
+    } 
     </style>
 <!-- Navbar -->
- <nav class="bg-white shadow-md">
+ <nav class="shadow-md" style="background: #f5e8db;">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="logo m-2">
         <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
