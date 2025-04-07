@@ -90,7 +90,7 @@
         }
 
         button[type="submit"]:hover {
-            background: #6b4226;
+            background: #3b2314;
             cursor: pointer;
         }
 
