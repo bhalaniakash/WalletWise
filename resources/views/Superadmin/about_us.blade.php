@@ -67,7 +67,7 @@
 
   <!-- About Section -->
 
-<section class="gradient-hero py-20 text-white">
+  <section class="gradient-hero py-20">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-5xl font-bold mb-4">About WalletWise</h1>
       <p class="text-lg max-w-3xl mx-auto">
@@ -114,8 +114,9 @@
   <!-- Footer -->
   <footer class="gradient-footer text-white py-6">
     <div class="container mx-auto text-center">
-      <p>&copy; 2025 WalletWise. Developed with guidance from Pratyush Sharma  and supported by 
-        <a href="https://www.brainerhub.com/"> <u>BrainerHub Solution.</u></a></p>
+      <p>&copy; 2025 WalletWise. Developed with guidance from Pratyush Sharma and supported by
+        <a href="https://www.brainerhub.com/"> <u>BrainerHub Solution.</u></a>
+      </p>
     </div>
   </footer>
 
