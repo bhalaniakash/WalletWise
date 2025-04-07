@@ -73,7 +73,7 @@
   <div class="gradient-hero text-elegant text-center py-20">
     <h1 class="text-5xl font-bold mb-4">Take Control of Your Budget</h1>
     <p class="text-lg mb-6">Track expenses, set reminders, and manage finances with WalletWise</p>
-    <a href="#" class="btn-elegant px-6 py-3 rounded-full font-semibold shadow-md">GET STARTED</a>
+    <a href="{{url('register')}}" class="btn-elegant px-6 py-3 rounded-full font-semibold shadow-md">GET STARTED</a>
     <p class="mt-6 text-sm">Available on <i class="bi bi-apple"></i> <i class="bi bi-android"></i></p>
   </div>
 
