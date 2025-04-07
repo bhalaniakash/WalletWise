@@ -92,14 +92,9 @@
                 <tbody>
                     @php
                         use App\Models\User;
-                        // Fetch all users with plan_type = premium
                         $premiumUsers = User::where('plan_type', 'premium')->get();
-
-                        // Calculate total payment
                         $totalPremiumPayment = $premiumUsers->sum('premium_amount');
                     @endphp
-
-
 
                     @foreach($premiumUsers as $user)
                         <tr>
@@ -119,5 +114,4 @@
         </div>
     </div>
 </body>
-
 </html>
