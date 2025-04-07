@@ -266,42 +266,72 @@
 							});
 						</script>
 
-						<div class="d-flex justify-content-around">
-							<div>
-								<h5 class="mb-1">Earnings</h5>
+<div class="d-flex " style="justify-content: space-between;">
+	<div>
+		<h5 class="mb-1">Earnings</h5>
+		<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
+	</div>
 
-								<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
-								{{-- <div class="progress" style="height: 5px;">
-									<div class="progress-bar" role="progressbar"
-										style="width: {{ $currentMonthIncome > 0 ? ($currentMonthIncome / 100) * 100 : 0 }}%; background-color: purple;"
-										aria-valuenow="{{ $currentMonthIncome }}" aria-valuemin="0" aria-valuemax="100">
-									</div>
-								</div> --}}
-							</div>
+	<div>
+		<h5 class="mb-1">Profit</h5>
+		<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
+	</div>
 
-							<div>
-								<h5 class="mb-1">Profit</h5>
+	<div>
+		<h5 class="mb-1">Expense</h5>
+		<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
+	</div>
+</div>
 
-								<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
-								{{-- <div class="progress" style="height: 5px;">
-									<div class="progress-bar" role="progressbar"
-										style="width:100%; background-color: teal;" aria-valuenow="{{ $saving }}"
-										aria-valuemin="0" aria-valuemax="100">
-									</div>
-								</div> --}}
-							</div>
-
-							<div>
-								<h5 class="mb-1">Expense</h5>
-								<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
-								{{-- <div class="progress" style="height: 5px;">
-									<div class="progress-bar" role="progressbar"
-										style="width: {{ number_format($currentMonthExpense, 2) }}%; background-color: red;"
-										aria-valuenow="{{ number_format($currentMonthExpense, 2) }}" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div> --}}
-							</div>
+						
 						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-12 mt-4">
+				<div class="dashboard-card">
+					<div class="card-body">
+						<div class="d-flex mt-4" style="justify-content: space-between;">
+							<div>
+								<h5 class="mb-1">Expense Today</h5>
+								@php
+									$today = now()->toDateString();
+									$todayExpense = $expenseReport
+										->where('user_id', $user->id)
+										->where('date', $today)
+										->sum('amount');
+								@endphp
+								<h4 class="mb-0">₹ {{ number_format($todayExpense, 2) }}</h4>
+							</div>
+
+							<div>
+								<h5 class="mb-1">Expense Yesterday</h5>
+								@php
+									$yesterday = now()->subDay()->toDateString();
+									$yesterdayExpense = $expenseReport
+										->where('user_id', $user->id)
+										->where('date', $yesterday)
+										->sum('amount');
+								@endphp
+								<h4 class="mb-0">₹ {{ number_format($yesterdayExpense, 2) }}</h4>
+							</div>
+							
+							<div>
+								<h5 class="mb-1">Difference Between Yesterday And Today </h5>
+								@php
+									$difference = $todayExpense - $yesterdayExpense;
+								@endphp
+								<h4 class="mb-0">
+									₹ {{ number_format(abs($difference), 2) }}
+									@if ($difference > 0)
+										<span class="text-danger">(Increased)</span>
+									@elseif ($difference < 0)
+										<span class="text-success">(Decreased)</span>
+									@else
+										<span class="text-muted">(No Change)</span>
+									@endif
+								</h4>
+							</div>
 					</div>
 				</div>
 			</div>
