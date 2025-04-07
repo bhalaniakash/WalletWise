@@ -100,10 +100,6 @@
                     $totalPremiumPayment = $premiumUsers->sum('payment_amount');
                 @endphp
                 
-                <tr>
-                    <td colspan="3" style="text-align: right; font-weight: bold;">Total Premium Payment:</td>
-                    <td>{{ $totalPremiumPayment }}</td>
-                </tr>
                 
                 @foreach($premiumUsers as $user)
                     <tr>
@@ -113,7 +109,10 @@
                         <td>{{ $user->payment_amount }}</td>
                     </tr>
                 @endforeach
-                
+                <tr>
+                    <td colspan="3" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
+                    <td>{{ $totalPremiumPayment }}</td>
+                </tr>
                 </tbody>
             </table>
         </div>

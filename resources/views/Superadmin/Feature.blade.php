@@ -54,23 +54,9 @@
 <body class="font-sans">
 
     <!-- Header Section -->
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="logo m-2">
-                <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
-                <a href="#" class="text-2xl font-bold text-elegant">WalletWise</a>
-            </div>
+    @include('Superadmin.nav')
 
-            <div class="hidden lg:flex space-x-6">
-                <a href="{{ url('/Superadmin/Feature') }}" class="text-gray-600 hover:text-elegant">Features</a>
-                <a href="{{ url('/Superadmin/pricing') }}" class="text-gray-600 hover:text-elegant">Pricing</a>
-                <a href="{{ url('/Superadmin/contactus') }}" class="text-gray-600 hover:text-elegant">Contact us</a>
-                <a href="{{ url('login') }}" class="text-gray-600 hover:text-elegant">Log In</a>
-                <a href="{{ url('register') }}" class="text-gray-600 hover:text-elegant">Sign Up</a>
-            </div>
-        </div>
-    </nav>
-
+    
     <!-- Features Section -->
     <section class="container mx-auto py-16 px-6">
         <h2 class="text-3xl font-bold text-center mb-10 text-elegant">WalletWise Features</h2>
