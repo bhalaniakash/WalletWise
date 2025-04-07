@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,40 +16,47 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background:#6b4226;
+            background: #E6C7A5;
         }
+
         .container {
             color: #6b4226;
-            background: #E6C7A5;
+            background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             width: 90%;
             max-width: 800px;
         }
+
         .form-header {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .form-header img {
             width: 80px;
             height: auto;
             border: 3px solid #111010;
             border-radius: 50%;
         }
+
         .form-header h4 {
             font-size: 24px;
             margin-top: 10px;
         }
+
         .form-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
         }
+
         .form-group {
             width: 48%;
             margin-bottom: 15px;
         }
+
         .form-group input,
         .form-group select {
             width: 100%;
@@ -57,41 +65,50 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
+
         label {
             color: #555;
         }
+
         .full-width {
             width: 100%;
         }
+
         .form-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
         }
+
         .form-footer a {
             color: #555;
             text-decoration: none;
         }
+
         button[type="submit"] {
-            background: #A08963;
+            background: #6b4226;
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
             font-weight: bolder;
             font-size: 1rem;
             transition: all 0.3s ease-in-out;
+            border: none;
         }
+
         button[type="submit"]:hover {
-            background: #8b6f4e;
+            background: #3b2314;
             cursor: pointer;
         }
+
         .error {
             color: red;
             font-size: 14px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="form-header">
@@ -109,26 +126,26 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" name="email"  >
+                    <input id="email" type="email" name="email">
                     @error('email') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input id="password" type="password" name="password"  >
+                    <input id="password" type="password" name="password">
                     @error('password') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation"  >
+                    <input id="password_confirmation" type="password" name="password_confirmation">
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input id="age" type="number" name="age" min="15"  >
+                    <input id="age" type="number" name="age" min="15">
                     @error('age') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="contact">Contact</label>
-                    <input id="contact" type="number" name="contact"  >
+                    <input id="contact" type="number" name="contact">
                     @error('contact') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 {{-- <div class="form-group">
@@ -141,10 +158,11 @@
                 </div> --}}
                 <div class="form-group">
                     <label for="profile_picture">Profile Picture</label>
-                    <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture" accept="image/*">
+                    <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture"
+                        accept="image/*">
                     @error('profile_picture') <span class="error">{{ $message }}</span> @enderror
                 </div>
-                
+
             </div>
             <div class="form-footer">
                 <a href="{{ route('login') }}">Already registered?</a>
@@ -153,4 +171,5 @@
         </form>
     </div>
 </body>
+
 </html>

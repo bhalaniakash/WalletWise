@@ -54,18 +54,27 @@
         .text-elegant {
             color: #6B4226;
         }
+
+        .gradient-header {
+            background: linear-gradient(to right, #E6C7A5, #d7b693);
+            color: #6B4226;
+        }
     </style>
 </head>
 
 <body class="bg-[#f9f6f2] font-sans">
 
     <!-- Navbar -->
-   @include('Superadmin.nav')
+    @include('Superadmin.nav')
 
     <!-- Contact Section -->
+    <div class="gradient-header text-center py-16">
+        <h1 class="text-4xl font-bold mb-4">Get in Touch</h1>
+        <p class="text-lg">We’re here to help you manage your money smarter. Reach out anytime.</p>
+    </div>
+
+    <!-- Contact Section Grid -->
     <section class="container mx-auto py-16 px-6">
-        <h2 class="text-3xl font-bold text-center mb-10 text-elegant">Contact Us</h2>
-        <!-- Contact Section Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
             <!-- Contact Info -->

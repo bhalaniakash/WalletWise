@@ -48,6 +48,11 @@
         .bg-footer {
             background: linear-gradient(to right, #6B4226, #5a3b20);
         }
+
+        .gradient-header {
+            background: linear-gradient(to right, #E6C7A5, #d7b693);
+            color: #6B4226;
+        }
     </style>
 </head>
 
@@ -56,10 +61,15 @@
     <!-- Header Section -->
     @include('Superadmin.nav')
 
-    
+
     <!-- Features Section -->
+    <!-- Features Header -->
+    <div class="gradient-header text-center py-16">
+        <h1 class="text-4xl font-bold mb-4">Your Wallet. Your Way.</h1>
+        <p class="text-lg">Explore features built for effortless financial control and clarity.</p>
+    </div>
+
     <section class="container mx-auto py-16 px-6">
-        <h2 class="text-3xl font-bold text-center mb-10 text-elegant">WalletWise Features</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <div class="bg-white p-6 rounded-lg shadow-lg feature-card text-center">
