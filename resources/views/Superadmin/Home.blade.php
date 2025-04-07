@@ -67,22 +67,7 @@
 <body class="bg-[#f9f6f2] font-sans">
 
   <!-- Navbar -->
-  <nav class="bg-white shadow-md">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="logo m-2">
-        <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
-        <a href="" class="text-2xl font-bold text-elegant">WalletWise</a>
-      </div>
-
-      <div class="hidden lg:flex space-x-6">
-        <a href="{{ url('/Superadmin/Feature') }}" class="text-gray-600 hover:text-elegant">Features</a>
-        <a href="{{ url('/Superadmin/pricing') }}" class="text-gray-600 hover:text-elegant">Pricing</a>
-        <a href="{{ url('/Superadmin/contactus') }}" class="text-gray-600 hover:text-elegant">Contact us</a>
-        <a href="{{ url('login') }}" class="text-gray-600 hover:text-elegant">Log In</a>
-        <a href="{{ url('register') }}" class="text-gray-600 hover:text-elegant">Sign Up</a>
-      </div>
-    </div>
-  </nav>
+  @include('Superadmin.nav')
 
   <!-- Hero Section -->
   <div class="gradient-hero text-elegant text-center py-20">

@@ -39,10 +39,12 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 // This is for Super Admin
+Route::view('/Superadmin/nav', 'Superadmin.nav');
 Route::view('/', 'Superadmin.Home');
 Route::view('/Superadmin/Feature', 'Superadmin.feature');
 Route::view('/Superadmin/pricing', 'Superadmin.pricing');
 Route::view('/Superadmin/contactus', 'Superadmin.contactus');
+Route::view('/Superadmin/about_us', 'Superadmin.about_us');
 Route::post('/contact/store', [ContactUsController::class, 'store'])->name('contact.store');
 
 
