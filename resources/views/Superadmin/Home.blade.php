@@ -78,8 +78,8 @@
   </div>
 
   <!-- Features Section -->
-  <div class="gradient-section py-16 align-middle" style="justify-content: center; display: flex;">
-    <div class="container text-center">
+  <div class="gradient-section py-16  align-middle" style="justify-content: center; display: flex;">
+    <div class="container text-center ">
       <h2 class="text-3xl font-bold mb-6 text-elegant">Why Choose WalletWise?</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-5">
         <div class="card-gradient p-6 rounded-lg shadow-lg">
