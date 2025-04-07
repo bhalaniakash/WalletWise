@@ -138,15 +138,25 @@
    
   </section>
  <!-- Team Section -->
- <section class="py-16 bg-white text-center">
+<section class="py-16 bg-white text-center">
   <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-8">Meet the Brain Behind WalletWise</h2>
-    <div class="flex flex-col items-center gap-6">
-      <img src="/img/akash.jpg" alt="Founder" class="w-32 h-32 rounded-full object-cover shadow-lg">
-      <div>
-        <h3 class="text-xl font-bold">Akash</h3>
-        <p class="text-sm text-gray-600">Founder & Developer</p>
-        <p class="mt-2 max-w-xl mx-auto">Inspired by hostel life struggles, Akash built WalletWise as a modern tool to empower students and everyday users to manage their finances smartly.</p>
+    <h2 class="text-3xl font-bold mb-8">Meet the Brains Behind WalletWise</h2>
+    <div class="flex flex-col md:flex-row items-center " style="justify-content: space-between; margin:2rem">
+      <div class="flex flex-col items-center">
+        <img src="/img/akash.jpg" alt="Founder" class="w-32 h-32 rounded-full object-cover shadow-lg">
+        <div>
+          <h3 class="text-xl font-bold">Akash</h3>
+          <p class="text-sm text-gray-600">Founder & Developer</p>
+          <p class="mt-2 max-w-xl mx-auto">Inspired by hostel life struggles, Akash built WalletWise as a modern tool to empower students and everyday users to manage their finances smartly.</p>
+        </div>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/img/nishtha.jpg" alt="Co-Founder" class="w-32 h-32 rounded-full object-cover shadow-lg">
+        <div>
+          <h3 class="text-xl font-bold">nishtha </h3>
+          <p class="text-sm text-gray-600">Co-Founder & Strategist</p>
+          <p class="mt-2 max-w-xl mx-auto">With a passion for innovation and strategy, nishtha  joined WalletWise to help shape its vision and bring financial clarity to a wider audience.</p>
+        </div>
       </div>
     </div>
   </div>
