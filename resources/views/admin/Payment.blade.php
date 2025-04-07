@@ -85,6 +85,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Age</th>
+                        <th scope="col">Joining Date</th>
                         <th scope="col">Payment Amount</th>
                     </tr>
                 </thead>
@@ -94,19 +95,8 @@
                         // Fetch all users with plan_type = premium
                         $premiumUsers = User::where('plan_type', 'premium')->get();
 
-<<<<<<< HEAD
-                    // Fetch all users with plan_type = premium
-                    $premiumUsers = User::where('plan_type', 'premium')->get();
-                
-                    // Calculate total payment
-                    $totalPremiumPayment = $premiumUsers->sum('payment_amount');
-                @endphp
-                
-                
-                @foreach($premiumUsers as $user)
-=======
                         // Calculate total payment
-                        $totalPremiumPayment = $premiumUsers->count() * 499; // Assuming each premium user pays 499
+                        $totalPremiumPayment = $premiumUsers->sum('premium_amount');
                     @endphp
 
 
@@ -116,22 +106,14 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->age }}</td>
-                            <td>499</td>
+                            <td>{{ $user->premium_started_at }}</td>
+                            <td>{{$user->premium_amount}}</td>
                         </tr>
                     @endforeach
->>>>>>> 49541150be16d157813bf78ecb06da0dfcc1ae09
                     <tr>
-                        <td colspan="3" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
-                        <td>{{ $totalPremiumPayment }}</td>
+                        <td colspan="4" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
+                        <td style="text-align:center ; font-weight: bold;">{{ $totalPremiumPayment }}</td>
                     </tr>
-<<<<<<< HEAD
-                @endforeach
-                <tr>
-                    <td colspan="3" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
-                    <td>{{ $totalPremiumPayment }}</td>
-                </tr>
-=======
->>>>>>> 49541150be16d157813bf78ecb06da0dfcc1ae09
                 </tbody>
             </table>
         </div>

@@ -180,13 +180,21 @@
             <div style="display: flex; justify-content: space-between;">
                 <h1 class="admin-dashboard-title">Category List</h1>
                 @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="close" data-dismiss="alert">
-                            <span>&times;</span>
-                        </button>
-                    </div>
-                @endif
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
+                    role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                    <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
+                        onclick="this.parentElement.remove();">
+                        <svg class="fill-current h-6 w-6 text-green-500" role="button"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <title>Close</title>
+                            <path
+                                d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+                        </svg>
+                    </button>
+                </div>
+            @endif
 
                 <div class="filter-section">
                     <form id="categoryForm" class="d-flex align-items-center justify-content-end gap-2">
@@ -235,6 +243,12 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        setTimeout(() => {
+            const alert = document.querySelector('[role="alert"]');
+            if (alert) alert.remove();
+        }, 2000); // 2 seconds
+    </script>
     <script>
         $(document).ready(function () {
             $('#categoryForm').submit(function (e) {

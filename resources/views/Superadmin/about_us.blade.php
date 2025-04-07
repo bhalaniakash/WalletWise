@@ -67,7 +67,7 @@
 
   <!-- About Section -->
 
-  <section class="gradient-hero py-20">
+<section class="gradient-hero py-20 text-white">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-5xl font-bold mb-4">About WalletWise</h1>
       <p class="text-lg max-w-3xl mx-auto">

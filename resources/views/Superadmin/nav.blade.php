@@ -38,12 +38,13 @@
       </div>
 
       <div class="hidden lg:flex space-x-6">
+        <a href="{{ url('/') }}" class="text-gray-600 hover:text-elegant">Home</a>
         <a href="{{ url('/Superadmin/Feature') }}" class="text-gray-600 hover:text-elegant">Features</a>
         <a href="{{ url('/Superadmin/pricing') }}" class="text-gray-600 hover:text-elegant">Pricing</a>
         <a href="{{ url('/Superadmin/contactus') }}" class="text-gray-600 hover:text-elegant">Contact us</a>
         <a href="{{ url('/Superadmin/about_us') }}" class="text-gray-600 hover:text-elegant">About us</a>
-        <a href="{{ url('login') }}" class="text-gray-600 hover:text-elegant">Log In</a>
         <a href="{{ url('register') }}" class="text-gray-600 hover:text-elegant">Sign Up</a>
+        <a href="{{ url('login') }}" class="text-gray-600 hover:text-elegant">Sign In</a>
       </div>
     </div>
   </nav>
