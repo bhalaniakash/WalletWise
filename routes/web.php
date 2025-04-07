@@ -38,7 +38,7 @@ require __DIR__ . '/auth.php';
 // This is for Super Admin
 Route::view('/', 'Superadmin.Home');
 Route::view('/Superadmin/Feature', 'Superadmin.feature');
-Route::view('/Superadmin/pricing', 'Superadmin.pricing');
+Route::view('/Superadmin/pricing', 'Superadmin.prici');
 
 
 // this is for user
@@ -57,6 +57,7 @@ Route::view('/dashboard/show_reminder', 'dashboard.show_reminder');
 Route::view('/admin/dashboard', 'admin.dashboard');
 Route::view('/admin/members', 'admin.members');
 Route::view('/admin/category', 'admin.category');
+Route::view('/admin/payment', 'admin.payment');
 Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
 Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
 Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');

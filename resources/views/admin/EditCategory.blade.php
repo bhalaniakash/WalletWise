@@ -81,6 +81,7 @@
                 <h1 class="admin-dashboard-title">Update Category</h1>
                 <div class="card">
                     <div class="card-body">
+                        
                         <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
                             @csrf
                             @method('PUT') <!-- For updating the record -->

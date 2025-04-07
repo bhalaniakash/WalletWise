@@ -6,6 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 	<style type="text/css">
 		body {
 			min-height: 100vh;
@@ -21,11 +27,12 @@
 			margin-right: 1rem;
 			transition: all 0.4s;
 			margin-top: 5% !important;
-			font-family: 'Arial, sans-serif';
-
+			
+			
 		}
-
+		
 		.card-title {
+			
 			font-size: 1.25rem;
 			font-weight: 500;
 			margin-bottom: 1rem;

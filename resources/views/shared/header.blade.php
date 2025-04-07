@@ -11,8 +11,9 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Andada Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ramaraja:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        </style>
     <base href="/expenseMVC/">
     <link href="{{ asset('link/link.php') }}">
 
@@ -45,7 +46,7 @@
             position: fixed;
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            animation: glow 2s infinite alternate;
+          
         }
 
         #content.active {
@@ -59,15 +60,10 @@
             background: #E6C7A5 !important;
             font-weight: 700;
             font-size: 2rem;
-            /* Adjust font size */
             padding: 10px 20px;
-            /* Add some padding for spacing */
             text-align: center;
-            /* Center the text */
             letter-spacing: 1px;
-            /* Add some spacing between letters */
             transition: all 0.3s ease;
-            /* Smooth transition on hover */
         }
 
         /* h2:hover {

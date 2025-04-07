@@ -13,6 +13,7 @@
     <title>Admin Dashboard</title>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&family=Lato:wght@300;400;700&display=swap');
+        
         body {
             margin: 0;
             font-family:'Lato', sans-serif;
@@ -33,7 +34,6 @@
             width: calc(100% - 18rem);
             padding: 2rem;
             background: #F3E5D8;
-            
             border-radius: 8px;
             font-family:'Lato', sans-serif;
         }
@@ -158,18 +158,10 @@
             color: #6b4226;
         }
 
-
-
-        /* Icons */
-        .card-icon {
-            font-size: 24px;
-            color: #333;
-        }
-
         .card-number {
             font-size: 28px;
             font-weight: bold;
-            color: #222;
+            color: #6b4226;
         }
 
 
