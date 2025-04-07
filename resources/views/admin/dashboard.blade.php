@@ -237,6 +237,30 @@
             </div>
             <div class="row mt-2" class="row">
                 <div class="dashboard-card">
+                    <a href="{{ url('/admin/payment') }}" style="text-decoration: none">
+                        <h5 class="card-title">
+                            <i class="fas fa-gem"></i>
+                            Total Premium Users
+                        </h5>
+                        <p class="card-number">
+                            {{$users = User::where('is_Admin', 'No')->where('plan_type', 'premium')->count()}}
+                        </p>
+                    </a>
+                </div>
+                <div class="dashboard-card">
+                    <a href="{{ url('/admin/members') }}" style="text-decoration: none">
+                        <h5 class="card-title">
+                            <i class="fas fa-user"></i>
+                            Total Regular Users
+                        </h5>
+                        <p class="card-number">
+                            {{$users = User::where('is_Admin', 'No')->where('plan_type', 'regular')->count()}}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-2" class="row">
+                <div class="dashboard-card">
                     <a href="{{ url('/admin/showCategory') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-layer-group"></i>
@@ -310,7 +334,7 @@
     $labels = $categories->where('type', 'income')->pluck('name');
     $incomeColors = collect($labels)->map(fn() => generateRandomColor())->toArray();
 
-    //cahrt 3 
+    //cahrt 3
 
     $categoryWiseExpenses = $expenseReport
         ->groupBy('category_id')

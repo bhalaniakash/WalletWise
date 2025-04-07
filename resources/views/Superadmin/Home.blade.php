@@ -84,27 +84,27 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-5">
         <div class="card-gradient p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-bold mb-2">Expense Tracking</h3>
-          <p>Monitor where your money goes with detailed breakdowns.</p>
+          <p class="text-gray-600">Monitor where your money goes with detailed breakdowns.</p>
         </div>
         <div class="card-gradient p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-bold mb-2">Smart Reminders</h3>
-          <p>Never miss rent, loan payments, or subscriptions.</p>
+          <p class="text-gray-600">Never miss rent, loan payments, or subscriptions.</p>
         </div>
         <div class="card-gradient p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-bold mb-2">Multi-Currency Support</h3>
-          <p>Manage finances in multiple currencies for international expenses.</p>
+          <p class="text-gray-600">Manage finances in multiple currencies for international expenses.</p>
         </div>
         <div class="card-gradient p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-bold mb-2">Income Reports</h3>
-          <p>Generate insightful reports to analyze your spending habits.</p>
+          <p class="text-gray-600">Generate insightful reports to analyze your spending habits.</p>
         </div>
         <div class="card-gradient p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-bold mb-2">Cloud Sync</h3>
-          <p>Access your budget from anywhere, anytime.</p>
+          <p class="text-gray-600">Access your budget from anywhere, anytime.</p>
         </div>
         <div class="card-gradient p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-bold mb-2">Secure & Private</h3>
-          <p>Your financial data is encrypted and protected.</p>
+          <p class="text-gray-600">Your financial data is encrypted and protected.</p>
         </div>
       </div>
     </div>
