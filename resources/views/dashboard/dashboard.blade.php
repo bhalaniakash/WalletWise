@@ -200,7 +200,6 @@
 					</div>
 				</div>
 			</section>
-			</div>	
 			<div class="col-xl-12 mt-4">
 				<div class="dashboard-card">
 					<div class="card-body">
@@ -267,96 +266,77 @@
 							});
 						</script>
 
-							<div class="d-flex " style="justify-content: space-between;">
-								<div>
-									<h5 class="mb-1">Earnings</h5>
-									<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
-								</div>
+<div class="d-flex " style="justify-content: space-between;">
+	<div>
+		<h5 class="mb-1">Earnings</h5>
+		<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
+	</div>
 
-								<div>
-									<h5 class="mb-1">Profit</h5>
-									<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
-								</div>
+	<div>
+		<h5 class="mb-1">Profit</h5>
+		<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
+	</div>
 
-								<div>
-									<h5 class="mb-1">Expense</h5>
-									<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
-								</div>
-							</div>
+	<div>
+		<h5 class="mb-1">Expense</h5>
+		<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
+	</div>
+</div>
+
+						
 						</div>
 					</div>
 				</div>
-			
-			{{-- Select  --}}
-			<br>
-			<section class="container-fluid">
-				<div class="row">
-					<div class="col-xl-4">
+			</div>
+			<div class="col-xl-12 mt-4">
+				<div class="dashboard-card">
+					<div class="card-body">
 					
-							<div class="dashboard-card">
-								<div class="card-body">
-									<h5 class="mb-1">Expense Today</h5>
-									@php
-										$today = now()->toDateString();
-										$todayExpense = $expenseReport
-											->where('user_id', $user->id)
-											->where('date', $today)
-											->sum('amount');
-									@endphp
-									<h4 class="mb-0">₹ {{ number_format($todayExpense, 2) }}</h4>
-								</div>
+						<div class="d-flex mt-4" style="justify-content: space-between;">
+							<div>
+								<h5 class="mb-1">Expense Today</h5>
+								@php
+									$today = now()->toDateString();
+									$todayExpense = $expenseReport
+										->where('user_id', $user->id)
+										->where('date', $today)
+										->sum('amount');
+								@endphp
+								<h4 class="mb-0">₹ {{ number_format($todayExpense, 2) }}</h4>
 							</div>
-						
-					</div>
-					<div class="col-xl-4">
-					
-							<div class="dashboard-card">
-								<div class="card-body">
-									<div>
-										<h5 class="mb-1">Expense Yesterday</h5>
-										@php
-											$yesterday = now()->subDay()->toDateString();
-											$yesterdayExpense = $expenseReport
-												->where('user_id', $user->id)
-												->where('date', $yesterday)
-												->sum('amount');
-										@endphp
-										<h4 class="mb-0">₹ {{ number_format($yesterdayExpense, 2) }}</h4>
-									</div>
-								</div>
+
+							<div>
+								<h5 class="mb-1">Expense Yesterday</h5>
+								@php
+									$yesterday = now()->subDay()->toDateString();
+									$yesterdayExpense = $expenseReport
+										->where('user_id', $user->id)
+										->where('date', $yesterday)
+										->sum('amount');
+								@endphp
+								<h4 class="mb-0">₹ {{ number_format($yesterdayExpense, 2) }}</h4>
 							</div>
-						
-					</div>
-					<div class="col-xl-4">
-						<div class="dashboard-card">
-							<div class="card-body">
-								<div>
-									<h5 class="mb-1">Difference Between Yesterday And Today </h5>
-									@php
-										$difference = $todayExpense - $yesterdayExpense;
-									@endphp
-									<h4 class="mb-0">
-										₹ {{ number_format(abs($difference), 2) }}
-										@if ($difference > 0)
-											<span class="text-danger">(Increased)</span>
-										@elseif ($difference < 0)
-											<span class="text-success">(Decreased)</span>
-										@else
-											<span class="text-muted">(No Change)</span>
-										@endif
-									</h4>
-								</div>
+							
+							<div>
+								<h5 class="mb-1">Difference Between Yesterday And Today </h5>
+								@php
+									$difference = $todayExpense - $yesterdayExpense;
+								@endphp
+								<h4 class="mb-0">
+									₹ {{ number_format(abs($difference), 2) }}
+									@if ($difference > 0)
+										<span class="text-danger">(Increased)</span>
+									@elseif ($difference < 0)
+										<span class="text-success">(Decreased)</span>
+									@else
+										<span class="text-muted">(No Change)</span>
+									@endif
+								</h4>
 							</div>
-						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 			<br>
-			{{-- select end --}}
-		
-		
-		
-			
 			<section class="container-fluid">
 				<div class="row d-flex align-items-md-stretch">
 					<div class="col-lg-6 ">
@@ -387,7 +367,7 @@
 			</section>
 			<br>
 		</div>
-	</div> <!-- Correctly closing the page-content div -->
+	</div>
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
 @php
