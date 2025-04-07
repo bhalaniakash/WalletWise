@@ -13,18 +13,18 @@
     <title>Admin Dashboard</title>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&family=Lato:wght@300;400;700&display=swap');
-        
+
         body {
             margin: 0;
-            font-family:'Lato', sans-serif;
+            font-family: 'Lato', sans-serif;
             background: #F3E5D8;
         }
 
         .main-page {
             margin-bottom: -100px;
             background: #F3E5D8;
-        
-            
+
+
         }
 
         .page-content {
@@ -35,16 +35,16 @@
             padding: 2rem;
             background: #F3E5D8;
             border-radius: 8px;
-            font-family:'Lato', sans-serif;
+            font-family: 'Lato', sans-serif;
         }
-        
+
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
-            font-family:'Lato', sans-serif;
+            font-family: 'Lato', sans-serif;
         }
-        
+
         #page-wrapper {
             background-color: #616b6b;
             border-radius: 8px;
@@ -63,7 +63,7 @@
         .container {
             margin-top: 2rem;
             /* height:100%; */
-        
+
         }
 
         .row {
@@ -80,7 +80,7 @@
         }
 
         .card {
-            font-family:'Lato', sans-serif;
+            font-family: 'Lato', sans-serif;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -91,7 +91,7 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        
+
         }
 
         .card-body {
@@ -205,19 +205,33 @@
                             Inactive Users
                         </h5>
                         @php
-                            $inactiveUsers = collect([]);
+                            use App\Models\User;
 
-                            $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
-                                ->where('updated_at', '<', now()->subHours(1))
-                                ->pluck('user_id');
+                            // Step 1: Collect user_ids from reports
+                            $reportedUserIds = $expenseReport->pluck('user_id')
+                                ->merge($incomeReport->pluck('user_id'))
+                                ->unique();
 
-                            $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
-                                ->where('updated_at', '<', now()->subHours(1))
-                                ->pluck('user_id');
+                            // Step 2: Get users who are either:
+                            // A. In the reports and inactive (based on your condition)
+                            $inactiveUserIds = $expenseReport->concat($incomeReport)
+                                ->where('is_Admin', '!=', 'Yes')
+                                ->where('updated_at', '<', \Carbon\Carbon::now()->subWeek())
+                                ->pluck('user_id')
+                                ->unique();
 
-                            $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
+                            // B. OR not in any reports (no activity at all)
+                            $usersWithNoData = User::whereNotIn('id', $reportedUserIds)
+                                ->where('is_Admin', '!=', 'Yes')
+                                ->pluck('id');
+
+                            // Final Merge
+                            $allInactiveUserIds = $inactiveUserIds->merge($usersWithNoData)->unique();
+
+                            // dd($allInactiveUserIds);
                         @endphp
-                        <p class="card-number">{{ $inactiveUsers->count() }}</p>
+
+                        <p class="card-number">{{ $allInactiveUserIds->count() }}</p>
                     </a>
                 </div>
             </div>
@@ -280,16 +294,10 @@
 @php
 
     // chart 1
-    $inactiveUsers = collect([]);
-    $expenseUsers = $expenseReport->where('is_Admin', '!=', 'Yes')
-        ->where('updated_at', '<', now()->subHours(1))
-        ->pluck('user_id');
-    $incomeUsers = $incomeReport->where('is_Admin', '!=', 'Yes')
-        ->where('updated_at', '<', now()->subHours(1))
-        ->pluck('user_id');
-    $inactiveUsers = $expenseUsers->merge($incomeUsers)->unique();
-    $totalUsers = $totalUsers->where('is_Admin', '!=', 'Yes');
-
+    $regular = User::where('is_Admin', '!=', 'Yes')
+        ->where('plan_type', 'regular');
+    $premium = User::where('is_Admin', '!=', 'Yes')
+        ->where('plan_type', 'premium');
     function generateRandomColor()
     {
         return 'rgb(' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')';
@@ -314,16 +322,15 @@
 <script>
     // cahrt 1
     const ctx = document.getElementById('user');
-    var Labels = ['Total Users', 'Inactive Users'];
-    var userCount = [{{$totalUsers->count()}}, {{$inactiveUsers->count()}}];
-    var userColors = ['#007bff', '#ff4d4d'];
+    const regularCount = {{ $regular->count() }};
+    const premiumCount = {{ $premium->count() }};
     const data = {
-        labels: Labels,
+        labels: ['Regular Users', 'Premium Users'],
         datasets: [{
-            label: 'Users statistics',
-            data: userCount,
-            backgroundColor: userColors,
-            hoverOffset: 4
+            label: 'User Plans',
+            data: [regularCount, premiumCount],
+            backgroundColor: ['#f9a825', '#6a1b9a'],
+            hoverOffset: 10
         }]
     };
     new Chart(ctx, {
