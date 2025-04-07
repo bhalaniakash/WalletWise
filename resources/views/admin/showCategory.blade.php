@@ -64,114 +64,112 @@
             font-family: 'Roboto Slab';
             font-size: 1rem;
         }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: #F3E5D8;
+            margin: 0;
+            font-family: 'Arial, sans-serif';
+        }
+
+        .forBg {
+            background: #F3E5D8;
+            padding: 50px;
+        }
+
+        .page-content {
+            margin-left: 17rem;
+            margin-right: 1rem;
+            transition: all 0.4s;
+            background: #fff;
+            margin-top: 5%;
+            padding: 3%;
+        }
+
+        .admin-dashboard-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #6B4226;
+            text-align: left;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            padding: 10px;
+            width: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #E6C7A5 !important;
+            color: #6B4226;
+            padding: 10px;
+        }
+
+        td {
+            color: #6B4226;
+            padding: 10px;
+            font-size: 1rem;
+
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            width: 100%;
+            margin-right: 8px;
+        }
+
+        #category {
+            width: auto;
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin-right: 8px;
+        }
+
+        #filter {
+            background: #6B4226;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.3s ease-in-out;
+            border: none;
+            padding: 8px 16px;
+        }
+
+        #filter:hover {
+            background: #8A5A3D;
+        }
+
+
+        @media (max-width: 768px) {
+            .page-content {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
     </style>
 
 </head>
-
-<style>
-    body {
-        min-height: 100vh;
-        overflow-x: hidden;
-        background: #F3E5D8;
-        margin: 0;
-        font-family: 'Arial, sans-serif';
-    }
-
-    .forBg {
-        background: #F3E5D8;
-        padding: 50px;
-    }
-
-    .page-content {
-        margin-left: 17rem;
-        margin-right: 1rem;
-        transition: all 0.4s;
-        background: #fff;
-        margin-top: 5%;
-        padding: 3%;
-    }
-
-    .admin-dashboard-title {
-        font-size: 32px;
-        font-weight: bold;
-        color: #6B4226;
-        text-align: left;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        padding: 10px;
-        width: 100%;
-    }
-
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    th {
-        background: #E6C7A5 !important;
-        color: #6B4226;
-        padding: 10px;
-    }
-
-    td {
-        color: #6B4226;
-        padding: 10px;
-        font-size: 1rem;
-
-    }
-
-    button {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: 0.3s;
-        width: 100%;
-        cursor: pointer;
-    }
-
-    .filter-section {
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 10px;
-        width: 100%;
-        margin-right: 8px;
-    }
-
-    #category {
-        width: auto;
-        padding: 6px 12px;
-        border-radius: 6px;
-        margin-right: 8px;
-    }
-
-    #filter {
-        background: #6B4226;
-        color: white;
-        border-radius: 8px;
-        font-weight: bold;
-        font-size: 1rem;
-        transition: 0.3s ease-in-out;
-        border: none;
-        padding: 8px 16px;
-    }
-
-    #filter:hover {
-        background: #8A5A3D;
-    }
-
-
-    @media (max-width: 768px) {
-        .page-content {
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-    }
-</style>
 
 <body>
     <br>
@@ -270,7 +268,7 @@
                                     </td>
 
                                     <td width="10%">
-                                        <form action="/admin/category/${category.id}/edit" method="GET">
+                                        <form action="/admin/category/edit/${category.id}" method="GET">
                                             <button type="submit" class="btn btn-primary">Update</button>
                                         </form>
                                     </td>
