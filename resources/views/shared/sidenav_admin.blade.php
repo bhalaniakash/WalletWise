@@ -182,7 +182,7 @@
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
             class="nav-link">
             <span class="span"><i class="fas fa-sign-out-alt"></i></span>
-            {{ __('Log Out') }}
+            {{ __('Sign Out') }}
           </a>
         </form>
       </li>
