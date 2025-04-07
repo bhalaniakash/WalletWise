@@ -47,6 +47,9 @@
     .footer-bg {
       background: linear-gradient(to right, #6B4226, #5a3b20);
     }
+    .container{
+            background: #f5e8db;
+        }
   </style>
 </head>
 

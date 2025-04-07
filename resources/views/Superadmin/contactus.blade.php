@@ -59,6 +59,9 @@
             background: linear-gradient(to right, #E6C7A5, #d7b693);
             color: #6B4226;
         }
+        .container{
+            background: #f5e8db;
+        }
     </style>
 </head>
 
@@ -146,10 +149,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="gradient-footer text-white py-6">
-        <div class="container mx-auto text-center">
+    <footer class="gradient-footer text-white py-6 text-center">
+      
             <p>&copy; 2025 WalletWise. Designed to simplify your finances.</p>
-        </div>
+      
     </footer>
 
 </body>

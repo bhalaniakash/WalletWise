@@ -13,7 +13,7 @@
     }
 
     .rounded-lg {
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      background: #f5e8db;
     }
 
     .rounded-lg:hover {
@@ -57,6 +57,9 @@
     .text-elegant {
       color: #6B4226;
     }
+    .container{
+            background: #f5e8db;
+        }
   </style>
 </head>
 
@@ -67,35 +70,35 @@
 
   <!-- About Section -->
 
-  <section class="gradient-hero py-20">
-    <div class="container mx-auto px-4 text-center">
+  <section class="gradient-hero py-20 text-elegant text-center">
+  
       <h1 class="text-5xl font-bold mb-4">About WalletWise</h1>
       <p class="text-lg max-w-3xl mx-auto">
         WalletWise was born from a hostel room and a common problem—managing daily expenses. Created by a student who
         struggled to track their own spending, WalletWise is now a reliable financial companion for students, small
         business owners, corporate employees, and anyone wanting to take control of their finances.
       </p>
-    </div>
+   
   </section>
 
   <!-- Mission Section -->
-  <section class="gradient-section py-16">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-elegant">Our Mission</h2>
-      <p class="max-w-3xl mx-auto text-lg">
-        Our mission is to make personal finance simple, smart, and accessible. Whether you're budgeting monthly
-        expenses, monitoring income, or setting reminders for rent and loan payments—WalletWise ensures your financial
-        well-being is always in check.
-      </p>
-    </div>
+  <section class="py-16 text-center rounded-lg">
+    
+    <h2 class="text-3xl font-bold mb-6 text-elegant">Our Mission</h2>
+    <p class="max-w-3xl mx-auto text-lg">
+      Our mission is to make personal finance simple, smart, and accessible. Whether you're budgeting monthly
+      expenses, monitoring income, or setting reminders for rent and loan payments—WalletWise ensures your financial
+      well-being is always in check.
+    </p>
+    
   </section>
-
+  
   <!-- Who It's For Section -->
-  <section class="py-16">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-elegant">Who Is It For?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="card-gradient p-6 rounded-lg shadow-lg">
+  <section class="gradient-section py-16 text-center">
+  
+  <h2 class="text-3xl font-bold mb-6 text-elegant">Who Is It For?</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="card-gradient p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-bold mb-2">Students</h3>
           <p>Manage hostel life, daily spending, and stay ahead of bills and rent.</p>
         </div>
@@ -108,16 +111,16 @@
           <p>Stay financially aware with reminders, summaries, and analytics.</p>
         </div>
       </div>
-    </div>
+   
   </section>
 
   <!-- Footer -->
-  <footer class="gradient-footer text-white py-6">
-    <div class="container mx-auto text-center">
+  <footer class="gradient-footer text-white py-6 text-center">
+   
       <p>&copy; 2025 WalletWise. Developed with guidance from Pratyush Sharma and supported by
         <a href="https://www.brainerhub.com/"> <u>BrainerHub Solution.</u></a>
       </p>
-    </div>
+  
   </footer>
 
 </body>

@@ -281,9 +281,7 @@
 									<h5 class="mb-1">Expense</h5>
 									<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
 								</div>
-							</div>
-
-						
+							</div>	
 						</div>
 					</div>
 				</div>
@@ -294,7 +292,6 @@
 			<div class="col-xl-12 mt-4">
 				<div class="dashboard-card">
 					<div class="card-body">
-					
 						<div class="d-flex mt-4" style="justify-content: space-between;">
 							<div>
 								<h5 class="mb-1">Expense Today</h5>
@@ -336,12 +333,10 @@
 									@endif
 								</h4>
 							</div>
+						</div>
 					</div>
 				</div>
-			</div>
 			<br>
-
-			
 				<div class="row d-flex align-items-md-stretch">
 					<div class="col-lg-6 ">
 						<div class="dashboard-card">
@@ -368,8 +363,7 @@
 						</div>
 					</div>
 				</div>
-			
-		</div>
+			</div>
 	
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
@@ -389,10 +383,8 @@
 		->groupBy('category_id')
 		->map(fn($items) => $items->sum('amount'));
 
-	// Fetch category names for labels
 	$categoryLabels = $categories->whereIn('id', $categoryWiseExpenses->keys())->pluck('name');
 	$categoryColors = collect($categoryLabels)->map(fn() => generateRandomColor())->toArray();
-
 
 	// Get category-wise income for the current month
 	$categoryWiseIncome = $incomeReport
@@ -400,11 +392,9 @@
 		->filter(fn($i) => date('Y-m', strtotime($i->date)) == $currentMonth)
 		->groupBy('category_id')
 		->map(fn($items) => $items->sum('amount'));
-
-	// Fetch category names for labels
+	
 	$categoryLabelsI = $categories->whereIn('id', $categoryWiseIncome->keys())->pluck('name');
 	$categoryColorsI = collect($categoryLabelsI)->map(fn() => generateRandomColor())->toArray();
-
 
 @endphp
 
@@ -449,14 +439,13 @@
 			hoverOffset: 4
 		}]
 	};
+
 	new Chart(ctxi, {
 		type: 'pie', 
 		data: datai,
 		options: {
 			animation: false
 		}
-
 	});
 </script>
-
 </html>
