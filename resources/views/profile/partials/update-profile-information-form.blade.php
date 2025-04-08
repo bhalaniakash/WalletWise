@@ -4,13 +4,13 @@
     <style>
         body {
             font-family: 'Arial, sans-serif';
-           
+
         }
 
         button {
             background-color: #000;
             border-color: #000;
-            font-family: 'Arial, sans-serif'; 
+            font-family: 'Arial, sans-serif';
         }
     </style>
 </head>
@@ -18,7 +18,7 @@
 <body>
     <section>
         <header>
-       
+
             <p class="mt-1 text-sm ">
                 {{ __("Update your account's profile information and email address.") }}
             </p>
@@ -28,16 +28,16 @@
             @csrf
         </form>
         @if ($errors->any())
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Whoops! Something went wrong.</strong>
-            <ul class="mt-2">
-                @foreach ($errors->all() as $error)
-                    <li class="text-sm">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">Whoops! Something went wrong.</strong>
+                <ul class="mt-2">
+                    @foreach ($errors->all() as $error)
+                        <li class="text-sm">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
             @csrf
             @method('patch')
@@ -115,14 +115,17 @@
                     accept="image/*">
                 <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
 
-                @if ($user->profile_picture)
-                    <div class="mt-2">
-                        <label for="profile_picture" class="mt-2 block">
+                <div class="mt-2">
+                    <label for="profile_picture" class="mt-2 block">
+                        @if ($user->profile_picture)
                             <img id="profilePreview" src="{{ asset('storage/' . $user->profile_picture) }}"
                                 alt="Profile Picture" class="w-20 h-20 rounded-full">
-                        </label>
-                    </div>
-                @endif
+                        @else
+                            <img id="profilePreview" src="{{ asset('/img/default.jpg') }}" alt="Profile Picture"
+                                class="w-20 h-20 rounded-full">
+                        @endif
+                    </label>
+                </div>
             </div>
             <script>
                 document.getElementById('profile_picture').addEventListener('change', function (event) {
