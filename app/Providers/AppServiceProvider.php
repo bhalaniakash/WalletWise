@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
+use App\Models\contactUs;
 use App\Models\Expense;
 use App\Models\User;
 use App\Models\Income;
@@ -30,12 +31,14 @@ class AppServiceProvider extends ServiceProvider
         $income = Income::all();
         $expense = Expense::all();
         $reminder = reminder::all();
+        $suggestions = contactUs::all();
         View::share([
             'categories' => $categories,
             'members' => $users,
             'incomeReport' => $income,
             'expenseReport' => $expense,
-            'reminder' => $reminder
+            'reminder' => $reminder,
+            'suggestions' => $suggestions,
         ]);
     }
 }

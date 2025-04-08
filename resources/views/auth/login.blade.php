@@ -109,7 +109,7 @@
         </div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <h2>Log in</h2>
+            <h2>Sign in</h2>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" type="email" name="email" required>

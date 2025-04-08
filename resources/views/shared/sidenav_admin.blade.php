@@ -177,6 +177,10 @@
           <span class="span"><i class="fas fa-receipt"></i></span>Payment</a>
       </li>
       <li class="nav-item">
+        <a href="{{ url('admin/suggestions') }}" class="nav-link">
+          <span class="span"><i class="fas fa-receipt"></i></span>Visitors suggestions</a>
+      </li>
+      <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
