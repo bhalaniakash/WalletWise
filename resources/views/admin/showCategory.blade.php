@@ -16,7 +16,9 @@
             overflow-x: hidden;
             background: #F3E5D8;
             margin: 0;
-            font-family: 'Arial, sans-serif';
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 
         }
 
@@ -27,13 +29,17 @@
             background: #F3E5D8;
             color: black;
             margin-top: 5%;
-            font-family: 'Arial, sans-serif';
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
-            font-family: 'Arial, sans-serif';
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         #add1 input,
@@ -44,7 +50,9 @@
             border: 1px solid #ced4da;
             border-radius: 4px;
             box-sizing: border-box;
-            font-family: 'Arial, sans-serif';
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         table {
@@ -70,7 +78,9 @@
             overflow-x: hidden;
             background: #F3E5D8;
             margin: 0;
-            font-family: 'Arial, sans-serif';
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .forBg {

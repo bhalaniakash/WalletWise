@@ -17,7 +17,9 @@
         overflow-x: hidden;
         background: #F3E5D8;
         margin-top: 0%;
-        font-family: 'Arial, sans-serif';
+         font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
     }
 
     .page-content {
@@ -25,7 +27,9 @@
         margin-right: 1rem;
         transition: all 0.4s;
         margin-top: 5% !important;
-        font-family: 'Arial, sans-serif';
+         font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
     }
 
     .admin-dashboard-title {

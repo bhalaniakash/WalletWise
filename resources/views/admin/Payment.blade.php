@@ -11,13 +11,18 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
             background: #F3E5D8;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .forBg {
             background: #F3E5D8;
             padding: 50px;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .page-content {
@@ -29,6 +34,9 @@
             background: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         h5 {
@@ -44,6 +52,9 @@
             margin-bottom: 1.5rem;
             border-radius: 10px;
             overflow: hidden;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         th,

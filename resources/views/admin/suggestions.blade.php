@@ -16,14 +16,18 @@
 
         body {
             margin: 0;
-            font-family: 'Lato', sans-serif;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
             background: #F3E5D8;
         }
 
         .main-page {
             margin-bottom: -100px;
             background: #F3E5D8;
-
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 
         }
 
@@ -35,14 +39,18 @@
             padding: 2rem;
             background: #F3E5D8;
             border-radius: 8px;
-            font-family: 'Lato', sans-serif;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
-            font-family: 'Lato', sans-serif;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         #page-wrapper {
@@ -50,7 +58,9 @@
             border-radius: 8px;
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
             padding: 0.5rem;
-            font-family: 'Inter', sans-serif;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         h1 {
@@ -80,7 +90,9 @@
         }
 
         .card {
-            font-family: 'Lato', sans-serif;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

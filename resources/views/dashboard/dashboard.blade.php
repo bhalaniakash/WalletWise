@@ -17,7 +17,9 @@
 			min-height: 100vh;
 			overflow-x: hidden;
 			margin-top: 0;
-			font-family: 'Arial, sans-serif';
+			font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 			background: #E6C7A5;
 			
 		}
@@ -27,12 +29,16 @@
 			margin-right: 1rem;
 			transition: all 0.4s;
 			margin-top: 5% !important;
-			
+			font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 			
 		}
 		
 		.card-title {
-			
+			font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
 			font-size: 1.25rem;
 			font-weight: 500;
 			margin-bottom: 1rem;
@@ -45,10 +51,16 @@
 			font-size: 28px;
 			font-weight: bold;
 			color: white;
+			font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 		}
 
 		h5 {
 			color: #6b4226;
+			font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 		}
 		/* Dashboard Cards */
 		.dashboard-card {
@@ -58,7 +70,9 @@
 			border-radius: 10px;
 			box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 			transition: all 0.3s ease-in-out;
-			font-family: "Lato", sans-serif
+			font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 		}
 		
 		.dashboard-card:hover {

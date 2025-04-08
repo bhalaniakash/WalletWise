@@ -9,9 +9,12 @@
     <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
         body {
             background-color: #f8f5f2;
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .page-content {
@@ -20,7 +23,9 @@
             margin-bottom: 5% !important;
             margin-right: 1rem;
             transition: all 0.4s;
-            font-family: 'Arial, sans-serif';
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
             color: #6b4226;
             padding: 2rem;
             border-radius: 12px;
