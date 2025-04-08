@@ -88,6 +88,7 @@ Route::get('/admin/payment', function (Request $request) {
 
     return view('admin.payment', compact('data', 'totalPremiumPayment'));
 })->name('payment.filter');
+
 // User income and expense routes
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
 Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
@@ -116,11 +117,12 @@ Route::post('/income/filter', function (Request $request) {
         return [
             'date' => $income->date,
             'source' => $income->source,
-            'category_name' => category::find($income->category_id)->name ?? 'Unknown',
+            'category_name' => Category::find($income->category_id)->name ?? 'Unknown',
             'amount' => $income->amount,
             'description' => $income->description
         ];
     });
+
     return response()->json($data);
 });
 

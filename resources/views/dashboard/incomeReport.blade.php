@@ -104,22 +104,22 @@
       <h2>Income Report</h2>
       <div class="col-xl-12">
 
-        <form class="form-inline" id="Report">
-          <select class="form-control" id="incomeCategory">
-            <option value="">All Categories</option>
-            @foreach ($categories as $category)
-        @if ($category->type == 'income')
-      <option value="{{ $category->id }}">{{ $category->name }}</option>
-    @endif
-      @endforeach
+        <form class="form-inline" id="incomeFilterForm">
+          <select class="form-control" id="incomeCategory" name="icat">
+              <option value="">All Categories</option>
+              @foreach ($categories as $category)
+                  @if ($category->type == 'income')
+                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  @endif
+              @endforeach
           </select>
           &nbsp;&nbsp;
-          <input type="month" class="form-control mr-2" id="incomeDate">
-
-          <button  type="submit">
-            <i class="fa fa-filter fa-xs"></i> Filter
+          <input type="month" class="form-control mr-2" id="incomeDate" name="date">
+          <button type="submit">
+              <i class="fa fa-filter fa-xs"></i> Filter
           </button>
-        </form>
+      </form>
+      
         <br>
         <table class="table table-striped" id="incomeReportTable" style="border-radius: 10px; overflow: hidden;">
           <thead style="background-color: #1E1E2E;">
@@ -362,49 +362,7 @@
     });
 
   </script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#Report').submit(function (e) {
-        e.preventDefault();
-        $.ajax({
-          url: "/income/filter",
-          type: "POST",
-          data: {
-            date: $("#incomeDate").val(),
-            icat: $("#incomeCategory").val()
-          },
-          headers: {
-            "X-CSRF-TOKEN": "{{ csrf_token() }}"
-          },
-          success: function (response) {
-            // console.log("Response received:", response);
-            let tableBody = $("#incomeTBody");
-            tableBody.empty();
 
-            if (response.length === 0) {
-              tableBody.append("<tr><td colspan='6' class='text-center'>No records found</td></tr>");
-            } else {
-              // console.log(tableBody);
-              $.each(response, function (index, income) {
-                let row = `<tr>
-                          <td>${income.date}</td>
-                          <td>${income.source}</td>
-                          <td>${income.category_name}</td>
-                          <td>${income.description}</td>
-                          <td>₹ ${income.amount}</td>
-                      </tr>`;
-                tableBody.append(row);
-              });
-            }
-          },
-          error: function (xhr) {
-            console.log(xhr.responseText);
-          }
-        });
-      });
-    });
-  </script>
 </body>
 
 </html>

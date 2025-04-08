@@ -81,7 +81,6 @@
 
             <form method="GET" action="{{ route('payment.filter') }}" class="form-inline mb-4">
 
-
                 <label for="expenseDate" class="mr-2">Select Month:</label>
                 <input type="month" class="form-control mr-2" id="expenseDate" name="date" value="{{ request('date') }}">
                 <button type="submit" class="btn btn-primary">
@@ -99,7 +98,7 @@
                         <th>Payment Amount</th>
                     </tr>
                 </thead>
-                <tbody>
+                
                     @php
                         $data = $data ?? collect();
                     @endphp
@@ -121,6 +120,17 @@
                         <td colspan="4" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
                         <td style="text-align:left ; font-weight: bold;">&#8377; {{ $totalPremiumPayment }}</td>
                     </tr>
+                  
+                        @php
+                            $totalPremiumPayment = $data->sum('premium_amount');
+                        @endphp
+    
+                        <tr>
+                            <td colspan="4" style="text-align: left; font-weight: bold;">Total Premium Users:</td>
+                            <td style="text-align:left ; font-weight: bold;">{{ $data->count() }}</td>
+                        </tr>
+                        
+                  
                 </tbody>
             </table>
         </div>

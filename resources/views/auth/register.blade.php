@@ -162,7 +162,7 @@
                         accept="image/*">
                     @error('profile_picture') <span class="error">{{ $message }}</span> @enderror
                 </div>
-
+                
             </div>
             <div class="form-footer">
                 <a href="{{ route('login') }}">Already registered?</a>
