@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reminders</title>
     <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
         .page-content {
             margin-top: 5% !important;
             margin-left: 17rem;
@@ -16,8 +17,8 @@
             transition: all 0.3s ease-in-out;
             color: #6b4226;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .card-body {
@@ -26,16 +27,16 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         table {
             border-collapse: collapse;
             width: 100%;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         th {
@@ -46,6 +47,7 @@
 
         td {
             color: #A08963;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -66,26 +68,31 @@
                         <th>Due Date</th>
                         <th>Frequency</th>
                         <th>Description</th>
-                        <th>Amount</th>
                         <th>Remaining days</th>
+                        <th>Amount</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($reminder as $reminder)
+                    @php
+                        $currentUser = auth()->user();
+                        $reminders = $reminder
+                            ->where('user_id', $currentUser->id);
+                        // dd($reminders);
+                    @endphp
+                    @forelse ($reminders as $r)
                         <tr>
-
-                            <td>{{ $reminder->reminder_name }}</td>
-                            <td>{{ $reminder->due_date }}</td>
-                            <td>{{ $reminder->frequency }}</td>
-                            <td>{{ $reminder->description }}</td>
-                            <td>{{ $reminder->reminder_amount }}</td>
+                            <td>{{ $r->reminder_name }}</td>
+                            <td>{{ $r->due_date }}</td>
+                            <td>{{ $r->frequency }}</td>
+                            <td>{{ $r->description }}</td>
                             <td class="text-center">
-                                {{ ceil(\Carbon\Carbon::now()->diffInDays($reminder->due_date, false)) }}
+                                {{ ceil(\Carbon\Carbon::now()->diffInDays($r->due_date, false)) }}
                             </td>
+                            <td>{{ $r->reminder_amount }}</td>
                             <td>
                                 {{-- <a href="{{ route('reminder.edit', $reminder->id) }}">Edit</a> --}}
-                                <form action="{{ route('reminder.destroy', $reminder->id) }}" method="POST"
+                                <form action="{{ route('reminder.destroy', $r->id) }}" method="POST"
                                     style="display:inline;">
                                     @csrf
                                     @method('DELETE')
@@ -100,12 +107,12 @@
                         </tr>
                     @endforelse
                     @php
-                        $totalAmount = $reminder->sum('reminder_amount');
+                        $totalAmount = $reminders->sum('reminder_amount');
                     @endphp
 
                     <tr>
-                        <td colspan="4"><strong>Total:</strong></td>
-                        <td colspan="3"><strong>{{ number_format($totalAmount, 2) }}</strong></td>
+                        <td colspan="5"><strong>Total:</strong></td>
+                        <td colspan="2"><strong>{{ number_format($totalAmount, 2) }}</strong></td>
                     </tr>
                 </tbody>
             </table>
