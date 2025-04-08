@@ -1,8 +1,7 @@
-<link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
@@ -79,33 +78,45 @@
     <div class="forBg">
         <div class="page-content" id="content">
             <h5>Payment Of User</h5>
+
+            <form method="GET" action="{{ route('payment.filter') }}" class="form-inline mb-4">
+
+
+                <label for="expenseDate" class="mr-2">Select Month:</label>
+                <input type="month" class="form-control mr-2" id="expenseDate" name="date" value="{{ request('date') }}">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-filter fa-xs"></i> Filter
+                </button>
+            </form>
+
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Joining Date</th>
-                        <th scope="col">Payment Amount</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Joining Date</th>
+                        <th>Payment Amount</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
-                        use App\Models\User;
-                        // Fetch all users with plan_type = premium
-                        $premiumUsers = User::where('plan_type', 'premium')->where('is_Admin', 'No')->get();
-                        // Calculate total payment
-                        $totalPremiumPayment = number_format($premiumUsers->sum('premium_amount'), 2, '.', '');
+                        $data = $data ?? collect();
                     @endphp
-                    @foreach($premiumUsers as $user)
+
+                    @forelse($data as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->age }}</td>
-                            <td>{{ $user->premium_started_at }}</td>
-                            <td>&#8377;{{ $user->premium_amount}}</td>
+                            <td>{{ \Carbon\Carbon::parse($user->premium_started_at)->format('d M Y') }}</td>
+                            <td>&#8377;{{ $user->premium_amount }}</td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No premium users found for the selected month.</td>
+                        </tr>
+                    @endforelse
                     <tr>
                         <td colspan="4" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
                         <td style="text-align:left ; font-weight: bold;">&#8377; {{ $totalPremiumPayment }}</td>

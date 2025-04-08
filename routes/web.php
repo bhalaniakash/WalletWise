@@ -17,6 +17,7 @@ use App\Models\Category;
 use App\Models\contactUs;
 use App\Models\Expense;
 use App\Models\Income;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -73,6 +74,20 @@ Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
 Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
 
+Route::get('/admin/payment', function (Request $request) {
+    $filteredUsers = User::where('plan_type', 'premium')
+        ->where('is_Admin', 'No');
+
+    if ($request->filled('date')) {
+        $filteredUsers->whereYear('premium_started_at', substr($request->input('date'), 0, 4))
+            ->whereMonth('premium_started_at', substr($request->input('date'), 5, 2));
+    }
+
+    $data = $filteredUsers->get();
+    $totalPremiumPayment = number_format($data->sum('premium_amount'), 2, '.', '');
+
+    return view('admin.payment', compact('data', 'totalPremiumPayment'));
+})->name('payment.filter');
 // User income and expense routes
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
 Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
@@ -150,6 +165,9 @@ Route::post('/category/filter', function (Request $request) {
     // dd($data);
     return response()->json($data);
 });
+
+
+
 
 //payment
 Route::post('/razorpay/payment', [Payment::class, 'payment'])->name('payment');
