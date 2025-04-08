@@ -131,13 +131,12 @@
         </div>
         <div>
             <a href="{{ route('profile.edit') }}" class="nav-link">
-                {{-- @php
-                dd(Auth::user()->profile_picture);
-                @endphp --}}
-                <img src="{{asset('storage/' . Auth::user()->profile_picture)}}" alt="Profile Image"
-                    class="w-10 h-10 rounded-full object-cover" />
-                {{-- <i class="fas fa-user"></i> --}}
-                {{-- Profile --}}
+                @if (Auth::user()->profile_picture == null)
+                    <i class="fas fa-user"></i>
+                @else
+                    <img src="{{asset('storage/' . Auth::user()->profile_picture)}}" alt="Profile Image"
+                        class="w-10 h-10 rounded-full object-cover" />
+                @endif
             </a>
         </div>
     </nav>
