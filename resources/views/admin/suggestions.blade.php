@@ -187,13 +187,13 @@
 
             <div class="row mb-2 align-items-start">
                 @foreach ($suggestions as $suggestion)
-                            <div class="dashboard-card text-left 
-                    @if ($loop->last && $loop->count % 3 == 1) col-span-3 
-                    @elseif ($loop->last && $loop->count % 3 == 2) col-span-2 
-                    @endif">
-                                <p class="card-title font-semibold">{{ $suggestion->name }}</p>
-                                <p>{{ $suggestion->message }}</p>
-                            </div>
+                    <div class="dashboard-card text-left
+                                @if ($loop->last && $loop->count % 3 == 1) col-span-3
+                                @elseif ($loop->last && $loop->count % 3 == 2) col-span-2
+                                @endif">
+                        <p class="card-title font-semibold">{{ $suggestion->name }}</p>
+                        <p>{{ $suggestion->message }}</p>
+                    </div>
                 @endforeach
 
             </div>
