@@ -107,11 +107,8 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-footer text-white py-6 text-center">
-    <p>&copy; 2025 WalletWise. All rights reserved.</p>
-    <p>Guided by Pratyush Sharma | Developed at Brainerhub</p>
-  </footer>
+   <!-- Footer -->
+   @include('Superadmin.footer')
+  
 </body>
-
 </html>
