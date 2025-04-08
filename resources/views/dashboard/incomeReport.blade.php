@@ -43,22 +43,22 @@
     }
 
     button[type="submit"] {
-            background: #E6C7A5;
-            color: #4E2F1E;
-            padding: 8px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease-in-out;
-            width: 10%;
-            border: none;
-        }
+      background: #E6C7A5;
+      color: #4E2F1E;
+      padding: 8px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.3s ease-in-out;
+      width: 10%;
+      border: none;
+    }
 
-        button[type="submit"]:hover {
-            background: #4E2F1E;
-            color: #E6C7A5;
-            cursor: pointer;
-        }
+    button[type="submit"]:hover {
+      background: #4E2F1E;
+      color: #E6C7A5;
+      cursor: pointer;
+    }
 
     .text-2xl {
       color: #A08963;
@@ -87,7 +87,6 @@
       color: #6B4226;
       padding: 20px;
     }
-
   </style>
 </head>
 
@@ -106,20 +105,20 @@
 
         <form class="form-inline" id="incomeFilterForm">
           <select class="form-control" id="incomeCategory" name="icat">
-              <option value="">All Categories</option>
-              @foreach ($categories as $category)
-                  @if ($category->type == 'income')
-                      <option value="{{ $category->id }}">{{ $category->name }}</option>
-                  @endif
-              @endforeach
+            <option value="">All Categories</option>
+            @foreach ($categories as $category)
+        @if ($category->type == 'income')
+      <option value="{{ $category->id }}">{{ $category->name }}</option>
+    @endif
+      @endforeach
           </select>
           &nbsp;&nbsp;
           <input type="month" class="form-control mr-2" id="incomeDate" name="date">
           <button type="submit">
-              <i class="fa fa-filter fa-xs"></i> Filter
+            <i class="fa fa-filter fa-xs"></i> Filter
           </button>
-      </form>
-      
+        </form>
+
         <br>
         <table class="table table-striped" id="incomeReportTable" style="border-radius: 10px; overflow: hidden;">
           <thead style="background-color: #1E1E2E;">
@@ -142,7 +141,7 @@
             $categoryMatch = request('icat') ? $e->category_id == request('icat') : true;
             return $dateMatch && $categoryMatch;
           });
-      @endphp
+        @endphp
             @foreach ($filteredincomes as $i)
         <tr>
           <td>{{ $i->date }}</td>
@@ -166,7 +165,7 @@
 
     <div class="card shadow">
       <div class="card-header d-flex">
-        <h5>Income chart [Total]</h5>
+        <h3 class="text-2xl  mb-4">Income Chart [Total]</h3>
       </div>
       <div class="card-body">
         <div class="row">
@@ -215,11 +214,13 @@
 
   $dateWiseIncome = $incomeReport
     ->where('user_id', $user->id)
-    ->groupBy('date')
+    ->groupBy(fn($item) => \Carbon\Carbon::parse($item->date)->format('Y-m'))
     ->map(fn($items) => $items->sum('amount'));
+
+
   $dateLabelsI = $incomeReport
     ->where('user_id', $user->id)
-    ->groupBy('date') // Grouping by date
+    ->groupBy(fn($item) => \Carbon\Carbon::parse($item->date)->format('Y-m'))
     ->keys();
   $dateColorsI = collect($dateLabelsI)->map(fn() => generateRandomColor())->toArray();
 

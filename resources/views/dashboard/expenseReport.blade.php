@@ -110,7 +110,8 @@
                             @endif
                         @endforeach
                     </select>
-                    <input type="month" class="form-control mr-2" id="expenseDate" name="date" value="{{ request('date') }}">
+                    <input type="month" class="form-control mr-2" id="expenseDate" name="date"
+                        value="{{ request('date') }}">
                     <button type="submit">
                         <i class="fa fa-filter fa-xs"></i> Filter
                     </button>
@@ -192,11 +193,11 @@
 
         $dateWiseExpense = $expenseReport
             ->where('user_id', $user->id)
-            ->groupBy('date')
+            ->groupBy(fn($item) => \Carbon\Carbon::parse($item->date)->format('Y-m'))
             ->map(fn($items) => $items->sum('amount'));
         $dateLabelsI = $expenseReport
             ->where('user_id', $user->id)
-            ->groupBy('date')
+            ->groupBy(fn($item) => \Carbon\Carbon::parse($item->date)->format('Y-m'))
             ->keys();
         $dateColorsI = collect($dateLabelsI)->map(fn() => generateRandomColor())->toArray();
     @endphp
