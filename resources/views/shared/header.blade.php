@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        </style>
+    </style>
     <base href="/expenseMVC/">
     <link href="{{ asset('link/link.php') }}">
 
@@ -23,7 +23,7 @@
             margin-top: 0;
             font-family: 'Arial, sans-serif';
             background: #F3E5D8;
-            
+
             /* background: linear-gradient(to bottom, #F3E5D8, #E6C7A5);
             background-image: url('{{ asset('img/image.jpg') }}');
             background-size: cover;
@@ -46,7 +46,7 @@
             position: fixed;
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-          
+
         }
 
         #content.active {
@@ -128,8 +128,13 @@
         </div>
         <div>
             <a href="{{ route('profile.edit') }}" class="nav-link">
-                <i class="fas fa-user"></i>
-                Profile
+                {{-- @php
+                dd(Auth::user()->profile_picture);
+                @endphp --}}
+                <img src="{{asset('storage/' . Auth::user()->profile_picture)}}" alt="Profile Image"
+                    class="w-10 h-10 rounded-full object-cover" />
+                {{-- <i class="fas fa-user"></i> --}}
+                {{-- Profile --}}
             </a>
         </div>
     </nav>
