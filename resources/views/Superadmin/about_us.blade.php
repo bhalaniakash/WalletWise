@@ -42,7 +42,7 @@
       background-color: #5A3821;
     }
 
-  
+
     .gradient-hero {
       background: linear-gradient(135deg, #E6C7A5 0%, #D4B08A 100%);
     }
@@ -87,7 +87,7 @@
   <!-- Our Mission & Vision -->
   <section class="section-bg py-16">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6">Our Mission & Vision</h2>
+      {{-- <h2 class="text-3xl font-bold mb-6">Our Mission & Vision</h2> --}}
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-white p-6 rounded-lg shadow-md">
           <h3 class="text-2xl font-semibold mb-3">Our Mission</h3>
