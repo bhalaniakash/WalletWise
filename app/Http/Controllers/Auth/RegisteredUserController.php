@@ -42,11 +42,12 @@ class RegisteredUserController extends Controller
             'age' => ['required', 'integer', 'min:15'],
             'contact' => ['required', 'digits:10'],
             // 'plan_type' => ['required', 'in:regular,premium'],
-            'profile_picture' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+            'profile_picture' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
         ], [
             'name.regex' => 'The name should only contain letters and spaces.',
             'password.regex' => 'The password must contain at least one letter, one number, and one special character.',
             'contact.digits' => 'The contact number must be exactly 10 digits.',
+            'profile_picture.required' => 'Image cannot be empty.',
             'profile_picture.image' => 'The uploaded file must be an image.',
             'profile_picture.mimes' => 'Only JPG, PNG, and JPEG formats are allowed.',
             'profile_picture.max' => 'The profile picture must not be larger than 2MB.',
