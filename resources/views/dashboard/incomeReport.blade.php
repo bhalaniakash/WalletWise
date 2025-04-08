@@ -84,7 +84,9 @@
 
     td {
       color: #6B4226;
-      font-family: 'Roboto Slab';
+      font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
       font-size: 1rem;
     }
 
