@@ -28,9 +28,27 @@
   .btn-elegant:hover {
     background-color: #5A3821;
   }
+
+  /* Sticky Navbar */
+  .navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Optional: Add padding to body to prevent content overlap */
+  body {
+    padding-top: 80px;
+    /* Adjust based on navbar height */
+  }
 </style>
+
 <!-- Navbar -->
-<nav class="shadow-md" style="background: #f5e8db;">
+<nav class="navbar-fixed shadow-md" style="background: #f5e8db;">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <div class="logo m-2">
       <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
@@ -38,7 +56,6 @@
     </div>
 
     <div class="hidden lg:flex space-x-6">
-      {{-- <a href="{{ url('/') }}" class="text-gray-600 hover:text-elegant">Home</a> --}}
       <a href="{{ url('/Superadmin/Feature') }}" class="text-gray-600 hover:text-elegant">Tools</a>
       <a href="{{ url('/Superadmin/pricing') }}" class="text-gray-600 hover:text-elegant">Plans</a>
       <a href="{{ url('/Superadmin/contactus') }}" class="text-gray-600 hover:text-elegant">Reach us</a>

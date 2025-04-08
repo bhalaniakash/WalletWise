@@ -27,7 +27,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             font-family: "Poppins", sans-serif;
-            font-weight: 300;
+            font-weight: 400;
             font-style: normal;
         }
 
@@ -47,7 +47,7 @@
 
         td {
             color: #A08963;
-            font-weight: 600;
+            font-weight: 400;
         }
     </style>
 </head>
