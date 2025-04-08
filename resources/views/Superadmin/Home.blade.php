@@ -214,21 +214,22 @@
       </div>
     </div>
   </section>
+
 <!-- Call to Action -->
-<section class="py-20 text-center bg-gradient-to-r from-[#e6c7a5] to-[#d4b08a]">
+<section class="py-20 text-center bg-gradient-to-r from-[#e6c7a5] to-[#d4b08a] ">
   <h2 class="text-4xl font-bold text-[#6B4226] mb-4">Ready to Empower Financial Management?</h2>
   <p class="text-lg text-[#6B4226] mb-6">Monitor everything from one powerful dashboard with WalletWise.</p>
   <a href="#" class="btn-modern px-8 py-3 rounded-full font-semibold shadow-lg">Explore Now</a>
 </section>
 
 <!-- Why Choose WalletWise -->
-<section class="section-bg py-20 text-center">
-  <div class="container mx-auto px-6">
+<section class="section-bg text-center  py-20" >
+  <div class="container mx-auto px-">
     <h2 class="text-4xl font-bold text-[#6B4226] mb-8">Why Choose WalletWise?</h2>
     <p class="text-lg max-w-3xl mx-auto text-gray-700 mb-12">
       WalletWise isn’t just another finance tool — it’s a complete ecosystem designed to help users take control of their financial lives. Built with simplicity and power in mind, WalletWise provides real-time insights, personalized budgeting tools, and automated tracking — all from one secure platform. Here’s what makes us stand out:
     </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 text-left max-w-7xl mx-auto">
       <div>
         <h3 class="text-xl font-semibold text-[#6B4226] mb-2">📊 Real-Time Analytics</h3>
         <p class="text-gray-600 mb-4">Stay updated with the latest financial data — instantly. Our analytics engine visualizes income, expenses, and savings trends to help users make better decisions.</p>
