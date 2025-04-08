@@ -59,79 +59,90 @@
   @include('Superadmin.nav')
 
   <!-- Hero Header -->
-  <header class="gradient-header text-center py-20 px-4">
-    <h1 class="text-5xl font-extrabold mb-4">Let’s Connect</h1>
-    <p class="text-lg max-w-2xl mx-auto">Got a question or just want to say hello? We’d love to hear from you.</p>
-  </header>
+  <!-- Hero Header -->
+<header class="gradient-header text-center py-20 px-4">
+  <h1 class="text-5xl font-extrabold mb-4">Let’s Connect</h1>
+  <p class="text-lg max-w-2xl mx-auto">
+    Got a question, suggestion, or just want to say hello? We’d love to hear from you. Whether you're facing a technical issue,
+    have feedback to share, or are curious about WalletWise, we're just a message away.
+  </p>
+</header>
 
-  <!-- Contact Section -->
-  <section class="container-bg py-20 px-6 md:px-20">
-    <div class="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+<!-- Contact Section -->
+<section class="container-bg py-20 px-6 md:px-20">
+  <div class="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
 
-      <!-- Contact Info Card -->
-      <div class="bg-white p-8 rounded-2xl shadow-md contact-card">
-        <h2 class="text-2xl font-bold mb-6">Reach Out</h2>
-        <p class="mb-3"><strong>Email:</strong> <a href="mailto:support@walletwise.com"
-            class="underline hover:text-[#5A3821]">support@walletwise.com</a></p>
-        <p class="mb-6"><strong>Phone:</strong> +91 98765 43210</p>
-        <p class="mb-4">Connect with us on social media:</p>
-        <div class="flex gap-6 mt-2 text-2xl">
-          <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-facebook"></i></a>
-        </div>
+    <!-- Contact Info Card -->
+    <div class="bg-white p-8 rounded-2xl shadow-md contact-card">
+      <h2 class="text-2xl font-bold mb-6">Reach Out</h2>
+      <p class="mb-4">We’re committed to providing you with the support you need. Whether it's a quick inquiry or a detailed discussion, don't hesitate to drop us a line.</p>
+      <p class="mb-3"><strong>Email:</strong> <a href="mailto:support@walletwise.com" class="underline hover:text-[#5A3821]">support@walletwise.com</a></p>
+      <p class="mb-3"><strong>Phone:</strong> +91 98765 43210</p>
+      <p class="mb-3"><strong>Business Hours:</strong> Mon - Fri, 9:00 AM to 6:00 PM IST</p>
+      <p class="mb-6">Follow us on social media for updates, tips, and community stories:</p>
+      <div class="flex gap-6 mt-2 text-2xl">
+        <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="hover:text-[#5A3821]"><i class="bi bi-facebook"></i></a>
       </div>
+    </div>
 
-      <!-- Contact Form -->
-      <div class="bg-white p-8 rounded-2xl shadow-md contact-card">
-        @if(session('success'))
+    <!-- Contact Form -->
+    <div class="bg-white p-8 rounded-2xl shadow-md contact-card">
+      <h2 class="text-2xl font-bold mb-6">Send Us a Message</h2>
+      <p class="mb-6">Fill out the form below and we’ll get back to you within 24-48 hours. We appreciate your patience and look forward to connecting with you!</p>
+
+      @if(session('success'))
       <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
         <strong class="font-bold">Success!</strong>
         <span class="block sm:inline">{{ session('success') }}</span>
         <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
-        onclick="this.parentElement.remove();">
-        <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20">
-          <title>Close</title>
-          <path
-          d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
-        </svg>
+          onclick="this.parentElement.remove();">
+          <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20">
+            <title>Close</title>
+            <path
+              d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+          </svg>
         </button>
       </div>
-    @endif
+      @endif
 
-        <form method="POST" action="{{ route('contact.store') }}">
-          @csrf
-          <input type="text" name="name" placeholder="Your Name" required
-            class="w-full mb-4 p-3 border border-gray-300 rounded-lg" />
-          <input type="email" name="email" placeholder="Your Email" required
-            class="w-full mb-4 p-3 border border-gray-300 rounded-lg" />
-          <textarea name="message" rows="5" placeholder="Your Message" required
-            class="w-full mb-4 p-3 border border-gray-300 rounded-lg"></textarea>
-          <button type="submit"
-            class="btn-elegant px-6 py-3 rounded-full w-full font-semibold transition duration-300 shadow hover:shadow-lg">Send
-            Message</button>
-        </form>
-      </div>
-
+      <form method="POST" action="{{ route('contact.store') }}">
+        @csrf
+        <input type="text" name="name" placeholder="Your Name" required
+          class="w-full mb-4 p-3 border border-gray-300 rounded-lg" />
+        <input type="email" name="email" placeholder="Your Email" required
+          class="w-full mb-4 p-3 border border-gray-300 rounded-lg" />
+        <textarea name="message" rows="5" placeholder="Your Message" required
+          class="w-full mb-4 p-3 border border-gray-300 rounded-lg"></textarea>
+        <button type="submit"
+          class="btn-elegant px-6 py-3 rounded-full w-full font-semibold transition duration-300 shadow hover:shadow-lg">Send
+          Message</button>
+      </form>
     </div>
-    <script>
-      setTimeout(() => {
-        const alert = document.querySelector('[role="alert"]');
-        if (alert) alert.remove();
-      }, 2000);
-    </script>
-  </section>
 
-  <!-- CTA Section -->
-  <section class="gradient-cta py-16 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold">Need Help Managing Your Money?</h2>
-    <p class="mt-4 text-lg max-w-xl mx-auto">WalletWise is here to support your journey. Let’s talk!</p>
-    <a href="/register"
-      class="btn-elegant mt-6 inline-block px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition">Join
-      Now</a>
-  </section>
+  </div>
+
+  <!-- Auto-remove success alert -->
+  <script>
+    setTimeout(() => {
+      const alert = document.querySelector('[role="alert"]');
+      if (alert) alert.remove();
+    }, 2000);
+  </script>
+</section>
+
+<!-- CTA Section -->
+<section class="gradient-cta py-20 text-center">
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Need Help Managing Your Money?</h2>
+  <p class="text-lg max-w-xl mx-auto mb-6">Whether you're planning a monthly budget, saving for a goal, or just trying to understand your expenses better — WalletWise is your trusted companion.</p>
+  <p class="text-lg max-w-xl mx-auto mb-6">We’re more than a tool — we’re your financial partner. Let's make your money work for you, not the other way around.</p>
+  <a href="/register"
+    class="btn-elegant mt-4 inline-block px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition">Join
+    Now</a>
+</section>
 
    <!-- Footer -->
    @include('Superadmin.footer')
