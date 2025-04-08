@@ -118,10 +118,10 @@
                 <label for="password">Password</label>
                 <input id="password" type="password" name="password" required>
             </div>
-            <div class=" remember-me">
+            {{-- <div class=" remember-me">
                 <input id="remember_me" type="checkbox" name="remember">
                 <label for="remember_me">Remember me</label>
-            </div>
+            </div> --}}
             <div class="form-footer">
                 <a href="{{ route('register') }}">Register here</a>
                 <button type="submit">Log in</button>
