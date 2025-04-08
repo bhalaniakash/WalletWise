@@ -178,7 +178,7 @@
       </li>
       <li class="nav-item">
         <a href="{{ url('admin/suggestions') }}" class="nav-link">
-          <span class="span"><i class="fas fa-receipt"></i></span>Visitors suggestions</a>
+          <span class="span"><i class="fas fa-lightbulb"></i></span>Suggestions</a>
       </li>
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}">
