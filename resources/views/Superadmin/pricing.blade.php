@@ -46,10 +46,15 @@
 
     .footer-bg {
       background: linear-gradient(to right, #6B4226, #5a3b20);
+      z-index: 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
-    .container{
-            background: #f5e8db;
-        }
+
+    .container {
+      background: #f5e8db;
+    }
   </style>
 </head>
 
@@ -58,7 +63,7 @@
   {{-- navbar --}}
   @include('Superadmin.nav')
 
-  
+
   <!-- Pricing Header -->
   <div class="gradient-header text-center py-16">
     <h1 class="text-4xl font-bold mb-4">Choose Your Plan</h1>
@@ -78,8 +83,7 @@
           <li>&#10003; Income Reports</li>
           <li>&#10003; Cloud Sync</li>
         </ul>
-        <button class="mt-6 w-full btn-elegant py-2 rounded-lg hover:shadow-lg">Get
-          Started</button>
+        {{-- <button class="mt-6 w-full btn-elegant py-2 rounded-lg hover:shadow-lg">Get Started</button> --}}
       </div>
 
       <!-- Premium Plan -->
@@ -92,7 +96,7 @@
           <li>&#10003; Budget Planning</li>
           {{-- <li>&#10003; Priority Support</li> --}}
         </ul>
-        <button class="mt-6 w-full btn-elegant py-2 rounded-lg hover:shadow-lg">Go Premium</button>
+        {{-- <button class="mt-6 w-full btn-elegant py-2 rounded-lg hover:shadow-lg">Go Premium</button> --}}
       </div>
     </div>
   </div>
