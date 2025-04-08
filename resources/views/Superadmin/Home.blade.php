@@ -12,48 +12,155 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      color: #2F1B0C;
-    }
+   <style>
+  body {
+    color: #2F1B0C;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
 
-    .hero {
-      background: linear-gradient(to right, #fbe3c5, #f6d2aa);
-    }
+  .hero {
+    background: linear-gradient(to right, #fbe3c5, #f6d2aa);
+    padding: 4rem 0;
+  }
 
-    .btn-modern {
-      background: linear-gradient(to right, #6B4226, #5a3b20);
-      color: white;
-      transition: all 0.3s ease-in-out;
-    }
+  .btn-modern {
+    background: linear-gradient(to right, #6B4226, #5a3b20);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+  }
 
-    .btn-modern:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
+  .btn-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
 
-    .bg-footer {
-      background: linear-gradient(to right, #6B4226, #5a3b20);
-    }
+  .bg-footer {
+    background: linear-gradient(to right, #6B4226, #5a3b20);
+    color: white;
+    padding: 2rem 0;
+  }
 
-    .feature-card {
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease-in-out;
-    }
+  .feature-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    padding: 2rem;
+    text-align: center;
+  }
 
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
 
-    .card-gradient {
-      background: linear-gradient(to bottom right, #ffffff, #f5e8db);
-    }
+  .feature-card i {
+    font-size: 3rem;
+    color: #6B4226;
+    margin-bottom: 1rem;
+  }
 
-    .section-bg {
-      background: #fff6ef;
+  .card-gradient {
+    background: linear-gradient(to bottom right, #ffffff, #f5e8db);
+  }
+
+  .section-bg {
+    background: #fff6ef;
+    padding: 4rem 0;
+  }
+
+  .section-bg h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #6B4226;
+  }
+
+  .section-bg p {
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-section {
+    background: linear-gradient(to right, #e6c7a5, #d4b08a);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #6B4226;
+  }
+
+  .cta-section p {
+    font-size: 1.125rem;
+    color: #6B4226;
+    margin-bottom: 2rem;
+  }
+
+  .testimonials {
+    background: #fceede;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #6B4226;
+  }
+
+  .testimonials .testimonial-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .testimonials .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .testimonials .testimonial-card p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .testimonials .testimonial-card h4 {
+    font-size: 1.125rem;
+    color: #6B4226;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonials .testimonial-card span {
+    font-size: 0.875rem;
+    color: #888;
+  }
+
+  /* Add subtle animations */
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
   </style>
 </head>
 
@@ -107,13 +214,69 @@
       </div>
     </div>
   </section>
+<!-- Call to Action -->
+<section class="py-20 text-center bg-gradient-to-r from-[#e6c7a5] to-[#d4b08a]">
+  <h2 class="text-4xl font-bold text-[#6B4226] mb-4">Ready to Empower Financial Management?</h2>
+  <p class="text-lg text-[#6B4226] mb-6">Monitor everything from one powerful dashboard with WalletWise.</p>
+  <a href="#" class="btn-modern px-8 py-3 rounded-full font-semibold shadow-lg">Explore Now</a>
+</section>
 
-  <!-- Call to Action -->
-  <section class="py-20 text-center bg-gradient-to-r from-[#e6c7a5] to-[#d4b08a]">
-    <h2 class="text-4xl font-bold text-[#6B4226] mb-4">Ready to Empower Financial Management?</h2>
-    <p class="text-lg text-[#6B4226] mb-6">Monitor everything from one powerful dashboard with WalletWise.</p>
-    <a href="#" class="btn-modern px-8 py-3 rounded-full font-semibold shadow-lg">Explore Now</a>
-  </section>
+<!-- Why Choose WalletWise -->
+<section class="section-bg py-20 text-center">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-[#6B4226] mb-8">Why Choose WalletWise?</h2>
+    <p class="text-lg max-w-3xl mx-auto text-gray-700 mb-12">
+      WalletWise isn’t just another finance tool — it’s a complete ecosystem designed to help users take control of their financial lives. Built with simplicity and power in mind, WalletWise provides real-time insights, personalized budgeting tools, and automated tracking — all from one secure platform. Here’s what makes us stand out:
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left max-w-4xl mx-auto">
+      <div>
+        <h3 class="text-xl font-semibold text-[#6B4226] mb-2">📊 Real-Time Analytics</h3>
+        <p class="text-gray-600 mb-4">Stay updated with the latest financial data — instantly. Our analytics engine visualizes income, expenses, and savings trends to help users make better decisions.</p>
+        
+        <h3 class="text-xl font-semibold text-[#6B4226] mb-2">🔐 Enterprise-Grade Security</h3>
+        <p class="text-gray-600 mb-4">We use best-in-class encryption and security protocols to ensure your data is safe, private, and never compromised.</p>
+
+        <h3 class="text-xl font-semibold text-[#6B4226] mb-2">📱 Seamless Access</h3>
+        <p class="text-gray-600 mb-4">Access your dashboard from mobile, tablet, or desktop — anytime, anywhere. WalletWise is fully responsive and cloud-enabled.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-[#6B4226] mb-2">🧠 Smart Suggestions</h3>
+        <p class="text-gray-600 mb-4">Our AI-driven suggestions help users cut down unnecessary expenses, manage recurring bills, and boost savings.</p>
+        
+        <h3 class="text-xl font-semibold text-[#6B4226] mb-2">📅 Financial Planning Tools</h3>
+        <p class="text-gray-600 mb-4">From daily budgets to annual goals, WalletWise helps users create achievable plans and stick to them with visual progress tracking.</p>
+
+        <h3 class="text-xl font-semibold text-[#6B4226] mb-2">🌍 Multi-User Support</h3>
+        <p class="text-gray-600 mb-4">Super Admins can manage multiple users, roles, and permissions with ease, making it perfect for institutions, families, and teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 bg-[#fceede] text-center">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-[#6B4226] mb-10">What Our Users Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <p class="italic text-gray-600 mb-4">"WalletWise helped me stay on top of my hostel expenses. Now I always know where my money goes!"</p>
+        <h4 class="font-bold text-[#6B4226]">Riya Sharma</h4>
+        <span class="text-sm text-gray-500">Student, Ahmedabad</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <p class="italic text-gray-600 mb-4">"As a small business owner, I needed something simple but powerful. WalletWise is just that."</p>
+        <h4 class="font-bold text-[#6B4226]">Amit Patel</h4>
+        <span class="text-sm text-gray-500">Entrepreneur</span>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <p class="italic text-gray-600 mb-4">"Reminders, analytics, and smooth UI — it’s everything I wanted in a financial tool."</p>
+        <h4 class="font-bold text-[#6B4226]">Sneha Desai</h4>
+        <span class="text-sm text-gray-500">IT Professional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
    <!-- Footer -->
    @include('Superadmin.footer')

@@ -78,27 +78,38 @@
   <!-- Hero Section -->
   <section class="gradient-bg py-20 text-center">
     <div class="container mx-auto px-6">
-      <h1 class="text-5xl font-bold mb-4">Who We Are</h1>
-      <p class="text-lg max-w-2xl mx-auto">At WalletWise, we believe in empowering individuals to take full control of
-        their finances with simplicity, clarity, and confidence.</p>
+      <h1 class="text-5xl font-extrabold mb-6 text-white">Who We Are</h1>
+      <p class="text-lg max-w-3xl mx-auto text-white leading-relaxed">
+        At WalletWise, we believe that managing money shouldn't be complicated. Born out of real-world challenges faced by students and everyday individuals, WalletWise is more than just a budgeting tool—it's a financial partner designed to simplify, educate, and empower. We’re a team of passionate developers, designers, and problem-solvers committed to transforming how people view and manage their finances.
+      </p>
     </div>
   </section>
 
   <!-- Our Mission & Vision -->
   <section class="section-bg py-16">
     <div class="container mx-auto px-6 text-center">
-      {{-- <h2 class="text-3xl font-bold mb-6">Our Mission & Vision</h2> --}}
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-2xl font-semibold mb-3">Our Mission</h3>
-          <p>To make personal finance management accessible and stress-free for students, professionals, and small
-            businesses across the globe.</p>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="bg-gradient-to-r from-[#f9f6f2] to-[#e6c7a5] p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h3 class="text-3xl font-bold mb-4 text-elegant">Our Mission</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Our mission is simple yet powerful—to make personal finance management accessible, intuitive, and stress-free for everyone. 
+            We aim to break down complex financial concepts and offer a platform that helps users build better money habits, avoid overspending, and reach their financial goals with confidence. 
+            WalletWise is committed to offering insightful analytics, timely reminders, and smart tracking tools that put you in control of your money—without the need for a financial degree.
+          </p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-2xl font-semibold mb-3">Our Vision</h3>
-          <p>We envision a world where everyone can track their income, expenses, and financial goals—all in one place,
-            effortlessly and securely.</p>
+        <div class="bg-gradient-to-r from-[#f9f6f2] to-[#e6c7a5] p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h3 class="text-3xl font-bold mb-4 text-elegant">Our Vision</h3>
+          <p class="text-gray-700 leading-relaxed">
+            We envision a future where financial well-being is not a privilege, but a universal standard. 
+            Our goal is to become a trusted companion for anyone who wants to gain clarity over their finances—whether it’s tracking income, controlling expenses, planning savings, or simply becoming more mindful about spending. 
+            Through continuous innovation and user feedback, WalletWise aspires to evolve into a global platform that nurtures financial independence, transparency, and growth.
+          </p>
         </div>
+      </div>
+      <div class="bg-gradient-to-r from-[#f9f6f2] to-[#e6c7a5] p-8 rounded-lg shadow-lg mt-12 hover:shadow-xl transition-shadow duration-300">
+        <p class="text-gray-700 leading-relaxed">
+          At WalletWise, we don’t just build tools—we build trust. We’re here to support your financial journey every step of the way. Whether you're budgeting for a semester, planning your first investment, or managing a team’s expenses, we’re committed to helping you do it with clarity and ease.
+        </p>
       </div>
     </div>
   </section>

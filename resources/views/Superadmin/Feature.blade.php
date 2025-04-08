@@ -71,63 +71,81 @@
     @include('Superadmin.nav')
 
 
-    <!-- Features Section -->
-    <!-- Features Header -->
-    <div class="gradient-header text-center py-16">
-        <h1 class="text-4xl font-bold mb-4">Your Wallet. Your Way.</h1>
-        <p class="text-lg">Explore features built for effortless financial control and clarity.</p>
-    </div>
+   <!-- Features Section -->
+<!-- Features Header -->
+<div class="gradient-header text-center py-16">
+    <h1 class="text-4xl font-bold mb-4">Your Wallet. Your Way.</h1>
+    <p class="text-lg max-w-2xl mx-auto">WalletWise offers a complete toolkit to help you stay on top of your finances, whether you're a student, professional, or entrepreneur. Explore the smart features that make money management simple and effective.</p>
+</div>
 
-    <section class="container mx-auto py-16 px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section class="container mx-auto py-16 px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
-                <i class="fas fa-wallet text-3xl text-brown-600 mb-3"></i>
-                <h3 class="text-xl font-bold">Expense Tracking</h3>
-                <p class="text-gray-600 mt-2">Monitor your spending with detailed breakdowns and insights.</p>
-            </div>
-
-            <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
-                <i class="fas fa-bell text-3xl text-brown-600 mb-3"></i>
-                <h3 class="text-xl font-bold">Smart Reminders</h3>
-                <p class="text-gray-600 mt-2">Never miss rent, loans, or subscriptions with auto-reminders.</p>
-            </div>
-
-            <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
-                <i class="fas fa-coins text-3xl text-brown-600 mb-3"></i>
-                <h3 class="text-xl font-bold">Multi-Currency Support</h3>
-                <p class="text-gray-600 mt-2">Manage finances in various currencies effortlessly.</p>
-            </div>
-
-            <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
-                <i class="fas fa-chart-line text-3xl text-brown-600 mb-3"></i>
-                <h3 class="text-xl font-bold">Income Reports</h3>
-                <p class="text-gray-600 mt-2">Gain valuable insights with monthly & yearly reports.</p>
-            </div>
-
-            <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
-                <i class="fas fa-cloud text-3xl text-brown-600 mb-3"></i>
-                <h3 class="text-xl font-bold">Cloud Sync</h3>
-                <p class="text-gray-600 mt-2">Access and manage your budget anytime, anywhere.</p>
-            </div>
-
-            <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
-                <i class="fas fa-shield-alt text-3xl text-brown-600 mb-3"></i>
-                <h3 class="text-xl font-bold">Secure & Private</h3>
-                <p class="text-gray-600 mt-2">Bank-level security ensures your data stays safe.</p>
-            </div>
-
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-wallet text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Expense Tracking</h3>
+            <p class="text-gray-600 mt-2">Log daily expenses with ease, categorize your spendings, and visualize where your money goes. Stay accountable with real-time insights and spending patterns.</p>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <div class="gradient-cta text-elegant py-12 text-center">
-        <h2 class="text-3xl font-bold">Ready to Take Control of Your Budget?</h2>
-        <p class="mt-4 text-lg">Join WalletWise today and start managing your finances better.</p>
-        <a href="/register"
-            class="btn-elegant px-6 py-3 rounded-full font-semibold mt-6 inline-block hover:shadow-lg">Get
-            Started</a>
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-bell text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Smart Reminders</h3>
+            <p class="text-gray-600 mt-2">Get timely notifications for recurring payments like rent, bills, and EMIs. Never worry about missing deadlines again.</p>
+        </div>
+
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-coins text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Multi-Currency Support</h3>
+            <p class="text-gray-600 mt-2">Easily manage finances in different currencies. Ideal for international students, travelers, and remote professionals dealing with global payments.</p>
+        </div>
+
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-chart-line text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Income Reports</h3>
+            <p class="text-gray-600 mt-2">Get detailed monthly, quarterly, and yearly reports to understand your income trends. Export them anytime for financial reviews or tax filings.</p>
+        </div>
+
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-cloud text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Cloud Sync</h3>
+            <p class="text-gray-600 mt-2">Your data, always accessible. Sync across multiple devices and platforms to keep track wherever you go.</p>
+        </div>
+
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-shield-alt text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Secure & Private</h3>
+            <p class="text-gray-600 mt-2">We prioritize your privacy. Bank-grade encryption keeps your financial data safe, and nothing is shared without your consent.</p>
+        </div>
+
+        <!-- Additional Features -->
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-tags text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Custom Categories</h3>
+            <p class="text-gray-600 mt-2">Create and organize your own spending categories to reflect your lifestyle. Whether it's food, travel, or education—you’re in control.</p>
+        </div>
+
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-bullseye text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Goal Setting</h3>
+            <p class="text-gray-600 mt-2">Set financial goals and watch your progress in real time. Save for a new laptop, a trip, or simply build an emergency fund.</p>
+        </div>
+
+        <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+            <i class="fas fa-sync-alt text-3xl text-brown-600 mb-3"></i>
+            <h3 class="text-xl font-bold">Recurring Transactions</h3>
+            <p class="text-gray-600 mt-2">Automate weekly or monthly transactions to save time and avoid the hassle of manual entries.</p>
+        </div>
+
     </div>
+</section>
+
+<!-- CTA Section -->
+<div class="gradient-cta text-elegant py-16 text-center px-6">
+    <h2 class="text-3xl font-bold mb-4">Ready to Take Control of Your Budget?</h2>
+    <p class="text-lg max-w-2xl mx-auto">Whether you're planning for tomorrow or reviewing yesterday, WalletWise gives you the tools and insights you need. Join a growing community of users who are mastering their money—one transaction at a time.</p>
+    <a href="/register" class="btn-elegant px-6 py-3 rounded-full font-semibold mt-6 inline-block hover:shadow-lg">Get Started</a>
+</div>
+
     <!-- Footer -->
     @include('Superadmin.footer')
 </body>
