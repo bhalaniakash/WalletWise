@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <title>WalletWise - Features</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -57,7 +58,8 @@
             background: linear-gradient(to right, #E6C7A5, #d7b693);
             color: #6B4226;
         }
-        .container{
+
+        .container {
             background: #f5e8db;
         }
     </style>
@@ -80,34 +82,41 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+                <i class="fas fa-wallet text-3xl text-brown-600 mb-3"></i>
                 <h3 class="text-xl font-bold">Expense Tracking</h3>
                 <p class="text-gray-600 mt-2">Monitor your spending with detailed breakdowns and insights.</p>
             </div>
 
             <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+                <i class="fas fa-bell text-3xl text-brown-600 mb-3"></i>
                 <h3 class="text-xl font-bold">Smart Reminders</h3>
                 <p class="text-gray-600 mt-2">Never miss rent, loans, or subscriptions with auto-reminders.</p>
             </div>
 
             <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+                <i class="fas fa-coins text-3xl text-brown-600 mb-3"></i>
                 <h3 class="text-xl font-bold">Multi-Currency Support</h3>
                 <p class="text-gray-600 mt-2">Manage finances in various currencies effortlessly.</p>
             </div>
 
             <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+                <i class="fas fa-chart-line text-3xl text-brown-600 mb-3"></i>
                 <h3 class="text-xl font-bold">Income Reports</h3>
                 <p class="text-gray-600 mt-2">Gain valuable insights with monthly & yearly reports.</p>
             </div>
 
             <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+                <i class="fas fa-cloud text-3xl text-brown-600 mb-3"></i>
                 <h3 class="text-xl font-bold">Cloud Sync</h3>
                 <p class="text-gray-600 mt-2">Access and manage your budget anytime, anywhere.</p>
             </div>
 
             <div class="card-gradient p-6 rounded-lg shadow-lg feature-card text-center">
+                <i class="fas fa-shield-alt text-3xl text-brown-600 mb-3"></i>
                 <h3 class="text-xl font-bold">Secure & Private</h3>
                 <p class="text-gray-600 mt-2">Bank-level security ensures your data stays safe.</p>
             </div>
+
         </div>
     </section>
 
