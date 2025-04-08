@@ -71,7 +71,8 @@
       <!-- Contact Info Card -->
       <div class="bg-white p-8 rounded-2xl shadow-md contact-card">
         <h2 class="text-2xl font-bold mb-6">Reach Out</h2>
-        <p class="mb-3"><strong>Email:</strong> <a href="mailto:support@walletwise.com" class="underline hover:text-[#5A3821]">support@walletwise.com</a></p>
+        <p class="mb-3"><strong>Email:</strong> <a href="mailto:support@walletwise.com"
+            class="underline hover:text-[#5A3821]">support@walletwise.com</a></p>
         <p class="mb-6"><strong>Phone:</strong> +91 98765 43210</p>
         <p class="mb-4">Connect with us on social media:</p>
         <div class="flex gap-6 mt-2 text-2xl">
@@ -85,17 +86,20 @@
       <!-- Contact Form -->
       <div class="bg-white p-8 rounded-2xl shadow-md contact-card">
         @if(session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
-          <strong class="font-bold">Success!</strong>
-          <span class="block sm:inline">{{ session('success') }}</span>
-          <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.remove();">
-            <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <title>Close</title>
-              <path d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
-            </svg>
-          </button>
-        </div>
-        @endif
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+        <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
+        onclick="this.parentElement.remove();">
+        <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20">
+          <title>Close</title>
+          <path
+          d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+        </svg>
+        </button>
+      </div>
+    @endif
 
         <form method="POST" action="{{ route('contact.store') }}">
           @csrf
@@ -125,14 +129,15 @@
     <h2 class="text-3xl md:text-4xl font-bold">Need Help Managing Your Money?</h2>
     <p class="mt-4 text-lg max-w-xl mx-auto">WalletWise is here to support your journey. Let’s talk!</p>
     <a href="/register"
-      class="btn-elegant mt-6 inline-block px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition">Join Now</a>
+      class="btn-elegant mt-6 inline-block px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition">Join
+      Now</a>
   </section>
 
   <!-- Footer -->
-  <footer class="gradient-footer text-white text-center py-6">
-    <p>&copy; 2025 WalletWise. Designed with ❤️ to simplify your finances.</p>
+  <footer class="bg-footer text-white py-6 text-center">
+    <p>&copy; 2025 WalletWise. All rights reserved.</p>
+    <p>Guided by Pratyush Sharma | Developed at Brainerhub</p>
   </footer>
-
 </body>
 
 </html>
