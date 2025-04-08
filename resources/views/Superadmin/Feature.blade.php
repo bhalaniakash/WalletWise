@@ -128,10 +128,10 @@
             class="btn-elegant px-6 py-3 rounded-full font-semibold mt-6 inline-block hover:shadow-lg">Get
             Started</a>
     </div>
-
     <!-- Footer -->
     <footer class="bg-footer text-white py-6 text-center">
         <p>&copy; 2025 WalletWise. All rights reserved.</p>
+        <p>Guided by Pratyush Sharma | Developed at Brainerhub</p>
     </footer>
 </body>
 
