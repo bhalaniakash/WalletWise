@@ -29,6 +29,9 @@
       margin: 0;
       padding: 0;
       background-color: ;
+      font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
     }
 
     .vertical-nav {
@@ -45,7 +48,9 @@
       color: #6B4226;
       background: #E6C7A5 !important;
       text-decoration: none;
-      font-family: 'Arial, sans-serif';
+      font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
     }
 
     .text-gray {

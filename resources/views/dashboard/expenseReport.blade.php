@@ -10,8 +10,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
         body {
-            font-family: 'Poppins', sans-serif;
+                    font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        font-style: normal; 
+       
+            font-variation-settings:
+                "wdth" 100;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -21,12 +27,21 @@
             margin-left: 17rem;
             padding: 2rem;
             transition: all 0.3s ease-in-out;
-
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
         }
 
         .card {
             border-radius: 12px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
         }
 
         button[type="button"] {
@@ -39,11 +54,17 @@
             transition: all 0.3s ease-in-out;
             width: 20%;
             border: none;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         button[type="button"]:hover {
             background: #4E2F1E;
             cursor: pointer;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         button[type="submit"] {
@@ -71,6 +92,9 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         th {
@@ -88,6 +112,9 @@
         h2 {
             color: #6B4226;
             padding: 20px;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
     </style>
 </head>

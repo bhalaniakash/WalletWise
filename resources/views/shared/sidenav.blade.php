@@ -20,12 +20,14 @@
   <base href="/expenseMVC/">
   <script type="text/javascript" src="lib/js/main.js"></script>
   <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
-
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     body {
       margin: 0;
       color: #6B4226;
-      font-family: 'Andada Pro', sans-serif;
+      font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
     }
 
     .vertical-nav {
@@ -42,7 +44,9 @@
       color: #6B4226;
       background: #E6C7A5 !important;
       text-decoration: none;
-      font-family: 'Arial, sans-serif';
+      font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
     }
 
 

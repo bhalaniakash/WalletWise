@@ -64,6 +64,9 @@
             text-align: center;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         /* h2:hover {

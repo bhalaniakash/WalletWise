@@ -16,7 +16,9 @@
 
         body {
             margin: 0;
-            font-family: 'Lato', sans-serif;
+              font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
             background: #F3E5D8;
         }
 
@@ -35,14 +37,18 @@
             padding: 2rem;
             background: #F3E5D8;
             border-radius: 8px;
-            font-family: 'Lato', sans-serif;
+              font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
-            font-family: 'Lato', sans-serif;
+              font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         #page-wrapper {
@@ -57,7 +63,9 @@
             font-size: 2rem;
             font-weight: 600;
             color: #6b4226;
-            /* font-family: 'Inter', sans-serif; */
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .container {
@@ -80,7 +88,9 @@
         }
 
         .card {
-            font-family: 'Lato', sans-serif;
+              font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -143,6 +153,9 @@
             box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
             width: 48%;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .dashboard-card:hover {
@@ -163,6 +176,9 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .chart1 {

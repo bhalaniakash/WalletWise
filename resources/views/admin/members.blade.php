@@ -12,7 +12,9 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
             background: #F3E5D8;
         }
 
@@ -38,6 +40,9 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 1rem;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         table {
@@ -46,6 +51,9 @@
             margin-bottom: 1.5rem;
             border-radius: 10px; 
             overflow: hidden;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         th,
@@ -73,6 +81,9 @@
         h5 {
             display: flex;
             justify-content: flex-start;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .btn-danger {

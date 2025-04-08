@@ -16,6 +16,9 @@
             overflow-x: hidden;
             background-color: white;
             margin-top: 0%;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .page-content {
@@ -24,12 +27,17 @@
             transition: all 0.4s;
             background-color: white;
             margin-top: 5% !important;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
-
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
         }
 
         #add1 input {
@@ -45,6 +53,9 @@
         .table tr {
             color: #000;
             background-color: white;
+            font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;   
         }
 
         th,
