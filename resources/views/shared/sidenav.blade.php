@@ -2,20 +2,53 @@
 <html>
 
 <head>
+  <script>
+   
+    // this is an js for make side bar disapear and it will only show when the mouse is on the left side of the screen
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const sidebar = document.getElementById("sidebar");
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
+  //   // Hide the sidebar initially
+  //   sidebar.style.marginLeft = "-16rem";
+
+  //   // Show the sidebar when the mouse is on the left side (more than 17rem)
+  //   document.addEventListener("mousemove", function (event) {
+  //     if (event.clientX <= 272) { // 17rem = 272px
+  //       sidebar.style.marginLeft = "0";
+  //     } else {
+  //       sidebar.style.marginLeft = "-16rem";
+  //     }
+  //   });
+
+    // Highlight the active link
+    let currentPath = window.location.pathname;
+    let navLinks = document.querySelectorAll(".nav-item a");
+    navLinks.forEach(link => {
+      let linkPath = new URL(link.href).pathname;
+      if (currentPath === linkPath) {
+        link.parentElement.classList.add("active");
+      }
+    });
+  });
+</script>
+
+    </script>
+  {{-- 
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script> 
+    --}}
+
   <link href="https://fonts.googleapis.com/css2?family=Ramaraja:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 
   <base href="/expenseMVC/">
   <script type="text/javascript" src="lib/js/main.js"></script>
@@ -26,8 +59,8 @@
       margin: 0;
       color: #6B4226;
       font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+      font-weight: 300;
+      font-style: normal;
     }
 
     .vertical-nav {
@@ -45,8 +78,8 @@
       background: #E6C7A5 !important;
       text-decoration: none;
       font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+      font-weight: 300;
+      font-style: normal;
     }
 
 
@@ -67,15 +100,12 @@
 
     x-dropdown-link {
       color: black;
-
       text-decoration: none;
       transition: 0.3s;
     }
 
     .nav-item {
       background: #E6C7A5;
-
-      /* Primary - Pure Black */
     }
 
     #sidebar.active {
@@ -111,7 +141,6 @@
       padding: 10px 15px;
       font-size: 18px;
       font-weight: 500;
-      transition: background-color 0.3s, transform 0.3s, font-size 0.3s, font-weight 0.3s;
       color: #6B4226;
       border-radius: 5px;
     }
@@ -238,13 +267,10 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Get current URL path
     let currentPath = window.location.pathname;
-    // Select all sidebar links
     let navLinks = document.querySelectorAll(".nav-item a");
     navLinks.forEach(link => {
-      let linkPath = new URL(link.href).pathname; // Get the path from href
-      // Exact match check
+      let linkPath = new URL(link.href).pathname;
       if (currentPath === linkPath) {
         link.parentElement.classList.add("active");
       }
