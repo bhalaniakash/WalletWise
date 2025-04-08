@@ -42,10 +42,7 @@
       background-color: #5A3821;
     }
 
-    .bg-footer {
-      background: linear-gradient(to right, #6B4226, #5a3b20);
-    }
-
+  
     .gradient-hero {
       background: linear-gradient(135deg, #E6C7A5 0%, #D4B08A 100%);
     }
@@ -201,10 +198,7 @@
       Now</a>
   </section>
   <!-- Footer -->
-  <footer class="bg-footer text-white py-6 text-center">
-    <p>&copy; 2025 WalletWise. All rights reserved.</p>
-    <p>Guided by Pratyush Sharma | Developed at Brainerhub</p>
-  </footer>
+  @include('Superadmin.footer')
 </body>
 
 </html>
