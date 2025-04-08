@@ -1,4 +1,10 @@
 <style>
+  .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
     .rounded-lg {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
