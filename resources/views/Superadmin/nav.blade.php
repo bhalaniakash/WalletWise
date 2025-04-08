@@ -54,7 +54,6 @@
       <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
       <a href="/" class="text-2xl font-bold text-elegant">WalletWise</a>
     </div>
-
     <div class="hidden lg:flex space-x-6">
       <a href="{{ url('/Superadmin/Feature') }}" class="text-gray-600 hover:text-elegant">Tools</a>
       <a href="{{ url('/Superadmin/pricing') }}" class="text-gray-600 hover:text-elegant">Plans</a>
