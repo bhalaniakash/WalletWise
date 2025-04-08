@@ -41,8 +41,8 @@
             text-align: center;
             margin-bottom: 1rem;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         table {
@@ -52,8 +52,8 @@
             border-radius: 10px; 
             overflow: hidden;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         th,
@@ -82,8 +82,8 @@
             display: flex;
             justify-content: flex-start;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .btn-danger {
