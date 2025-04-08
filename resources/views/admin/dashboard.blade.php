@@ -124,14 +124,7 @@
             font-size: 1rem;
             color: #6c757d;
         }
-    </style>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-    </script>
-
-    <style>
-        /* Admin Dashboard Title */
         .admin-dashboard-title {
             font-size: 28px;
             font-weight: bold;
@@ -179,6 +172,10 @@
             box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
         }
     </style>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    </script>
 </head>
 
 <body>
