@@ -85,12 +85,8 @@
     </style>
 
 </head>
-
 <body>
-
-
-
-    <div class="page-content" id="content">
+   <div class="page-content" id="content">
         <br>
         <section>
             <div class="container">
@@ -108,7 +104,8 @@
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <title>Close</title>
                                         <path
-                                            d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+                                            d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" 
+                                        />
                                     </svg>
                                 </button>
                             </div>
@@ -135,11 +132,11 @@
                         @endif
 
                         <form id="addIncomeForm" method="post" action="{{ route('admin.category.store') }}">
+
                             @csrf
                             <div class="mb-3">
                                 <label for="incomeName" class="form-label">Category of Expense/Income</label>
-                                <input type="text" name="income_name" id="incomeName" class="form-control" required
-                                    autofocus>
+                                <input type="text" name="income_name" id="incomeName" class="form-control" required autofocus>
                             </div>
 
                             <div class="mb-3">
@@ -150,6 +147,7 @@
                                     <option value="expense">Expense</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <button type="submit" name="insert" style="font-size: x-large; border: none;">
                                     Add Category
@@ -160,6 +158,7 @@
                 </div>
             </div>
         </section>
+
     </div>
     <script>
         setTimeout(() => {
@@ -168,5 +167,4 @@
         }, 2000); // 2 seconds
     </script>
 </body>
-
 </html>

@@ -19,7 +19,8 @@
     }
 
     .hero {
-      background: linear-gradient(to right, #fbe3c5, #f6d2aa);
+      
+      background: linear-gradient(to right, #E6C7A5, #d7b693);
       padding: 4rem 0;
     }
 
@@ -287,23 +288,23 @@
   </section>
 
   <!-- Testimonials -->
-  <section class="py-20 bg-[#fceede] text-center">
+  <section class="py-20 hero text-center">
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold text-[#6B4226] mb-10">What Our Users Say</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class=" rounded-lg shadow-lg"  style="background: linear-gradient(to bottom right, #ffffff, #f5e8db); padding: 1.5rem;">
           <p class="italic text-gray-600 mb-4">"WalletWise helped me stay on top of my hostel expenses. Now I always
             know where my money goes!"</p>
           <h4 class="font-bold text-[#6B4226]">Riya Sharma</h4>
           <span class="text-sm text-gray-500">Student, Ahmedabad</span>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class=" rounded-lg shadow-lg  "  style="background: linear-gradient(to bottom right, #ffffff, #f5e8db); padding: 1.5rem;">
           <p class="italic text-gray-600 mb-4">"As a small business owner, I needed something simple but powerful.
             WalletWise is just that."</p>
           <h4 class="font-bold text-[#6B4226]">Amit Patel</h4>
           <span class="text-sm text-gray-500">Entrepreneur</span>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class=" rounded-lg shadow-lg  "  style="background: linear-gradient(to bottom right, #ffffff, #f5e8db); padding: 1.5rem;">
           <p class="italic text-gray-600 mb-4">"Reminders, analytics, and smooth UI — it’s everything I wanted in a
             financial tool."</p>
           <h4 class="font-bold text-[#6B4226]">Sneha Desai</h4>

@@ -349,11 +349,8 @@
 								</h4>
 							</div>
 						</div>
-					
 				</div>
-
 			<br>
-
 				<div class="row d-flex align-items-md-stretch">
 					<div class="col-lg-6 ">
 						<div class="dashboard-card">
@@ -367,6 +364,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-lg-6 ">
 						<div class="dashboard-card">
 							<div class="card-header d-flex">
@@ -381,7 +379,6 @@
 					</div>
 				</div>
 			</div>
-	
 	<script type="text/javascript" src="lib/js/main.js"></script>
 </body>
 @php
