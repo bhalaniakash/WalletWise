@@ -16,9 +16,9 @@
 
         body {
             margin: 0;
-              font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+            font-style: normal;
             background: #F3E5D8;
         }
 
@@ -37,18 +37,18 @@
             padding: 2rem;
             background: #F3E5D8;
             border-radius: 8px;
-              font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             width: calc(100% - 2rem);
-              font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+            font-style: normal;
         }
 
         #page-wrapper {
@@ -64,8 +64,8 @@
             font-weight: 600;
             color: #6b4226;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .container {
@@ -88,9 +88,9 @@
         }
 
         .card {
-              font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+            font-style: normal;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -154,8 +154,8 @@
             transition: all 0.3s ease-in-out;
             width: 48%;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .dashboard-card:hover {
@@ -177,8 +177,8 @@
             justify-content: center;
             align-items: center;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .chart1 {
@@ -186,6 +186,10 @@
             gap: 1.5rem;
             border-radius: 2%;
             box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-gradient {
+            background: linear-gradient(to bottom right, #ffffff, #f5e8db);
         }
     </style>
 
@@ -202,7 +206,7 @@
             </div>
 
             <div class="row mb-2" class="row">
-                <div class="dashboard-card">
+                <div class="dashboard-card card-gradient">
                     <a href="{{ url('/admin/members') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-users "></i>
@@ -211,7 +215,7 @@
                         <p class="card-number">{{$totalUsers->where('is_Admin', '!=', 'Yes')->count('id')}}</p>
                     </a>
                 </div>
-                <div class="dashboard-card">
+                <div class="dashboard-card card-gradient">
                     <a href="{{ url('/admin/members') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-user-slash"></i>
@@ -249,7 +253,7 @@
                 </div>
             </div>
             <div class="row mt-2" class="row">
-                <div class="dashboard-card">
+                <div class="dashboard-card card-gradient">
                     <a href="{{ url('/admin/payment') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-gem"></i>
@@ -260,7 +264,7 @@
                         </p>
                     </a>
                 </div>
-                <div class="dashboard-card">
+                <div class="dashboard-card card-gradient">
                     <a href="{{ url('/admin/members') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-user"></i>
@@ -273,7 +277,7 @@
                 </div>
             </div>
             <div class="row mt-2" class="row">
-                <div class="dashboard-card">
+                <div class="dashboard-card card-gradient">
                     <a href="{{ url('/admin/showCategory') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-layer-group"></i>
@@ -282,7 +286,7 @@
                         <p class="card-number">{{$income = $categories->where('type', 'income')->count()}}</p>
                     </a>
                 </div>
-                <div class="dashboard-card">
+                <div class="dashboard-card card-gradient">
                     <a href="{{ url('/admin/showCategory') }}" style="text-decoration: none">
                         <h5 class="card-title">
                             <i class="fas fa-wallet"></i>

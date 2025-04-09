@@ -106,16 +106,22 @@
             color: red;
             font-size: 14px;
         }
+
+        .card-gradient {
+            background: linear-gradient(to bottom right, #ffffff, #f5e8db);
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container card-gradient">
         <div class="form-header">
             <img src="/img/logo-removebg-preview.png" alt="Logo">
             <h4>WalletWise</h4>
         </div>
         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+            {{-- <input type="hidden" name="plan_type" value="regular"> --}}
+            {{-- <input type="hidden" name="role" value="user"> --}}
             @csrf
             <h2 class="text-center">Register Yourself</h2>
             <div class="form-container">
@@ -156,13 +162,13 @@
                     </select>
                     @error('plan_type') <span class="error">{{ $message }}</span> @enderror
                 </div> --}}
-                <div class="form-group">
+                <div class="form-group" style="width: 100%;">
                     <label for="profile_picture">Profile Picture</label>
                     <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture"
                         accept="image/*">
                     @error('profile_picture') <span class="error">{{ $message }}</span> @enderror
                 </div>
-                
+
             </div>
             <div class="form-footer">
                 <a href="{{ route('login') }}">Already registered?</a>

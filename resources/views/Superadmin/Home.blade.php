@@ -12,7 +12,7 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    <style>body {
+    body {
       color: #2F1B0C;
       font-family: 'Inter', sans-serif;
       line-height: 1.6;

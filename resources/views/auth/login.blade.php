@@ -98,11 +98,15 @@
             text-decoration: none;
             color: #555;
         }
+
+        .card-gradient {
+            background: linear-gradient(to bottom right, #ffffff, #f5e8db);
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container card-gradient">
         <div class="form-header">
             <img src="/img/logo-removebg-preview.png" alt="Logo">
             <h4>WalletWise</h4>

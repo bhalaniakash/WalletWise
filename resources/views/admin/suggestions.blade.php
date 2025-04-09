@@ -17,8 +17,8 @@
         body {
             margin: 0;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
             background: #F3E5D8;
         }
 
@@ -26,8 +26,8 @@
             margin-bottom: -100px;
             background: #F3E5D8;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
 
         }
 
@@ -40,8 +40,8 @@
             background: #F3E5D8;
             border-radius: 8px;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .content.active {
@@ -49,8 +49,8 @@
             margin-right: 1rem;
             width: calc(100% - 2rem);
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         #page-wrapper {
@@ -59,8 +59,8 @@
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
             padding: 0.5rem;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         h1 {
@@ -91,8 +91,8 @@
 
         .card {
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -183,6 +183,10 @@
             border-radius: 2%;
             box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
         }
+
+        .card-gradient {
+            background: linear-gradient(to bottom right, #ffffff, #f5e8db);
+        }
     </style>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -199,10 +203,10 @@
 
             <div class="row mb-2 align-items-start">
                 @foreach ($suggestions as $suggestion)
-                    <div class="dashboard-card text-left
-                                @if ($loop->last && $loop->count % 3 == 1) col-span-3
-                                @elseif ($loop->last && $loop->count % 3 == 2) col-span-2
-                                @endif">
+                    <div class="card-gradient dashboard-card text-left
+                                            @if ($loop->last && $loop->count % 3 == 1) col-span-3
+                                            @elseif ($loop->last && $loop->count % 3 == 2) col-span-2
+                                            @endif">
                         <p class="card-title font-semibold">{{ $suggestion->name }}</p>
                         <p>{{ $suggestion->message }}</p>
                     </div>

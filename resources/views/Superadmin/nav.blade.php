@@ -39,9 +39,8 @@
     text-shadow: 1px 1px 2px rgba(107, 66, 38, 0.4);
   }
 
-  .btn-elegant {
-    background-color: #6B4226;
-    color: white;
+  .text-elegant {
+    color: #6B4226;
   }
 
   .btn-elegant:hover {
@@ -73,7 +72,6 @@
       <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
       <a href="/" class="text-2xl font-bold text-elegant">WalletWise</a>
     </div>
-
     <div class="hidden lg:flex space-x-6">
       <a href="{{ url('/Superadmin/Feature') }}" class="text-gray-600 hover:text-elegant">Tools</a>
       <a href="{{ url('/Superadmin/pricing') }}" class="text-gray-600 hover:text-elegant">Plans</a>

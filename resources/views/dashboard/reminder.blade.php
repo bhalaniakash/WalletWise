@@ -9,12 +9,13 @@
     <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
         body {
             background-color: #f8f5f2;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .page-content {
@@ -24,8 +25,8 @@
             margin-right: 1rem;
             transition: all 0.4s;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
             color: #6b4226;
             padding: 2rem;
             border-radius: 12px;
@@ -67,21 +68,21 @@
         <div class="page-content">
             <h2 class="text-left mb-4">Add Reminders</h2>
             @if(session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
-                role="alert">
-                <strong class="font-bold">Success!</strong>
-                <span class="block sm:inline">{{ session('success') }}</span>
-                <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
-                    onclick="this.parentElement.remove();">
-                    <svg class="fill-current h-6 w-6 text-green-500" role="button"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <title>Close</title>
-                        <path
-                            d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
-                    </svg>
-                </button>
-            </div>
-        @endif
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
+                    role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                    <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
+                        onclick="this.parentElement.remove();">
+                        <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <title>Close</title>
+                            <path
+                                d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+                        </svg>
+                    </button>
+                </div>
+            @endif
 
             <form method="POST" action="{{ route('reminder.store') }}">
                 @csrf
@@ -104,9 +105,9 @@
                         <label class="form-label">Payment frequency:</label>
                         <select class="form-control" name="reminder_frequency">
                             <option value="single Payment">Single Payment</option>
-                            <option value="monthly">Monthly</option>
+                            {{-- <option value="monthly">Monthly</option>
                             <option value="semi_annual">Semi annual</option>
-                            <option value="annual">Yearly</option>
+                            <option value="annual">Yearly</option> --}}
                         </select>
                     </div>
                 </div>

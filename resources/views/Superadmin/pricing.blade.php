@@ -56,6 +56,9 @@
       background: linear-gradient(to right, #6B4226, #5a3b20);
     }
 
+    .card-gradient {
+      background: linear-gradient(to bottom right, #ffffff, #f5e8db);
+    }
 
     .container {
       background: #f5e8db;
@@ -81,7 +84,7 @@
     <div class="grid md:grid-cols-2 gap-6">
 
       <!-- Free Plan -->
-      <div class="bg-white p-8 rounded-lg shadow-md pricing-card">
+      <div class="card-gradient bg-white p-8 rounded-lg shadow-md pricing-card">
         <h2 class="text-2xl font-bold text-elegant">Regular User</h2>
         <p class="text-lg text-gray-600 mt-2">Free forever</p>
         <p class="mt-2 text-sm text-gray-500">
@@ -98,7 +101,7 @@
 
 
       <!-- Premium Plan -->
-      <div class="bg-white p-8 rounded-lg shadow-md pricing-card">
+      <div class="card-gradient bg-white p-8 rounded-lg shadow-md pricing-card">
         <h2 class="text-2xl font-bold text-elegant">Premium User</h2>
         <p class="text-lg text-gray-600 mt-2">₹499 for 3 months</p>
         <p class="mt-2 text-sm text-gray-500">
