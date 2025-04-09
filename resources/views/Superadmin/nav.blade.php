@@ -20,9 +20,8 @@
     text-shadow: 1px 1px 2px rgba(107, 66, 38, 0.4);
   }
 
-  .btn-elegant {
-    background-color: #6B4226;
-    color: white;
+  .text-elegant {
+    color: #6B4226;
   }
 
   .btn-elegant:hover {
