@@ -156,13 +156,13 @@
                     </select>
                     @error('plan_type') <span class="error">{{ $message }}</span> @enderror
                 </div> --}}
-                <div class="form-group">
+                <div class="form-group" style="width: 100%;">
                     <label for="profile_picture">Profile Picture</label>
                     <input id="profile_picture" type="file" class="btn btn-primary" name="profile_picture"
                         accept="image/*">
                     @error('profile_picture') <span class="error">{{ $message }}</span> @enderror
                 </div>
-                
+
             </div>
             <div class="form-footer">
                 <a href="{{ route('login') }}">Already registered?</a>

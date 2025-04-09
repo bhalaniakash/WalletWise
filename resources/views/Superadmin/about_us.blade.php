@@ -63,6 +63,11 @@
       background: linear-gradient(to right, #E6C7A5, #D4B08A);
     }
 
+    .card-gradient {
+      background: linear-gradient(to bottom right, #ffffff, #f5e8db);
+    }
+
+
     .section-bg {
       background: #f5e8db;
     }
@@ -165,7 +170,7 @@
 
   </section>
   <!-- Team Section -->
-  <section class="py-16 bg-white text-center">
+  <section class="card-gradient py-16 bg-white text-center">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold mb-8">Meet the Brains Behind WalletWise</h2>
       <div class="flex flex-col md:flex-row items-center " style="justify-content: space-around; margin:2rem">
