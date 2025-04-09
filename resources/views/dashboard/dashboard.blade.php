@@ -18,8 +18,8 @@
 			overflow-x: hidden;
 			margin-top: 0;
 			font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+			font-weight: 300;
+			font-style: normal;
 			background: #E6C7A5;
 			
 		}
@@ -30,15 +30,15 @@
 			transition: all 0.4s;
 			margin-top: 5% !important;
 			font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+			font-weight: 300;
+			font-style: normal;
 			
 		}
 		
 		.card-title {
 			font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: normal;
+			font-weight: 200;
+			font-style: normal;
 			font-size: 1.25rem;
 			font-weight: 500;
 			margin-bottom: 1rem;
@@ -52,15 +52,15 @@
 			font-weight: bold;
 			color: white;
 			font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+			font-weight: 300;
+			font-style: normal;
 		}
 
 		h5 {
 			color: #6b4226;
 			font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+			font-weight: 300;
+			font-style: normal;
 		}
 		/* Dashboard Cards */
 		.dashboard-card {
@@ -71,8 +71,8 @@
 			box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 			transition: all 0.3s ease-in-out;
 			font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+			font-weight: 300;
+			font-style: normal;
 		}
 		
 		.dashboard-card:hover {
@@ -98,6 +98,7 @@
 			/* Icon color */
 		}
 	</style>
+	
 	@include('shared.sidenav');
 	@include('shared.header');
 
@@ -304,11 +305,11 @@
 			{{-- Div for day wise expense tracking start from here --}}
 
 			<div class="col-xl-12 mt-4">
-				<div class="dashboard-card">
-					<div class="card-body">
-						<div class="d-flex mt-4" style="justify-content: space-between;">
+				<div class="dashboard-card card-body">
+					
+						<div class="d-flex" style="justify-content: space-between;">
 							<div>
-								<h5 class="mb-1">Expense Today</h5>
+								<p  class="text-muted">Expense Today</p >
 								@php
 									$today = now()->toDateString();
 									$todayExpense = $expenseReport
@@ -320,7 +321,7 @@
 							</div>
 
 							<div>
-								<h5 class="mb-1">Expense Yesterday</h5>
+								<p  class="text-muted">Expense Yesterday</p >
 								@php
 									$yesterday = now()->subDay()->toDateString();
 									$yesterdayExpense = $expenseReport
@@ -332,7 +333,7 @@
 							</div>
 							
 							<div>
-								<h5 class="mb-1">Difference Between Yesterday And Today </h5>
+								<p  class="text-muted">Gap </p >
 								@php
 									$difference = $todayExpense - $yesterdayExpense;
 								@endphp
@@ -348,9 +349,11 @@
 								</h4>
 							</div>
 						</div>
-					</div>
+					
 				</div>
+
 			<br>
+
 				<div class="row d-flex align-items-md-stretch">
 					<div class="col-lg-6 ">
 						<div class="dashboard-card">

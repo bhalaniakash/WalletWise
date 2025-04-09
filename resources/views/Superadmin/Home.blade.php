@@ -313,7 +313,6 @@
     </div>
   </section>
 
-
   <!-- Footer -->
   @include('Superadmin.footer')
 
