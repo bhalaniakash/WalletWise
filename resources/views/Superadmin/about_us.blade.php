@@ -67,7 +67,6 @@
       background: linear-gradient(to bottom right, #ffffff, #f5e8db);
     }
 
-
     .section-bg {
       background: #f5e8db;
     }

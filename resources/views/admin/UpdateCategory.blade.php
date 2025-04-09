@@ -17,8 +17,8 @@
             background-color: white;
             margin-top: 0%;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .page-content {
@@ -28,16 +28,16 @@
             background-color: white;
             margin-top: 5% !important;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         #add1 input {
@@ -54,8 +54,8 @@
             color: #000;
             background-color: white;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;   
+            font-weight: 300;
+            font-style: normal;
         }
 
         th,
@@ -69,8 +69,10 @@
 <body>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
     <title>header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,9 +89,9 @@
             <div class="row">
                 <div class="container-fluid col-lg-12">
                     <div class="card shadow p-3" style="background-color: #616b6b; color: white;">
-                            <h5>Update Catagory</h5>
-                        </div>
-                        @if(session('success'))
+                        <h5>Update Catagory</h5>
+                    </div>
+                    @if(session('success'))
                         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
                             role="alert">
                             <strong class="font-bold">Success!</strong>
@@ -104,31 +106,33 @@
                                 </svg>
                             </button>
                         </div>
-                        @endif
-                        <div class="card-body">
-                        <form id="updateCategoryForm" method="POST" action="{{ route('admin.category.edit', $category->id) }}">
+                    @endif
+                    <div class="card-body">
+                        <form id="updateCategoryForm" method="POST"
+                            action="{{ route('admin.category.edit', $category->id) }}">
                             @csrf
-                            @method('PUT') 
-                                <div class="mb-3">
-                                    <label for="incomeName" class="form-label">Category of Expense/Income</label>
-                                    <input type="text" name="income_name" id="incomeName" class="form-control" value="{{ $category->name }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="type" class="form-label">Category Type</label>
-                                    <select name="income_type" id="type" class="form-control" required>
-                                        <option value="{{ $category->type }}">{{ $category->type }}</option>
-                                        <option value="income">Income</option>
-                                        <option value="expense">Expense</option>
-                                    </select>
-                                </div>
-                                <button type="submit" name="insert" class="btn btn-dark">Update Category</button>
+                            @method('PUT')
+                            <div class="mb-3">
+                                <label for="incomeName" class="form-label">Category of Expense/Income</label>
+                                <input type="text" name="income_name" id="incomeName" class="form-control"
+                                    value="{{ $category->name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Category Type</label>
+                                <select name="income_type" id="type" class="form-control" required>
+                                    <option value="{{ $category->type }}">{{ $category->type }}</option>
+                                    <option value="income">Income</option>
+                                    <option value="expense">Expense</option>
+                                </select>
+                            </div>
+                            <button type="submit" name="insert" class="btn btn-dark">Update Category</button>
                         </form>
-                        </div>
                     </div>
-                    <br>
                 </div>
+                <br>
             </div>
-        </section>
+    </div>
+    </section>
     </div>
     <script>
         setTimeout(() => {

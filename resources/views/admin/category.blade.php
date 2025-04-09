@@ -16,7 +16,7 @@
             overflow-x: hidden;
             background: #F3E5D8;
             margin-top: 0%;
-              font-family: "Poppins", sans-serif;
+            font-family: "Poppins", sans-serif;
         }
 
         .page-content {
@@ -24,13 +24,13 @@
             margin-right: 1rem;
             transition: all 0.4s;
             margin-top: 5% !important;
-              font-weight: 300;
+            font-weight: 300;
         }
 
         .content.active {
             margin-left: 1rem;
             margin-right: 1rem;
-              font-style: normal;
+            font-style: normal;
         }
 
         .admin-dashboard-title {
@@ -78,6 +78,10 @@
                 padding: 10px;
             }
         }
+
+        .card-gradient {
+            background: linear-gradient(to bottom right, #ffffff, #f5e8db);
+        }
     </style>
 
 </head>
@@ -91,24 +95,24 @@
         <section>
             <div class="container">
                 <h1 class="admin-dashboard-title">Add Category</h1>
-                <div class="card">
+                <div class="card card-gradient">
                     <div class="card-body">
                         @if(session('success'))
-                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
-                            role="alert">
-                            <strong class="font-bold">Success!</strong>
-                            <span class="block sm:inline">{{ session('success') }}</span>
-                            <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
-                                onclick="this.parentElement.remove();">
-                                <svg class="fill-current h-6 w-6 text-green-500" role="button"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <title>Close</title>
-                                    <path
-                                        d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
-                                </svg>
-                            </button>
-                        </div>
-                    @endif
+                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
+                                role="alert">
+                                <strong class="font-bold">Success!</strong>
+                                <span class="block sm:inline">{{ session('success') }}</span>
+                                <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
+                                    onclick="this.parentElement.remove();">
+                                    <svg class="fill-current h-6 w-6 text-green-500" role="button"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <title>Close</title>
+                                        <path
+                                            d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        @endif
 
                         @if(session('error'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">

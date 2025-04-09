@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
     <meta charset="UTF-8">
@@ -93,7 +94,8 @@
             <form method="GET" action="{{ route('payment.filter') }}" class="form-inline mb-4">
 
                 <label for="expenseDate" class="mr-2">Select Month:</label>
-                <input type="month" class="form-control mr-2" id="expenseDate" name="date" value="{{ request('date') }}">
+                <input type="month" class="form-control mr-2" id="expenseDate" name="date"
+                    value="{{ request('date') }}">
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-filter fa-xs"></i> Filter
                 </button>
@@ -109,42 +111,38 @@
                         <th>Payment Amount</th>
                     </tr>
                 </thead>
-                
-                    @php
-                        $data = $data ?? collect();
-                    @endphp
 
-                    @forelse($data as $user)
-                        <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->age }}</td>
-                            <td>{{ \Carbon\Carbon::parse($user->premium_started_at)->format('d M Y') }}</td>
-                            <td>&#8377;{{ $user->premium_amount }}</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="text-center">No premium users found for the selected month.</td>
-                        </tr>
-                    @endforelse
+                @php
+                    $data = $data ?? collect();
+                @endphp
+
+                @forelse($data as $user)
                     <tr>
-                        <td colspan="4" style="text-align: left; font-weight: bold;">Total Premium Payment:</td>
-                        <td style="text-align:left ; font-weight: bold;">&#8377; {{ $totalPremiumPayment }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->age }}</td>
+                        <td>{{ \Carbon\Carbon::parse($user->premium_started_at)->format('d M Y') }}</td>
+                        <td>&#8377;{{ $user->premium_amount }}</td>
                     </tr>
-                  
-                        @php
-                            $totalPremiumPayment = $data->sum('premium_amount');
-                        @endphp
-    
-                        <tr>
-                            <td colspan="4" style="text-align: left; font-weight: bold;">Total Premium Users:</td>
-                            <td style="text-align:left ; font-weight: bold;">{{ $data->count() }}</td>
-                        </tr>
-                        
-                  
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center">No premium users found for the selected month.</td>
+                    </tr>
+                @endforelse
+
+                $totalPremiumPayment = $data->sum('premium_amount');
+                @endphp
+                <tr>
+                    <td colspan="2" style="text-align: left; font-weight: bold;">Total Premium Payment:
+                        &#8377; {{ $totalPremiumPayment }}</td>
+                    <td colspan="2" style="text-align: left; font-weight: bold;">Total Premium Users:
+                        {{ $data->count() }}
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </body>
+
 </html>
