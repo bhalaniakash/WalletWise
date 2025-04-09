@@ -1,3 +1,22 @@
+{{-- <script>
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.querySelector("nav");
+
+    // Hide the navbar initially
+    navbar.style.transform = "translateY(-100%)";
+
+    // Show the navbar when the mouse is at the top 20% of the screen
+    document.addEventListener("mousemove", function (event) {
+      if (event.clientY <= window.innerHeight * 0.2) { // 20% of the viewport height    
+        navbar.style.transform = "translateY(0)";
+      } else {
+        navbar.style.transform = "translateY(-100%)";
+      }
+    });
+  });
+
+</script> --}}
 <style>
   .rounded-lg {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;

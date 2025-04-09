@@ -21,6 +21,7 @@
   //     }
   //   });
 
+
     // Highlight the active link
     let currentPath = window.location.pathname;
     let navLinks = document.querySelectorAll(".nav-item a");
@@ -30,7 +31,7 @@
         link.parentElement.classList.add("active");
       }
     });
-  });
+ 
 </script>
 
     </script>
@@ -62,7 +63,7 @@
       font-weight: 300;
       font-style: normal;
     }
-
+    
     .vertical-nav {
       margin-top: 69px;
       min-width: 16rem;
@@ -80,6 +81,7 @@
       font-family: "Poppins", sans-serif;
       font-weight: 300;
       font-style: normal;
+    
     }
 
 
