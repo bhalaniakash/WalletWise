@@ -39,9 +39,18 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-// This is for Super Admin
-Route::view('/Superadmin/nav', 'Superadmin.nav');
 Route::view('/', 'Superadmin.Home');
+// This is for Super Admin
+Route::prefix('/Superadmin')->group(function () {
+    Route::view('/Home', 'Superadmin.Home');
+    Route::view('/login', 'Superadmin.login');
+    Route::view('/register', 'Superadmin.register');
+    Route::view('/forgot_password', 'Superadmin.forgot_password');
+    Route::view('/reset_password', 'Superadmin.reset_password');
+    Route::view('/terms_conditions', 'Superadmin.terms_conditions');
+    Route::view('/privacy_policy', 'Superadmin.privacy_policy');
+});
+Route::view('/Superadmin/nav', 'Superadmin.nav');
 Route::view('/Superadmin/Feature', 'Superadmin.feature');
 Route::view('/Superadmin/pricing', 'Superadmin.pricing');
 Route::view('/Superadmin/contactus', 'Superadmin.contactus');
@@ -50,45 +59,49 @@ Route::post('/contact/store', [ContactUsController::class, 'store'])->name('cont
 
 
 // this is for user
-Route::view('/dashboard/category', 'dashboard.category');
-Route::view('/dashboard/income', 'dashboard.income');
-Route::view('/dashboard/expense', 'dashboard.expense');
-Route::view('/dashboard/incomeReport', 'dashboard.incomeReport');
-Route::view('/dashboard/expenseReport', 'dashboard.expenseReport');
-Route::view('/dashboard/budget', 'dashboard.budget');
-Route::view('/dashboard/update', 'dashboard.update');
-Route::view('/dashboard/reminder', 'dashboard.reminder');
-Route::view('/dashboard/profile', 'dashboard.profile');
-Route::view('/dashboard/show_reminder', 'dashboard.show_reminder');
+Route::prefix('/dashboard')->group(function () {
+    Route::view('/category', 'dashboard.category');
+    Route::view('/income', 'dashboard.income');
+    Route::view('/expense', 'dashboard.expense');
+    Route::view('/incomeReport', 'dashboard.incomeReport');
+    Route::view('/expenseReport', 'dashboard.expenseReport');
+    Route::view('/budget', 'dashboard.budget');
+    Route::view('/update', 'dashboard.update');
+    Route::view('/reminder', 'dashboard.reminder');
+    Route::view('/profile', 'dashboard.profile');
+    Route::view('/show_reminder', 'dashboard.show_reminder');
+});
+
 
 // This is for Admin
-Route::view('/admin/dashboard', 'admin.dashboard');
-Route::view('/admin/members', 'admin.members');
-Route::view('/admin/suggestions', 'admin.suggestions');
-// Route::view('/admin/payment', 'admin.payment');
-Route::view('/admin/category', 'admin.category');
-Route::view('/admin/payment', 'admin.payment');
-Route::post('/admin/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
-Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
-Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
-Route::get('/admin/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
+Route::prefix('/admin')->group(function () {
 
-Route::get('/admin/payment', function (Request $request) {
-    $filteredUsers = User::where('plan_type', 'premium')
-        ->where('is_Admin', 'No');
+    Route::view('/dashboard', 'admin.dashboard');
+    Route::view('/members', 'admin.members');
+    Route::view('/suggestions', 'admin.suggestions');
+    Route::view('/category', 'admin.category');
+    Route::view('/payment', 'admin.payment');
+    Route::post('/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::put('/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::get('/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
 
-    if ($request->filled('date')) {
-        $filteredUsers->whereYear('premium_started_at', substr($request->input('date'), 0, 4))
-            ->whereMonth('premium_started_at', substr($request->input('date'), 5, 2));
-    }
+    Route::get('/payment', function (Request $request) {
+        $filteredUsers = User::where('plan_type', 'premium')
+            ->where('is_Admin', 'No');
 
-    $data = $filteredUsers->get();
-    $totalPremiumPayment = number_format($data->sum('premium_amount'), 2, '.', '');
+        if ($request->filled('date')) {
+            $filteredUsers->whereYear('premium_started_at', substr($request->input('date'), 0, 4))
+                ->whereMonth('premium_started_at', substr($request->input('date'), 5, 2));
+        }
 
-    return view('admin.payment', compact('data', 'totalPremiumPayment'));
-})->name('payment.filter');
+        $data = $filteredUsers->get();
+        $totalPremiumPayment = number_format($data->sum('premium_amount'), 2, '.', '');
 
+        return view('admin.payment', compact('data', 'totalPremiumPayment'));
+    })->name('payment.filter');
+});
 // User income and expense routes
 Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
 Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData']);
