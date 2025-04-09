@@ -283,17 +283,17 @@
 
 							<div class="d-flex " style="justify-content: space-between;">
 								<div>
-									<h5 class="mb-1">Earnings</h5>
+									<p  class="text-muted mb-1">Earnings</p>
 									<h4 class="mb-0">₹ {{ number_format($currentMonthIncome, 2) }}</h4>
 								</div>
 
 								<div>
-									<h5 class="mb-1">Profit</h5>
+									<p  class="text-muted mb-1">Profit</p>
 									<h4 class="mb-0">₹ {{ number_format($saving, 2) }}</h4>
 								</div>
 
 								<div>
-									<h5 class="mb-1">Expense</h5>
+									<p  class="text-muted mb-1">Expense</p>
 									<h4 class="mb-0">₹ {{ number_format($currentMonthExpense, 2) }}</h4>
 								</div>
 							</div>	
