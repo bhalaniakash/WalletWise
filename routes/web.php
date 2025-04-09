@@ -49,12 +49,12 @@ Route::prefix('/Superadmin')->group(function () {
     Route::view('/reset_password', 'Superadmin.reset_password');
     Route::view('/terms_conditions', 'Superadmin.terms_conditions');
     Route::view('/privacy_policy', 'Superadmin.privacy_policy');
+    Route::view('/nav', 'Superadmin.nav');
+    Route::view('/Feature', 'Superadmin.feature');
+    Route::view('/pricing', 'Superadmin.pricing');
+    Route::view('/contactus', 'Superadmin.contactus');
+    Route::view('/about_us', 'Superadmin.about_us');
 });
-Route::view('/Superadmin/nav', 'Superadmin.nav');
-Route::view('/Superadmin/Feature', 'Superadmin.feature');
-Route::view('/Superadmin/pricing', 'Superadmin.pricing');
-Route::view('/Superadmin/contactus', 'Superadmin.contactus');
-Route::view('/Superadmin/about_us', 'Superadmin.about_us');
 Route::post('/contact/store', [ContactUsController::class, 'store'])->name('contact.store');
 
 
@@ -81,11 +81,13 @@ Route::prefix('/admin')->group(function () {
     Route::view('/suggestions', 'admin.suggestions');
     Route::view('/category', 'admin.category');
     Route::view('/payment', 'admin.payment');
-    Route::post('/addCategory', [CategoryController::class, 'store'])->name('admin.category.store');
-    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-    Route::put('/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
-    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
-    Route::get('/showCategory', [CategoryController::class, 'index'])->name('admin.categories.index');
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/category', 'index')->name('admin.category');
+        Route::post('/category/store', 'store')->name('admin.category.store');
+        Route::get('/category/edit/{id}', 'edit')->name('admin.category.edit');
+        Route::put('/category/update/{id}', 'update')->name('admin.category.update');
+        Route::delete('/category/{id}', 'destroy')->name('admin.category.destroy');
+    });
 
     Route::get('/payment', function (Request $request) {
         $filteredUsers = User::where('plan_type', 'premium')
@@ -108,8 +110,6 @@ Route::get('/chart-data', [ExpenseController::class, 'getExpenseIncomeChartData'
 Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 Route::delete('/members/{id}', [Members::class, 'destroy'])->name('members.destroy');
-
-
 // Admin Dashboard Route
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::post('/budget/store', [BudgetController::class, 'store'])->name('budget.store');
@@ -185,8 +185,10 @@ Route::post('/category/filter', function (Request $request) {
 
 
 //payment
-Route::post('/razorpay/payment', [Payment::class, 'payment'])->name('payment');
-Route::post('/verify-payment', [Payment::class, 'verifyPayment'])->name('payment.verify');
+Route::controller(Payment::class)->group(function () {
+    Route::post('/razorpay/payment',  'payment')->name('payment');
+    Route::post('/verify-payment',  'verifyPayment')->name('payment.verify');
+});
 
 //email
 // Route::get('/send-email', [MailController::class, 'sendEmail']);
