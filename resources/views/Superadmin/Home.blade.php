@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WalletWise - Super Admin</title>
   <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- Font Awesome 6 CDN -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -122,6 +123,27 @@
       width: 100%;
       background: linear-gradient(to right bottom, #fffaf7 49%, #f9f5f0 50%);
     }
+    .animate-delay-1 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-delay-2 {
+    animation-delay: 0.4s;
+  }
+
+  .animate-delay-3 {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+  
   </style>
 </head>
 
@@ -135,7 +157,7 @@
     <div class="container mx-auto px-6 py-32 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">
-          <span class="gradient-text">WalletWise</span> 
+          <span class="gradient-text animate-delay-1">WalletWise</span> 
         </h1>
         <p class="text-xl md:text-2xl text-primary-700 mb-10 leading-relaxed">
           Advanced financial management dashboard with powerful analytics, multi-user control, and enterprise-grade security.
@@ -158,7 +180,7 @@
     <div class="container mx-auto px-6">
       <div class="text-center mb-20">
         <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4">Dashboard Capabilities</span>
-        <h2 class="text-4xl font-bold text-primary-800 mb-6">Powerful Financial Management Tools</h2>
+        <h2 class="text-4xl font-bold text-primary-800 mb-6 " >Powerful Financial Management Tools</h2>
         <p class="max-w-2xl mx-auto text-lg text-gray-600">
           WalletWise provides comprehensive tools to monitor, analyze, and optimize financial operations with precision and ease.
         </p>
@@ -451,5 +473,25 @@
     }
   </script>
 </body>
-
+<script>
+  // Simple animation trigger on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const animateElements = document.querySelectorAll('.animate__animated');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(entry.target.dataset.animate);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animateElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
 </html>

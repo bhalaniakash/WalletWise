@@ -203,8 +203,8 @@
 </style>
 
 <!-- Navbar -->
-<nav class="navbar-fixed shadow-md" style="background: #f5e8db;">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<nav class="navbar-fixed shadow-md">
+  <div class="container mx-auto px-4 py-6 flex justify-between items-center">
     <div class="logo">
       <img src="/img/logo-removebg-preview.png" width="50px" height="50px" />
       <a href="/" class="text-2xl font-bold text-elegant">WalletWise</a>
