@@ -295,12 +295,12 @@
             </tr>
             <tr class="border-b border-gray-200">
               <td class="py-4">Data Export</td>
-              <td class="text-center py-4">-</td>
+              <td class="text-center py-4">✓</td>
               <td class="text-center py-4">✓</td>
             </tr>
             <tr>
               <td class="py-4">Spending Analytics</td>
-              <td class="text-center py-4">-</td>
+              <td class="text-center py-4">✓</td>
               <td class="text-center py-4">✓</td>
             </tr>
           </tbody>
@@ -338,7 +338,7 @@
     </div>
   </section> --}}
 
-  
+
 
   <!-- Footer -->
   @include('Superadmin.footer')
