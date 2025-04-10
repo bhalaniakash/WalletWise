@@ -9,9 +9,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  
+  <script>
+     tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f9f5f0',
+              100: '#f0e6d9',
+              200: '#e0ccb3',
+              300: '#c8a880',
+              400: '#b3895a',
+              500: '#9d7246',
+              600: '#7f5a3a',
+              700: '#6B4226',
+              800: '#553520',
+              900: '#482d1d',
+            },
+            secondary: {
+              50: '#fff9f5',
+              100: '#fff1e6',
+              200: '#ffe0c7',
+              300: '#ffc99a',
+              400: '#ffa762',
+              500: '#ff8433',
+              600: '#ff6b1a',
+              700: '#cc4f0d',
+              800: '#a33f0f',
+              900: '#833613',
+            },
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1s ease-in-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  </script>
   <style>
-    :root {
+    
+
+:root {
       --primary: #6B4226;
       --secondary: #E6C7A5;
       --accent: #8B5A2B;
@@ -120,7 +173,7 @@
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-12 md:mb-0 animate__animated animate__fadeInLeft">
           <div class="relative">
-            <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+            <img src="https://media.istockphoto.com/id/1346853640/photo/saving-money-concept-man-hand-putting-row-and-coin-write-finance-saving-money-concept-man.jpg?s=612x612&w=0&k=20&c=1I48V9GUU0liAJ-dMA4SW-h5LoejkBTlEZJ-0b_vmXE=" 
                  alt="WalletWise origin" 
                  class="rounded-xl shadow-2xl w-full max-w-lg">
             <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg w-3/4">
@@ -306,16 +359,22 @@
     </div>
   </section>
 
+  <
   <!-- CTA Section -->
-  <section class="py-20 bg-gradient-to-r from-amber-600 to-amber-800 text-white">
+  <section class="py-20 bg-primary-50 text-primary-800">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Financial Life?</h2>
-      <p class="text-xl max-w-2xl mx-auto mb-8">
-        Join thousands of users who've taken control of their finances with WalletWise
+      <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Financial Management?</h2>
+      <p class="text-xl max-w-2xl mx-auto mb-10 text-primary-600">
+        Join hundreds of organizations using WalletWise to streamline their financial operations.
       </p>
-      <a href="/register" class="inline-block bg-white text-amber-800 px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        Start Your Free Journey Today
-      </a>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="{{url('register')}}" class="px-8 py-4 bg-primary-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+          Start Free Trial
+        </a>
+        <a href="#" class="px-8 py-4 border-2 border-primary-600 text-primary-600 font-semibold rounded-full hover:bg-primary-600 hover:text-white transition-all duration-300">
+          Schedule Demo
+        </a>
+      </div>
     </div>
   </section>
 
