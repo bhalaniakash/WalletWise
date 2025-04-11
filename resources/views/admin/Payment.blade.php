@@ -129,15 +129,15 @@
                         <td colspan="5" class="text-center">No premium users found for the selected month.</td>
                     </tr>
                 @endforelse
-
+                    @php
                 $totalPremiumPayment = $data->sum('premium_amount');
                 @endphp
                 <tr>
-                    <td colspan="2" style="text-align: left; font-weight: bold;">Total Premium Payment:
-                        &#8377; {{ $totalPremiumPayment }}</td>
-                    <td colspan="2" style="text-align: left; font-weight: bold;">Total Premium Users:
+                    <td colspan="3" style="text-align: left; font-weight: bold;">Total Premium Users:
                         {{ $data->count() }}
                     </td>
+                    <td colspan="2" style="text-align: left; font-weight: bold;">Total Premium Payment:
+                        &#8377; {{ $totalPremiumPayment }}</td>
                 </tr>
                 </tbody>
             </table>

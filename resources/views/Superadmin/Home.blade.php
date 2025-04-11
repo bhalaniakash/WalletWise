@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WalletWise - Super Admin</title>
   <link rel="icon" type="image/png" href="/img/logo-removebg-preview.png">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- Font Awesome 6 CDN -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -72,14 +72,14 @@
       color: transparent;
       background-image: linear-gradient(to right, #9d7246, #6B4226);
     }
-    
+
     .glass-card {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.18);
     }
-    
+
     .feature-icon {
       width: 80px;
       height: 80px;
@@ -91,59 +91,68 @@
       background: linear-gradient(135deg, rgba(234, 214, 191, 0.5) 0%, rgba(234, 214, 191, 0.2) 100%);
       box-shadow: 0 8px 32px rgba(107, 66, 38, 0.1);
     }
-    
+
     .testimonial-card::before {
-      content: "";
+      <<<<<<< HEAD content: "" ";
+ position: absolute;
+      =======content: "";
       position: absolute;
-      top: 20px;
+      >>>>>>>a80e217505f45091d08913d70b450aa2cb694a8e top: 20px;
       left: 20px;
       font-size: 60px;
       color: rgba(107, 66, 38, 0.1);
       font-family: serif;
       line-height: 1;
     }
-    
+
     .hover-scale {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
     .hover-scale:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
-    
+
     .section-divider {
       height: 80px;
       width: 100%;
       background: linear-gradient(to right bottom, #f9f5f0 49%, #fffaf7 50%);
     }
-    
+
     .reverse-section-divider {
       height: 80px;
       width: 100%;
       background: linear-gradient(to right bottom, #fffaf7 49%, #f9f5f0 50%);
     }
+
     .animate-delay-1 {
-    animation-delay: 0.2s;
-  }
+      animation-delay: 0.2s;
+    }
 
-  .animate-delay-2 {
-    animation-delay: 0.4s;
-  }
+    .animate-delay-2 {
+      animation-delay: 0.4s;
+    }
 
-  .animate-delay-3 {
-    animation-delay: 0.6s;
-  }
+    .animate-delay-3 {
+      animation-delay: 0.6s;
+    }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-  }
+    @keyframes float {
 
-  .floating {
-    animation: float 6s ease-in-out infinite;
-  }
-  
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
   </style>
 </head>
 
@@ -157,16 +166,19 @@
     <div class="container mx-auto px-6 py-32 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">
-          <span class="gradient-text animate-delay-1">WalletWise</span> 
+          <span class="gradient-text animate-delay-1">WalletWise</span>
         </h1>
         <p class="text-xl md:text-2xl text-primary-700 mb-10 leading-relaxed">
-          Advanced financial management dashboard with powerful analytics, multi-user control, and enterprise-grade security.
+          Advanced financial management dashboard with powerful analytics, multi-user control, and enterprise-grade
+          security.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="{{url('register')}}" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <a href="{{url('register')}}"
+            class="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
             Get Started Now
           </a>
-          <a href="{{ url('/Superadmin/Feature') }}" class="px-8 py-4 border-2 border-primary-600 text-primary-700 font-semibold rounded-full hover:bg-primary-50 transition-all duration-300">
+          <a href="{{ url('/Superadmin/Feature') }}"
+            class="px-8 py-4 border-2 border-primary-600 text-primary-700 font-semibold rounded-full hover:bg-primary-50 transition-all duration-300">
             Explore Features
           </a>
         </div>
@@ -179,13 +191,15 @@
   <section id="features" class="py-20 bg-white">
     <div class="container mx-auto px-6">
       <div class="text-center mb-20">
-        <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4">Dashboard Capabilities</span>
-        <h2 class="text-4xl font-bold text-primary-800 mb-6 " >Powerful Financial Management Tools</h2>
+        <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4">Dashboard
+          Capabilities</span>
+        <h2 class="text-4xl font-bold text-primary-800 mb-6 ">Powerful Financial Management Tools</h2>
         <p class="max-w-2xl mx-auto text-lg text-gray-600">
-          WalletWise provides comprehensive tools to monitor, analyze, and optimize financial operations with precision and ease.
+          WalletWise provides comprehensive tools to monitor, analyze, and optimize financial operations with precision
+          and ease.
         </p>
       </div>
-      
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Feature 1 -->
         <div class="glass-card p-8 rounded-2xl hover-scale">
@@ -197,7 +211,7 @@
             Comprehensive financial insights with customizable reports, trend analysis, and predictive forecasting.
           </p>
         </div>
-        
+
         <!-- Feature 2 -->
         <div class="glass-card p-8 rounded-2xl hover-scale">
           <div class="feature-icon">
@@ -205,10 +219,11 @@
           </div>
           <h3 class="text-xl font-semibold text-center mb-3 text-primary-800">Enterprise Security</h3>
           <p class="text-gray-600 text-center">
-            Military-grade encryption, multi-factor authentication, and role-based access control for complete data protection.
+            Military-grade encryption, multi-factor authentication, and role-based access control for complete data
+            protection.
           </p>
         </div>
-        
+
         <!-- Feature 3 -->
         <div class="glass-card p-8 rounded-2xl hover-scale">
           <div class="feature-icon">
@@ -219,7 +234,7 @@
             Consolidated dashboard showing all financial metrics, transactions, and account balances at a glance.
           </p>
         </div>
-        
+
         <!-- Feature 4 -->
         <div class="glass-card p-8 rounded-2xl hover-scale">
           <div class="feature-icon">
@@ -230,7 +245,7 @@
             Customizable notifications for unusual activity, budget thresholds, and important financial events.
           </p>
         </div>
-        
+
         <!-- Feature 5 -->
         <div class="glass-card p-8 rounded-2xl hover-scale">
           <div class="feature-icon">
@@ -241,7 +256,7 @@
             Set, monitor, and achieve financial objectives with visual progress tracking and milestone celebrations.
           </p>
         </div>
-        
+
         <!-- Feature 6 -->
         <div class="glass-card p-8 rounded-2xl hover-scale">
           <div class="feature-icon">
@@ -285,17 +300,19 @@
     <div class="container mx-auto px-6">
       <div class="flex flex-col lg:flex-row items-center gap-12">
         <div class="lg:w-1/2">
-          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
-               alt="Financial Dashboard" 
-               class="rounded-2xl shadow-2xl hover-scale transition-all duration-300">
+          <img
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+            alt="Financial Dashboard" class="rounded-2xl shadow-2xl hover-scale transition-all duration-300">
         </div>
         <div class="lg:w-1/2">
-          <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4">Why WalletWise?</span>
+          <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4">Why
+            WalletWise?</span>
           <h2 class="text-4xl font-bold text-primary-800 mb-6">Enterprise-Grade Financial Management</h2>
           <p class="text-lg text-gray-600 mb-8">
-            WalletWise is designed for organizations that demand reliability, security, and powerful financial oversight capabilities.
+            WalletWise is designed for organizations that demand reliability, security, and powerful financial oversight
+            capabilities.
           </p>
-          
+
           <div class="space-y-6">
             <div class="flex items-start">
               <div class="flex-shrink-0 mt-1">
@@ -305,10 +322,12 @@
               </div>
               <div class="ml-4">
                 <h3 class="text-lg font-semibold text-primary-800">Laravel Security Features</h3>
-                <p class="text-gray-600">Laravel provides built-in protection against common vulnerabilities like SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF). It also includes robust authentication and encryption mechanisms to safeguard your application.</p>
+                <p class="text-gray-600">Laravel provides built-in protection against common vulnerabilities like SQL
+                  injection, cross-site scripting (XSS), and cross-site request forgery (CSRF). It also includes robust
+                  authentication and encryption mechanisms to safeguard your application.</p>
               </div>
             </div>
-            
+
             <div class="flex items-start">
               <div class="flex-shrink-0 mt-1">
                 <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100 text-primary-700">
@@ -317,10 +336,11 @@
               </div>
               <div class="ml-4">
                 <h3 class="text-lg font-semibold text-primary-800">Granular Permissions</h3>
-                <p class="text-gray-600">Customizable role-based access controls allow precise management of user capabilities.</p>
+                <p class="text-gray-600">Customizable role-based access controls allow precise management of user
+                  capabilities.</p>
               </div>
             </div>
-            
+
             <div class="flex items-start">
               <div class="flex-shrink-0 mt-1">
                 <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100 text-primary-700">
@@ -329,7 +349,8 @@
               </div>
               <div class="ml-4">
                 <h3 class="text-lg font-semibold text-primary-800">Multi-Tier Hierarchy</h3>
-                <p class="text-gray-600">Manage organizations, departments, and individual users with our hierarchical structure.</p>
+                <p class="text-gray-600">Manage organizations, departments, and individual users with our hierarchical
+                  structure.</p>
               </div>
             </div>
           </div>
@@ -342,13 +363,14 @@
   <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
       <div class="text-center mb-16">
-        <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4">Testimonials</span>
+        <span
+          class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4">Testimonials</span>
         <h2 class="text-4xl font-bold text-primary-800 mb-6">Trusted by Financial Professionals</h2>
         <p class="max-w-2xl mx-auto text-lg text-gray-600">
           Hear from organizations that transformed their financial management with WalletWise.
         </p>
       </div>
-      
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Testimonial 1 -->
         <div class="bg-white rounded-2xl p-8 shadow-lg relative testimonial-card hover-scale">
@@ -360,7 +382,8 @@
             </div>
           </div>
           <p class="text-gray-600 italic relative z-10">
-            "WalletWise has revolutionized our financial reporting. What used to take days now takes minutes with their intuitive dashboards and automated reports."
+            "WalletWise has revolutionized our financial reporting. What used to take days now takes minutes with their
+            intuitive dashboards and automated reports."
           </p>
           <div class="mt-4 flex text-yellow-400">
             <i class="fas fa-star"></i>
@@ -370,7 +393,7 @@
             <i class="fas fa-star"></i>
           </div>
         </div>
-        
+
         <!-- Testimonial 2 -->
         <div class="bg-white rounded-2xl p-8 shadow-lg relative testimonial-card hover-scale">
           <div class="flex items-center mb-6">
@@ -381,7 +404,8 @@
             </div>
           </div>
           <p class="text-gray-600 italic relative z-10">
-            "The multi-store financial consolidation in WalletWise saved us countless hours. Now we can see all locations' performance in one dashboard."
+            "The multi-store financial consolidation in WalletWise saved us countless hours. Now we can see all
+            locations' performance in one dashboard."
           </p>
           <div class="mt-4 flex text-yellow-400">
             <i class="fas fa-star"></i>
@@ -391,7 +415,7 @@
             <i class="fas fa-star-half-alt"></i>
           </div>
         </div>
-        
+
         <!-- Testimonial 3 -->
         <div class="bg-white rounded-2xl p-8 shadow-lg relative testimonial-card hover-scale">
           <div class="flex items-center mb-6">
@@ -402,7 +426,8 @@
             </div>
           </div>
           <p class="text-gray-600 italic relative z-10">
-            "The audit trails and permission controls give me peace of mind knowing exactly who accessed what financial data and when."
+            "The audit trails and permission controls give me peace of mind knowing exactly who accessed what financial
+            data and when."
           </p>
           <div class="mt-4 flex text-yellow-400">
             <i class="fas fa-star"></i>
@@ -415,10 +440,9 @@
       </div>
     </div>
   </section>
- 
+
   <!-- CTA Section -->
   @include('Superadmin.CTA')
-
 
   <!-- Footer -->
   @include('Superadmin.footer')
@@ -428,13 +452,13 @@
     function animateCounters() {
       const counters = document.querySelectorAll('[data-count]');
       const speed = 200;
-      
+
       counters.forEach(counter => {
         const target = +counter.getAttribute('data-count');
         const count = +counter.innerText;
         const increment = target / speed;
-        
-        if(count < target) {
+
+        if (count < target) {
           counter.innerText = Math.ceil(count + increment);
           setTimeout(animateCounters, 1);
         } else {
@@ -442,7 +466,7 @@
         }
       });
     }
-    
+
     // Start animation when stats section is in view
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -451,8 +475,8 @@
           observer.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.5});
-    
+    }, { threshold: 0.5 });
+
     const statsSection = document.querySelector('section.bg-gradient-to-br');
     if (statsSection) {
       observer.observe(statsSection);
@@ -461,9 +485,9 @@
 </body>
 <script>
   // Simple animation trigger on scroll
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const animateElements = document.querySelectorAll('.animate__animated');
-    
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -474,10 +498,11 @@
     }, {
       threshold: 0.1
     });
-    
+
     animateElements.forEach(element => {
       observer.observe(element);
     });
   });
 </script>
+
 </html>

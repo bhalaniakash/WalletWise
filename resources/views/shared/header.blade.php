@@ -140,8 +140,15 @@
             </a>
         </div>
     </nav>
+    
     {{--
     <script type="text/javascript" src="../../lib/js/main.js"></script> --}}
+    <script>
+           setTimeout(() => {
+            const alert = document.querySelector('[role="alert"]');
+            if (alert) alert.remove();
+        }, 2000); // 2 seconds
+    </script>
 </body>
 
 </html>

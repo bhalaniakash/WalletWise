@@ -80,8 +80,7 @@ Route::prefix('/admin')->group(function () {
     Route::view('/dashboard', 'admin.dashboard');
     Route::view('/members', 'admin.members');
     Route::view('/suggestions', 'admin.suggestions');
-    Route::view('/showCategory', 'admin.showCategory');
-    Route::view('/category', 'admin.category');
+    Route::view('/addCategory', 'admin.category');
     Route::view('/payment', 'admin.payment');
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/category', 'index')->name('admin.category');

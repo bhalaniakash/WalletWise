@@ -4,17 +4,18 @@
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
- 
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-  
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Collapsible sidebar using Bootstrap 4</title>
   <base href="/expenseMVC/">
-  {{-- <script type="text/javascript" src="lib/js/main.js"></script> --}}
+  {{--
+  <script type="text/javascript" src="lib/js/main.js"></script> --}}
   <style type="text/css">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
@@ -23,8 +24,8 @@
       padding: 0;
       background-color: ;
       font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+      font-weight: 300;
+      font-style: normal;
     }
 
     .vertical-nav {
@@ -42,8 +43,8 @@
       background: #E6C7A5 !important;
       text-decoration: none;
       font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+      font-weight: 300;
+      font-style: normal;
     }
 
     .text-gray {
@@ -158,12 +159,12 @@
           <span class="span"><i class="fas fa-home"></i></span>Home</a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('admin/category') }}" class="nav-link">
+        <a href="{{url('admin/addCategory')}}" class="nav-link">
           <span class="span"><i class="fas fa-list-alt"></i></span>New Category</a>
       </li>
 
       <li class="nav-item">
-        <a href="{{ url('admin/showCategory') }}" class="nav-link">
+        <a href="{{url('admin/category')}}" class="nav-link">
           <span class="span"><i class="fas fa-folder-open"></i></span>Category</a>
       </li>
       <li class="nav-item">
