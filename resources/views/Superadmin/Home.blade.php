@@ -93,8 +93,13 @@
     }
 
     .testimonial-card::before {
+<<<<<<< HEAD
       content: "" ";
  position: absolute;
+=======
+      content: "";
+      position: absolute;
+>>>>>>> a80e217505f45091d08913d70b450aa2cb694a8e
       top: 20px;
       left: 20px;
       font-size: 60px;
@@ -319,9 +324,14 @@
                 </div>
               </div>
               <div class="ml-4">
+<<<<<<< HEAD
                 <h3 class="text-lg font-semibold text-primary-800">Bank-Level Security</h3>
                 <p class="text-gray-600">256-bit encryption, SOC 2 compliance, and regular security audits ensure your
                   data is always protected.</p>
+=======
+                <h3 class="text-lg font-semibold text-primary-800">Laravel Security Features</h3>
+                <p class="text-gray-600">Laravel provides built-in protection against common vulnerabilities like SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF). It also includes robust authentication and encryption mechanisms to safeguard your application.</p>
+>>>>>>> a80e217505f45091d08913d70b450aa2cb694a8e
               </div>
             </div>
 
@@ -437,8 +447,9 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- CTA Section -->
+<<<<<<< HEAD
   <section class="py-20 bg-primary-50 text-primary-800">
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Financial Management?</h2>
@@ -457,6 +468,10 @@
       </div>
     </div>
   </section>
+=======
+  @include('Superadmin.CTA')
+
+>>>>>>> a80e217505f45091d08913d70b450aa2cb694a8e
 
   <!-- Footer -->
   @include('Superadmin.footer')

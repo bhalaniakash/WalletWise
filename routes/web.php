@@ -54,6 +54,7 @@ Route::prefix('/Superadmin')->group(function () {
     Route::view('/pricing', 'Superadmin.pricing');
     Route::view('/contactus', 'Superadmin.contactus');
     Route::view('/about_us', 'Superadmin.about_us');
+    // Route::view('/CTA', 'Superadmin.CTA');
 });
 Route::post('/contact/store', [ContactUsController::class, 'store'])->name('contact.store');
 
