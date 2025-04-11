@@ -46,13 +46,22 @@
             font-weight: bold;
             font-size: 1.2rem;
             transition: all 0.3s ease-in-out;
-            width: 20%;
+            width: auto;
             border: none;
         }
 
         button[type="submit"]:hover {
             background: #4E2F1E;
             cursor: pointer;
+        }
+        .form-actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .form-group {
+            flex: 1;
+            margin-bottom: 0;
         }
     </style>
 </head>
@@ -85,23 +94,24 @@
 
             <form method="POST" action="{{ route('expense.store') }}">
                 @csrf
-                <div class="mb-3">
-                    <label class="form-label">Expense Name:</label>
-                    <input type="text" class="form-control" name="expense_name" placeholder="Enter expense name"
-                        required>
+                <div class="form-group">
+                    <label class="form-label">Expense Name</label>
+                    <input type="text" class="form-control" name="expense_name" placeholder="Dinner, Groceries, etc." required>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Amount:</label>
-                    <input type="number" class="form-control" name="amount" placeholder="Enter amount" required>
+                <div class="form-group">
+                    <label class="form-label">Amount (₹)</label>
+                    <input type="number" class="form-control" name="amount" placeholder="0.00" min="0" step="0.01" required>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Date:</label>
-                        <input type="date" class="form-control" name="date" max="{{ date('Y-m-d') }}" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Category:</label>
-                        <select class="form-control" name="category_id">
+                        <div class="form-group">
+                            <label class="form-label">Date</label>
+                            <input type="date" class="form-control" name="date" max="{{ date('Y-m-d') }}" required>
+                        </div>
+                        
+                      <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-control" name="category_id" required>
                             @foreach($categories as $category)
                                 @if($category->type == 'expense')
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -111,19 +121,21 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Payment Mode:</label>
+                    <label class="form-label">Payment Method</label>
                     <select class="form-control" name="payment_method" required>
                         <option value="Cash">Cash</option>
                         <option value="Cheque">Cheque</option>
                         <option value="Online">Online</option>
                     </select>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Description:</label>
-                    <textarea class="form-control" name="description" rows="3" placeholder="Optional"></textarea>
+                <div class="form-group">
+                    <label class="form-label">Description (Optional)</label>
+                    <textarea class="form-control" name="description" rows="3" placeholder="Any additional details about this expense"></textarea>
                 </div>
-                <div class="text-left">
-                    <button type="submit" class="btn btn-custom">Insert</button>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-plus-circle"></i> Add Expense
+                    </button>
                 </div>
             </form>
         </div>

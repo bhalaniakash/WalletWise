@@ -19,8 +19,8 @@
             padding: 20px;
             border-radius: 10px;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .content.active {
@@ -33,25 +33,25 @@
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         table {
                 border-collapse: collapse;
                 width: 100%;
                 font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+                font-weight: 300;
+                font-style: normal;
             }
             
         th {
             /* background-color: #A08963; */
             background: #E6C7A5 !important;
-              color: #6B4226;
+            color: #6B4226;
         }
         td {
-              color: #6B4226;
+            color: #6B4226;
             font-family: 'Roboto Slab';
             font-size: 1rem;
         }
@@ -114,11 +114,11 @@
             box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
             font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
         }
 
         .dashboard-card:hover {
@@ -382,7 +382,7 @@
 
             {{-- from here chart section starts --}}
             <section>
-                {{-- <div class="container-fluid shadow"> --}}
+              
                     <h5>Analytics & Reports</h5>
                     <div class="d-flex justify-content-between">
                         <div class="card" style="width: 32% ">
@@ -546,10 +546,8 @@
                         </div>
                     </div>
                     <br>
-                    {{--
-                </div> --}}
+                  
             </section>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

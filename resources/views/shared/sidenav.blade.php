@@ -183,6 +183,7 @@
     
     
     <ul class="nav flex-column bg-light mb-0 mt-4" id="navbarNav">
+
       <li class="nav-item">
         <a href="{{ url('dashboard') }}" class="nav-link">
           <span class="span"><i class="fas fa-home"></i></span> Home
@@ -220,38 +221,46 @@
         <span class="span"><i class="fas fa-gem"></i></span> Upgrade
       </a>
       </li>
+
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
         <span class="span"><i class="fas fa-bell"></i></span> New Reminders
       </a>
       </li>
+
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
         <span class="span"><i class="fas fa-coins"></i></span> Budget
       </a>
       </li>
+
       <li class="nav-item">
       <a href="{{ url('dashboard/update') }}" class="nav-link">
         <span class="span"><i class="fas fa-clipboard-list"></i></span> Reminders
       </a>
       </li>
+
     @elseif (Auth::user()->plan_type === 'premium')
       <li class="nav-item">
       <a href="{{ url('dashboard/reminder') }}" class="nav-link">
         <span class="span"><i class="fas fa-bell"></i></span> New Reminders
       </a>
       </li>
+
       <li class="nav-item">
       <a href="{{ url('dashboard/show_reminder') }}" class="nav-link">
         <span class="span"><i class="fas fa-clipboard-list"></i></span>Reminders
       </a>
       </li>
+
       <li class="nav-item">
       <a href="{{ url('dashboard/budget') }}" class="nav-link">
         <span class="span"><i class="fas fa-coins"></i></span> Budget
       </a>
       </li>
+
     @endif
+    
       <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-item">
           @csrf
@@ -261,6 +270,7 @@
           </a>
         </form>
       </li>
+
     </ul>
   </div>
 </body>

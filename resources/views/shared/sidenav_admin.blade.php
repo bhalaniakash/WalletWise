@@ -158,12 +158,12 @@
           <span class="span"><i class="fas fa-home"></i></span>Home</a>
       </li>
       <li class="nav-item">
-        <a href="{{url('admin/category')}}" class="nav-link">
+        <a href="{{ url('admin/category') }}" class="nav-link">
           <span class="span"><i class="fas fa-list-alt"></i></span>New Category</a>
       </li>
 
       <li class="nav-item">
-        <a href="{{url('admin/showCategory')}}" class="nav-link">
+        <a href="{{ url('admin/showCategory') }}" class="nav-link">
           <span class="span"><i class="fas fa-folder-open"></i></span>Category</a>
       </li>
       <li class="nav-item">

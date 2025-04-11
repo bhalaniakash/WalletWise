@@ -45,7 +45,7 @@
             font-weight: bold;
             font-size: 1.2rem;
             transition: all 0.3s ease-in-out;
-            width: 20%;
+            width: auto;
             border: none;
         }
 
@@ -112,8 +112,10 @@
                     <label class="form-label">Description:</label>
                     <textarea class="form-control" name="idescription" rows="3" placeholder="Optional"></textarea>
                 </div>
-                <div class="text-left">
-                    <button type="submit" class="btn btn-custom">Insert</button>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-plus-circle"></i> Add Expense
+                    </button>
                 </div>
             </form>
         </div>
