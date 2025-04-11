@@ -93,14 +93,11 @@
     }
 
     .testimonial-card::before {
-<<<<<<< HEAD
-      content: "" ";
+      <<<<<<< HEAD content: "" ";
  position: absolute;
-=======
-      content: "";
+      =======content: "";
       position: absolute;
->>>>>>> a80e217505f45091d08913d70b450aa2cb694a8e
-      top: 20px;
+      >>>>>>>a80e217505f45091d08913d70b450aa2cb694a8e top: 20px;
       left: 20px;
       font-size: 60px;
       color: rgba(107, 66, 38, 0.1);
@@ -324,14 +321,10 @@
                 </div>
               </div>
               <div class="ml-4">
-<<<<<<< HEAD
-                <h3 class="text-lg font-semibold text-primary-800">Bank-Level Security</h3>
-                <p class="text-gray-600">256-bit encryption, SOC 2 compliance, and regular security audits ensure your
-                  data is always protected.</p>
-=======
                 <h3 class="text-lg font-semibold text-primary-800">Laravel Security Features</h3>
-                <p class="text-gray-600">Laravel provides built-in protection against common vulnerabilities like SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF). It also includes robust authentication and encryption mechanisms to safeguard your application.</p>
->>>>>>> a80e217505f45091d08913d70b450aa2cb694a8e
+                <p class="text-gray-600">Laravel provides built-in protection against common vulnerabilities like SQL
+                  injection, cross-site scripting (XSS), and cross-site request forgery (CSRF). It also includes robust
+                  authentication and encryption mechanisms to safeguard your application.</p>
               </div>
             </div>
 
@@ -447,31 +440,9 @@
       </div>
     </div>
   </section>
- 
-  <!-- CTA Section -->
-<<<<<<< HEAD
-  <section class="py-20 bg-primary-50 text-primary-800">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Financial Management?</h2>
-      <p class="text-xl max-w-2xl mx-auto mb-10 text-primary-600">
-        Join hundreds of organizations using WalletWise to streamline their financial operations.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="{{url('register')}}"
-          class="px-8 py-4 bg-primary-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-          Start Free Trial
-        </a>
-        <a href="#"
-          class="px-8 py-4 border-2 border-primary-600 text-primary-600 font-semibold rounded-full hover:bg-primary-600 hover:text-white transition-all duration-300">
-          Schedule Demo
-        </a>
-      </div>
-    </div>
-  </section>
-=======
-  @include('Superadmin.CTA')
 
->>>>>>> a80e217505f45091d08913d70b450aa2cb694a8e
+  <!-- CTA Section -->
+  @include('Superadmin.CTA')
 
   <!-- Footer -->
   @include('Superadmin.footer')
