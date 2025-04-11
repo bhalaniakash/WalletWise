@@ -164,10 +164,7 @@
     <div class="container mx-auto px-6 py-32 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">
-          <<<<<<< HEAD <span class="gradient-text">WalletWise</span>
-            =======
-            <span class="gradient-text animate-delay-1">WalletWise</span>
-            >>>>>>> c76f2372b5da58f820b56f10d43b00dd0fb8e2f6
+          <span class="gradient-text animate-delay-1">WalletWise</span>
         </h1>
         <p class="text-xl md:text-2xl text-primary-700 mb-10 leading-relaxed">
           Advanced financial management dashboard with powerful analytics, multi-user control, and enterprise-grade
