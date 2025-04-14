@@ -119,8 +119,8 @@
                                 ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek())
                                 ->pluck('user_id')
                                 ->unique();
-                            // Fetch all inactive users in one query
-                            $activeUsers = \App\Models\User::whereIn('id', $activeUserIds)->get();
+                            // Fetch all active users with pagination
+                            $activeUsers = \App\Models\User::whereIn('id', $activeUserIds)->paginate(10);
                         @endphp
 
                         @foreach($activeUsers as $user)
@@ -136,6 +136,24 @@
                         @endforeach
                     </tbody>
                 </table>
+                <!-- Pagination Links -->
+                <div class="d-flex justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item {{ $activeUsers->onFirstPage() ? 'disabled' : '' }}">
+                                <a class="page-link" href="{{ $activeUsers->previousPageUrl() }}" style="background-color: #E6C7A5; color: #6B4226;">Previous</a>
+                            </li>
+                            @for ($i = 1; $i <= $activeUsers->lastPage(); $i++)
+                                <li class="page-item {{ $i == $activeUsers->currentPage() ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $activeUsers->url($i) }}" style="background-color: #E6C7A5; color: #6B4226;">{{ $i }}</a>
+                                </li>
+                            @endfor
+                            <li class="page-item {{ $activeUsers->hasMorePages() ? '' : 'disabled' }}">
+                                <a class="page-link" href="{{ $activeUsers->nextPageUrl() }}" style="background-color: #E6C7A5; color: #6B4226;">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
 
                 <!-- Premium Members Table -->
                 <h5>Inactive Members</h5>
@@ -158,14 +176,14 @@
                             // Extract unique user IDs from both reports for active users
                             $activeUserIds = $expenseReport->concat($incomeReport)
                                 ->where('is_Admin', '!=', 'Yes')
-                                ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek()) // Active users within the last week
+                                ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek()) 
                                 ->pluck('user_id')
                                 ->unique();
 
                             // Extract inactive user IDs (users who haven't updated in the last week)
                             $inactiveUserIds = $expenseReport->concat($incomeReport)
                                 ->where('is_Admin', '!=', 'Yes')
-                                ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek()) // Inactive users
+                                ->where('updated_at', '>=', \Carbon\Carbon::now()->subWeek()) 
                                 ->pluck('user_id')
                                 ->unique();
                             // Fetch all non-admin users who have no records in reports
@@ -176,7 +194,7 @@
                             $finalInactiveUserIds = $inactiveUserIds->merge($usersWithoutRecords)->diff($activeUserIds);
 
                             // Fetch inactive users
-                            $inactiveUsers = \App\Models\User::whereIn('id', $finalInactiveUserIds)->get();
+                            $inactiveUsers = \App\Models\User::whereIn('id', $finalInactiveUserIds)->paginate(10);
                         @endphp
                         @foreach($inactiveUsers as $user)
                             <tr>
@@ -198,6 +216,24 @@
                         @endforeach
                     </tbody>
                 </table>
+                <!-- Pagination Links -->
+                <div class="d-flex justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item {{ $inactiveUsers->onFirstPage() ? 'disabled' : '' }}">
+                                <a class="page-link" href="{{ $inactiveUsers->appends(['perPage' => 5])->previousPageUrl() }}" style="background-color: #E6C7A5; color: #6B4226;">Previous</a>
+                            </li>
+                            @for ($i = 1; $i <= $inactiveUsers->lastPage(); $i++)
+                                <li class="page-item {{ $i == $inactiveUsers->currentPage() ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $inactiveUsers->appends(['perPage' => 5])->url($i) }}" style="background-color: #E6C7A5; color: #6B4226;">{{ $i }}</a>
+                                </li>
+                            @endfor
+                            <li class="page-item {{ $inactiveUsers->hasMorePages() ? '' : 'disabled' }}">
+                                <a class="page-link" href="{{ $inactiveUsers->appends(['perPage' => 5])->nextPageUrl() }}" style="background-color: #E6C7A5; color: #6B4226;">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

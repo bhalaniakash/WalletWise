@@ -37,7 +37,7 @@
             border-radius: 8px;
             font-family: "Poppins", sans-serif;
             font-weight: 300;
-            font-style: normal;
+            font-style: normal; 
         }
 
         h5 {

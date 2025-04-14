@@ -65,7 +65,7 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             font-family: "Poppins", sans-serif;
-            font-weight: 300;
+            font-weight: 800;
             font-style: normal;
         }
 
