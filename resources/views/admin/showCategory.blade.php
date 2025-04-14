@@ -79,8 +79,8 @@
             background: #F3E5D8;
             margin: 0;
             font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .forBg {
@@ -202,7 +202,7 @@
                             <path
                                 d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 10-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 101.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
                         </svg>
-                    </button>
+                    </button>   
                 </div>
             @endif
 
