@@ -13,7 +13,7 @@
     @include('shared.header')
     @include('shared.sidenav_admin')
     <style>
-        
+
         body {
             margin: 0;
             background: #F3E5D8;
@@ -77,7 +77,7 @@
             color: white;
         }
 
-        .btn-danger {
+        /* .btn-danger {
             background: red;
         }
 
@@ -135,7 +135,7 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-        }
+        } 
     </style>
 </head>
 
@@ -216,4 +216,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html>
+</html>    
