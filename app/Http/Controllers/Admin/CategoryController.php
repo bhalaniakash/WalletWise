@@ -37,28 +37,29 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+        // $categories = Category::paginate(10); // Paginate categories
         return view('admin.showCategory', compact('categories'));
     }
 
     public function destroy($id)
-{
-    $category = Category::findOrFail($id);
+    {
+        $category = Category::findOrFail($id);
 
-    // Ensure "Other-Expenses" category exists
-    $otherExpensesCategory = Category::firstOrCreate(['name' => 'Other-Expenses']);
+        // Ensure "Other-Expenses" category exists
+        $otherExpensesCategory = Category::firstOrCreate(['name' => 'Other-Expenses']);
 
-    // Ensure "Other-Incomes" category exists
-    $otherIncomesCategory = Category::firstOrCreate(['name' => 'Other-Incomes']);
+        // Ensure "Other-Incomes" category exists
+        $otherIncomesCategory = Category::firstOrCreate(['name' => 'Other-Incomes']);
 
-    // Reassign related records based on type
-    Expense::where('category_id', $id)->update(['category_id' => $otherExpensesCategory->id]);
-    Income::where('category_id', $id)->update(['category_id' => $otherIncomesCategory->id]);
+        // Reassign related records based on type
+        Expense::where('category_id', $id)->update(['category_id' => $otherExpensesCategory->id]);
+        Income::where('category_id', $id)->update(['category_id' => $otherIncomesCategory->id]);
 
-    // Delete the category
-    $category->delete();
+        // Delete the category
+        $category->delete();
 
-    return back()->with('success', 'Category deleted. Expenses moved to Other-Expenses, Incomes moved to Other-Incomes.');
-}
+        return back()->with('success', 'Category deleted. Expenses moved to Other-Expenses, Incomes moved to Other-Incomes.');
+    }
 
 
     public function edit($id)
