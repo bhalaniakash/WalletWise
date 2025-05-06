@@ -28,6 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('income_controllers');
+        Schema::dropIfExists('incomes'); 
+
     }
 };
