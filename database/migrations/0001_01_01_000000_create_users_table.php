@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -17,11 +14,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->tinyInteger('age')->check('age >= 15');
+            $table->tinyInteger('age')->nullable(); // Removed unsupported check constraint
             $table->string('contact')->nullable();
             $table->enum('plan_type', ['regular', 'premium'])->default('regular');
             $table->string('profile_picture')->nullable();
-            $table->string('is_Admin');
+            $table->boolean('is_admin')->default(false); // FIXED: changed name and added default
             $table->rememberToken();
             $table->timestamps();
         });
@@ -42,13 +39,10 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('users');
     }
 };
